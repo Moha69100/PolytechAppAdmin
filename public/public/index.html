@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="app/lib/angular-1.2.16/angular.js"></script>
+        <script src="app/lib/angular-1.2.16/angular-route.js"></script>
+        <script src="app/lib/ui-bootstrap-tpls-0.10.0.min.js"></script>
+
+        <script src="app/js/app.js"></script>
+
+        <script src="app/js/services/browser.js"></script>
+
+        <script src="app/js/controllers/core/accueilController.js"></script>
+        <script src="app/js/controllers/core/menuController.js"></script>
+        <script src="app/js/controllers/core/headerController.js"></script>
+        
+        <script src="app/js/controllers/admin/enterpriseController.js"></script>
+        <script src="app/js/controllers/admin/userController.js"></script>
+
+        <script src="app/js/directives/autoHeightDirective.js"></script>
+
+
+
+        <link rel="stylesheet" href="app/css/app.css">
+    </head>
+    <body data-ng-app="App">
+        <div data-ng-include="'app/partials/core/header.html'" ></div>
+        <div data-ng-include="'app/partials/core/menu.html'" ></div>
+        <div style="margin-top: 150px;"ng-view>
+        </div>
+    </body>
+</html>
