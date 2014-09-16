@@ -6524,7 +6524,7 @@ button.close {
   z-index: 999;
 }
 .welcome {
-  color: #FF6600;
+  color: #fff;
   font-size: 32px;
   position: absolute;
   margin-top: -7%;
@@ -6946,7 +6946,7 @@ body {
   padding-left: 24px;
   font-weight: bold;
   cursor: pointer;
-  color: #FF6600;
+  color: #44A1C9;
 }
 .col-lg-4.panel-with-margin-right {
   width: 32.33333333%;
@@ -6983,7 +6983,7 @@ body {
   border-color: #DDDDDD;
 }
 .title-center {
-  color: #FF6600;
+  color: #44A1C9;
   font-weight: bold !important;
   font-size: 16px;
 }
@@ -7495,12 +7495,12 @@ div > .btn-group .dropdown-toggle {
 }
 .save:hover {
   color: #fff;
-  background-color: #FF5500;
+  background-color: #44A1C9;
   border: none;
 }
 .save.disabled,
 .save[disabled] {
-  background-color: #FF5500;
+  background-color: #44A1C9;
   opacity: 0.5;
   border: none;
 }
