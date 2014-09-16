@@ -1,0 +1,39 @@
+<div style="margin-top : 20px;">
+    <div class="page-header">
+        <span>liste des entreprises</span>
+        <div class="form-actions">
+            <button class="btn  btn-primary" data-ng-click="add()">ajouter une entreprise</button>
+        </div>
+    </div>
+    <table class="table ">
+        <tbody>
+            <tr>
+                <th>#</th>
+                <th>raison sociale</th>
+                <th>représentant</th>
+                <th>rôle</th>
+                <th>adresse</th>
+                <th>téléphone</th>
+                <th>actions</th>
+            </tr>
+            <tr data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in entreprises">
+                <td>{{e.id}}</td>
+                <td>{{e.name}}</td>
+                <td>{{e.representant}}</td>
+                <td>{{e.role}}</td>
+                <td>{{e.adresse}}</td>
+                <td>{{e.phone}}</td>
+
+                <td>
+                    <button class="btn btn-primary" data-ng-click="edit(e)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button class="btn btn-warning" data-ng-click="remove(e)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
