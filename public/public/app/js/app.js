@@ -5,9 +5,9 @@ app.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/admin-entreprise', {
             controller: 'entrepriseController',
             templateUrl: 'app/partials/admin/entreprises.html'
-        }).when('/admin-user', {
-            controller: 'userController',
-            templateUrl: 'app/partials/admin/users.html'
+        }).when('/admin-student', {
+            controller: 'studentController',
+            templateUrl: 'app/partials/admin/students.html'
         }).otherwise({
             controller: 'accueilController',
             redirectTo: '',

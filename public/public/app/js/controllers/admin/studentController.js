@@ -1,10 +1,10 @@
-app.controller('userController', ['$rootScope', '$scope', '$http', '$timeout', '$location', '$window', 'browser',
+app.controller('studentController', ['$rootScope', '$scope', '$http', '$timeout', '$location', '$window', 'browser',
     function ($rootScope, $scope, $http, $timeout, $location, $window, browser) {
 
 
 
         var init = function () {
-            $scope.users = [{
+            $scope.students = [{
                     id: 1,
                     nom: "nom",
                     prenom: "prenom",
