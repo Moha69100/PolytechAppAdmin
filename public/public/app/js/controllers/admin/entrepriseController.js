@@ -1,10 +1,10 @@
-app.controller('enterpriseController', ['$rootScope', '$scope', '$http', '$timeout', '$location', '$window', 'browser',
+app.controller('entrepriseController', ['$rootScope', '$scope', '$http', '$timeout', '$location', '$window', 'browser',
     function ($rootScope, $scope, $http, $timeout, $location, $window, browser) {
 
 
 
         var init = function () {
-            $scope.enterprises = [{
+            $scope.entreprises = [{
                     id: 1,
                     name: "test",
                     representant: "test test",

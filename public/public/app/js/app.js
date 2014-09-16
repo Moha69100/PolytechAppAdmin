@@ -2,9 +2,9 @@ var app = angular.module('App', ['ui.bootstrap', 'ngRoute']);
 
 app.config(['$routeProvider', function ($routeProvider) {
 
-        $routeProvider.when('/admin-enterprise', {
-            controller: 'enterpriseController',
-            templateUrl: 'app/partials/admin/enterprises.html'
+        $routeProvider.when('/admin-entreprise', {
+            controller: 'entrepriseController',
+            templateUrl: 'app/partials/admin/entreprises.html'
         }).when('/admin-user', {
             controller: 'userController',
             templateUrl: 'app/partials/admin/users.html'

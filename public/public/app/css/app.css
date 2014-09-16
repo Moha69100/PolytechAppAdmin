@@ -6514,10 +6514,7 @@ button.close {
 .ngFooterTotalItems {
   padding: 2px;
 }
-@font-face {
-  font-family: "Helvetica 45 Light";
-  src: url("../fonts/helvetica.ttf");
-}
+
 /************************************************ ACCUEIL ***********************************************/
 .bjr {
   font-size: 29px;
