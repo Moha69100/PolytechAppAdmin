@@ -1,8 +1,10 @@
 <div style="margin-top : 20px;">
     <div class="page-header">
-        <span>liste des utilisateurs</span>
+        <span>Liste des étudiants</span>
+        <div class="form-actions">
+            <button class="btn  btn-primary" data-ng-click="addStudent()">Ajouter un étudiant</button>
+        </div>
     </div>
-
     <table class="table ">
         <tbody>
             <tr>
@@ -13,17 +15,17 @@
                 <th>adresse</th>
                 <th>action</th>
             </tr>
-            <tr data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in users">
+            <tr data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in students">
                 <td>{{e.id}}</td>
                 <td>{{e.nom}}</td>
                 <td>{{e.prenom}}</td>
                 <td>{{e.email}}</td>
                 <td>{{e.adresse}}</td>     
                 <td>
-                    <button class="btn btn-primary" data-ng-click="edit(e)">
+                    <button class="btn btn-primary" data-ng-click="editStudent(e)">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                    <button class="btn btn-warning" data-ng-click="remove(e)">
+                    <button class="btn btn-warning" data-ng-click="removeStudent(e)">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
                 </td>     </tr>

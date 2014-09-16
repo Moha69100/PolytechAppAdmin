@@ -35,11 +35,12 @@ public class Application {
             e.printStackTrace();
         } finally {
             session1.close();
+            System.out.println("Insert done");
         }
 
-        
+        System.exit(0);
 
-        System.out.println("Insert done");
+        
 
     }
 }
