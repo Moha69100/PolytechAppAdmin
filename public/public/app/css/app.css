@@ -4149,7 +4149,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse .navbar-nav > .disabled > a,
 .navbar-inverse .navbar-nav > .disabled > a:hover,
 .navbar-inverse .navbar-nav > .disabled > a:focus {
-  color: #444444;
+  color: #888888;
   background-color: rgba(0, 0, 0, 0);
 }
 .navbar-inverse .navbar-toggle {
@@ -4196,7 +4196,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus {
-    color: #444444;
+    color: #888888;
     background-color: rgba(0, 0, 0, 0);
   }
 }
@@ -4217,7 +4217,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 fieldset[disabled] .navbar-inverse .btn-link:hover,
 .navbar-inverse .btn-link[disabled]:focus,
 fieldset[disabled] .navbar-inverse .btn-link:focus {
-  color: #444444;
+  color: #888888;
 }
 .breadcrumb {
   padding: 8px 15px;
@@ -6514,10 +6514,7 @@ button.close {
 .ngFooterTotalItems {
   padding: 2px;
 }
-@font-face {
-  font-family: "Helvetica 45 Light";
-  src: url("../fonts/helvetica.ttf");
-}
+
 /************************************************ ACCUEIL ***********************************************/
 .bjr {
   font-size: 29px;
@@ -6527,7 +6524,7 @@ button.close {
   z-index: 999;
 }
 .welcome {
-  color: #FF6600;
+  color: #fff;
   font-size: 32px;
   position: absolute;
   margin-top: -7%;
@@ -6680,7 +6677,7 @@ button.close {
   margin: 0 !important;
 }
 .ngHeaderCell {
-  background-color: #444;
+  background-color: #888888;
   color: #f0f0f0;
   border-right: 1px solid #f0f0f0;
   border-top-left-radius: 5px;
@@ -6776,7 +6773,7 @@ a {
 }
 .ngSortButtonUp,
 .ngSortButtonDown {
-  border-color: #44A1C9 #444444;
+  border-color: #44A1C9 #888888;
 }
 .starFilterWhite {
   background: url("../img/market/market-priority-white-sm.png") no-repeat center center !important;
@@ -6949,7 +6946,7 @@ body {
   padding-left: 24px;
   font-weight: bold;
   cursor: pointer;
-  color: #FF6600;
+  color: #44A1C9;
 }
 .col-lg-4.panel-with-margin-right {
   width: 32.33333333%;
@@ -6986,7 +6983,7 @@ body {
   border-color: #DDDDDD;
 }
 .title-center {
-  color: #FF6600;
+  color: #44A1C9;
   font-weight: bold !important;
   font-size: 16px;
 }
@@ -7111,21 +7108,21 @@ textarea {
 .navbar-nav > li.active >a,
 .navbar-nav > li.active > div >a{
 	color :  #fff !important;
-	background-color : #444 !important;
+	background-color : #888888 !important;
 }
 */
-#geoe-menu > .navbar-default {
+#poly-menu > .navbar-default {
   height: 55px;
   position: fixed;
   z-index: 1000;
-  top: 60px;
-  background-color: #444;
+  top: 95px;
+  background-color: #888888;
   border-radius: 0;
   margin-bottom: 0;
   border: none;
   width: 100%;
 }
-#geoe-menu > .navbar > .navbar-collapse {
+#poly-menu > .navbar > .navbar-collapse {
   border: none;
   height: 55px;
   margin: 0;
@@ -7133,22 +7130,22 @@ textarea {
   margin-left: 5px;
   margin-left: 15px \9;
 }
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li {
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li {
   height: inherit;
   float: left \9;
   border-collapse: collapse;
 }
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li > a {
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li > a {
   height: inherit;
-  color: #ccc;
+  color: #eee;
   font-size: 1.2em;
 }
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav {
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav {
   height: 55px;
   border: 0px solid #000;
   position: relative;
 }
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown {
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown {
   cursor: pointer;
   min-height: 34px;
   float: left;
@@ -7156,17 +7153,17 @@ textarea {
   margin-top: 10px \9;
   height: 34px;
 }
-#geoe-menu .component-search {
+#poly-menu .component-search {
   display: block;
   float: right;
   position: relative;
   margin-right: 20px;
   margin-top: 14px;
 }
-#geoe-menu .component-search > #input-search {
+#poly-menu .component-search > #input-search {
   padding: 6px 12px 6px 30px;
 }
-#geoe-menu .component-search .icon-search {
+#poly-menu .component-search .icon-search {
   background: url("../../img/btnActionSearch.png") no-repeat center center;
   color: #ccc;
   float: left;
@@ -7176,14 +7173,14 @@ textarea {
   z-index: 1030;
   border-radius: 5px;
 }
-#geoe-menu .component-search > #alert-search {
+#poly-menu .component-search > #alert-search {
   position: absolute;
   padding: 6px 6px 5px;
   right: 212px;
   width: 100%;
   text-align: center;
 }
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > a {
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > a {
   cursor: pointer;
   font-size: 1.2em;
   position: relative;
@@ -7191,32 +7188,32 @@ textarea {
   padding-top: 15px;
   padding-right: 30px;
   background: url("../img/arrowDropDownHeader.png") no-repeat right center;
-  color: #ccc;
+  color: #eee;
 }
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > .dropdown-menu {
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > .dropdown-menu {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.24);
-  background-color: #444;
+  background-color: #888888;
   margin-top: 6px;
 }
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > .dropdown-menu > li > a {
-  color: #CCCCCC;
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > .dropdown-menu > li > a {
+  color: #eee;
 }
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > .dropdown-menu > li > a:hover,
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > .dropdown-menu > li > a:focus {
-  background-color: #444;
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > .dropdown-menu > li > a:hover,
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > .dropdown-menu > li > a:focus {
+  background-color: #888888;
   color: #fff;
 }
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > a:hover,
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > a:focus,
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li > .open > a {
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > a:hover,
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > a:focus,
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li > .open > a {
   cursor: pointer;
   color: #fff;
   background: url("../img/arrowDropDownHeader-white.png") no-repeat right center;
   text-decoration: none;
 }
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li > a:hover,
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li > a:focus,
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > .open > a {
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li > a:hover,
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li > a:focus,
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > .open > a {
   cursor: pointer;
   text-decoration: none;
   border: none;
@@ -7224,8 +7221,8 @@ textarea {
   background: transparent;
 }
 .dropdown-menu > li > a.active,
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li > a.active,
-#geoe-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > a.active {
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li > a.active,
+#poly-menu > .navbar > .navbar-collapse > .navbar-nav > li > .dropdown > a.active {
   color: #44A1C9 !important;
 }
 /************************************************ HEADER ***********************************************/
@@ -7234,36 +7231,36 @@ textarea {
   float: left;
   padding: 8px !important;
 }
-#geoe-header > .navbar-default {
+#poly-header > .navbar-default {
   z-index: 1002;
   position: fixed;
   margin-bottom: -1px;
   top: 0;
-  background: #444444;
+  background: #888888;
   width: 100%;
   border: none;
   border-radius: 0px;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
 }
-#geoe-header > .navbar > .container > .navbar-collapse > ul {
+#poly-header > .navbar > .container > .navbar-collapse > ul {
   float: right;
   margin-top: 10px;
 }
-#geoe-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > a > div {
+#poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > a > div {
   position: absolute;
   right: 0;
   top: 0;
-  border-left: 1px solid #444;
+  border-left: 1px solid #888888;
   background: url("../img/arrowDropDownHeader-black.png") no-repeat center center;
   width: 25px;
   height: 36px;
 }
-#geoe-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > .dropdown-menu {
+#poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > .dropdown-menu {
   margin-top: 36px;
   background-color: #fff;
 }
-#geoe-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > a {
+#poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > a {
   background: url("../../img/btnActionUser.png") no-repeat 5px center #ffffff;
   border-radius: 5px;
   display: block;
@@ -7271,39 +7268,39 @@ textarea {
   padding-top: 9px;
   padding-left: 30px;
   padding-right: 40px;
-  color: #444;
+  color: #888888;
   height: 36px;
 }
-#geoe-header > .navbar > .container > .navbar-collapse > .nav > li > div > input:focus {
+#poly-header > .navbar > .container > .navbar-collapse > .nav > li > div > input:focus {
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075) inset, 0 0 0px rgba(102, 175, 233, 0.6);
 }
-#geoe-header > .navbar > .container,
-#geoe-header > .navbar > .container > .navbar-collapse {
+#poly-header > .navbar > .container,
+#poly-header > .navbar > .container > .navbar-collapse {
   padding: 0;
   width: 100%;
   margin: 0;
 }
-#geoe-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown {
+#poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown {
   z-index: 2001;
 }
-#geoe-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > a:hover {
+#poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > a:hover {
   cursor: pointer;
   text-decoration: none;
 }
-#geoe-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown.open > a {
+#poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown.open > a {
   cursor: pointer;
   text-decoration: none;
   color: #ccc;
 }
-#geoe-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown.open > a > div {
+#poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown.open > a > div {
   background: url("../img/arrowDropDownHeader.png") no-repeat center center;
 }
-#geoe-header > .navbar > .container > .navbar-collapse > .nav > li > div > input {
+#poly-header > .navbar > .container > .navbar-collapse > .nav > li > div > input {
   background: #F6F6F6;
   width: 250px;
   border: 0px solid  #fff;
   height: 40px;
-  color: #444;
+  color: #888888;
   padding-left: 40px;
   border-radius: 5px;
   -moz-border-radius: 5px;
@@ -7318,20 +7315,20 @@ textarea {
   width: 34px;
   z-index: 1030;
 }
-#geoe-header > .navbar > .container > div > div {
+#poly-header > .navbar > .container > div > div {
   float: left;
   /*margin: 2px 20px; */
 }
-#geoe-header > .navbar > .container > div > div > img {
+#poly-header > .navbar > .container > div > div > img {
   padding: 5px;
   float: left;
 }
-#geoe-header .logo {
+#poly-header .logo {
   margin-top: 4px;
   font-size: 43px;
   font-family: "Helvetica 45 Light";
 }
-#geoe-header > .navbar > .container > div > a {
+#poly-header > .navbar > .container > div > a {
   font-family: "Arial";
   font-weight: 300;
   font-size: 28px;
@@ -7343,25 +7340,25 @@ textarea {
   margin-top: 30px;
   padding: 0;
 }
-#geoe-header > .navbar > .container > div > a:hover {
+#poly-header > .navbar > .container > div > a:hover {
   color: #fff;
   text-decoration: none;
 }
-#geoe-header > .navbar > .container > .navbar-collapse > .nav > li > button {
+#poly-header > .navbar > .container > .navbar-collapse > .nav > li > button {
   background: url("../img/icon_params.png") no-repeat center center #ffffff;
   border: 0 none;
   border-radius: 5px;
   height: 36px;
   width: 36px;
 }
-#geoe-header > .navbar > .container > .navbar-collapse > .nav > li > button:hover {
+#poly-header > .navbar > .container > .navbar-collapse > .nav > li > button:hover {
   background: url("../img/icon_params_white.png") no-repeat center center #666666;
   border: 0 none;
   border-radius: 5px;
   height: 36px;
   width: 36px;
 }
-#geoe-header > .navbar > .container > .navbar-collapse > .nav > li {
+#poly-header > .navbar > .container > .navbar-collapse > .nav > li {
   display: table;
   float: left;
   margin-right: 20px;
@@ -7389,7 +7386,7 @@ textarea {
   font-family: "Arial";
   font-weight: 300;
   font-size: 22px;
-  color: #444;
+  color: #888888;
 }
 .geo-tabs > .nav {
   background-color: none !important;
@@ -7498,12 +7495,12 @@ div > .btn-group .dropdown-toggle {
 }
 .save:hover {
   color: #fff;
-  background-color: #FF5500;
+  background-color: #44A1C9;
   border: none;
 }
 .save.disabled,
 .save[disabled] {
-  background-color: #FF5500;
+  background-color: #44A1C9;
   opacity: 0.5;
   border: none;
 }
