@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16 sept. 2014 15:04:07 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.polytech.dao.Utilisateur" table="utilisateur" schema="appschema">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="login" type="string">
+            <column name="login" />
+        </property>
+        <property name="mdp" type="string">
+            <column name="mdp" />
+        </property>
+        <property name="admin" type="java.lang.Boolean">
+            <column name="admin" />
+        </property>
+        <property name="lecture" type="java.lang.Boolean">
+            <column name="lecture" />
+        </property>
+        <property name="ecriture" type="java.lang.Boolean">
+            <column name="ecriture" />
+        </property>
+    </class>
+</hibernate-mapping>
