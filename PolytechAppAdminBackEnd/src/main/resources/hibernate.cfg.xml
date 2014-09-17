@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://projet-a5a.univ-lyon1.fr:5432/webadmin</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password"></property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+    <mapping resource="com/polytech/dao/Entreprisepresence.hbm.xml"/>
+    <mapping resource="com/polytech/dao/Etudiant.hbm.xml"/>
+    <mapping resource="com/polytech/dao/Evenement.hbm.xml"/>
+    <mapping resource="com/polytech/dao/Offrealternance.hbm.xml"/>
+    <mapping resource="com/polytech/dao/Entreprise.hbm.xml"/>
+    <mapping resource="com/polytech/dao/Personnecontact.hbm.xml"/>
+    <mapping resource="com/polytech/dao/Diplome.hbm.xml"/>
+    <mapping resource="com/polytech/dao/Entretien.hbm.xml"/>
+    <mapping resource="com/polytech/dao/Salle.hbm.xml"/>
+    <mapping resource="com/polytech/dao/Utilisateur.hbm.xml"/>
+    <mapping resource="com/polytech/dao/Evenementsalle.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

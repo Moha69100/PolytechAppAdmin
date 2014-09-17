@@ -1,5 +1,5 @@
-var app = angular.module('App', ['ui.bootstrap', 'ngRoute']);
 
+var app = angular.module('App', ['ui.bootstrap', 'ngRoute']);
 app.config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider.when('/admin-enterprise', {
@@ -19,10 +19,10 @@ app.config(['$routeProvider', function ($routeProvider) {
             redirectTo: '',
             templateUrl: 'app/partials/core/accueil.html'
         });
-
     }]);
 /** sur démarrage de l'application */
 app.run(['$rootScope', function ($rootScope) {
+
         $rootScope.$on('$routeChangeSuccess', function (event, next, current) {
             // console.info('>>> $routeChangeSuccess : $location path=',
             // $location.path());
@@ -48,66 +48,12 @@ app.run(['$rootScope', function ($rootScope) {
             }
 
         });
-        /*
-         $rootScope.$on(Events.Modale.OPEN_DIALOG_CONFIRM, function (event, data) {
-         
-         var modalInstance = $modal.open({
-         windowClass: "confirmation",
-         templateUrl: 'app/partials/core/confirmation.html',
-         controller: 'confirmModalController',
-         backdrop: 'static',
-         resolve: {
-         items: function () {
-         return data;
-         }
-         
-         }
-         });
-         
-         modalInstance.opened.then(function () {
-         setTimeout(function () {
-         modalInstance.close();
-         }, 1000);
-         });
-         });*/
-        /*
-         $rootScope.openConfirmModal = function (data) {
-         $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, data);
-         };
-         
-         $rootScope.$on('$routeChangeSuccess', function (event, next, current) {
-         // console.info('>>> $routeChangeSuccess : $location path=',
-         // $location.path());
-         // console.info('>>> $routeChangeSuccess : current=', current);
-         // console.info('>>> $routeChangeSuccess : next=', next);
-         
-         if (current && current.menu && current.menu.id) {
-         // console.info('>>> $routeChangeSuccess : current.menu.id=',
-         // current.menu.id);
-         $('#' + current.menu.id).removeClass('active');
-         var dropdown = $('#' + current.menu.id).parents('div.dropdown');
-         var dropdownToggle = $(".dropdown-toggle", dropdown);
-         dropdownToggle.removeClass('active');
-         }
-         
-         if (next && next.menu && next.menu.id) {
-         // console.info('>>> $routeChangeSuccess : next.menu.id=',
-         // next.menu.id);
-         $('#' + next.menu.id).addClass('active');
-         var dropdown = $('#' + next.menu.id).parents('div.dropdown');
-         var dropdownToggle = $(".dropdown-toggle", dropdown);
-         dropdownToggle.addClass('active');
-         }
-         
-         });
-         
-         }]);
-         
-         /**
-         * Http Provider : handler default success / error
-         */
-
     }]);
+/**
+ * Http Provider : handler default success / error
+ */
+
+
 app.config(['$httpProvider', function ($httpProvider) {
         /*
          $httpProvider.responseInterceptors.push(['$q', '$rootScope', function ($q, $rootScope) {
@@ -144,13 +90,11 @@ app.config(['$httpProvider', function ($httpProvider) {
          };
          }]);*/
     }]);
-
 app.config(['$httpProvider', function ($httpProvider) {
 
         // Ajax indicator
         //   $httpProvider.interceptors.push('ajaxIndicatorHttpInterceptor');
     }]);
-
 // register the interceptor as a service, intercepts ALL angular ajax http calls
 app.factory('ajaxIndicatorHttpInterceptor', ['$q', '$rootScope', function ($q, $rootScope) {
         /*    return {
@@ -185,5 +129,4 @@ app.factory('ajaxIndicatorHttpInterceptor', ['$q', '$rootScope', function ($q, $
          };****/
 
     }]);
-
 
