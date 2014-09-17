@@ -2,12 +2,18 @@ var app = angular.module('App', ['ui.bootstrap', 'ngRoute']);
 
 app.config(['$routeProvider', function ($routeProvider) {
 
-        $routeProvider.when('/admin-entreprise', {
-            controller: 'entrepriseController',
-            templateUrl: 'app/partials/admin/entreprises.html'
+        $routeProvider.when('/admin-enterprise', {
+            controller: 'enterpriseController',
+            templateUrl: 'app/partials/admin/enterprises.html',
+            menu: {
+                id: 'menu-enterprise'
+            }
         }).when('/admin-student', {
             controller: 'studentController',
-            templateUrl: 'app/partials/admin/students.html'
+            templateUrl: 'app/partials/admin/students.html',
+            menu: {
+                id: 'menu-student'
+            }
         }).otherwise({
             controller: 'accueilController',
             redirectTo: '',
@@ -17,6 +23,31 @@ app.config(['$routeProvider', function ($routeProvider) {
     }]);
 /** sur démarrage de l'application */
 app.run(['$rootScope', function ($rootScope) {
+        $rootScope.$on('$routeChangeSuccess', function (event, next, current) {
+            // console.info('>>> $routeChangeSuccess : $location path=',
+            // $location.path());
+            // console.info('>>> $routeChangeSuccess : current=', current);
+            // console.info('>>> $routeChangeSuccess : next=', next);
+
+            if (current && current.menu && current.menu.id) {
+                // console.info('>>> $routeChangeSuccess : current.menu.id=',
+                // current.menu.id);
+                $('#' + current.menu.id).removeClass('active');
+                var dropdown = $('#' + current.menu.id).parents('div.dropdown');
+                var dropdownToggle = $(".dropdown-toggle", dropdown);
+                dropdownToggle.removeClass('active');
+            }
+
+            if (next && next.menu && next.menu.id) {
+                // console.info('>>> $routeChangeSuccess : next.menu.id=',
+                // next.menu.id);
+                $('#' + next.menu.id).addClass('active');
+                var dropdown = $('#' + next.menu.id).parents('div.dropdown');
+                var dropdownToggle = $(".dropdown-toggle", dropdown);
+                dropdownToggle.addClass('active');
+            }
+
+        });
         /*
          $rootScope.$on(Events.Modale.OPEN_DIALOG_CONFIRM, function (event, data) {
          
