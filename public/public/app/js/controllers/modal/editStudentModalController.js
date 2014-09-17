@@ -14,7 +14,8 @@ app.controller("editStudentModalController", ['$scope', '$modalInstance', 'items
          * sortie par cancel()
          */
         $scope.cancel = function() {
-            $modalInstance.dismiss('cancel');
+          console.log("plop")
+          $modalInstance.$close('cancel');
         };
     }]);
 
