@@ -1,4 +1,4 @@
-var app = angular.module('App', ['ui.bootstrap', 'ngRoute']);
+var app = angular.module('App', ['ui.bootstrap', 'ngRoute', 'ngStorage']);
 
 app.config(['$routeProvider', function ($routeProvider) {
 
@@ -8,6 +8,12 @@ app.config(['$routeProvider', function ($routeProvider) {
         }).when('/admin-user', {
             controller: 'userController',
             templateUrl: 'app/partials/admin/users.html'
+        }).when('/admin-room', {
+            controller: 'roomController',
+            templateUrl: 'app/partials/admin/room.html'
+        }).when('/admin-room-edit', {
+            controller: 'roomController',
+            templateUrl: 'app/partials/admin/room-edit.html'
         }).otherwise({
             controller: 'accueilController',
             redirectTo: '',

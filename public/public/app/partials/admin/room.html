@@ -1,0 +1,35 @@
+<div style="margin-top : 20px;">
+    <div class="page-header">
+        <span>liste des salles</span>
+        <div class="form-actions">
+            <button class="btn  btn-primary" data-ng-click="add()">ajouter une salle</button>
+        </div>
+    </div>
+    <table class="table ">
+        <tbody>
+            <tr>
+                <th>#</th>
+                <th>Id</th>
+                <th>Libellé</th>
+                <th>Localisation</th>
+                <th>Capacité</th>
+            </tr>
+            <tr data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="s in rooms">
+                <td>{{s.id}}</td>
+                <td>{{s.libelle}}</td>
+                <td>{{s.localisation}}</td>
+                <td>{{s.capacite}}</td>
+
+                <td>
+                    <button class="btn btn-primary" data-ng-click="edit(s)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button class="btn btn-warning" data-ng-click="remove(s)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
