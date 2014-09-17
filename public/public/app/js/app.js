@@ -14,6 +14,9 @@ app.config(['$routeProvider', function ($routeProvider) {
         }).when('/admin-room-edit', {
             controller: 'roomController',
             templateUrl: 'app/partials/admin/room-edit.html'
+        }).when('/admin-student', {
+            controller: 'studentController',
+            templateUrl: 'app/partials/admin/students.html'
         }).otherwise({
             controller: 'accueilController',
             redirectTo: '',
