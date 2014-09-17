@@ -1,113 +1,114 @@
-<form method="POST" action="#" class="form-horizontal" role="form">
+<form method="POST" action="#" class="form-horizontal" role="form" ng-controller="ModalDemoCtrl">
     <div class="form-group">
         <label for="firstName" class="col-sm-2 control-label">Prénom</label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="firstName" placeholder="Prénom ...">
+            <input type="text" class="form-control" id="firstName" ng-model="student.prenom" placeholder="Prénom ...">
         </div>
     </div>
     <div class="form-group">
         <label for="lastName" class="col-sm-2 control-label">Nom : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="lastName" placeholder="Nom ...">
+            <input type="text" class="form-control" id="lastName" ng-model="student.nom" placeholder="Nom ...">
         </div>
     </div>
     <div class="form-group">
         <label for="birthDate" class="col-sm-2 control-label">Date de naissance : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="birthDate" placeholder="Date de naissance ...">
+            <input type="text" class="form-control" id="birthDate" ng-model="student.dateNaiss" placeholder="Date de naissance ...">
         </div>
     </div>
     <div class="form-group">
         <label for="postalCode" class="col-sm-2 control-label">Code postal : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="postalCode" placeholder="Code postal ...">
+            <input type="text" class="form-control" id="postalCode" ng-model="student.codePost" placeholder="Code postal ...">
         </div>
     </div>
     <div class="form-group">
         <label for="city" class="col-sm-2 control-label">Ville : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="city" placeholder="Ville ...">
+            <input type="text" class="form-control" id="city" ng-model="student.ville" placeholder="Ville ...">
         </div>
     </div>
     <div class="form-group">
         <label for="adress" class="col-sm-2 control-label">Adresse : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="adress" placeholder="Adresse ...">
+            <input type="text" class="form-control" id="adress" ng-model="student.adresse" placeholder="Adresse ...">
         </div>
     </div>
     <div class="form-group">
         <label for="country" class="col-sm-2 control-label">Pays : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="country" placeholder="Pays ...">
+            <input type="text" class="form-control" id="country" ng-model="student.pays" placeholder="Pays ...">
         </div>
     </div>
     <div class="form-group">
         <label for="mail" class="col-sm-2 control-label">E-mail : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="mail" placeholder="E-mail ...">
+            <input type="text" class="form-control" id="mail" ng-model="student.email" placeholder="E-mail ...">
         </div>
     </div>
     <div class="form-group">
         <label for="phoneNumber" class="col-sm-2 control-label">N° téléphone : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="phoneNumber" placeholder="N° téléphone ...">
+            <input type="text" class="form-control" id="phoneNumber" ng-model="student.tel" placeholder="N° téléphone ...">
         </div>
     </div>
     <div class="form-group">
         <label for="bacSection" class="col-sm-2 control-label">Section BAC : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="bacSection" placeholder="Section BAC ...">
+            <input type="text" class="form-control" id="bacSection" ng-model="student.bac" placeholder="Section BAC ...">
         </div>
     </div>
     <div class="form-group">
         <label for="bacOption" class="col-sm-2 control-label">Option BAC : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="bacOption" placeholder="Option BAC ...">
+            <input type="text" class="form-control" id="bacOption" ng-model="student.optBac" placeholder="Option BAC ...">
         </div>
     </div>
     <div class="form-group">
         <label for="bacMention" class="col-sm-2 control-label">Mention BAC : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="bacMention" placeholder="Mention BAC ...">
+            <input type="text" class="form-control" id="bacMention" ng-model="student.mentionBac" placeholder="Mention BAC ...">
         </div>
     </div>
     <div class="form-group">
         <label for="bacYear" class="col-sm-2 control-label">Année d'obtiention : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="bacYear" placeholder="Année d'obtention ...">
+            <input type="text" class="form-control" id="bacYear" ng-model="student.anneeBac" placeholder="Année d'obtention ...">
         </div>
     </div>
     <div class="form-group">
         <label for="diplomas" class="col-sm-2 control-label">Diplômes : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="diplomas" placeholder="Diplômes ...">
+            <input type="text" class="form-control" id="diplomas" ng-model="student.diplomeEu" placeholder="Diplômes ...">
         </div>
     </div>
     <div class="form-group">
         <label for="currentDiploma" class="col-sm-2 control-label">Diplôme en cours : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="currentDiploma" placeholder="Diplôme en cours ...">
+            <input type="text" class="form-control" id="currentDiploma" ng-model="student.diplomeAavoir" placeholder="Diplôme en cours ...">
         </div>
     </div>
     <div class="form-group">
         <label for="currentSchool" class="col-sm-2 control-label">Etablissement actuel : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="currentSchool" placeholder="Etablissement actuel ...">
+            <input type="text" class="form-control" id="currentSchool" ng-model="student.etablissement" placeholder="Etablissement actuel ...">
         </div>
     </div>
     <div class="form-group">
         <label for="applicationStatus" class="col-sm-2 control-label">Statut candidature : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="applicationStatus" placeholder="Statut candidature ...">
+            <input type="text" class="form-control" id="applicationStatus" ng-model="student.statCandidature" placeholder="Statut candidature ...">
         </div>
     </div>
     <div class="form-group">
         <label for="remarks" class="col-sm-2 control-label">Remarques : </label>
         <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
-            <input type="text" class="form-control" id="remarks" placeholder="Remarques ...">
+            <input type="text" class="form-control" id="remarks" ng-model="student.remarques" placeholder="Remarques ...">
         </div>
     </div>
 	<div class="form-group">
-		<button type="submit" class="btn btn-primary">Valider</button><button type="submit" class="btn btn-default">Annuler</button>
+		<button type="submit" class="btn btn-primary" data-ng-click="save(student)">Valider</button>
+                <button type="submit" class="btn btn-default" data-ng-click="cancel()">Annuler</button>
 	</div>
 </form>
