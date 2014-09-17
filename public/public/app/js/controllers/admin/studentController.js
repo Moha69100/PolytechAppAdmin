@@ -6,10 +6,24 @@ app.controller('studentController', ['$rootScope', '$scope', '$http', '$timeout'
         var init = function() {
             $scope.students = [{
                     id: 1,
-                    nom: "nom",
-                    prenom: "prenom",
+                    nom: "TOTO",
+                    prenom: "Test",
                     email: "test@eleve-polytech.gmail",
-                    adresse: "12 rue de polytech"
+                    adresse: "12 rue de polytech",
+                    dateNaiss : "12/12/1994",
+                    codePost : "69003",
+                    ville : "Lyon",
+                    pays : "France",
+                    tel : "0606060606",
+                    bac : "S",
+                    optBac : "SI",
+                    mentionBac : "AB",
+                    anneeBac : "2000",
+                    diplomeEu : "Licence langue",
+                    diplomeAavoir : "DUT Info",
+                    etablissement : "IUT A Lyon",
+                    statCandidature : "Accepté",
+                    remarques : "rien a dire",
                 }]
 
         };
