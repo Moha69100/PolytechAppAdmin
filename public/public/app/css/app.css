@@ -2789,6 +2789,7 @@ fieldset[disabled] .btn-primary.active {
     color: #428bca;
     background-color: #ffffff;
 }
+
 .btn-success {
     color: #ffffff;
     background-color: #5cb85c;
@@ -7243,14 +7244,14 @@ textarea {
 }
 #poly-header > .navbar > .container > .navbar-collapse > ul {
     float: right;
-    margin-top: 10px;
+    margin-top: 24px;
 }
 #poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > a > div {
     position: absolute;
     right: 0;
     top: 0;
-    border-left: 1px solid #888888;
-    background: url("../img/arrowDropDownHeader.png") no-repeat center center;
+    border-left: 1px solid #888;
+    background: url("../img/arrowDropDownHeader-black.png") no-repeat center center;
     width: 25px;
     height: 36px;
 }
@@ -7259,14 +7260,15 @@ textarea {
     background-color: #fff;
 }
 #poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > a {
-    background: url("../../img/btnActionUser.png") no-repeat 5px center #28282E;
+    background: url("../../img/btnActionUser-black.png") no-repeat 5px center #f0f0f0;
+    //border: 1px solid #44A1C9;
     border-radius: 5px;
     display: block;
     float: left;
     padding-top: 9px;
     padding-left: 30px;
     padding-right: 40px;
-    color: #f0f0f0;
+    color: #444;
     height: 36px;
 }
 #poly-header > .navbar > .container > .navbar-collapse > .nav > li > div > input:focus {
@@ -7285,14 +7287,14 @@ textarea {
 #poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > a:active{
     cursor: pointer;
     text-decoration: none;
-    background: url("../../img/btnActionUser_hover.png") no-repeat 5px center #222;
+    background: url("../../img/btnActionUser_hover.png") no-repeat 5px center #f0f0f0;
     color : #44A1C9;
 }
 #poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown.open > a {
     cursor: pointer;
     text-decoration: none;
     color : #44A1C9;    
-    background: url("../../img/btnActionUser_hover.png") no-repeat 5px center #222;
+    background: url("../../img/btnActionUser_hover.png") no-repeat 5px center #f0f0f0;
 
 }
 #poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown.open > a > div {
@@ -7454,10 +7456,7 @@ form {
 /************************************************ BOUTONS ***********************************************/
 .btn-primary,
 .btn-primary.disabled,
-.btn-primary[disabled],
-.btn-primary:hover,
-.btn-primary.disabled:hover,
-.btn-primary[disabled]:hover,
+.btn-primary[disabled],y
 .btn-primary:focus,
 .btn-primary.disabled:focus,
 .btn-primary[disabled]:focus,
@@ -7481,8 +7480,8 @@ form {
     border-color: #5e5e5e;
 }
 .btn-primary:hover {
-    background-color: #44A1C9;
-    border-color: #44A1C9;
+    background-color: #004877;
+    border-color: #004877;
 }
 .btn-warning {
     background-color: #7f7f7f;
@@ -7514,7 +7513,7 @@ div > .btn-group .dropdown-toggle {
 /************************************************ TABLEAUX ADMIN ***********************************************/
 /* TABLE STRIP FOR IE */
 .odd > td {
-    background-color: #fff !important;
+    background-color: #eee !important;
 }
 .even {
     background-color: #fff;
@@ -7532,14 +7531,20 @@ div > .btn-group .dropdown-toggle {
     width: 98%;
 }
 .page-header {
+    position : fixed;
+    top :0;
+    left : 20%;
+    z-index : 1003;
     margin: 0;
-    padding: 0;
+    width :50%;
+    padding: 15px;
     border: none;
-    margin-left: 2%;
-    margin-right: 2%;
 }
 .page-header > a:hover {
     cursor: auto;
+}
+.page-header>.form-actions{
+    padding:7px;
 }
 .page-header > span {
     cursor: auto;
@@ -7547,17 +7552,17 @@ div > .btn-group .dropdown-toggle {
     float: left;
     border: 0px;
     border-radius: 0px;
-    font-family: "Arial Neue-Light", "Arial Neue Light", "Arial Neue", Arial, Arial, "Lucida Grande", sans-serif;
-    color: #44A1C9;
+    font-family: "Arial Neue-Light", "Arial Neue Light", "Arial Neue", "Arial", "Lucida Grande", sans-serif;
+    color: #f0f0f0;
     font-size: 20px;
-    background: url("../../img/tabCocheDown.png") no-repeat center bottom;
+    //  background: url("../../img/tabCocheDown.png") no-repeat center bottom;
     overflow: hidden;
     padding: 0px;
     padding: 10px 15px ;
     text-decoration: none;
 }
 .span-modal {
-    background: url("../../img/tabCocheDownWhite.png") no-repeat center bottom !important;
+    //   background: url("../../img/tabCocheDownWhite.png") no-repeat center bottom !important;
 }
 .page-header > .form-actions > button {
     float: right;
@@ -7568,10 +7573,20 @@ div > .btn-group .dropdown-toggle {
     border: 0;
 }
 .table > tbody > tr > td {
-    border-top: 1px solid #D4D4D4 !important;
+    // border-top: 1px solid #D4D4D4 !important;
+}
+.table > tbody > tr,.table > tbody > tr > td:first-child{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.table > tbody > tr,.table > tbody > tr > td:last-child
+{
+
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 .table > tbody > tr > th {
-    border-bottom: 1px solid #D4D4D4 !important;
+    //border-bottom: 1px solid #D4D4D4 !important;
 }
 /************************************************ PAGINATOR ***********************************************/
 .pagination > ul {
@@ -7901,26 +7916,7 @@ label {
     font-size : 13px;
     width : 100%;
 }
-.glyphicon-list{
-    text-align: center;
-    padding-top: 4px;
 
-    font-size:20px;
-    width : 35px; 
-    height : 35px;
-    z-index: 2000;
-    border: 1px solid #44A1C9;
-
-
-    border-radius: 20px; 
-    color :#888;
-    background-color : #f0f0f0;
-}
-.glyphicon-list:hover{
-    background-color : #888;
-    color:#fff;  
-    border-radius: 20px; 
-}
 #poly-menu{
     margin-top : 85px;
     width:12% ;
@@ -7992,4 +7988,32 @@ label {
 }
 li.active{
     background-color: #222;
+}
+.glyphicon-list,
+.glyphicon-plus{
+    text-align: center;
+    padding-top: 4px;
+    font-size:20px;
+    width : 35px; 
+    height : 35px;
+    z-index: 2000;
+    border: 1px solid #44A1C9;
+    border-radius: 20px; 
+    color :#888;
+    background-color : #f0f0f0;
+}
+.glyphicon-list:hover{
+    background-color : #888;
+    color:#fff;  
+    border-radius: 20px; 
+}
+.glyphicon-plus{
+    background-color : #222;
+    font-size:15px;
+    padding-top: 8px;
+    padding-left: 2px;
+}
+.glyphicon-plus:hover{
+    background-color : #f0f0f0;
+    color:#888; 
 }

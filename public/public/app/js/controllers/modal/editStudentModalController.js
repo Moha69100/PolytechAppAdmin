@@ -1,11 +1,11 @@
-app.controller("editStudentModalController", ['$scope', '$modalInstance', 'items', '$log',
-    function($scope, $modalInstance, items, $log) {
+app.controller("editStudentModalController", ['$scope', '$modalInstance', 'items',
+    function ($scope, $modalInstance, items) {
         // 'feedback' serveur
         $scope.feedback = null;
 
         $scope.student = items.studentEdited;
 
-        $scope.save = function (student){
+        $scope.save = function (student) {
             $scope.selected = {
                 item: $scope.student
             };
@@ -13,9 +13,8 @@ app.controller("editStudentModalController", ['$scope', '$modalInstance', 'items
         /**
          * sortie par cancel()
          */
-        $scope.cancel = function() {
-          console.log("plop")
-          $modalInstance.$close('cancel');
+        $scope.cancel = function () {
+            $modalInstance.dismiss("test");
         };
     }]);
 

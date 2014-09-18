@@ -52,6 +52,7 @@ app.run(['$rootScope', function ($rootScope) {
                 //var dropdownToggle = $(".dropdown-toggle", dropdown);
                 li.addClass('active');
             }
+            
 
         });
     }]);
