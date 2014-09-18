@@ -14,6 +14,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             menu: {
                 id: 'menu-student'
             }
+        }).when('/admin-room', {
+            controller: 'roomController',
+            templateUrl: 'app/partials/admin/room.html',
+            menu: {
+                id: 'menu-room'
+            }
         }).otherwise({
             controller: 'accueilController',
             redirectTo: '',
@@ -33,18 +39,18 @@ app.run(['$rootScope', function ($rootScope) {
                 // console.info('>>> $routeChangeSuccess : current.menu.id=',
                 // current.menu.id);
                 $('#' + current.menu.id).removeClass('active');
-                var dropdown = $('#' + current.menu.id).parents('div.dropdown');
-                var dropdownToggle = $(".dropdown-toggle", dropdown);
-                dropdownToggle.removeClass('active');
+                var li = $('#' + current.menu.id).parents('li');
+              //  var dropdownToggle = $(".dropdown-toggle", dropdown);
+                li.removeClass('active');
             }
 
             if (next && next.menu && next.menu.id) {
                 // console.info('>>> $routeChangeSuccess : next.menu.id=',
                 // next.menu.id);
                 $('#' + next.menu.id).addClass('active');
-                var dropdown = $('#' + next.menu.id).parents('div.dropdown');
-                var dropdownToggle = $(".dropdown-toggle", dropdown);
-                dropdownToggle.addClass('active');
+                var li = $('#' + next.menu.id).parents('li');
+                //var dropdownToggle = $(".dropdown-toggle", dropdown);
+                li.addClass('active');
             }
 
         });

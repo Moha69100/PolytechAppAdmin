@@ -4052,7 +4052,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
     color: #555555;
-    background-color: #e7e7e7;
+    background-color: inherit;
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
@@ -7250,7 +7250,7 @@ textarea {
     right: 0;
     top: 0;
     border-left: 1px solid #888888;
-    background: url("../img/arrowDropDownHeader-black.png") no-repeat center center;
+    background: url("../img/arrowDropDownHeader.png") no-repeat center center;
     width: 25px;
     height: 36px;
 }
@@ -7259,14 +7259,14 @@ textarea {
     background-color: #fff;
 }
 #poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > a {
-    background: url("../../img/btnActionUser.png") no-repeat 5px center #ffffff;
+    background: url("../../img/btnActionUser.png") no-repeat 5px center #28282E;
     border-radius: 5px;
     display: block;
     float: left;
     padding-top: 9px;
     padding-left: 30px;
     padding-right: 40px;
-    color: #888888;
+    color: #f0f0f0;
     height: 36px;
 }
 #poly-header > .navbar > .container > .navbar-collapse > .nav > li > div > input:focus {
@@ -7281,17 +7281,22 @@ textarea {
 #poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown {
     z-index: 2001;
 }
-#poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > a:hover {
+#poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > a:hover,
+#poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown > a:active{
     cursor: pointer;
     text-decoration: none;
+    background: url("../../img/btnActionUser_hover.png") no-repeat 5px center #222;
+    color : #44A1C9;
 }
 #poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown.open > a {
     cursor: pointer;
     text-decoration: none;
-    color: #ccc;
+    color : #44A1C9;    
+    background: url("../../img/btnActionUser_hover.png") no-repeat 5px center #222;
+
 }
 #poly-header > .navbar > .container > .navbar-collapse > .nav > li > .dropdown.open > a > div {
-    background: url("../img/arrowDropDownHeader.png") no-repeat center center;
+    background: url("../img/arrowDropDownHeader_hover.png") no-repeat center center;
 }
 #poly-header > .navbar > .container > .navbar-collapse > .nav > li > div > input {
     background: #F6F6F6;
@@ -7899,18 +7904,22 @@ label {
 .glyphicon-list{
     text-align: center;
     padding-top: 4px;
-    color:#fff;  
+
     font-size:20px;
     width : 35px; 
     height : 35px;
     z-index: 2000;
-    background-color : #888;
-    border-radius: 20px; 
-}
-.glyphicon-list:hover{
+    border: 1px solid #44A1C9;
+
+
     border-radius: 20px; 
     color :#888;
     background-color : #f0f0f0;
+}
+.glyphicon-list:hover{
+    background-color : #888;
+    color:#fff;  
+    border-radius: 20px; 
 }
 #poly-menu{
     margin-top : 85px;
@@ -7930,7 +7939,12 @@ label {
 #poly-menu>div>ul>li>a{
     color :#f0f0f0;
 }
-
+#poly-menu>div>div>div>div>ul>li{
+    width : 100%;
+}
+#poly-menu>div>div>.panel-body{
+    padding : 0;
+}
 .view{
     transition: ease 0.5s all;
     margin-left : 12%;
@@ -7961,7 +7975,7 @@ label {
     width : 100%;
 }
 .menu{
-    transition:visibility 0.5s linear ,opacity 0.5s linear,width 0.5s linear; 
+    transition:visibility 0.5s linear ,opacity 0.5s linear,width 0.15s linear; 
 }
 
 
@@ -7974,4 +7988,8 @@ label {
 
 .active{
     color :#44A1C9 !important;
+
+}
+li.active{
+    background-color: #222;
 }
