@@ -7513,7 +7513,7 @@ div > .btn-group .dropdown-toggle {
 /************************************************ TABLEAUX ADMIN ***********************************************/
 /* TABLE STRIP FOR IE */
 .odd > td {
-    background-color: #eee !important;
+    background-color: #e0e0e0 !important;
 }
 .even {
     background-color: #fff;
@@ -7521,10 +7521,9 @@ div > .btn-group .dropdown-toggle {
 .table {
     float: left;
     border-collapse: separate;
-    border-top: 1px solid #44A1C9;
+    //border-top: 1px solid #44A1C9;
     background-color: #fff;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-radius: 5px;
     margin-left: 1%;
     margin-top: -10px;
     padding: 10px;
@@ -7919,8 +7918,10 @@ label {
 
 #poly-menu{
     margin-top : 85px;
-    width:12% ;
+    width:10% ;
+    border-top: 1px #44A1C9 solid;
     position: absolute;
+    min-width :110px;
     z-index: 2000;    
 }
 #poly-menu>div>div>div{
@@ -7937,20 +7938,23 @@ label {
 }
 #poly-menu>div>div>div>div>ul>li{
     width : 100%;
+    transition: background-color 0.5s ease;
 }
+
 #poly-menu>div>div>.panel-body{
     padding : 0;
 }
 .view{
     transition: ease 0.5s all;
-    margin-left : 12%;
-    width : 88%;
+    margin-left : 10%;
+    width : 90%;
 }
 
 .hideView{
     transition: ease 0.5s all;
-    margin-left : 1%;
-    width : 98%;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 99%;
 }
 #poly-menu{
     transition: ease 0.5s all;
@@ -7984,7 +7988,6 @@ label {
 
 .active{
     color :#44A1C9 !important;
-
 }
 li.active{
     background-color: #222;
@@ -8001,6 +8004,7 @@ li.active{
     border-radius: 20px; 
     color :#888;
     background-color : #f0f0f0;
+    transition: color 0.2s linear;
 }
 .glyphicon-list:hover{
     background-color : #888;
@@ -8009,6 +8013,7 @@ li.active{
 }
 .glyphicon-plus{
     background-color : #222;
+    color :#f0f0f0;
     font-size:15px;
     padding-top: 8px;
     padding-left: 2px;
