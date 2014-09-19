@@ -9,6 +9,7 @@ app.controller("editStudentModalController", ['$scope', '$modalInstance', 'items
             $scope.selected = {
                 item: $scope.student
             };
+            $modalInstance.close($scope.selected);
         };
         /**
          * sortie par cancel()
