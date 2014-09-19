@@ -5,8 +5,8 @@ app.controller('enterpriseController', ['$rootScope', '$scope', '$http', '$timeo
 
         var init = function () {
             enterpriseResource.listEnterprises(function (data) {
-                $scope.entreprises = data;
-                console.log($scope.entreprises)
+                $scope.enterprises = data;
+                console.log($scope.enterprises)
 
             });
         };
