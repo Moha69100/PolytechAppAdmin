@@ -23,9 +23,9 @@ public class Application {
         try {
             tx = session1.beginTransaction();
             Offrealternance offre = new Offrealternance();
-            offre.setTitre("Hello test");
+            offre.setTitre("He4444 test");
             offre.setEntreprise(null);
-            offre.setUrl("hello");
+            offre.setUrl("he44o");
             
             session1.save(offre);
             

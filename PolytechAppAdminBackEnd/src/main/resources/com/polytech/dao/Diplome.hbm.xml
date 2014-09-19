@@ -6,7 +6,7 @@
     <class name="com.polytech.dao.Diplome" table="diplome" schema="appschema">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="typediplome" type="string">
             <column name="typediplome" />

@@ -9,12 +9,18 @@ app.controller("editStudentModalController", ['$scope', '$modalInstance', 'items
             $scope.selected = {
                 item: $scope.student
             };
+            $modalInstance.close($scope.selected);
+        };
+        
+        $scope.removeStudent = function (student) {
+            
+            $modalInstance.dismiss();
         };
         /**
          * sortie par cancel()
          */
         $scope.cancel = function () {
-            $modalInstance.dismiss("test");
+            $modalInstance.dismiss();
         };
     }]);
 
