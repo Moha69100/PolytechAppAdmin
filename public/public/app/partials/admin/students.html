@@ -1,8 +1,8 @@
 <div style="margin-top : 20px;">
     <div class="page-header">
         <span>Liste des étudiants</span>
-        <div class="form-actions">
-            <button class="btn  btn-primary" data-ng-click="addStudent()">Ajouter un étudiant</button>
+        <div class="form-actions"> 
+            <i data-ng-click="addStudent()" class="glyphicon glyphicon-plus"></i>   
         </div>
     </div>
     <table class="table ">
@@ -25,10 +25,9 @@
                     <button class="btn btn-primary" data-ng-click="editStudent(e)">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                    <button class="btn btn-warning" data-ng-click="removeStudent(e)">
-                        <span class="glyphicon glyphicon-trash"></span>
-                    </button>
-                </td>     </tr>
+
+                </td>    
+            </tr>
 
         </tbody>
     </table>

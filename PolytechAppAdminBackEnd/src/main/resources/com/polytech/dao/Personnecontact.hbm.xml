@@ -6,7 +6,7 @@
     <class name="com.polytech.dao.Personnecontact" table="personnecontact" schema="appschema">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <many-to-one name="entreprise" class="com.polytech.dao.Entreprise" fetch="select">
             <column name="entid" />

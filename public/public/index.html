@@ -17,34 +17,32 @@ and open the template in the editor.
         <script src="app/lib/ui-bootstrap-tpls-0.10.0.min.js"></script>
         <script src="app/lib/ngstorage/ngStorage.js"></script>
 
+
         <script src="app/js/app.js"></script>
 
         <script src="app/js/services/browser.js"></script>
-
+        <!-- CONTROLLERS -->
         <script src="app/js/controllers/core/accueilController.js"></script>
-        <script src="app/js/controllers/core/menuController.js"></script>
         <script src="app/js/controllers/core/headerController.js"></script>
-
-        <script src="app/js/resources/roomResource.js"></script>
-        
-        <script src="app/js/controllers/admin/entrepriseController.js"></script>
-
-        <script src="app/js/controllers/admin/userController.js"></script>
-        <script src="app/js/controllers/admin/roomController.js"></script>
+        <script src="app/js/controllers/admin/enterpriseController.js"></script>
         <script src="app/js/controllers/admin/studentController.js"></script>
-        
+        <script src="app/js/controllers/admin/roomController.js"></script>
+        <!-- MODAL CONTROLLERS -->
         <script src="app/js/controllers/modal/editStudentModalController.js"></script>
-
+        <!-- DIRECTIVES -->
         <script src="app/js/directives/autoHeightDirective.js"></script>
-
+        <!-- RESROUCES -->
+        <script src="app/js/resources/roomResource.js"></script>
+        <script src="app/js/resources/entrepriseResource.js"></script>
 
 
         <link rel="stylesheet" href="app/css/app.css">
     </head>
     <body  data-ng-app="App">
         <div data-ng-include="'app/partials/core/header.html'" ></div>
-        <div data-ng-include="'app/partials/core/menu.html'" ></div>
-        <div data-auto-height style="overflow: auto;margin-top: 150px; " ng-view>
-        </div>
+        <div id='view'  data-ng-class="{view: isOpen,hideView : !isOpen}" class="row">
+            <div data-auto-height style="overflow: auto;margin-top: 85px;  " ng-view>
+            </div>                
+        </div>            
     </body>
 </html>
