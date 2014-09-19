@@ -4,14 +4,11 @@ app.directive('autoHeight', function () {
     return function ($scope, $element, $attributes) {
 
         function changeHeight() {
-            var height = window.innerHeight - 150;
-            $element.css({
+            var height = window.innerHeight - 85;
+           $element.css({
                 'height': height
             });
-            /*	$(".gridStyle").css({
-             'height' : height - 51
-             });
-             */
+           
         }
         changeHeight();
         $(window).resize(changeHeight);

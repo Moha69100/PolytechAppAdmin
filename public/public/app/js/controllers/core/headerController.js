@@ -1,15 +1,17 @@
-app.controller('headerController', ['$rootScope', '$scope', '$http', '$timeout', '$location', '$window', 'browser', 
-                                    function($rootScope, $scope, $http, $timeout, $location, $window, browser) {
-	
-	$scope.usingIE = false;
-	if (browser() != "firefox") {
-		$scope.usingIE = true;
-	}
+app.controller('headerController', ['$rootScope', '$scope', '$http', '$timeout', '$location', '$window', 'browser',
+    function ($rootScope, $scope, $http, $timeout, $location, $window, browser) {
+        $rootScope.isOpen = true;
+        $scope.usingIE = false;
+        if (browser() != "firefox") {
+            $scope.usingIE = true;
+        }
+        $scope.resize = function () {
+            $rootScope.isOpen = !$rootScope.isOpen;
+        };
 
+        var init = function () {
+        };
 
-	var init = function() {
-	};
+        init();
 
-	init();
-
-}]);
+    }]);
