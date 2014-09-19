@@ -20,6 +20,18 @@ app.config(['$routeProvider', function ($routeProvider) {
             menu: {
                 id: 'menu-room'
             }
+        }).when('/admin-offers', {
+            controller: 'offersController',
+            templateUrl: 'app/partials/admin/offers.html',
+            menu: {
+                id: 'menu-offers'
+            }
+        }).when('/admin-events', {
+            controller: 'eventsController',
+            templateUrl: 'app/partials/admin/events.html',
+            menu: {
+                id: 'menu-events'
+            }
         }).otherwise({
             controller: 'accueilController',
             redirectTo: '',
@@ -40,7 +52,7 @@ app.run(['$rootScope', function ($rootScope) {
                 // current.menu.id);
                 $('#' + current.menu.id).removeClass('active');
                 var li = $('#' + current.menu.id).parents('li');
-              //  var dropdownToggle = $(".dropdown-toggle", dropdown);
+                //  var dropdownToggle = $(".dropdown-toggle", dropdown);
                 li.removeClass('active');
             }
 
@@ -52,7 +64,7 @@ app.run(['$rootScope', function ($rootScope) {
                 //var dropdownToggle = $(".dropdown-toggle", dropdown);
                 li.addClass('active');
             }
-            
+
 
         });
     }]);
