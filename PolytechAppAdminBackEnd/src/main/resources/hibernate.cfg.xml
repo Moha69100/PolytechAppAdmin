@@ -5,12 +5,8 @@
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
     <property name="hibernate.connection.url">jdbc:postgresql://projet-a5a.univ-lyon1.fr:5432/webadmin</property>
-<<<<<<< HEAD
     <property name="hibernate.connection.username">appuser</property>
-=======
-    <property name="hibernate.connection.username">postgres</property>
-    <property name="hibernate.connection.password"></property>
->>>>>>> fc3b2c86c89af2cdedeb7ce93b6e4742fb3bf685
+    <property name="hibernate.connection.password">appuserpwd</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
     <property name="hibernate.connection.password">appuserpwd</property>
