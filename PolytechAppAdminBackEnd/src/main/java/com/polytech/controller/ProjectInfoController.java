@@ -19,7 +19,8 @@ public class ProjectInfoController {
 
     SessionManager manager = new SessionManager();
     EntrepriseManager dao =  new EntrepriseManager(manager);
-
+    
+    
     @RequestMapping("/")
     public ProjectInfo hello() {
         return new ProjectInfo("0.1.0", "PolytechAppAdmin");
