@@ -1,24 +1,36 @@
-app.controller('enterpriseController', ['$rootScope', '$scope', '$http', '$timeout', '$location', '$window', 'browser',
-    function($rootScope, $scope, $http, $timeout, $location, $window, browser) {
-
+app.controller('enterpriseController', ['$scope', '$modal', function ($scope, $modal) {
 
 
         var init = function() {
-            $scope.enterprises = [{
-                    id: 1,
-                    raison: "entreprise 1",
-                    naf: "00192U 04972304 5 5079",
-                    siret: "5037FGFEIUB 9539057GF ",
-                    effectif: "2498463",
-                    organisme: "organisme 1",
-                    adresse: "adresse 1",
-                    adresse2: "adresse 2",
-                    codePostal: "69003",
-                    ville: "Lyon",
-                    tel: "06 07 08 09 10",
-                    anneeParticipForum: "2004",
-                    nbApprentis: 4
-                }];
+            $scope.entreprises = [
+             {"id": 0, "raison": "SASU Société par actions simplifiée à associé unique", "naf": "C'est quoi NAF ?",
+             "siret": "48116365700010", "effectif": "60", "organisme": "CPAM", "adresse": "31 Rue Pauline Borghese",
+             "adresse2": "", "cp": "92200", "ville": "NEUILLY SUR SEINE", "tel": "04 75 58 45 21",
+             "anneeparticipforum": "2014", "nbrapprenti": 2, "entreprisepresences": [], "offrealternances": [], "entretiens": [], "personnecontacts": []
+             },
+             {"id": 1, "raison": "SASU Société par actions simplifiée à associé unique",
+             "naf": "C'est quoi NAF ?", "siret": "48116365700010", "effectif": "60", "organisme": "CPAM",
+             "adresse": "31 Rue Pauline Borghese", "adresse2": "", "cp": "92200", "ville": "NEUILLY SUR SEINE",
+             "tel": "04 75 58 45 21", "anneeparticipforum": "2014", "nbrapprenti": 2, "entreprisepresences": [],
+             "offrealternances": [], "entretiens": [], "personnecontacts": []
+             },
+             {"id": 2, "raison": "SASU Société par actions simplifiée à associé unique",
+             "naf": "C'est quoi NAF ?", "siret": "48116365700010", "effectif": "60",
+             "organisme": "CPAM", "adresse": "31 Rue Pauline Borghese", "adresse2": "",
+             "cp": "92200", "ville": "NEUILLY SUR SEINE", "tel": "04 75 58 45 21",
+             "anneeparticipforum": "2014", "nbrapprenti": 2, "entreprisepresences": [],
+             "offrealternances": [], "entretiens": [], "personnecontacts": []},
+             {"id": 3, "raison": "SASU Société par actions simplifiée à associé unique", "naf": "C'est quoi NAF ?", "siret": "48116365700010",
+             "effectif": "60", "organisme": "CPAM", "adresse": "31 Rue Pauline Borghese", "adresse2": "", "cp": "92200",
+             "ville": "NEUILLY SUR SEINE", "tel": "04 75 58 45 21", "anneeparticipforum": "2014",
+             "nbrapprenti": 2, "entreprisepresences": [], "offrealternances": [], "entretiens": [], "personnecontacts": []
+             },
+             {"id": 4, "raison": "SASU Société par actions simplifiée à associé unique", "naf": "C'est quoi NAF ?", "siret": "48116365700010",
+             "effectif": "60", "organisme": "CPAM", "adresse": "31 Rue Pauline Borghese", "adresse2": "", "cp": "92200",
+             "ville": "NEUILLY SUR SEINE", "tel": "04 75 58 45 21", "anneeparticipforum": "2014", "nbrapprenti": 2,
+             "entreprisepresences": [], "offrealternances": [], "entretiens": [], "personnecontacts": []
+             }
+             ];
         };
 
         $scope.addEnterprise = function() {
