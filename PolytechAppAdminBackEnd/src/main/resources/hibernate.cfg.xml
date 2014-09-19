@@ -5,8 +5,8 @@
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
     <property name="hibernate.connection.url">jdbc:postgresql://projet-a5a.univ-lyon1.fr:5432/webadmin</property>
-    <property name="hibernate.connection.username">postgres</property>
-    <property name="hibernate.connection.password"></property>
+    <property name="hibernate.connection.username">appdatabase</property>
+    <property name="hibernate.connection.password">appdatabase</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
     <mapping resource="com/polytech/dao/Entreprisepresence.hbm.xml"/>
