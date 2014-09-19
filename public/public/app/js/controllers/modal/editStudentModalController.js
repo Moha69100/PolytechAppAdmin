@@ -7,7 +7,6 @@ app.controller("editStudentModalController", ['$scope', '$modalInstance', 'items
 
         $scope.save = function (student) {
             $modalInstance.close($scope.student);            
-            
         };
         
         $scope.removeStudent = function (student) {
