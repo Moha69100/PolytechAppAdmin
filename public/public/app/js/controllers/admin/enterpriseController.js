@@ -1,5 +1,5 @@
-app.controller('enterpriseController', ['$rootScope', '$scope', '$http', '$timeout', '$location', '$window', 'browser', "enterpriseResource",
-    function ($rootScope, $scope, $http, $timeout, $location, $window, browser, enterpriseResource) {
+app.controller('enterpriseController', ['$rootScope', '$scope', '$http', '$timeout', '$location', '$window', 'browser', "enterpriseResource", "$modal",
+    function ($rootScope, $scope, $http, $timeout, $location, $window, browser, enterpriseResource, $modal) {
 
 
 
