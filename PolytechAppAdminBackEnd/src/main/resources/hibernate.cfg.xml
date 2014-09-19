@@ -9,7 +9,6 @@
     <property name="hibernate.connection.password">appuserpwd</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
-
     <mapping resource="com/polytech/dao/Entreprisepresence.hbm.xml"/>
     <mapping resource="com/polytech/dao/Etudiant.hbm.xml"/>
     <mapping resource="com/polytech/dao/Evenement.hbm.xml"/>

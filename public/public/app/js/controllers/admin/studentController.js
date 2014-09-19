@@ -1,6 +1,8 @@
 app.controller('studentController', ['$scope', '$modal', function ($scope, $modal) {
 
-
+        var studentEdited = function(){
+            
+        };
 
         var init = function () {
             $scope.students = [{
@@ -31,9 +33,7 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
 
         };
 
-        $scope.removeStudent = function (student) {
-
-        };
+        
 
         $scope.editStudent = function (studentEdited) {
 
@@ -51,7 +51,7 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
             // gestion du retour de la modale : raffraichir page si tout va
             // bien , log sinon
             modalInstance.result.then(function (selectedType) {
-                typeListe();
+                ;
             }, function () {
                console.log("modal dismissed");
             });

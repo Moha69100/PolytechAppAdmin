@@ -11,11 +11,16 @@ app.controller("editStudentModalController", ['$scope', '$modalInstance', 'items
             };
             $modalInstance.close($scope.selected);
         };
+        
+        $scope.removeStudent = function (student) {
+            
+            $modalInstance.dismiss();
+        };
         /**
          * sortie par cancel()
          */
         $scope.cancel = function () {
-            $modalInstance.dismiss("test");
+            $modalInstance.dismiss();
         };
     }]);
 
