@@ -22,6 +22,26 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
                     etablissement: "IUT A Lyon",
                     statCandidature: "Accepté",
                     remarques: "rien a dire",
+                }, 2:{
+                    id: 2,
+                    nom: "",
+                    prenom: "",
+                    email: "",
+                    adresse: "",
+                    dateNaiss: "",
+                    codePost: "",
+                    ville: "",
+                    pays: "",
+                    tel: "",
+                    bac: "",
+                    optBac: "",
+                    mentionBac: "",
+                    anneeBac: "",
+                    diplomeEu: "",
+                    diplomeAavoir: "",
+                    etablissement: "",
+                    statCandidature: "",
+                    remarques: "",
                 }};
 
         };
@@ -33,7 +53,7 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
                 controller: 'editStudentModalController',
                 resolve: {
                     items: function () {
-                        return {};
+                        return {studentEdited: angular.copy($scope.students[2]), appel: "addStudent"};
                     }
 
                 }
@@ -41,7 +61,8 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
             // gestion du retour de la modale : raffraichir page si tout va
             // bien , log sinon
             modalInstance.result.then(function (modifiedStudent) {
-                $scope.students[modifiedStudent.id] = modifiedStudent;
+                console.log(modifiedStudent);
+                $scope.students[2] = modifiedStudent;
             }, function () {
                console.log("modal dismissed");
             });
