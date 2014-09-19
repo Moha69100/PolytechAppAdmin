@@ -1,8 +1,10 @@
 package com.polytech.controller;
 
 import com.polytech.dao.Entreprise;
+import com.polytech.dao.Etudiant;
 import com.polytech.dao.manager.SessionManager;
 import com.polytech.dao.manager.EntrepriseManager;
+import com.polytech.dao.manager.EtudiantManager;
 import com.polytech.model.*;
 import java.util.List;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,7 +19,8 @@ public class ProjectInfoController {
 
     SessionManager manager = new SessionManager();
     EntrepriseManager entrepriseManager =  new EntrepriseManager(manager);
-
+    EtudiantManager etuManager = new EtudiantManager(manager);
+    
     @RequestMapping("/")
     public ProjectInfo hello() {
         return new ProjectInfo("0.1.0", "PolytechAppAdmin");
@@ -40,4 +43,25 @@ public class ProjectInfoController {
     public String deleteEnterprise(@PathVariable String id) {
         return "Delete l'entreprise " + id + ".";
     }
+    
+    
+    //ETUDIANTS
+    
+       // lire les headers
+    @RequestMapping(value = "/etudiants", method = RequestMethod.GET)
+    public List<Etudiant> allEtudiant() {
+
+        List<Etudiant> etudiants = etuManager.getList();
+        return etudiants;
+
+    }
+
+    @RequestMapping(value = "/etudiant/{id}", method = RequestMethod.GET)
+    public String oneEtudiant(@PathVariable String id) {
+        return "L'entreprise " + id + ".";
+    }
+
+ 
+    
+    
 }
