@@ -53,7 +53,7 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
                 controller: 'editStudentModalController',
                 resolve: {
                     items: function () {
-                        return {studentEdited: angular.copy($scope.students[s]), appel: "addStudent"};
+                        return {studentEdited: angular.copy($scope.students[2]), appel: "addStudent"};
                     }
 
                 }
