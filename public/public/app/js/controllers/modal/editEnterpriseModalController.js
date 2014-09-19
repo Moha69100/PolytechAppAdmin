@@ -3,13 +3,10 @@ app.controller("editEnterpriseModalController", ['$scope', '$modalInstance', 'it
         // 'feedback' serveur
         $scope.feedback = null;
 
-        $scope.student = items.enterpriseEdited;
+        $scope.enterprise = items.enterpriseEdited;
 
         $scope.save = function (enterprise) {
-            $scope.selected = {
-                item: $scope.enterprise
-            };
-            $modalInstance.close($scope.selected);
+            $modalInstance.close($scope.enterprise);
         };
         
         $scope.removeEnterprise = function (enterprise) {
