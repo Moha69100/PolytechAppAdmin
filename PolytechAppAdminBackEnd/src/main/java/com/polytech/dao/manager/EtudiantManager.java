@@ -25,14 +25,14 @@ public class EtudiantManager {
 
     }
 
-    public List<Etudiant> getList() {
+    public List<Etudiant> getAllEtudiant() {
 
         Query query = session.createQuery("from Etudiant");
 
         return query.list();
     }
 
-    public void deleteEtudiant(int etu_id) throws Exception {
+    public void deleteEtudiantById(int etu_id) throws Exception {
 
        
     

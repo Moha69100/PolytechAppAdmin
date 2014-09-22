@@ -2,9 +2,11 @@ package com.polytech.controller;
 
 import com.polytech.dao.Entreprise;
 import com.polytech.dao.Etudiant;
+import com.polytech.dao.Salle;
 import com.polytech.dao.manager.SessionManager;
 import com.polytech.dao.manager.EntrepriseManager;
 import com.polytech.dao.manager.EtudiantManager;
+import com.polytech.dao.manager.SalleManager;
 import com.polytech.model.*;
 import java.util.List;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,14 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProjectInfoController {
 
     SessionManager manager = new SessionManager();
-    EntrepriseManager entrepriseManager =  new EntrepriseManager(manager);
+    EntrepriseManager entrepriseManager = new EntrepriseManager(manager);
     EtudiantManager etuManager = new EtudiantManager(manager);
+    SalleManager salleManager = new SalleManager(manager);
 
     @RequestMapping("/")
     public ProjectInfo hello() {
         return new ProjectInfo("0.1.0", "PolytechAppAdmin");
     }
 
+    //ENTREPRISE
     @RequestMapping(value = "/entreprises", method = RequestMethod.GET)
     public List<Entreprise> allEnterprise() {
 
@@ -49,7 +53,7 @@ public class ProjectInfoController {
     @RequestMapping(value = "/etudiants", method = RequestMethod.GET)
     public List<Etudiant> allEtudiant() {
 
-        List<Etudiant> etudiants = etuManager.getList();
+        List<Etudiant> etudiants = etuManager.getAllEtudiant();
         return etudiants;
 
     }
@@ -61,19 +65,45 @@ public class ProjectInfoController {
 
     @RequestMapping(value = "/etudiant/{id}", method = RequestMethod.DELETE)
     public String deleteEtudiant(@PathVariable String id) {
-       
-        
-     
+
         String error = "";
-        
+
         int idEtu = Integer.parseInt(id);
-        
+
         try {
-           etuManager.deleteEtudiant(idEtu);
+            etuManager.deleteEtudiantById(idEtu);
         } catch (Exception e) {
-          error =  e.getMessage();
+            error = e.getMessage();
         }
-        return " Erreur : " + error ;
+        return " Erreur : " + error;
     }
 
+    //SALLES
+    @RequestMapping(value = "/salles", method = RequestMethod.GET)
+    public List<Salle> allSalle() {
+
+        List<Salle> salles = salleManager.getAllSalle();
+        return salles;
+
+    }
+
+    @RequestMapping(value = "/salle/{id}", method = RequestMethod.GET)
+    public String oneSalle(@PathVariable String id) {
+        return "La salle " + id + ".";
+    }
+
+    @RequestMapping(value = "/salle/{id}", method = RequestMethod.DELETE)
+    public String deleteSalle(@PathVariable String id) {
+
+        String error = "";
+
+        int idSalle = Integer.parseInt(id);
+
+        try {
+            salleManager.deleteSalleById(idSalle);
+        } catch (Exception e) {
+            error = e.getMessage();
+        }
+        return " Erreur : " + error;
+    }
 }
