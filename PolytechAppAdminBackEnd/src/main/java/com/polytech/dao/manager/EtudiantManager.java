@@ -8,7 +8,9 @@ package com.polytech.dao.manager;
 import com.polytech.dao.Entreprise;
 import com.polytech.dao.Etudiant;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -27,6 +29,15 @@ public class EtudiantManager {
         Query query = manager.getSession().createQuery("from Etudiant");
 
         return query.list();
+    }
+
+    /**
+     *
+     * @param id : id etudiant
+     * @return etudiant avec id correspondant
+     */
+    public Etudiant getEtudiantByID(int id)  {        
+        return (Etudiant) manager.getSession().get(Etudiant.class, id);
     }
 
 }

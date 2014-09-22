@@ -60,8 +60,9 @@ public class ProjectInfoController {
     }
 
     @RequestMapping(value = "/etudiant/{id}", method = RequestMethod.GET)
-    public String oneEtudiant(@PathVariable String id) {
-        return "L'entreprise " + id + ".";
+    public Etudiant oneEtudiant(@PathVariable String id) {
+        Etudiant etudiant = etuManager.getEtudiantByID(Integer.parseInt(id));
+        return etudiant;
     }
 
  
