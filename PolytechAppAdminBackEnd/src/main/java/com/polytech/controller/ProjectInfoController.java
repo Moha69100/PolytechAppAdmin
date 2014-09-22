@@ -2,9 +2,11 @@ package com.polytech.controller;
 
 import com.polytech.dao.Entreprise;
 import com.polytech.dao.Etudiant;
-import com.polytech.dao.manager.SessionManager;
+import com.polytech.dao.manager.AuthenticationManager;
 import com.polytech.dao.manager.EntrepriseManager;
 import com.polytech.dao.manager.EtudiantManager;
+import com.polytech.dao.manager.SessionManager;
+import com.polytech.dao.manager.UtilisateurManager;
 import com.polytech.model.*;
 import java.util.List;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,6 +22,8 @@ public class ProjectInfoController {
     SessionManager manager = new SessionManager();
     EntrepriseManager entrepriseManager =  new EntrepriseManager(manager);
     EtudiantManager etuManager = new EtudiantManager(manager);
+    //UtilisateurManager userManager = new UtilisateurManager(manager);
+    AuthenticationManager authManager = new AuthenticationManager(manager);
     
     @RequestMapping("/")
     public ProjectInfo hello() {
@@ -42,6 +46,12 @@ public class ProjectInfoController {
     @RequestMapping(value = "/entreprise/{id}", method = RequestMethod.DELETE)
     public String deleteEnterprise(@PathVariable String id) {
         return "Delete l'entreprise " + id + ".";
+    }
+    
+    //Page d'authentification
+    @RequestMapping(value = "/auth", method = RequestMethod.GET)
+    public int authentication(@PathVariable String user, @PathVariable String password){
+        return authManager.auth(user,password);
     }
     
     
