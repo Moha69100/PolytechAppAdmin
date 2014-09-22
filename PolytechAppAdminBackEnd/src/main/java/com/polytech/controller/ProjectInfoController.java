@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
 @ComponentScan
 @RestController
 public class ProjectInfoController {
@@ -49,18 +51,27 @@ public class ProjectInfoController {
     }
 
     //ETUDIANTS
-    // lire les headers
+    /**
+     * GET all students
+     *
+     * @return
+     */
     @RequestMapping(value = "/etudiants", method = RequestMethod.GET)
     public List<Etudiant> allEtudiant() {
-
         List<Etudiant> etudiants = etuManager.getAllEtudiant();
         return etudiants;
-
     }
 
+    /**
+     * GET one etudiant
+     *
+     * @param id : id Etudiant
+     * @return
+     */
     @RequestMapping(value = "/etudiant/{id}", method = RequestMethod.GET)
-    public String oneEtudiant(@PathVariable String id) {
-        return "L'entreprise " + id + ".";
+    public Etudiant oneEtudiant(@PathVariable String id) {
+        Etudiant etudiant = etuManager.getEtudiantByID(Integer.parseInt(id));
+        return etudiant;
     }
 
     @RequestMapping(value = "/etudiant/{id}", method = RequestMethod.DELETE)
