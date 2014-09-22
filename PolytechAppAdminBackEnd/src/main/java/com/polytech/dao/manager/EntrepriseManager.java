@@ -16,7 +16,7 @@ public class EntrepriseManager {
             Query query = session.createQuery("from Entreprise");
             List<Entreprise> list = query.list();
             return list;
-
+            
         } catch(Exception e) {
             
             throw e;
@@ -36,6 +36,11 @@ public class EntrepriseManager {
         try {
 
             Entreprise e = (Entreprise) session.get(Entreprise.class, id);
+            
+            if (e == null) {
+                throw new NullPointerException();
+            }
+            
             return e;
             
         } catch(Exception e) {

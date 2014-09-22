@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 16 sept. 2014 15:04:07 by Hibernate Tools 3.6.0 -->
+<!-- Generated 22 sept. 2014 11:47:32 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="com.polytech.dao.Evenementsalle" table="evenementsalle" schema="appschema">
         <composite-id name="id" class="com.polytech.dao.EvenementsalleId">

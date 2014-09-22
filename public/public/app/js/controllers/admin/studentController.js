@@ -1,8 +1,8 @@
-app.controller('studentController', ['$scope', '$modal', function ($scope, $modal) {
+app.controller('studentController', ['$scope', '$modal', '$location', 'studentInstance', function ($scope, $modal, $location, studentInstance) {
 
 
         var init = function () {
-            $scope.students = {1:{
+            $scope.students = [{
                     id: 1,
                     nom: "TOTO",
                     prenom: "Test",
@@ -20,29 +20,9 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
                     diplomeEu: "Licence langue",
                     diplomeAavoir: "DUT Info",
                     etablissement: "IUT A Lyon",
-                    statCandidature: "Accepté",
-                    remarques: "rien a dire",
-                }, 2:{
-                    id: 2,
-                    nom: "",
-                    prenom: "",
-                    email: "",
-                    adresse: "",
-                    dateNaiss: "",
-                    codePost: "",
-                    ville: "",
-                    pays: "",
-                    tel: "",
-                    bac: "",
-                    optBac: "",
-                    mentionBac: "",
-                    anneeBac: "",
-                    diplomeEu: "",
-                    diplomeAavoir: "",
-                    etablissement: "",
-                    statCandidature: "",
-                    remarques: "",
-                }};
+                    statCandidature: "Acceptée",
+                    remarques: "rien a dire"
+                }];
 
         };
 
@@ -53,7 +33,8 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
                 controller: 'editStudentModalController',
                 resolve: {
                     items: function () {
-                        return {studentEdited: angular.copy($scope.students[s]), appel: "addStudent"};
+                        return {studentEdited: angular.copy($scope.students[2]),
+                            appel: "addStudent"};
                     }
 
                 }
@@ -64,32 +45,15 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
                 console.log(modifiedStudent);
                 $scope.students[2] = modifiedStudent;
             }, function () {
-               console.log("modal dismissed");
+                console.log("modal dismissed");
             });
         };
 
-        
+
 
         $scope.editStudent = function (studentEdited) {
-
-            // ouverture modale, avec le type à modifier, et un flag
-            var modalInstance = $modal.open({
-                templateUrl: 'app/partials/students/studentForm.html',
-                controller: 'editStudentModalController',
-                resolve: {
-                    items: function () {
-                        return {studentEdited: angular.copy(studentEdited), appel: "editStudent"};
-                    }
-
-                }
-            });
-            // gestion du retour de la modale : raffraichir page si tout va
-            // bien , log sinon
-            modalInstance.result.then(function (modifiedStudent) {
-                $scope.students[modifiedStudent.id] = modifiedStudent;
-            }, function () {
-               console.log("modal dismissed");
-            });
+            studentInstance.setStudent(studentEdited);
+            $location.url('/admin-student-modify');
         };
 
         init();

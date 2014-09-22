@@ -9,27 +9,20 @@
         <tbody>
             <tr>
                 <th>#</th>
-                <th>raison sociale</th>
+                <th>Raison sociale</th>
                 <th>Numéro SIRET</th>
-                <th>adresse</th>
+                <th>Adresse</th>
                 <th>Ville</th>
-                <th>téléphone</th>
+                <th>Téléphone</th>
             </tr>
-            <tr data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in enterprises">
+            <tr style="cursor : pointer;" data-ng-click="editEnterprise(e)" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in enterprises">
                 <td>{{e.id}}</td>
                 <td>{{e.raison}}</td>
                 <td>{{e.siret}}</td>
                 <td>{{e.adresse}}</td>
                 <td>{{e.ville}}</td>
                 <td>{{e.tel}}</td>
-
-                <td>
-                    <button class="btn btn-primary" data-ng-click="edit(e)">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </button>                
-                </td>
             </tr>
-
         </tbody>
     </table>
 </div>

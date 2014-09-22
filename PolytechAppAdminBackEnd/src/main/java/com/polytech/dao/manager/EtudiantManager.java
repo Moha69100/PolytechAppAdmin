@@ -5,10 +5,10 @@
  */
 package com.polytech.dao.manager;
 
-import com.polytech.dao.Entreprise;
 import com.polytech.dao.Etudiant;
 import java.util.List;
 import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  *
@@ -16,17 +16,67 @@ import org.hibernate.Query;
  */
 public class EtudiantManager {
 
-    public SessionManager manager;
-
-    public EtudiantManager() {
-        this.manager = manager;
+    /**
+     * Retrieve all students in database
+     * @return 
+     */
+    public List<Etudiant> getAllEtudiant() throws Exception {
+        
+        Session session = SessionManager.openSession();
+        
+        try {
+            
+            Query query = session.createQuery("from Etudiant");
+            return query.list();
+            
+        } finally {
+            
+            session.close();
+            
+        }
+        
+        
     }
 
-    public List<Etudiant> getList() {
+    /**
+     * Delete one etudiant from database
+     * @param etu_id
+     * @throws Exception 
+     */
+    public void deleteEtudiantById(int etu_id) throws Exception {
+        
+        Session session = SessionManager.openSession();
+        
+        try {
+            
+            Etudiant ex = (Etudiant) session.get(Etudiant.class, etu_id);
+            session.delete(ex);
+            
+        } finally {
+            
+            session.close();
+            
+        }
+    }
 
-        Query query = manager.openSession().createQuery("from Etudiant");
-
-        return query.list();
+    /**
+     *
+     * @param id : id etudiant
+     * @return etudiant avec id correspondant
+     */
+    public Etudiant getEtudiantByID(int id) throws Exception  {
+        
+        Session session = SessionManager.openSession();
+        
+        try {
+            
+            return (Etudiant) session.get(Etudiant.class, id);
+            
+        } finally {
+            
+            session.close();
+            
+        }
     }
 
 }

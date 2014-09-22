@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 16 sept. 2014 15:04:07 by Hibernate Tools 3.6.0 -->
+<!-- Generated 22 sept. 2014 11:47:32 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="com.polytech.dao.Evenement" table="evenement" schema="appschema">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
         <property name="typeevt" type="string">
             <column name="typeevt" />
@@ -22,6 +22,9 @@
         </property>
         <property name="heurefin" type="time">
             <column name="heurefin" length="15" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="512" />
         </property>
         <set name="evenementsalles" table="evenementsalle" inverse="true" lazy="true" fetch="select">
             <key>
@@ -41,11 +44,17 @@
             </key>
             <one-to-many class="com.polytech.dao.Entreprisepresence" />
         </set>
-        <set name="entretiens" table="entretien" inverse="true" lazy="true" fetch="select">
+        <set name="plannings" table="planning" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="evtid" />
             </key>
-            <one-to-many class="com.polytech.dao.Entretien" />
+            <one-to-many class="com.polytech.dao.Planning" />
+        </set>
+        <set name="voeuxEtudiants" table="voeux_etudiant" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="evtid" />
+            </key>
+            <one-to-many class="com.polytech.dao.VoeuxEtudiant" />
         </set>
         <set name="etudiants" table="etudiantevenement" inverse="false" lazy="true" fetch="select">
             <key>
@@ -54,6 +63,12 @@
             <many-to-many entity-name="com.polytech.dao.Etudiant">
                 <column name="etuid" not-null="true" />
             </many-to-many>
+        </set>
+        <set name="voeuxEntreprises" table="voeux_entreprise" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="evtid" />
+            </key>
+            <one-to-many class="com.polytech.dao.VoeuxEntreprise" />
         </set>
     </class>
 </hibernate-mapping>
