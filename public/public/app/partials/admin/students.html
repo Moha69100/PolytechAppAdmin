@@ -15,18 +15,12 @@
                 <th>Adresse</th>
                 <th>Action</th>
             </tr>
-            <tr data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in students">
+            <tr data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in students" data-ng-click="editStudent(e)">
                 <td>{{e.id}}</td>
                 <td>{{e.nom}}</td>
                 <td>{{e.prenom}}</td>
                 <td>{{e.email}}</td>
-                <td>{{e.adresse}}</td>     
-                <td>
-                    <button class="btn btn-primary" data-ng-click="editStudent(e)">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </button>
-
-                </td>    
+                <td>{{e.adresse}}</td>   
             </tr>
 
         </tbody>

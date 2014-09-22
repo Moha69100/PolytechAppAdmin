@@ -1,4 +1,4 @@
-app.controller('studentController', ['$scope', '$modal', function ($scope, $modal) {
+app.controller('studentController', ['$scope', '$modal', '$location', 'studentInstance', function ($scope, $modal, $location, studentInstance) {
 
 
         var init = function () {
@@ -52,25 +52,8 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
 
 
         $scope.editStudent = function (studentEdited) {
-
-            // ouverture modale, avec le type à modifier, et un flag
-            var modalInstance = $modal.open({
-                templateUrl: 'app/partials/students/studentForm.html',
-                controller: 'editStudentModalController',
-                resolve: {
-                    items: function () {
-                        return {studentEdited: angular.copy(studentEdited), appel: "editStudent"};
-                    }
-
-                }
-            });
-            // gestion du retour de la modale : raffraichir page si tout va
-            // bien , log sinon
-            modalInstance.result.then(function (modifiedStudent) {
-                $scope.students[modifiedStudent.id] = modifiedStudent;
-            }, function () {
-                console.log("modal dismissed");
-            });
+            studentInstance.setStudent(studentEdited);
+            $location.url('/admin-student-modify');
         };
 
         init();
