@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 sept. 2014 11:47:32 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.polytech.dao.Entretien" table="entretien" schema="appschema">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="planning" class="com.polytech.dao.Planning" fetch="select">
+            <column name="planid" />
+        </many-to-one>
+        <many-to-one name="entreprise" class="com.polytech.dao.Entreprise" fetch="select">
+            <column name="entid" />
+        </many-to-one>
+        <many-to-one name="etudiant" class="com.polytech.dao.Etudiant" fetch="select">
+            <column name="etuid" />
+        </many-to-one>
+        <property name="priorite" type="java.lang.Integer">
+            <column name="priorite" />
+        </property>
+        <property name="horaire" type="time">
+            <column name="horaire" length="15" />
+        </property>
+        <property name="salleid" type="java.lang.Integer">
+            <column name="salleid" />
+        </property>
+        <property name="duree" type="timestamp">
+            <column name="duree" length="29" />
+        </property>
+    </class>
+</hibernate-mapping>
