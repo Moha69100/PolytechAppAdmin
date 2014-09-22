@@ -24,10 +24,12 @@ public class EtudiantManager {
         this.manager = manager;
     }
 
+    /**
+     * List all etudiant in database
+     * @return 
+     */
     public List<Etudiant> getList() {
-
         Query query = manager.getSession().createQuery("from Etudiant");
-
         return query.list();
     }
 

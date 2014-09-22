@@ -47,15 +47,21 @@ public class ProjectInfoController {
     
     //ETUDIANTS
     
-       // lire les headers
+    /**
+     * GET all students
+     * @return 
+     */
     @RequestMapping(value = "/etudiants", method = RequestMethod.GET)
     public List<Etudiant> allEtudiant() {
-
         List<Etudiant> etudiants = etuManager.getList();
         return etudiants;
-
     }
 
+    /**
+     * GET one etudiant
+     * @param id : id Etudiant
+     * @return 
+     */
     @RequestMapping(value = "/etudiant/{id}", method = RequestMethod.GET)
     public Etudiant oneEtudiant(@PathVariable String id) {
         Etudiant etudiant = etuManager.getEtudiantByID(Integer.parseInt(id));
