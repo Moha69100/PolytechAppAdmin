@@ -9,6 +9,7 @@ import com.polytech.dao.Entreprise;
 import com.polytech.dao.Etudiant;
 import java.util.List;
 import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  *
@@ -16,17 +17,30 @@ import org.hibernate.Query;
  */
 public class EtudiantManager {
 
-    public SessionManager manager;
+    public Session session;
 
     public EtudiantManager(SessionManager manager) {
-        this.manager = manager;
+
+        this.session = manager.getSession();
+
     }
 
     public List<Etudiant> getList() {
 
-        Query query = manager.getSession().createQuery("from Etudiant");
+        Query query = session.createQuery("from Etudiant");
 
         return query.list();
+    }
+
+    public void deleteEtudiant(int etu_id) throws Exception {
+
+       
+    
+            Etudiant ex = (Etudiant) session.get(Etudiant.class, etu_id);
+            session.delete(ex);
+
+        
+      
     }
 
 }

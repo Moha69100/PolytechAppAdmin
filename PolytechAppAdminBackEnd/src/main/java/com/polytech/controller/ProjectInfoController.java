@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProjectInfoController {
 
     SessionManager manager = new SessionManager();
-    EntrepriseManager dao =  new EntrepriseManager(manager);
+    EntrepriseManager dao = new EntrepriseManager(manager);
     EtudiantManager etuManager = new EtudiantManager(manager);
-    
+
     @RequestMapping("/")
     public ProjectInfo hello() {
         return new ProjectInfo("0.1.0", "PolytechAppAdmin");
@@ -46,11 +46,9 @@ public class ProjectInfoController {
     public String deleteEnterprise(@PathVariable String id) {
         return "Delete l'entreprise " + id + ".";
     }
-    
-    
+
     //ETUDIANTS
-    
-       // lire les headers
+    // lire les headers
     @RequestMapping(value = "/etudiants", method = RequestMethod.GET)
     public List<Etudiant> allEtudiant() {
 
@@ -64,7 +62,21 @@ public class ProjectInfoController {
         return "L'entreprise " + id + ".";
     }
 
- 
-    
-    
+    @RequestMapping(value = "/etudiant/{id}", method = RequestMethod.DELETE)
+    public String deleteEtudiant(@PathVariable String id) {
+       
+        
+     
+        String error = "";
+        
+        int idEtu = Integer.parseInt(id);
+        
+        try {
+           etuManager.deleteEtudiant(idEtu);
+        } catch (Exception e) {
+          error =  e.getMessage();
+        }
+        return " Erreur : " + error ;
+    }
+
 }
