@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <h3>Salle</h3>
+</div><div data-auto-height class="modal-body">
+    <form method="POST" action="#" class="form-horizontal" role="form" >
+        <div class="form-group">
+            <label for="libelle" class="col-sm-2 control-label">Libellé</label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="libelle" ng-model="room.libelle" placeholder="Libellé ...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="localisation" class="col-sm-2 control-label">Localisation : </label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="localisation" ng-model="room.localisation" placeholder="Localisation ...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="capacite" class="col-sm-2 control-label">Capacité : </label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="capacite" ng-model="room.capacite" placeholder="Capacité ...">
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="modal-footer">
+    <div class="form-group">
+        <button class="btn btn-warning" data-ng-click="remove(room)">
+            Supprimer        </button>
+        <button type="submit" class="btn btn-primary" data-ng-click="save(room)">Valider</button>
+        <button type="submit" class="btn btn-default" data-ng-click="cancel()">Annuler</button>
+    </div>
+</div>

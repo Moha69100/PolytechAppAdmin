@@ -1,0 +1,85 @@
+<div class="modal-header">
+    <h3>Entreprise</h3>
+</div><div data-auto-height class="modal-body">
+    <form method="POST" action="#" class="form-horizontal" role="form" >
+        <div class="form-group">
+            <label for="enterpriseName" class="col-sm-2 control-label">Raison sociale : </label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="enterpriseName" ng-model="enterprise.raison" placeholder="Raison sociale ...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nafCode" class="col-sm-2 control-label">Code NAF : </label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="nafCode" ng-model="enterprise.naf" placeholder="Code NAF ...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="SIRETNumber" class="col-sm-2 control-label">Numéro SIRET : </label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="SIRETNumber" ng-model="enterprise.siret" placeholder="Numéro SIRET ...">
+            </div>
+        </div>
+        <div class="form-group">
+        <label for="effectif" class="col-sm-2 control-label">Effectif : </label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="effectif" ng-model="enterprise.effectif" placeholder="Effectif ...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="organism" class="col-sm-2 control-label">Organisme : </label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="organism" ng-model="enterprise.organisme" placeholder="Organisme ...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="adress" class="col-sm-2 control-label">Adresse : </label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="adress" ng-model="enterprise.adresse" placeholder="Adresse ...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="adress2" class="col-sm-2 control-label">Adresse 2 : </label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="adress2" ng-model="enterprise.adresse2" placeholder="Adresse 2 ...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="postalCode" class="col-sm-2 control-label">Code postal : </label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="postalCode" ng-model="enterprise.cp" placeholder="Code postal ...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="city" class="col-sm-2 control-label">Ville : </label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="city" ng-model="enterprise.ville" placeholder="Ville ...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber" class="col-sm-2 control-label">N° téléphone : </label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="phoneNumber" ng-model="enterprise.tel" placeholder="N° téléphone ...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="forumAttendingYear" class="col-sm-2 control-label">Année participation forum : </label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="forumAttendingYear" ng-model="enterprise.anneeparticipforum" placeholder="Année participation forum ...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="apprenticesNumber" class="col-sm-2 control-label">Nombre apprentis : </label>
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                <input type="text" class="form-control" id="apprenticesNumber" ng-model="enterprise.nbrapprenti" placeholder="Nombre apprentis ...">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <div class="form-group">
+        <button class="btn btn-warning" data-ng-click="remove(enterprise)">Supprimer</button>
+        <button type="submit" class="btn btn-primary" data-ng-click="save(enterprise)">Valider</button>
+        <button type="submit" class="btn btn-default" data-ng-click="cancel()">Annuler</button>
+    </div>
+</div>
