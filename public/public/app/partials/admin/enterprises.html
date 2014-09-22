@@ -2,30 +2,29 @@
     <div class="page-header">
         <span>Liste des enterprises</span>
         <div class="form-actions"> 
-            <i data-ng-click="add()" class="glyphicon glyphicon-plus"></i>   
+            <i data-ng-click="addEnterprise()" class="glyphicon glyphicon-plus"></i>   
         </div>
     </div>
     <table class="table ">
         <tbody>
             <tr>
                 <th>#</th>
-                <th>raison sociale</th>
-                <th>représentant</th>
-                <th>rôle</th>
-                <th>adresse</th>
-                <th>téléphone</th>
-                <th>actions</th>
+                <th>Raison sociale</th>
+                <th>Numéro SIRET</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Téléphone</th>
             </tr>
             <tr data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in enterprises">
                 <td>{{e.id}}</td>
-                <td>{{e.name}}</td>
-                <td>{{e.representant}}</td>
-                <td>{{e.role}}</td>
+                <td>{{e.raison}}</td>
+                <td>{{e.siret}}</td>
                 <td>{{e.adresse}}</td>
-                <td>{{e.phone}}</td>
+                <td>{{e.ville}}</td>
+                <td>{{e.tel}}</td>
 
                 <td>
-                    <button class="btn btn-primary" data-ng-click="edit(e)">
+                    <button class="btn btn-primary" data-ng-click="editEnterprise(e)">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>                
                 </td>

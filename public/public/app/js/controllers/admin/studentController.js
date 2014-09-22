@@ -1,8 +1,5 @@
 app.controller('studentController', ['$scope', '$modal', function ($scope, $modal) {
 
-        var studentEdited = function(){
-            
-        };
 
         var init = function () {
             $scope.students = [{
@@ -23,17 +20,36 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
                     diplomeEu: "Licence langue",
                     diplomeAavoir: "DUT Info",
                     etablissement: "IUT A Lyon",
-                    statCandidature: "Accepté",
-                    remarques: "rien a dire",
+                    statCandidature: "Acceptée",
+                    remarques: "rien a dire"
                 }];
 
         };
 
         $scope.addStudent = function () {
+            // ouverture modale, avec le type à modifier, et un flag
+            var modalInstance = $modal.open({
+                templateUrl: 'app/partials/students/studentForm.html',
+                controller: 'editStudentModalController',
+                resolve: {
+                    items: function () {
+                        return {studentEdited: angular.copy($scope.students[2]),
+                            appel: "addStudent"};
+                    }
 
+                }
+            });
+            // gestion du retour de la modale : raffraichir page si tout va
+            // bien , log sinon
+            modalInstance.result.then(function (modifiedStudent) {
+                console.log(modifiedStudent);
+                $scope.students[2] = modifiedStudent;
+            }, function () {
+                console.log("modal dismissed");
+            });
         };
 
-        
+
 
         $scope.editStudent = function (studentEdited) {
 
@@ -50,10 +66,10 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
             });
             // gestion du retour de la modale : raffraichir page si tout va
             // bien , log sinon
-            modalInstance.result.then(function (selectedType) {
-                ;
+            modalInstance.result.then(function (modifiedStudent) {
+                $scope.students[modifiedStudent.id] = modifiedStudent;
             }, function () {
-               console.log("modal dismissed");
+                console.log("modal dismissed");
             });
         };
 

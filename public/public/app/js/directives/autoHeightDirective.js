@@ -5,10 +5,13 @@ app.directive('autoHeight', function () {
 
         function changeHeight() {
             var height = window.innerHeight - 85;
-           $element.css({
+            $element.css({
                 'height': height
             });
-           
+            $(".modal-body").css({
+                'height': height - 150,
+                "overflow-y": "auto"
+            });
         }
         changeHeight();
         $(window).resize(changeHeight);

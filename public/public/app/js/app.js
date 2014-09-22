@@ -1,5 +1,5 @@
 
-var app = angular.module('App', ['ui.bootstrap', 'ngRoute']);
+var app = angular.module('App', ['ui.bootstrap', 'ngResource', 'ngRoute']);
 app.config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider.when('/admin-enterprise', {
@@ -25,6 +25,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'app/partials/admin/offers.html',
             menu: {
                 id: 'menu-offers'
+            }
+        }).when('/logout', {
+            controller: 'logoutController',
+            templateUrl: 'app/partials/admin/logout.html',
+            menu: {
+                id: 'menu-logout'
             }
         }).when('/admin-events', {
             controller: 'eventsController',
@@ -74,7 +80,10 @@ app.run(['$rootScope', function ($rootScope) {
 
 
 app.config(['$httpProvider', function ($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
         /*
+         
          $httpProvider.responseInterceptors.push(['$q', '$rootScope', function ($q, $rootScope) {
          return function (promise) {
          return promise.then(function (response) {
@@ -96,12 +105,10 @@ app.config(['$httpProvider', function ($httpProvider) {
          // console.log("httpProvider -> 401 - vous n etes pas
          // autorisé");
          // unauthorized
-         $rootScope.$broadcast(Events.Modale.OPEN_DIALOG, rejection);
          return $q.reject(rejection);
          // return;
          
          } else {
-         $rootScope.$broadcast(Events.Modale.OPEN_DIALOG, rejection);
          return $q.reject(rejection);
          // return;
          }
@@ -116,36 +123,36 @@ app.config(['$httpProvider', function ($httpProvider) {
     }]);
 // register the interceptor as a service, intercepts ALL angular ajax http calls
 app.factory('ajaxIndicatorHttpInterceptor', ['$q', '$rootScope', function ($q, $rootScope) {
-        /*    return {
-         // optional method
-         'request': function (config) {
-         // do something on success
-         // console.log("ajaxIndicatorHttpInterceptor >>> request");
-         $rootScope.isLoading = true;
-         return config || $q.when(config);
-         },
-         // optional method
-         'requestError': function (rejection) {
-         // do something on error
-         // console.log("ajaxIndicatorHttpInterceptor >>> requestError");
-         return $q.reject(rejection);
-         },
-         // optional method
-         'response': function (response) {
-         // do something on success
-         // console.log("ajaxIndicatorHttpInterceptor >>> response");
-         $rootScope.isLoading = false;
-         return response || $q.when(response);
-         },
-         // optional method
-         'responseError': function (rejection) {
-         // do something on error
-         // console.log("ajaxIndicatorHttpInterceptor >>> responseError");
-         $rootScope.isLoading = false;
-         return $q.reject(rejection);
-         }
-         
-         };****/
+        return {
+            // optional method
+            'request': function (config) {
+                // do something on success
+                // console.log("ajaxIndicatorHttpInterceptor >>> request");
+                //  $rootScope.isLoading = true;
+                return config || $q.when(config);
+            },
+            // optional method
+            'requestError': function (rejection) {
+                // do something on error
+                // console.log("ajaxIndicatorHttpInterceptor >>> requestError");
+                return $q.reject(rejection);
+            },
+            // optional method
+            'response': function (response) {
+                // do something on success
+                // console.log("ajaxIndicatorHttpInterceptor >>> response");
+                //  $rootScope.isLoading = false;
+                return response || $q.when(response);
+            },
+            // optional method
+            'responseError': function (rejection) {
+                // do something on error
+                // console.log("ajaxIndicatorHttpInterceptor >>> responseError");
+                // $rootScope.isLoading = false;
+                return $q.reject(rejection);
+            }
+
+        };
 
     }]);
 
