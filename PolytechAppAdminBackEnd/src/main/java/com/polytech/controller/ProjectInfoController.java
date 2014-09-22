@@ -2,9 +2,9 @@ package com.polytech.controller;
 
 import com.polytech.dao.Entreprise;
 import com.polytech.dao.Etudiant;
-import com.polytech.dao.manager.SessionManager;
 import com.polytech.dao.manager.EntrepriseManager;
 import com.polytech.dao.manager.EtudiantManager;
+import com.polytech.exception.ExceptionHandler;
 import com.polytech.model.*;
 import java.util.List;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,9 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProjectInfoController {
 
-    SessionManager manager = new SessionManager();
-    EntrepriseManager entrepriseManager =  new EntrepriseManager(manager);
-    EtudiantManager etuManager = new EtudiantManager(manager);
+    EntrepriseManager entrepriseManager =  new EntrepriseManager();
+    EtudiantManager etuManager = new EtudiantManager();
     
     @RequestMapping("/")
     public ProjectInfo hello() {
@@ -27,16 +26,34 @@ public class ProjectInfoController {
     }
 
     @RequestMapping(value = "/entreprises", method = RequestMethod.GET)
-    public List<Entreprise> allEnterprise() {
-
-        List<Entreprise> entreprises = entrepriseManager.getAllEnterprise();
-        return entreprises;
+    public Object allEnterprise() {
+        
+        try {
+            
+            List<Entreprise> entreprises = entrepriseManager.getAllEnterprise();
+            return entreprises;
+            
+        } catch (Exception ex) {
+            
+            return ExceptionHandler.handle(ex);
+            
+        }
 
     }
 
     @RequestMapping(value = "/entreprise/{id}", method = RequestMethod.GET)
-    public Entreprise oneEnterprise(@PathVariable String id) {
-        return entrepriseManager.getEnterpriseById(Integer.parseInt(id));
+    public Object oneEnterprise(@PathVariable String id) {
+        
+        try {
+            
+            Entreprise e = entrepriseManager.getEnterpriseById(Integer.parseInt(id));
+            return e;
+            
+        } catch (Exception ex) {
+            
+            return ExceptionHandler.handle(ex);
+            
+        }
     }
 
     @RequestMapping(value = "/entreprise/{id}", method = RequestMethod.DELETE)

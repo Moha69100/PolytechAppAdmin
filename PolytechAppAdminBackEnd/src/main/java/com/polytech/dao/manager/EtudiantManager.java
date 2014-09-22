@@ -18,13 +18,13 @@ public class EtudiantManager {
 
     public SessionManager manager;
 
-    public EtudiantManager(SessionManager manager) {
+    public EtudiantManager() {
         this.manager = manager;
     }
 
     public List<Etudiant> getList() {
 
-        Query query = manager.getSession().createQuery("from Etudiant");
+        Query query = manager.openSession().createQuery("from Etudiant");
 
         return query.list();
     }

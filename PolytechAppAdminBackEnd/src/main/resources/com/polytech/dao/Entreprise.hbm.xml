@@ -44,25 +44,25 @@
         <property name="nbrapprenti" type="java.lang.Integer">
             <column name="nbrapprenti" />
         </property>
-        <set name="entreprisepresences" table="entreprisepresence" inverse="true" lazy="true" fetch="select">
+        <set name="entreprisepresences" table="entreprisepresence" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="entid" />
             </key>
             <one-to-many class="com.polytech.dao.Entreprisepresence" />
         </set>
-        <set name="offrealternances" table="offrealternance" inverse="true" lazy="true" fetch="select">
+        <set name="offrealternances" table="offrealternance" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="entid" />
             </key>
             <one-to-many class="com.polytech.dao.Offrealternance" />
         </set>
-        <set name="entretiens" table="entretien" inverse="true" lazy="true" fetch="select">
+        <set name="entretiens" table="entretien" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="entid" />
             </key>
             <one-to-many class="com.polytech.dao.Entretien" />
         </set>
-        <set name="personnecontacts" table="personnecontact" inverse="true" lazy="true" fetch="select">
+        <set name="personnecontacts" table="personnecontact" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="entid" />
             </key>
