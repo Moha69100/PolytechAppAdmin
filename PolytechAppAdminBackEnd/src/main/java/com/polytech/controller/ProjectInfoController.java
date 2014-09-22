@@ -74,11 +74,15 @@ public class ProjectInfoController {
         return etudiant;
     }
 
+    /**
+     * GET all etudiants
+     * @param id
+     * @return 
+     */
     @RequestMapping(value = "/etudiant/{id}", method = RequestMethod.DELETE)
     public String deleteEtudiant(@PathVariable String id) {
 
         String error = "";
-
         int idEtu = Integer.parseInt(id);
 
         try {

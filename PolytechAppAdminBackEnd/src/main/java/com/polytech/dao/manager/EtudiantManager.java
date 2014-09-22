@@ -21,20 +21,24 @@ public class EtudiantManager {
     public Session session;
 
     public EtudiantManager(SessionManager manager) {
-
         this.session = manager.getSession();
-
     }
 
+    /**
+     * Retrieve all students in database
+     * @return 
+     */
     public List<Etudiant> getAllEtudiant() {
-
         Query query = session.createQuery("from Etudiant");
-
         return query.list();
     }
 
+    /**
+     * Delete one etudiant from database
+     * @param etu_id
+     * @throws Exception 
+     */
     public void deleteEtudiantById(int etu_id) throws Exception {
-
         Etudiant ex = (Etudiant) session.get(Etudiant.class, etu_id);
         session.delete(ex);
     }
