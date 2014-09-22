@@ -2,7 +2,7 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
 
 
         var init = function () {
-            $scope.students = {1:{
+            $scope.students = [{
                     id: 1,
                     nom: "TOTO",
                     prenom: "Test",
@@ -20,29 +20,9 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
                     diplomeEu: "Licence langue",
                     diplomeAavoir: "DUT Info",
                     etablissement: "IUT A Lyon",
-                    statCandidature: "Accepté",
-                    remarques: "rien a dire",
-                }, 2:{
-                    id: 2,
-                    nom: "",
-                    prenom: "",
-                    email: "",
-                    adresse: "",
-                    dateNaiss: "",
-                    codePost: "",
-                    ville: "",
-                    pays: "",
-                    tel: "",
-                    bac: "",
-                    optBac: "",
-                    mentionBac: "",
-                    anneeBac: "",
-                    diplomeEu: "",
-                    diplomeAavoir: "",
-                    etablissement: "",
-                    statCandidature: "",
-                    remarques: "",
-                }};
+                    statCandidature: "Acceptée",
+                    remarques: "rien a dire"
+                }];
 
         };
 
@@ -53,7 +33,8 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
                 controller: 'editStudentModalController',
                 resolve: {
                     items: function () {
-                        return {studentEdited: angular.copy($scope.students[2]), appel: "addStudent"};
+                        return {studentEdited: angular.copy($scope.students[2]),
+                            appel: "addStudent"};
                     }
 
                 }
@@ -64,11 +45,11 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
                 console.log(modifiedStudent);
                 $scope.students[2] = modifiedStudent;
             }, function () {
-               console.log("modal dismissed");
+                console.log("modal dismissed");
             });
         };
 
-        
+
 
         $scope.editStudent = function (studentEdited) {
 
@@ -88,7 +69,7 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
             modalInstance.result.then(function (modifiedStudent) {
                 $scope.students[modifiedStudent.id] = modifiedStudent;
             }, function () {
-               console.log("modal dismissed");
+                console.log("modal dismissed");
             });
         };
 

@@ -26,6 +26,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             menu: {
                 id: 'menu-offers'
             }
+        }).when('/logout', {
+            controller: 'logoutController',
+            templateUrl: 'app/partials/admin/logout.html',
+            menu: {
+                id: 'menu-logout'
+            }
         }).when('/admin-events', {
             controller: 'eventsController',
             templateUrl: 'app/partials/admin/events.html',
@@ -76,38 +82,39 @@ app.run(['$rootScope', function ($rootScope) {
 app.config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
-
-        $httpProvider.responseInterceptors.push(['$q', '$rootScope', function ($q, $rootScope) {
-                return function (promise) {
-                    return promise.then(function (response) {
-                        // do something on success
-                        // console.info('>> myHttpInterceptor - success', response);
-                        return response || $q.when(response);
-
-                    }, function (rejection) {
-                        // console.info('>> myHttpInterceptor - error', rejection);
-
-                        // do something on error
-                        if (rejection.status == 400) { // <=>
-                            // console.log("httpProvider --> 400 -
-                            // FunctionalException");
-                            // FunctionalException
-                            return $q.reject(rejection);
-
-                        } else if (rejection.status == 401) {
-                            // console.log("httpProvider -> 401 - vous n etes pas
-                            // autorisé");
-                            // unauthorized
-                            return $q.reject(rejection);
-                            // return;
-
-                        } else {
-                            return $q.reject(rejection);
-                            // return;
-                        }
-                    });
-                };
-            }]);
+        /*
+         
+         $httpProvider.responseInterceptors.push(['$q', '$rootScope', function ($q, $rootScope) {
+         return function (promise) {
+         return promise.then(function (response) {
+         // do something on success
+         // console.info('>> myHttpInterceptor - success', response);
+         return response || $q.when(response);
+         
+         }, function (rejection) {
+         // console.info('>> myHttpInterceptor - error', rejection);
+         
+         // do something on error
+         if (rejection.status == 400) { // <=>
+         // console.log("httpProvider --> 400 -
+         // FunctionalException");
+         // FunctionalException
+         return $q.reject(rejection);
+         
+         } else if (rejection.status == 401) {
+         // console.log("httpProvider -> 401 - vous n etes pas
+         // autorisé");
+         // unauthorized
+         return $q.reject(rejection);
+         // return;
+         
+         } else {
+         return $q.reject(rejection);
+         // return;
+         }
+         });
+         };
+         }]);*/
     }]);
 app.config(['$httpProvider', function ($httpProvider) {
 

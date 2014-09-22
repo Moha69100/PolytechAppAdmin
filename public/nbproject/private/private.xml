@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/polytech_app_admin/public/public/app/partials/core/accueil.html</file>
-            <file>file:/C:/xampp/htdocs/polytech_app_admin/public/public/app/css/app.css</file>
-            <file>file:/C:/xampp/htdocs/polytech_app_admin/public/public/app/partials/core/header.html</file>
-            <file>file:/C:/xampp/htdocs/polytech_app_admin/public/public/app/partials/admin/students.html</file>
-            <file>file:/C:/xampp/htdocs/polytech_app_admin/public/public/index.html</file>
-            <file>file:/C:/xampp/htdocs/polytech_app_admin/public/public/app/partials/admin/room.html</file>
-            <file>file:/C:/xampp/htdocs/polytech_app_admin/public/public/app/partials/admin/enterprises.html</file>
+            <file>file:/C:/xampp/htdocs/polytech_app_admin/public/public/app/js/controllers/admin/studentController.js</file>
+            <file>file:/C:/xampp/htdocs/polytech_app_admin/public/public/app/js/controllers/modal/editStudentModalController.js</file>
             <file>file:/C:/xampp/htdocs/polytech_app_admin/public/public/app/partials/students/studentForm.html</file>
         </group>
     </open-files>
