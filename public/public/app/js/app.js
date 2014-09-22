@@ -32,6 +32,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             menu: {
                 id: 'menu-logout'
             }
+        }).when('/edit-enterprise', {
+            controller: 'editEnterpriseController',
+            templateUrl: 'app/partials/enterprises/editEnterprise.html',
+            menu: {
+                id: 'menu-enterprise'
+            }
         }).when('/admin-events', {
             controller: 'eventsController',
             templateUrl: 'app/partials/admin/events.html',
