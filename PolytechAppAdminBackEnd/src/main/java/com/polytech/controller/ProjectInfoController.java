@@ -11,11 +11,11 @@ import com.polytech.model.*;
 import java.util.List;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-
 
 @ComponentScan
 @RestController
@@ -99,8 +99,9 @@ public class ProjectInfoController {
     }
 
     @RequestMapping(value = "/salle/{id}", method = RequestMethod.GET)
-    public String oneSalle(@PathVariable String id) {
-        return "La salle " + id + ".";
+    public Salle oneSalle(@PathVariable String id) {
+        Salle salle = salleManager.getSalleById(Integer.parseInt(id));
+        return salle;
     }
 
     @RequestMapping(value = "/salle/{id}", method = RequestMethod.DELETE)
@@ -116,5 +117,25 @@ public class ProjectInfoController {
             error = e.getMessage();
         }
         return " Erreur : " + error;
+    }
+
+    @RequestMapping(value = "/salle/add", method = RequestMethod.POST)
+    public @ResponseBody
+    String createSalle(@RequestBody Salle salle) {
+        
+        
+        // 
+        
+        String error = "";
+        salle.setLibelle("SALUTTTTTTTT");
+
+        try {
+            salleManager.addSalle(salle);
+        } catch (Exception e) {
+            error = e.getMessage();
+        }
+        return " Erreur : " + error;
+
+        
     }
 }

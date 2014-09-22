@@ -15,31 +15,39 @@ import org.hibernate.Session;
  * @author Epulapp
  */
 public class SalleManager {
-      public SessionManager manager;
-    
+
+    public Session session;
+
     public SalleManager(SessionManager manager) {
-        this.manager = manager;
+        this.session = manager.getSession();
+
     }
-    
+
     public List<Salle> getAllSalle() {
-        
-        Query query = manager.getSession().createQuery("from Salle");
-        
+
+        Query query = session.createQuery("from Salle");
+
         return query.list();
     }
-    
+
     public Salle getSalleById(int id) {
-        
-        return (Salle) manager.getSession().get(Salle.class, id);
-        
+
+        return (Salle) session.get(Salle.class, id);
+
     }
-    
+
     public Boolean deleteSalleById(int id) {
-        
-        Session sess = manager.getSession();
-        Salle e = (Salle) sess.get(Salle.class, id);
-        sess.delete(e);
+
+        Salle e = (Salle) session.get(Salle.class, id);
+        session.delete(e);
         return true;
-        
+
     }
+
+    public Boolean addSalle(Salle salle) throws Exception {
+
+        session.save(salle);
+        return true;
+    }
+
 }
