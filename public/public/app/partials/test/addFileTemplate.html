@@ -1,0 +1,38 @@
+<!-- bouton d'upload -->
+<div data-ng-show="!filePresent[fileType]">
+    <a  data-dr-status data-ng-click="openDownloadPopup(fileType)">
+        <i class="glyphicon glyphicon-upload"></i>
+    </a>
+</div>
+
+<!-- Liens/fichiers enregistrés -->
+<div class="btn-group" style="padding: 0" data-ng-show="item.type == fileType" data-ng-repeat="item in fileList">
+    <a title="{{item.name}}" data-ng-show="item.name != 'LINK'" href='' class=" dropdown" data-toggle="dropdown">
+        <i class="glyphicon glyphicon-file"></i>
+    </a>
+    <ul class="dropdown-menu">
+        <li >
+            <a data-dr-status  data-ng-click="removeFileFromServer(item)" href="">
+                <i class="glyphicon glyphicon-remove"></i>
+                Supprimer
+            </a>
+        </li>
+        <li>
+            <a data-ng-show="item.name != 'LINK'"
+               href="upload/{{item.name}}">
+                <i class="glyphicon glyphicon-save"></i>
+                Télécharger
+            </a>         
+        </li>
+    </ul>
+</div>
+
+<!-- fichier a uploader -->
+<div  class="btn-group" style="padding: 0" data-ng-show="filePresent[fileType]"
+      data-ng-repeat="item in uploader.queue">
+    <span style="color: #555">
+        <i class="glyphicon glyphicon-file"></i>
+        <i  class="glyphicon glyphicon-remove" data-ng-click="removeFileFromQueue(item)"></i>
+    </span>
+</div>
+
