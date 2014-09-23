@@ -91,7 +91,7 @@ public class EntrepriseManager {
             session.save(ent);
 
             tx.commit();
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             if (tx != null) {
                 tx.rollback();
             }
