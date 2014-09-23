@@ -13,6 +13,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             menu: {
                 id: 'menu-student'
             }
+        }).when('/edit-student', {
+            controller: 'editStudentController',
+            templateUrl: 'app/partials/students/studentForm.html',
+            menu: {
+                id: 'menu-student'
+            }
         }).when('/admin-room', {
             controller: 'roomController',
             templateUrl: 'app/partials/admin/room.html',
