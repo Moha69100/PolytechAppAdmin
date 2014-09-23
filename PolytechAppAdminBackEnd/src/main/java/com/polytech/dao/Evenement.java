@@ -1,5 +1,5 @@
 package com.polytech.dao;
-// Generated 22 sept. 2014 11:47:31 by Hibernate Tools 3.6.0
+// Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;

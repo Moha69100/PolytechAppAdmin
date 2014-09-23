@@ -24,7 +24,9 @@ app.controller('roomController', ['$scope', "$modal", 'roomResource', function($
         }
 
         var init = function() {
-            $scope.rooms = roomResource.findAll();
+            roomResource.listRooms(function (data) {
+                $scope.rooms = data;
+            });
         }
 
         $scope.addRoom = function() {

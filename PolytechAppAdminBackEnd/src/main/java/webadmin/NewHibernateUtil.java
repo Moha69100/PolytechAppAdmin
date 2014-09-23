@@ -20,7 +20,7 @@ public class NewHibernateUtil {
     private static final SessionFactory sessionFactory;
     
     static {
-        try {
+        try { 
             // Create the SessionFactory from standard (hibernate.cfg.xml) 
             // config file.
             sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();

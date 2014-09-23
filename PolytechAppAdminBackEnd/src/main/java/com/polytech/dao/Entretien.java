@@ -1,5 +1,5 @@
 package com.polytech.dao;
-// Generated 22 sept. 2014 11:47:31 by Hibernate Tools 3.6.0
+// Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -11,9 +11,9 @@ public class Entretien  implements java.io.Serializable {
 
 
      private int id;
-     private Planning planning;
      private Entreprise entreprise;
      private Etudiant etudiant;
+     private Planning planning;
      private Integer priorite;
      private Date horaire;
      private Integer salleid;
@@ -26,11 +26,11 @@ public class Entretien  implements java.io.Serializable {
     public Entretien(int id) {
         this.id = id;
     }
-    public Entretien(int id, Planning planning, Entreprise entreprise, Etudiant etudiant, Integer priorite, Date horaire, Integer salleid, Date duree) {
+    public Entretien(int id, Entreprise entreprise, Etudiant etudiant, Planning planning, Integer priorite, Date horaire, Integer salleid, Date duree) {
        this.id = id;
-       this.planning = planning;
        this.entreprise = entreprise;
        this.etudiant = etudiant;
+       this.planning = planning;
        this.priorite = priorite;
        this.horaire = horaire;
        this.salleid = salleid;
@@ -43,13 +43,6 @@ public class Entretien  implements java.io.Serializable {
     
     public void setId(int id) {
         this.id = id;
-    }
-    public Planning getPlanning() {
-        return this.planning;
-    }
-    
-    public void setPlanning(Planning planning) {
-        this.planning = planning;
     }
     public Entreprise getEntreprise() {
         return this.entreprise;
@@ -64,6 +57,13 @@ public class Entretien  implements java.io.Serializable {
     
     public void setEtudiant(Etudiant etudiant) {
         this.etudiant = etudiant;
+    }
+    public Planning getPlanning() {
+        return this.planning;
+    }
+    
+    public void setPlanning(Planning planning) {
+        this.planning = planning;
     }
     public Integer getPriorite() {
         return this.priorite;

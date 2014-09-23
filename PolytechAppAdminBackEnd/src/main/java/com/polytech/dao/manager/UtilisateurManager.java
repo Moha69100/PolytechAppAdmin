@@ -9,26 +9,27 @@ package com.polytech.dao.manager;
 import com.polytech.dao.Utilisateur;
 import java.util.List;
 import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  * Interrogation des utilisateurs
  * @author Epulapp
  */
 public class UtilisateurManager {
-    public SessionManager manager;
+    Session session = SessionManager.openSession();
     
     public UtilisateurManager(SessionManager manager) {
-        this.manager = manager;
+        
     }
     
     public Utilisateur getUtilisateurManagerById(int id) {
-        return (Utilisateur) manager.getSession().get(Utilisateur.class, id);
+        return (Utilisateur) session.get(Utilisateur.class, id);
     }
     
     //Trouver un utilisateur avec son login
     public List<Utilisateur> getUtilisateurByLogin(String login){
         String hql = "from appschema.utilisateur where user='"+login+"'";
-         Query query = manager.getSession().createQuery(hql);
+         Query query = session.createQuery(hql);
          return  query.list();
     }
     

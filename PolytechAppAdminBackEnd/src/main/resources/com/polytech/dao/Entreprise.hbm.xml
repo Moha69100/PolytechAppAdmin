@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22 sept. 2014 11:47:32 by Hibernate Tools 3.6.0 -->
+<!-- Generated 23 sept. 2014 09:06:03 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.polytech.dao.Entreprise" table="entreprise" schema="appschema">
+    <class name="com.polytech.dao.Entreprise" table="entreprise" schema="appschema" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="raison" type="string">
             <column name="raison" />
@@ -44,37 +44,37 @@
         <property name="nbrapprenti" type="java.lang.Integer">
             <column name="nbrapprenti" />
         </property>
-        <set name="entreprisepresences" table="entreprisepresence" inverse="true" lazy="true" fetch="select">
+        <set name="entreprisepresences" table="entreprisepresence" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="entid" />
             </key>
             <one-to-many class="com.polytech.dao.Entreprisepresence" />
         </set>
-        <set name="offrealternances" table="offrealternance" inverse="true" lazy="true" fetch="select">
+        <set name="offrealternances" table="offrealternance" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="entid" />
             </key>
             <one-to-many class="com.polytech.dao.Offrealternance" />
         </set>
-        <set name="voeuxEntreprises" table="voeux_entreprise" inverse="true" lazy="true" fetch="select">
+        <set name="voeuxEntreprises" table="voeux_entreprise" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="entid" />
             </key>
             <one-to-many class="com.polytech.dao.VoeuxEntreprise" />
         </set>
-        <set name="voeuxEtudiants" table="voeux_etudiant" inverse="true" lazy="true" fetch="select">
+        <set name="voeuxEtudiants" table="voeux_etudiant" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="entid" />
             </key>
             <one-to-many class="com.polytech.dao.VoeuxEtudiant" />
         </set>
-        <set name="entretiens" table="entretien" inverse="true" lazy="true" fetch="select">
+        <set name="entretiens" table="entretien" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="entid" />
             </key>
             <one-to-many class="com.polytech.dao.Entretien" />
         </set>
-        <set name="personnecontacts" table="personnecontact" inverse="true" lazy="true" fetch="select">
+        <set name="personnecontacts" table="personnecontact" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="entid" />
             </key>
