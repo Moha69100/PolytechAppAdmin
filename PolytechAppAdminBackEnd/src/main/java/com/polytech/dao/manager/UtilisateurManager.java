@@ -18,7 +18,7 @@ import org.hibernate.Session;
 public class UtilisateurManager {
     Session session = SessionManager.openSession();
     
-    public UtilisateurManager(SessionManager manager) {
+    public UtilisateurManager() {
         
     }
     

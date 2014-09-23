@@ -19,7 +19,8 @@ public final class SessionManager {
 
     private static SessionFactory getInstance() {
         
-        if (SessionManager.sessionFactory == null) {
+        if (SessionManager.sessionFactory == null
+                || SessionManager.sessionFactory.isClosed()) {
             SessionManager.sessionFactory = (SessionFactory) NewHibernateUtil.getSessionFactory();
         }
         return SessionManager.sessionFactory;

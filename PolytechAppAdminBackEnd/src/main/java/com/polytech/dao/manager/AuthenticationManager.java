@@ -17,14 +17,13 @@ import java.util.Random;
  */
 public class AuthenticationManager {
     
-    public SessionManager manager;
     //Pour faire les requêtes sur les utilisateurs
     public UtilisateurManager userManager;
     //La clé API retournée
     public int APIkey = 0;
     
-    public AuthenticationManager(SessionManager manager) {
-        this.manager = manager;
+    public AuthenticationManager() {
+        
     }
     
     /**
@@ -34,7 +33,7 @@ public class AuthenticationManager {
      * Authentification d'un utilisateur
     */
     public int auth(String _user, String _password){
-        userManager = new UtilisateurManager(manager);
+        userManager = new UtilisateurManager();
         List<Utilisateur> users = userManager.getUtilisateurByLogin(_user);
         Utilisateur user = users.get(0);
             if(user.getMdp().equals(_password)){
