@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProjectInfoController {
 
-    EntrepriseManager entrepriseManager =  new EntrepriseManager();
+    EntrepriseManager entrepriseManager = new EntrepriseManager();
     EtudiantManager etuManager = new EtudiantManager();
     SalleManager salleManager = new SalleManager();
-    
+
     @RequestMapping("/")
     public ProjectInfo hello() {
         return new ProjectInfo("0.1.0", "PolytechAppAdmin");
@@ -34,32 +34,32 @@ public class ProjectInfoController {
 
     @RequestMapping(value = "/entreprises", method = RequestMethod.GET)
     public Object allEnterprise() {
-        
+
         try {
-            
+
             List<Entreprise> entreprises = entrepriseManager.getAllEnterprise();
             return entreprises;
-            
+
         } catch (Exception ex) {
-            
+
             return ExceptionHandler.handle(ex);
-            
+
         }
 
     }
 
     @RequestMapping(value = "/entreprise/{id}", method = RequestMethod.GET)
     public Object oneEnterprise(@PathVariable String id) {
-        
+
         try {
-            
+
             Entreprise e = entrepriseManager.getEnterpriseById(Integer.parseInt(id));
             return e;
-            
+
         } catch (Exception ex) {
-            
+
             return ExceptionHandler.handle(ex);
-            
+
         }
     }
 
@@ -67,10 +67,10 @@ public class ProjectInfoController {
     public String deleteEnterprise(@PathVariable String id) {
         return "Delete l'entreprise " + id + ".";
     }
+
     
     
-   
-    //ETUDIANTS
+    ////==================== ETUDIANT ======================================
     /**
      * GET all students
      *
@@ -104,8 +104,9 @@ public class ProjectInfoController {
 
     /**
      * GET all etudiants
+     *
      * @param id
-     * @return 
+     * @return
      */
     @RequestMapping(value = "/etudiant/{id}", method = RequestMethod.DELETE)
     public Object deleteEtudiant(@PathVariable String id) {
@@ -122,7 +123,9 @@ public class ProjectInfoController {
         return " Erreur : " + error;
     }
 
-    //SALLES
+    
+    //==================== SALLE ======================================
+    
     @RequestMapping(value = "/salles", method = RequestMethod.GET)
     public Object allSalle() {
 
@@ -136,16 +139,16 @@ public class ProjectInfoController {
     }
 
     @RequestMapping(value = "/salle/{id}", method = RequestMethod.GET)
-    public String oneSalle(@PathVariable String id) {
-            Salle salle = null;
-            String error = "";
+    public Object oneSalle(@PathVariable String id) {
+        Salle salle = null;
+        String error = "";
         try {
-           salle = salleManager.getSalleById(Integer.parseInt(id));
-            
+            salle = salleManager.getSalleById(Integer.parseInt(id));
+
         } catch (Exception ex) {
-              error = ex.getMessage();
+            error = ex.getMessage();
         }
-        return " Erreur : " + error;
+        return salle;
     }
 
     @RequestMapping(value = "/salle/{id}", method = RequestMethod.DELETE)
@@ -167,13 +170,11 @@ public class ProjectInfoController {
     @RequestMapping(value = "/salle/add", method = RequestMethod.POST)
     public @ResponseBody
     String createSalle(@RequestBody Salle salle) {
-        
-        
+
         // json fonctionnement d'envoi 
         // {"id" : 33 ,"libelle":"Salle 9994","localisation":"36 eme etage fond","capacite":350}
-        
         String error = "";
-        salle.setLibelle("SALUTTTTTTTT");
+        salle.setLibelle("ZzZzzZzZzZ");
 
         try {
             salleManager.addSalle(salle);
@@ -182,6 +183,5 @@ public class ProjectInfoController {
         }
         return " Erreur : " + error;
 
-        
     }
 }
