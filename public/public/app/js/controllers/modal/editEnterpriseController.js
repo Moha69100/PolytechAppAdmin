@@ -23,6 +23,8 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
          */
         $scope.cancel = function () {
             //  $modalInstance.dismiss();
+            $scope.$apply(function () {$location.path("/admin-enterprise");});
+            
         };
         $scope.init();
     }]);

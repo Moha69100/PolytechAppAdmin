@@ -5,7 +5,7 @@
  */
 app.factory('enterpriseResource', ['$resource', function ($resource) {
 
-        var BASE_URL = 'http://localhost:8080';
+        var BASE_URL = 'http://localhost:8090';
         var FIND_ALL = BASE_URL + '/entreprises';
         var GET_BY_ID = BASE_URL + '/entreprise/:id';
 

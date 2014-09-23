@@ -88,7 +88,7 @@ public class EtudiantManager {
     }
     
     
-    public Boolean addSalle(Etudiant etu) throws Exception {
+    public Boolean addEtudiant(Etudiant etu) throws Exception {
 
         Session session = SessionManager.openSession();
         Transaction tx = null;
