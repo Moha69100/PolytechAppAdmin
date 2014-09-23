@@ -25,6 +25,7 @@ public class Salle  implements java.io.Serializable {
     public Salle(int id) {
         this.id = id;
     }
+    
     public Salle(int id, String libelle, String localisation, Integer capacite, Set entreprisepresences, Set evenementsalles) {
        this.id = id;
        this.libelle = libelle;

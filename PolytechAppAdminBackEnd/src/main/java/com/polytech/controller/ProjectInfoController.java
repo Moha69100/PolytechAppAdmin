@@ -27,43 +27,44 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 public class ProjectInfoController {
 
-    EntrepriseManager entrepriseManager =  new EntrepriseManager();
+    EntrepriseManager entrepriseManager = new EntrepriseManager();
     EtudiantManager etuManager = new EtudiantManager();
     SalleManager salleManager = new SalleManager();
-    
+
     @RequestMapping("/")
     public ProjectInfo hello() {
         return new ProjectInfo("0.1.0", "PolytechAppAdmin");
     }
 
+    //==================== ENTREPRISE ======================================
     @RequestMapping(value = "/entreprises", method = RequestMethod.GET)
     public Object allEnterprise() {
-        
+
         try {
-            
+
             List<Entreprise> entreprises = entrepriseManager.getAllEnterprise();
             return entreprises;
-            
+
         } catch (Exception ex) {
-            
+
             return ExceptionHandler.handle(ex);
-            
+
         }
 
     }
 
     @RequestMapping(value = "/entreprise/{id}", method = RequestMethod.GET)
     public Object oneEnterprise(@PathVariable String id) {
-        
+
         try {
-            
+
             Entreprise e = entrepriseManager.getEnterpriseById(Integer.parseInt(id));
             return e;
-            
+
         } catch (Exception ex) {
-            
+
             return ExceptionHandler.handle(ex);
-            
+
         }
     }
 
@@ -80,12 +81,26 @@ public class ProjectInfoController {
             return ExceptionHandler.handle(ex);
             
         }
-        
     }
-    
-    
-   
-    //ETUDIANTS
+
+    @RequestMapping(value = "/entreprise/add", method = RequestMethod.POST)
+    public @ResponseBody
+    String createEntreprise(@RequestBody Entreprise ent) {
+
+        // json fonctionnement d'envoi 
+        // {"id" : 33 ,"libelle":"Salle 9994","localisation":"36 eme etage fond","capacite":350}
+        String error = "";
+        ent.setAdresse("TEST ADREESSE");
+        try {
+            entrepriseManager.addEntreprise(ent);
+        } catch (Exception e) {
+            error = e.getMessage();
+        }
+        return " Erreur : " + error;
+
+    }
+
+    //==================== ETUDIANT ======================================
     /**
      * GET all students
      *
@@ -119,8 +134,9 @@ public class ProjectInfoController {
 
     /**
      * GET all etudiants
+     *
      * @param id
-     * @return 
+     * @return
      */
     @RequestMapping(value = "/etudiant/{id}", method = RequestMethod.DELETE)
     public Object deleteEtudiant(@PathVariable String id) {
@@ -137,21 +153,40 @@ public class ProjectInfoController {
         return " Erreur : " + error;
     }
 
-    @RequestMapping(value="/etudiants/upload", method=RequestMethod.GET)
-    public @ResponseBody String provideUploadInfo() {
+    @RequestMapping(value = "/etudiant/add", method = RequestMethod.POST)
+    public @ResponseBody
+    String createEtudiant(@RequestBody Etudiant etu) {
+
+        // json fonctionnement d'envoi 
+        // {"id" : 33 ,"libelle":"Salle 9994","localisation":"36 eme etage fond","capacite":350}
+        String error = "";
+        etu.setAdresse("TEST ADRESSE");
+
+        try {
+            etuManager.addEtudiant(etu);
+        } catch (Exception e) {
+            error = e.getMessage();
+        }
+        return " Erreur : " + error;
+
+    }
+
+    @RequestMapping(value = "/etudiants/upload", method = RequestMethod.GET)
+    public @ResponseBody
+    String provideUploadInfo() {
         return "You can upload a file by posting to this same URL.";
     }
 
-    
-    @RequestMapping(value="/etudiants/upload", method=RequestMethod.POST)
-    public @ResponseBody String handleFileUpload(@RequestParam("file") MultipartFile file){
+    @RequestMapping(value = "/etudiants/upload", method = RequestMethod.POST)
+    public @ResponseBody
+    String handleFileUpload(@RequestParam("file") MultipartFile file) {
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
-                
+
                 Ciell2CsvReader reader = new Ciell2CsvReader();
                 reader.parse(bytes);
-                
+
                 return "You successfully uploaded file";
             } catch (Exception e) {
                 return "You failed to upload => " + e.getMessage();
@@ -160,8 +195,8 @@ public class ProjectInfoController {
             return "You failed to upload file because the file was empty.";
         }
     }
-    
-    //SALLES
+
+    //==================== SALLE ======================================
     @RequestMapping(value = "/salles", method = RequestMethod.GET)
     public Object allSalle() {
 
@@ -175,16 +210,16 @@ public class ProjectInfoController {
     }
 
     @RequestMapping(value = "/salle/{id}", method = RequestMethod.GET)
-    public String oneSalle(@PathVariable String id) {
-            Salle salle = null;
-            String error = "";
+    public Object oneSalle(@PathVariable String id) {
+        Salle salle = null;
+        String error = "";
         try {
-           salle = salleManager.getSalleById(Integer.parseInt(id));
-            
+            salle = salleManager.getSalleById(Integer.parseInt(id));
+
         } catch (Exception ex) {
-              error = ex.getMessage();
+            error = ex.getMessage();
         }
-        return " Erreur : " + error;
+        return salle;
     }
 
     @RequestMapping(value = "/salle/{id}", method = RequestMethod.DELETE)
@@ -206,13 +241,11 @@ public class ProjectInfoController {
     @RequestMapping(value = "/salle/add", method = RequestMethod.POST)
     public @ResponseBody
     String createSalle(@RequestBody Salle salle) {
-        
-        
+
         // json fonctionnement d'envoi 
         // {"id" : 33 ,"libelle":"Salle 9994","localisation":"36 eme etage fond","capacite":350}
-        
         String error = "";
-        salle.setLibelle("SALUTTTTTTTT");
+        salle.setLibelle("ZzZzzZzZzZ");
 
         try {
             salleManager.addSalle(salle);
@@ -221,6 +254,5 @@ public class ProjectInfoController {
         }
         return " Erreur : " + error;
 
-        
     }
 }

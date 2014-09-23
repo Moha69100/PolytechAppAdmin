@@ -10,7 +10,7 @@ app.controller('enterpriseController', ['$rootScope', '$scope', '$http', '$timeo
         };
 
         $scope.addEnterprise = function () {
-            $location.search('enterprise').path('/edit-enterprise');
+            $location.path('/edit-enterprise');
         };
 
         $scope.editEnterprise = function (enterpriseEdited) {
