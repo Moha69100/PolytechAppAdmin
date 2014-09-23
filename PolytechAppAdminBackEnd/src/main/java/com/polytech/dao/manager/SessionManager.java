@@ -15,17 +15,18 @@ import webadmin.NewHibernateUtil;
  */
 public final class SessionManager {
 
-    private SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory;
 
-    public SessionManager() {
-
-        sessionFactory = (SessionFactory) NewHibernateUtil.getSessionFactory();
-
+    private static SessionFactory getInstance() {
+        
+        if (SessionManager.sessionFactory == null) {
+            SessionManager.sessionFactory = (SessionFactory) NewHibernateUtil.getSessionFactory();
+        }
+        return SessionManager.sessionFactory;
     }
     
-    public Session getSession() {
-        
-        return sessionFactory.openSession();
-        
+    public static Session openSession() {
+        return SessionManager.getInstance().openSession();  
     }
+     
 }

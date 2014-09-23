@@ -1,4 +1,3 @@
-
 var app = angular.module('App', ['ui.bootstrap', 'ngResource', 'ngRoute']);
 app.config(['$routeProvider', function ($routeProvider) {
 
@@ -11,6 +10,12 @@ app.config(['$routeProvider', function ($routeProvider) {
         }).when('/admin-student', {
             controller: 'studentController',
             templateUrl: 'app/partials/admin/students.html',
+            menu: {
+                id: 'menu-student'
+            }
+        }).when('/edit-student', {
+            controller: 'editStudentController',
+            templateUrl: 'app/partials/students/studentForm.html',
             menu: {
                 id: 'menu-student'
             }
@@ -31,12 +36,6 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'app/partials/admin/logout.html',
             menu: {
                 id: 'menu-logout'
-            }
-        }).when('/edit-enterprise', {
-            controller: 'editEnterpriseController',
-            templateUrl: 'app/partials/enterprises/editEnterprise.html',
-            menu: {
-                id: 'menu-enterprise'
             }
         }).when('/admin-events', {
             controller: 'eventsController',

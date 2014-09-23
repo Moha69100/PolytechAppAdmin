@@ -1,19 +1,22 @@
 'use strict';
 
-app.service('roomResource', ['$resource', function($resource) {
+/**
+ * Resource Requete
+ */
+app.factory('studentResource', ['$resource', function ($resource) {
 
-        var BASE_URL = 'http://localhost:8080';
-        var FIND_ALL = BASE_URL + '/salles';
-        var GET_BY_ID = BASE_URL + '/salles/:id';
+        var BASE_URL = 'http://localhost:8090';
+        var FIND_ALL = BASE_URL + '/etudiants';
+        var GET_BY_ID = BASE_URL + '/etudiants/:id';
 
         var actions = {
-            listRooms:
+            listStudents:
                     {
                         method: 'GET',
                         isArray: true,
                         url: FIND_ALL
                     },
-            getRoom: {
+            getStudent: {
                 method: 'GET',
                 isArray: false,
                 url: GET_BY_ID
@@ -21,4 +24,6 @@ app.service('roomResource', ['$resource', function($resource) {
         };
 
         return $resource(BASE_URL, {id: '@id'}, actions);
+
     }]);
+

@@ -1,8 +1,12 @@
-app.controller('studentController', ['$scope', '$modal', function ($scope, $modal) {
+app.controller('studentController', ['$rootScope', '$scope', '$http', '$timeout', '$location', '$window', "studentResource", "$modal",
+    function ($rootScope, $scope, $http, $timeout, $location, $window, studentResource, $modal)  {
 
 
         var init = function () {
-            $scope.students = [{
+            studentResource.listStudents(function (data) {
+                $scope.students = data;
+            });
+            /*$scope.students = [{
                     id: 1,
                     nom: "TOTO",
                     prenom: "Test",
@@ -22,7 +26,7 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
                     etablissement: "IUT A Lyon",
                     statCandidature: "Acceptée",
                     remarques: "rien a dire"
-                }];
+                }];*/
 
         };
 
@@ -52,25 +56,7 @@ app.controller('studentController', ['$scope', '$modal', function ($scope, $moda
 
 
         $scope.editStudent = function (studentEdited) {
-
-            // ouverture modale, avec le type à modifier, et un flag
-            var modalInstance = $modal.open({
-                templateUrl: 'app/partials/students/studentForm.html',
-                controller: 'editStudentModalController',
-                resolve: {
-                    items: function () {
-                        return {studentEdited: angular.copy(studentEdited), appel: "editStudent"};
-                    }
-
-                }
-            });
-            // gestion du retour de la modale : raffraichir page si tout va
-            // bien , log sinon
-            modalInstance.result.then(function (modifiedStudent) {
-                $scope.students[modifiedStudent.id] = modifiedStudent;
-            }, function () {
-                console.log("modal dismissed");
-            });
+            $location.search('student', studentEdited.id).path('/edit-student');
         };
 
         init();

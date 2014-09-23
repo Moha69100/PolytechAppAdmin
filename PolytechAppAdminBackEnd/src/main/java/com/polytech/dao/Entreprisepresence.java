@@ -1,5 +1,5 @@
 package com.polytech.dao;
-// Generated 22 sept. 2014 11:47:31 by Hibernate Tools 3.6.0
+// Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -11,9 +11,9 @@ public class Entreprisepresence  implements java.io.Serializable {
 
 
      private int id;
+     private Entreprise entreprise;
      private Evenement evenement;
      private Personnecontact personnecontact;
-     private Entreprise entreprise;
      private Salle salle;
      private Boolean entreprisepresence;
      private Date dureeentretien;
@@ -25,11 +25,11 @@ public class Entreprisepresence  implements java.io.Serializable {
     public Entreprisepresence(int id) {
         this.id = id;
     }
-    public Entreprisepresence(int id, Evenement evenement, Personnecontact personnecontact, Entreprise entreprise, Salle salle, Boolean entreprisepresence, Date dureeentretien) {
+    public Entreprisepresence(int id, Entreprise entreprise, Evenement evenement, Personnecontact personnecontact, Salle salle, Boolean entreprisepresence, Date dureeentretien) {
        this.id = id;
+       this.entreprise = entreprise;
        this.evenement = evenement;
        this.personnecontact = personnecontact;
-       this.entreprise = entreprise;
        this.salle = salle;
        this.entreprisepresence = entreprisepresence;
        this.dureeentretien = dureeentretien;
@@ -41,6 +41,13 @@ public class Entreprisepresence  implements java.io.Serializable {
     
     public void setId(int id) {
         this.id = id;
+    }
+    public Entreprise getEntreprise() {
+        return this.entreprise;
+    }
+    
+    public void setEntreprise(Entreprise entreprise) {
+        this.entreprise = entreprise;
     }
     public Evenement getEvenement() {
         return this.evenement;
@@ -55,13 +62,6 @@ public class Entreprisepresence  implements java.io.Serializable {
     
     public void setPersonnecontact(Personnecontact personnecontact) {
         this.personnecontact = personnecontact;
-    }
-    public Entreprise getEntreprise() {
-        return this.entreprise;
-    }
-    
-    public void setEntreprise(Entreprise entreprise) {
-        this.entreprise = entreprise;
     }
     public Salle getSalle() {
         return this.salle;
