@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22 sept. 2014 11:47:32 by Hibernate Tools 3.6.0 -->
+<!-- Generated 23 sept. 2014 09:06:03 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.polytech.dao.Utilisateur" table="utilisateur" schema="appschema">
+    <class name="com.polytech.dao.Utilisateur" table="utilisateur" schema="appschema" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="login" type="string">
-            <column name="login" />
+            <column name="login" unique="true" />
         </property>
         <property name="mdp" type="string">
             <column name="mdp" />
