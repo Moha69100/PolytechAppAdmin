@@ -1,12 +1,38 @@
 <div class="modal-header">
-    <h3>Etudiant</h3>
+    <label for="firstName" class="col-sm-2 control-label">{{student.prenom}}  {{student.nom}}</label><br>
 </div>
 
-<div class="row">
-  <div class="col-md-12"><label for="firstName" class="col-sm-2 control-label">{{student.prenom}}  </label>
-  <label for="firstName" class="col-sm-2 control-label">{{student.nom}}</label></div>
+<div class="row">    
+    <div class="col-sm-12">    
+        <div class="row">
+            <div class="col-xs-8 col-sm-6">
+                <label for="lastName" class="col-sm-12 control-label">Informations générales </label>
+                
+                <label for="lastName" class="col-sm-2 control-label">Nom : </label>
+                <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                    <input type="text" class="form-control" id="lastName" ng-model="student.nom" placeholder="Nom ...">
+                </div><br>
+                <label for="firstName" class="col-sm-2 control-label">Prénom</label>
+                <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                    <input type="text" class="form-control" id="firstName" ng-model="student.prenom" placeholder="Prénom ...">
+                </div><br>
+                <label for="birthDate" class="col-sm-2 control-label">Date de naissance : </label>
+                <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                    <input type="text" class="form-control" id="birthDate" ng-model="student.datenaissance" placeholder="Date de naissance ...">
+                </div><br>
+                <label for="country" class="col-sm-2 control-label">Pays : </label>
+                <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10">
+                    <input type="text" class="form-control" id="country" ng-model="student.pays" placeholder="Pays ...">
+                </div><br>
+                
+            </div>
+            <div class="col-xs-4 col-sm-6">
+                Contact
+            </div>
+        </div>
+    </div>
 </div>
 
 
 
-    
+
