@@ -5,9 +5,9 @@
  */
 app.factory('studentResource', ['$resource', function ($resource) {
 
-        var BASE_URL = 'http://localhost:8080';
+        var BASE_URL = 'http://localhost:8090';
         var FIND_ALL = BASE_URL + '/etudiants';
-        var GET_BY_ID = BASE_URL + '/etudiants/:id';
+        var GET_BY_ID = BASE_URL + '/etudiant/:id';
 
         var actions = {
             listStudents:
