@@ -7,6 +7,8 @@
 package com.polytech.dao.manager;
 
 import com.polytech.dao.Utilisateur;
+import java.util.List;
+import org.hibernate.Query;
 
 /**
  * Interrogation des utilisateurs
@@ -24,8 +26,10 @@ public class UtilisateurManager {
     }
     
     //Trouver un utilisateur avec son login
-    public Utilisateur getUtilisateurByLogin(String login){
-        return null;
+    public List<Utilisateur> getUtilisateurByLogin(String login){
+        String hql = "from appschema.utilisateur where user='"+login+"'";
+         Query query = manager.getSession().createQuery(hql);
+         return  query.list();
     }
     
 }

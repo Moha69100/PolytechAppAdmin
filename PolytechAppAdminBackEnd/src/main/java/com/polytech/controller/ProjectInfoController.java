@@ -3,10 +3,11 @@ package com.polytech.controller;
 import com.polytech.dao.Entreprise;
 import com.polytech.dao.Etudiant;
 import com.polytech.dao.Salle;
-import com.polytech.dao.manager.SessionManager;
+import com.polytech.dao.manager.AuthenticationManager;
 import com.polytech.dao.manager.EntrepriseManager;
 import com.polytech.dao.manager.EtudiantManager;
 import com.polytech.dao.manager.SalleManager;
+import com.polytech.dao.manager.SessionManager;
 import com.polytech.model.*;
 import java.util.List;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,6 +26,7 @@ public class ProjectInfoController {
     EntrepriseManager entrepriseManager = new EntrepriseManager(manager);
     EtudiantManager etuManager = new EtudiantManager(manager);
     SalleManager salleManager = new SalleManager(manager);
+    AuthenticationManager authManager = new AuthenticationManager(manager);
 
     @RequestMapping("/")
     public ProjectInfo hello() {
@@ -120,5 +122,22 @@ public class ProjectInfoController {
             error = e.getMessage();
         }
         return " Erreur : " + error;
+    }
+    
+    
+    //AUTHENTIFICATION
+      //Page d'authentification
+    /*
+    @RequestMapping(value = "/auth", method = RequestMethod.GET)
+    public int authentication(@PathVariable String user, @PathVariable String password){
+        return authManager.auth(user,password);
+    }*/
+    
+    
+    @RequestMapping(value = "/auth", method = RequestMethod.GET)
+    public String authentication(){
+        int myInt = authManager.auth("TestUsr","TestPwd");
+        String APIKey = Integer.toString(myInt);
+        return "Utilisateur : TestUsr ; clé API : "+APIKey;
     }
 }

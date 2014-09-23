@@ -8,6 +8,7 @@ package com.polytech.dao.manager;
 
 import com.polytech.dao.Utilisateur;
 import java.math.BigInteger;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -33,7 +34,9 @@ public class AuthenticationManager {
      * Authentification d'un utilisateur
     */
     public int auth(String _user, String _password){
-        Utilisateur user = userManager.getUtilisateurByLogin(_user);
+        userManager = new UtilisateurManager(manager);
+        List<Utilisateur> users = userManager.getUtilisateurByLogin(_user);
+        Utilisateur user = users.get(0);
             if(user.getMdp().equals(_password)){
                 BigInteger bigInt = new BigInteger(16, new Random());
                 APIkey = bigInt.intValue();
