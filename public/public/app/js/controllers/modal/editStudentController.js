@@ -1,5 +1,13 @@
-app.controller("editStudentController", ['$scope', 'studentInstance',
-    function ($scope, studentInstance) {
+app.controller("editStudentController", ['$scope', 'studentResource', '$routeParams',
+    function ($scope, studentResource, $routeParams) {
+        $scope.init = function () {
+            $scope.studentId = $routeParams.enterprise;
+            studentResource.getStudent({"id": $scope.studentId}, function (data) {
+                console.log(data)
+                $scope.student = data;
+            });
+        };
+        
         // 'feedback' serveur
         $scope.feedback = null;
 
@@ -30,8 +38,6 @@ app.controller("editStudentController", ['$scope', 'studentInstance',
         $scope.cancel = function () {
             //$modalInstance.dismiss();
         };
-    }]).config(['$routeProvider', function ($routeProvider) {
-        $routeProvider
     }]);
 
 
