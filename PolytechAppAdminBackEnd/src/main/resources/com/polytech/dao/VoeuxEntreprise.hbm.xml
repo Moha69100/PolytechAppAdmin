@@ -3,19 +3,19 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 22 sept. 2014 11:47:32 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
-    <class name="com.polytech.dao.Offrealternance" table="offrealternance" schema="appschema">
+    <class name="com.polytech.dao.VoeuxEntreprise" table="voeux_entreprise" schema="appschema">
         <id name="id" type="int">
             <column name="id" />
             <generator class="assigned" />
         </id>
+        <many-to-one name="evenement" class="com.polytech.dao.Evenement" fetch="select">
+            <column name="evtid" />
+        </many-to-one>
         <many-to-one name="entreprise" class="com.polytech.dao.Entreprise" fetch="select">
             <column name="entid" />
         </many-to-one>
-        <property name="titre" type="string">
-            <column name="titre" />
-        </property>
-        <property name="url" type="string">
-            <column name="url" />
-        </property>
+        <many-to-one name="etudiant" class="com.polytech.dao.Etudiant" fetch="select">
+            <column name="etuid" />
+        </many-to-one>
     </class>
 </hibernate-mapping>

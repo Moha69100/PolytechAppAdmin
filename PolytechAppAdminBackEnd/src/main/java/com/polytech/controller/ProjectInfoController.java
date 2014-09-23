@@ -74,11 +74,15 @@ public class ProjectInfoController {
         return etudiant;
     }
 
+    /**
+     * GET all etudiants
+     * @param id
+     * @return 
+     */
     @RequestMapping(value = "/etudiant/{id}", method = RequestMethod.DELETE)
     public String deleteEtudiant(@PathVariable String id) {
 
         String error = "";
-
         int idEtu = Integer.parseInt(id);
 
         try {
@@ -124,7 +128,8 @@ public class ProjectInfoController {
     String createSalle(@RequestBody Salle salle) {
         
         
-        // 
+        // json fonctionnement d'envoi 
+        // {"id" : 33 ,"libelle":"Salle 9994","localisation":"36 eme etage fond","capacite":350}
         
         String error = "";
         salle.setLibelle("SALUTTTTTTTT");
