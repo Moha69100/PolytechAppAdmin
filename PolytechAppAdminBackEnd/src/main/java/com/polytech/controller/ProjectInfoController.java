@@ -7,7 +7,9 @@ import com.polytech.dao.manager.EntrepriseManager;
 import com.polytech.dao.manager.EtudiantManager;
 import com.polytech.dao.manager.SalleManager;
 import com.polytech.exception.ExceptionHandler;
+import com.polytech.exception.SuccessHandler;
 import com.polytech.model.*;
+import com.sun.net.httpserver.Authenticator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,8 +66,19 @@ public class ProjectInfoController {
     }
 
     @RequestMapping(value = "/entreprise/{id}", method = RequestMethod.DELETE)
-    public String deleteEnterprise(@PathVariable String id) {
-        return "Delete l'entreprise " + id + ".";
+    public Object deleteEnterprise(@PathVariable String id) {
+        
+        try {
+            
+            int idInt = Integer.parseInt(id);
+            return SuccessHandler.handle(entrepriseManager.deleteEnterpriseById(idInt));
+            
+        } catch (Exception ex) {
+            
+            return ExceptionHandler.handle(ex);
+            
+        }
+        
     }
     
     
