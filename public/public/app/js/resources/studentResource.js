@@ -3,7 +3,7 @@
 /**
  * Resource Requete
  */
-app.factory('enterpriseResource', ['$resource', function ($resource) {
+app.factory('studentResource', ['$resource', function ($resource) {
 
         var BASE_URL = 'http://localhost:8080';
         var FIND_ALL = BASE_URL + '/etudiants';
