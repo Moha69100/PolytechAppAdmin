@@ -1,5 +1,5 @@
 package com.polytech.dao;
-// Generated 22 sept. 2014 11:47:31 by Hibernate Tools 3.6.0
+// Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
 
 
@@ -10,9 +10,9 @@ public class VoeuxEntreprise  implements java.io.Serializable {
 
 
      private int id;
-     private Evenement evenement;
      private Entreprise entreprise;
      private Etudiant etudiant;
+     private Evenement evenement;
 
     public VoeuxEntreprise() {
     }
@@ -21,11 +21,11 @@ public class VoeuxEntreprise  implements java.io.Serializable {
     public VoeuxEntreprise(int id) {
         this.id = id;
     }
-    public VoeuxEntreprise(int id, Evenement evenement, Entreprise entreprise, Etudiant etudiant) {
+    public VoeuxEntreprise(int id, Entreprise entreprise, Etudiant etudiant, Evenement evenement) {
        this.id = id;
-       this.evenement = evenement;
        this.entreprise = entreprise;
        this.etudiant = etudiant;
+       this.evenement = evenement;
     }
    
     public int getId() {
@@ -34,13 +34,6 @@ public class VoeuxEntreprise  implements java.io.Serializable {
     
     public void setId(int id) {
         this.id = id;
-    }
-    public Evenement getEvenement() {
-        return this.evenement;
-    }
-    
-    public void setEvenement(Evenement evenement) {
-        this.evenement = evenement;
     }
     public Entreprise getEntreprise() {
         return this.entreprise;
@@ -55,6 +48,13 @@ public class VoeuxEntreprise  implements java.io.Serializable {
     
     public void setEtudiant(Etudiant etudiant) {
         this.etudiant = etudiant;
+    }
+    public Evenement getEvenement() {
+        return this.evenement;
+    }
+    
+    public void setEvenement(Evenement evenement) {
+        this.evenement = evenement;
     }
 
 
