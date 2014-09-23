@@ -5,10 +5,8 @@
  */
 package com.polytech.dao.manager;
 
-import com.polytech.dao.Entreprise;
 import com.polytech.dao.Etudiant;
 import java.util.List;
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -18,19 +16,26 @@ import org.hibernate.Session;
  */
 public class EtudiantManager {
 
-    public Session session;
-
-    public EtudiantManager(SessionManager manager) {
-        this.session = manager.getSession();
-    }
-
     /**
      * Retrieve all students in database
      * @return 
      */
-    public List<Etudiant> getAllEtudiant() {
-        Query query = session.createQuery("from Etudiant");
-        return query.list();
+    public List<Etudiant> getAllEtudiant() throws Exception {
+        
+        Session session = SessionManager.openSession();
+        
+        try {
+            
+            Query query = session.createQuery("from Etudiant");
+            return query.list();
+            
+        } finally {
+            
+            session.close();
+            
+        }
+        
+        
     }
 
     /**
@@ -39,8 +44,19 @@ public class EtudiantManager {
      * @throws Exception 
      */
     public void deleteEtudiantById(int etu_id) throws Exception {
-        Etudiant ex = (Etudiant) session.get(Etudiant.class, etu_id);
-        session.delete(ex);
+        
+        Session session = SessionManager.openSession();
+        
+        try {
+            
+            Etudiant ex = (Etudiant) session.get(Etudiant.class, etu_id);
+            session.delete(ex);
+            
+        } finally {
+            
+            session.close();
+            
+        }
     }
 
     /**
@@ -48,8 +64,19 @@ public class EtudiantManager {
      * @param id : id etudiant
      * @return etudiant avec id correspondant
      */
-    public Etudiant getEtudiantByID(int id) {
-        return (Etudiant) session.get(Etudiant.class, id);
+    public Etudiant getEtudiantByID(int id) throws Exception  {
+        
+        Session session = SessionManager.openSession();
+        
+        try {
+            
+            return (Etudiant) session.get(Etudiant.class, id);
+            
+        } finally {
+            
+            session.close();
+            
+        }
     }
 
 }
