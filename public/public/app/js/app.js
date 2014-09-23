@@ -1,4 +1,3 @@
-
 var app = angular.module('App', ['ui.bootstrap', 'ngResource', 'ngRoute']);
 app.config(['$routeProvider', function ($routeProvider) {
 
@@ -31,12 +30,6 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'app/partials/admin/logout.html',
             menu: {
                 id: 'menu-logout'
-            }
-        }).when('/edit-enterprise', {
-            controller: 'editEnterpriseController',
-            templateUrl: 'app/partials/enterprises/editEnterprise.html',
-            menu: {
-                id: 'menu-enterprise'
             }
         }).when('/admin-events', {
             controller: 'eventsController',

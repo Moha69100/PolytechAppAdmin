@@ -5,34 +5,73 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class EntrepriseManager  {
+public class EntrepriseManager {
 
-    public SessionManager manager;
-    
-    public EntrepriseManager(SessionManager manager) {
-        this.manager = manager;
+    public List<Entreprise> getAllEnterprise() throws Exception {
+
+        Session session = SessionManager.openSession();
+
+        try {
+
+            Query query = session.createQuery("from Entreprise");
+            List<Entreprise> list = query.list();
+            return list;
+            
+        } catch(Exception e) {
+            
+            throw e;
+            
+        } finally {
+
+            session.close();
+
+        }
+
     }
-    
-    public List<Entreprise> getAllEnterprise() {
+
+    public Entreprise getEnterpriseById(int id) throws Exception {
         
-        Query query = manager.getSession().createQuery("from Entreprise");
+        Session session = SessionManager.openSession();
         
-        return query.list();
+        try {
+
+            Entreprise e = (Entreprise) session.get(Entreprise.class, id);
+            
+            if (e == null) {
+                throw new NullPointerException();
+            }
+            
+            return e;
+            
+        } catch(Exception e) {
+            
+            throw e;
+            
+        } finally {
+            
+            session.close();
+            
+        }
+
     }
-    
-    public Entreprise getEnterpriseById(int id) {
+
+    public Boolean deleteEnterpriseById(int id) throws Exception {
         
-        return (Entreprise) manager.getSession().get(Entreprise.class, id);
+        Session session = SessionManager.openSession();
         
-    }
-    
-    public Boolean deleteEnterpriseById(int id) {
+        try {
+            
+            Entreprise e = (Entreprise) session.get(Entreprise.class, id);
+            session.delete(e);
+            
+        } finally {
+            
+            session.close();
+            
+        }
         
-        Session sess = manager.getSession();
-        Entreprise e = (Entreprise) sess.get(Entreprise.class, id);
-        sess.delete(e);
         return true;
-        
+
     }
 
 }

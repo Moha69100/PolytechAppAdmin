@@ -16,38 +16,69 @@ import org.hibernate.Session;
  */
 public class SalleManager {
 
-    public Session session;
-
-    public SalleManager(SessionManager manager) {
-        this.session = manager.getSession();
-
+    public List<Salle> getAllSalle() throws Exception {
+        
+        Session session = SessionManager.openSession();
+        
+        try {
+            
+            Query query = session.createQuery("from Salle");
+            return query.list();
+            
+        } finally {
+            
+            session.close();
+            
+        }
+        
     }
-
-    public List<Salle> getAllSalle() {
-
-        Query query = session.createQuery("from Salle");
-
-        return query.list();
+    
+    public Salle getSalleById(int id)  throws Exception {
+        
+        Session session = SessionManager.openSession();
+        
+        try {
+            
+            return (Salle) session.get(Salle.class, id);
+            
+        } finally {
+            
+            session.close();
+            
+        }
+        
     }
-
-    public Salle getSalleById(int id) {
-
-        return (Salle) session.get(Salle.class, id);
-
+    
+    public Boolean deleteSalleById(int id) throws Exception {
+        
+        Session session = SessionManager.openSession();
+        
+        try {
+            
+            Salle e = (Salle) session.get(Salle.class, id);
+            session.delete(e);
+            return true;
+            
+        } finally {
+            
+            session.close();
+            
+        }
+        
     }
-
-    public Boolean deleteSalleById(int id) {
-
-        Salle e = (Salle) session.get(Salle.class, id);
-        session.delete(e);
-        return true;
-
-    }
-
-    public Boolean addSalle(Salle salle) throws Exception {
-
+    
+      public Boolean addSalle(Salle salle) throws Exception {
+              
+        Session session = SessionManager.openSession();
+  try {
         session.save(salle);
         return true;
+        
+            } finally {
+            
+            session.close();
+            
+        }
     }
 
 }

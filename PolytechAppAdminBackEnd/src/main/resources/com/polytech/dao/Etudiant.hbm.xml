@@ -92,7 +92,7 @@
         <property name="candidstatut" type="string">
             <column name="candidstatut" />
         </property>
-        <set name="diplomes" table="etudiantdiplome" inverse="false" lazy="true" fetch="select">
+        <set name="diplomes" table="etudiantdiplome" inverse="false" lazy="false" fetch="select">
             <key>
                 <column name="etuid" not-null="true" />
             </key>
@@ -100,7 +100,7 @@
                 <column name="dipid" not-null="true" />
             </many-to-many>
         </set>
-        <set name="evenements" table="etudiantevenement" inverse="false" lazy="true" fetch="select">
+        <set name="evenements" table="etudiantevenement" inverse="false" lazy="false" fetch="select">
             <key>
                 <column name="etuid" not-null="true" />
             </key>
@@ -108,19 +108,19 @@
                 <column name="evtid" not-null="true" />
             </many-to-many>
         </set>
-        <set name="voeuxEtudiants" table="voeux_etudiant" inverse="true" lazy="true" fetch="select">
+        <set name="voeuxEtudiants" table="voeux_etudiant" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="etuid" />
             </key>
             <one-to-many class="com.polytech.dao.VoeuxEtudiant" />
         </set>
-        <set name="entretiens" table="entretien" inverse="true" lazy="true" fetch="select">
+        <set name="entretiens" table="entretien" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="etuid" />
             </key>
             <one-to-many class="com.polytech.dao.Entretien" />
         </set>
-        <set name="voeuxEntreprises" table="voeux_entreprise" inverse="true" lazy="true" fetch="select">
+        <set name="voeuxEntreprises" table="voeux_entreprise" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="etuid" />
             </key>
