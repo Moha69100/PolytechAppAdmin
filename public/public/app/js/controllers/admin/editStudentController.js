@@ -31,13 +31,7 @@ app.controller("editStudentController", ['$scope', 'studentInstance',
             //$modalInstance.dismiss();
         };
     }]).config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/admin-student-modify', {
-            controller: 'editStudentController',
-            templateUrl: 'app/partials/students/studentForm.html',
-            menu: {
-                id: 'menu-student'
-            }
-        })
+        $routeProvider
     }]);
 
 

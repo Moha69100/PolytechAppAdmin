@@ -52,8 +52,7 @@ app.controller('studentController', ['$scope', '$modal', '$location', 'studentIn
 
 
         $scope.editStudent = function (studentEdited) {
-            studentInstance.setStudent(studentEdited);
-            $location.url('/admin-student-modify');
+            $location.search('student', studentEdited.id).path('/edit-student');
         };
 
         init();
