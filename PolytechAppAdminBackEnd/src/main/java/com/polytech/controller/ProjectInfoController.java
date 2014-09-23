@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @ComponentScan
 @RestController
@@ -122,6 +124,30 @@ public class ProjectInfoController {
         return " Erreur : " + error;
     }
 
+    @RequestMapping(value="/etudiants/upload", method=RequestMethod.GET)
+    public @ResponseBody String provideUploadInfo() {
+        return "You can upload a file by posting to this same URL.";
+    }
+
+    
+    @RequestMapping(value="/etudiants/upload", method=RequestMethod.POST)
+    public @ResponseBody String handleFileUpload(@RequestParam("file") MultipartFile file){
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+                
+                Ciell2CsvReader reader = new Ciell2CsvReader();
+                reader.parse(bytes);
+                
+                return "You successfully uploaded file";
+            } catch (Exception e) {
+                return "You failed to upload => " + e.getMessage();
+            }
+        } else {
+            return "You failed to upload file because the file was empty.";
+        }
+    }
+    
     //SALLES
     @RequestMapping(value = "/salles", method = RequestMethod.GET)
     public Object allSalle() {
