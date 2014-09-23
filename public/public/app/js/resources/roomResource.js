@@ -1,30 +1,24 @@
 'use strict';
 
-app.service('roomResource', ['$http', function($http){
-        var root = this;
-        
-        this.rooms = [];
-        
-        this.findAll = function() {
-            if (angular.isArray(root.rooms) && root.rooms.length !== 0) {
-                return root.rooms;
-            } else {
-                root.rooms = [
+app.service('roomResource', ['$resource', function($resource) {
+
+        var BASE_URL = 'http://localhost:8080';
+        var FIND_ALL = BASE_URL + '/salles';
+        var GET_BY_ID = BASE_URL + '/salles/:id';
+
+        var actions = {
+            listRooms:
                     {
-                        'id': 1,
-                        'libelle':'123',
-                        'localisation':'premier etage',
-                        'capacite':20
+                        method: 'GET',
+                        isArray: true,
+                        url: FIND_ALL
                     },
-                    {
-                        'id': 2,
-                        'libelle':'123',
-                        'localisation':'premier etage',
-                        'capacite':18
-                    }
-                ] 
+            getRoom: {
+                method: 'GET',
+                isArray: false,
+                url: GET_BY_ID
             }
-            
-            return root.rooms;
-        }
-}]);
+        };
+
+        return $resource(BASE_URL, {id: '@id'}, actions);
+    }]);
