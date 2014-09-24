@@ -1,39 +1,5 @@
 
-@media (min-width: 768px) {
-    .navbar-collapse {
-        height: auto;
-        border-top: 0;
-        box-shadow: none;
-        max-height: none;
-        padding-left:0;
-        padding-right:0;
-    }
-    .navbar-collapse.collapse {
-        display: block !important;
-        width: auto !important;
-        padding-bottom: 0;
-        overflow: visible !important;
-    }
-    .navbar-collapse.in {
-        overflow-x: visible;
-    }
 
-    .poly-menu
-    {
-        position : absolute;
-        top : 0;
-        z-index : 1000;
-        left : 0;
-        max-width:150px;
-        margin-right: 0;
-        margin-left: 0;
-    }	
-
-    .navbar-right .dropdown-menu {left:0;right:auto;}
-    .navbar-collapse .navbar-nav.navbar-right:last-child {
-        margin-right: 0;
-    }
-}  
 .poly-menu>div>.panel-group>.panel-default > .panel-heading{
     background-color: #888 !important;
 }
@@ -43,9 +9,6 @@
     border-color : #888 !important;
     box-shadow: 0px 0px 0px #888;
 }
-
-
-
 .poly-menu>div>.panel-group>.panel-default > .panel-heading>h4{
     color :#f0f0f0;
     font-size : 13px;
@@ -54,7 +17,6 @@
     color :#fff;
     text-decoration: none !important;
 }
-
 
 .poly-menu>div>.panel-group>.panel-default>.panel-collapse>.panel-body{
     background-color: #888 !important;

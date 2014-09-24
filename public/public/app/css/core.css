@@ -8,7 +8,7 @@ body {
 */
 body > .header {
   position: relative;
-  max-height: 100px;
+  max-height: 120px;
   z-index: 1030;
   background-color: #45b5e4;
 }
@@ -112,8 +112,8 @@ body > .header .logo .icon {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     line-height: 20px;
   }
   .navbar .navbar-right {
@@ -235,6 +235,52 @@ body > .header .logo .icon {
 .user-panel > .info > a > .ion,
 .user-panel > .info > a > .glyphicon {
   margin-right: 3px;
+}
+
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ *  Gives us the push menu effect
+ */
+@media screen and (max-width: 992px) {
+  .relative {
+    position: relative;
+  }
+  .row-offcanvas-right .sidebar-offcanvas {
+    right: -250px;
+  }
+  .row-offcanvas-left .sidebar-offcanvas {
+    left: -250px;
+    top: 60px;
+  }
+  .row-offcanvas-right.active {
+    right: 250px;
+  }
+  .row-offcanvas-left.active {
+    left: 250px;
+  }
+  .sidebar-offcanvas {
+    left: 0;
+  }
+  body.fixed .sidebar-offcanvas {
+    margin-top: 50px;
+    left: -250px;
+  }
+  body.fixed .row-offcanvas-left.active .navbar {
+    left: 250px !important;
+    right: 0;
+  }
+  body.fixed .row-offcanvas-left.active .sidebar-offcanvas {
+    left: 0px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+
+  .row-offcanvas-left .sidebar-offcanvas {
+    top: 120px;
+  }
 }
 
 /* Layouts */
