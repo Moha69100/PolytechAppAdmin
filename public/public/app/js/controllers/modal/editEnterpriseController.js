@@ -1,10 +1,10 @@
 app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpriseResource",
     function ($scope, $routeParams, enterpriseResource) {
         $scope.init = function () {
-            $scope.enterpriseId = $routeParams.roomResource;
-            roomResource.getRoom({"id": $scope.roomId}, function (data) {
+            $scope.enterpriseId = $routeParams.enterprise;
+            enterpriseResource.getEnterprise({"id": $scope.enterpriseId}, function (data) {
                 console.log(data)
-                $scope.room = data;
+                $scope.enterprise = data;
             });
         };
         // 'feedback' serveur
@@ -23,6 +23,8 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
          */
         $scope.cancel = function () {
             //  $modalInstance.dismiss();
+            $scope.$apply(function () {$location.path("/admin-enterprise");});
+            
         };
         $scope.init();
     }]);

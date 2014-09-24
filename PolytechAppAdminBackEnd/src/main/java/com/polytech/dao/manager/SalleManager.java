@@ -9,6 +9,7 @@ import com.polytech.dao.Salle;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -52,33 +53,45 @@ public class SalleManager {
     public Boolean deleteSalleById(int id) throws Exception {
 
         Session session = SessionManager.openSession();
-
+        Transaction tx = null;
         try {
+            tx = session.beginTransaction();
 
             Salle e = (Salle) session.get(Salle.class, id);
             session.delete(e);
-            return true;
 
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e; // or display error message
         } finally {
-
             session.close();
-
         }
+        return true;
 
     }
 
     public Boolean addSalle(Salle salle) throws Exception {
 
         Session session = SessionManager.openSession();
+        Transaction tx = null;
         try {
+            tx = session.beginTransaction();
+
             session.save(salle);
-            return true;
 
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e; // or display error message
         } finally {
-
             session.close();
-
         }
+        return true;
     }
 
 }
