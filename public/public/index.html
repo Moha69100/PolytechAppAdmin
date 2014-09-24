@@ -112,50 +112,15 @@ and open the template in the editor.
         </header>
 
         <div class="wrapper row-offcanvas row-offcanvas-left" style="min-height: 897px;">
-            <!-- Left side column. contains the logo and sidebar -->
+            <!-- Left side column. contains sidebar -->
             <aside class="left-side sidebar-offcanvas" style="min-height: 1767px;">
-                <section class="sidebar">
-                    <!-- sidebar: navigation menu -->
-                    <ul class="sidebar-menu">
-                        <li> 
-                            <a id="menu-student" href="#/admin-student" >
-                                <i class='glyphicon glyphicon-user'></i>
-                                Etudiants
-                            </a>
-                        </li> 
-                        <li> 
-                            <a id="menu-enterprise" href="#/admin-enterprise">
-                                <i class='glyphicon glyphicon-home'></i>
-                                Entreprises
-                            </a>
-                        </li> 
-                        <li> 
-                            <a id="menu-room" href="#/admin-room">
-                                <i class='glyphicon glyphicon-th-large'></i>
-                                Salles
-                            </a>
-                        </li> 
-                        <li> 
-                            <a id="menu-offers" href="#/admin-offers">
-                                <i class='glyphicon glyphicon-th-large'></i>
-                                Offres d'alternance
-                            </a>
-                        </li>
-                        <li> 
-                            <a id="menu-events" href="#/admin-events">
-                                <i class='glyphicon glyphicon-th-large'></i>
-                                Evênements
-                            </a>
-                        </li>
-                    </ul>
-                </section>
+                <div data-ng-include="'app/partials/core/menu.html'"></div>
             </aside>
-
 
             <aside class="right-side">
                 <!-- sidebar: content -->
                 <div id='view' data-ng-class="{view: isOpen,hideView : !isOpen}" class="row">
-                    <div data-auto-height style="overflow: auto;margin-top: 85px;  " ng-view>
+                    <div data-auto-height style="overflow: auto;margin-top: 60px;  " ng-view>
                     </div>                
                 </div>
             </aside>
