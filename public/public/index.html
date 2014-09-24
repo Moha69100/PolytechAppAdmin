@@ -17,6 +17,7 @@ and open the template in the editor.
         <script src="app/lib/angular-1.2.16/angular-resource.js"></script>
         <script src="app/lib/ui-bootstrap-tpls-0.10.0.min.js"></script>
         <script src="app/lib/ngstorage/ngStorage.js"></script>
+        <script src="app/lib/sidebar.js"></script>
 
 
         <script src="app/js/app.js"></script>
@@ -45,13 +46,124 @@ and open the template in the editor.
         <!-- SERVICES -->
         <script src="app/js/services/studentInstance.js"></script>
 
-        <link rel="stylesheet" href="app/css/app.css">
+        <!-- Styles -->
+        <link rel="stylesheet" href="app/css/bootstrap.css">
+        <link rel="stylesheet" href="app/css/core.css">
+        <link rel="stylesheet" href="app/css/polytech.css">
     </head>
     <body  data-ng-app="App">
-        <div data-ng-include="'app/partials/core/header.html'" ></div>
-        <div id='view'  data-ng-class="{view: isOpen,hideView : !isOpen}" class="row">
-            <div data-auto-height style="overflow: auto;margin-top: 85px;  " ng-view>
-            </div>                
-        </div>            
+
+        <header class="header">
+            <a href="index.html" class="logo">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+                <div class="icon"></div>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>Jane Doe <i class="caret"></i></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header bg-light-blue">
+                                    <img src="img/avatar3.png" class="img-circle" alt="User Image">
+                                    <p>
+                                        Jane Doe - Web Developer
+                                        <small>Member since Nov. 2012</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <li class="user-body">
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Followers</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Sales</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Friends</a>
+                                    </div>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div class="wrapper row-offcanvas row-offcanvas-left" style="min-height: 897px;">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas" style="min-height: 1767px;">
+                <section class="sidebar">
+                    <!-- sidebar: navigation menu -->
+                    <ul class="sidebar-menu">
+                        <li> 
+                            <a id="menu-student" href="#/admin-student" >
+                                <i class='glyphicon glyphicon-user'></i>
+                                Etudiants
+                            </a>
+                        </li> 
+                        <li> 
+                            <a id="menu-enterprise" href="#/admin-enterprise">
+                                <i class='glyphicon glyphicon-home'></i>
+                                Entreprises
+                            </a>
+                        </li> 
+                        <li> 
+                            <a id="menu-room" href="#/admin-room">
+                                <i class='glyphicon glyphicon-th-large'></i>
+                                Salles
+                            </a>
+                        </li> 
+                        <li> 
+                            <a id="menu-offers" href="#/admin-offers">
+                                <i class='glyphicon glyphicon-th-large'></i>
+                                Offres d'alternance
+                            </a>
+                        </li>
+                        <li> 
+                            <a id="menu-events" href="#/admin-events">
+                                <i class='glyphicon glyphicon-th-large'></i>
+                                Evênements
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </aside>
+
+
+            <aside class="right-side">
+                <!-- sidebar: content -->
+                <div id='view' data-ng-class="{view: isOpen,hideView : !isOpen}" class="row">
+                    <div data-auto-height style="overflow: auto;margin-top: 85px;  " ng-view>
+                    </div>                
+                </div>
+            </aside>
+        </div>
+
+<!--
+        <div data-ng-include="'app/partials/core/header.html'" ></div>            
+        -->
     </body>
 </html>

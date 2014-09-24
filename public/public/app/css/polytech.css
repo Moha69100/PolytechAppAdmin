@@ -1,0 +1,187 @@
+
+@media (min-width: 768px) {
+    .navbar-collapse {
+        height: auto;
+        border-top: 0;
+        box-shadow: none;
+        max-height: none;
+        padding-left:0;
+        padding-right:0;
+    }
+    .navbar-collapse.collapse {
+        display: block !important;
+        width: auto !important;
+        padding-bottom: 0;
+        overflow: visible !important;
+    }
+    .navbar-collapse.in {
+        overflow-x: visible;
+    }
+
+    .poly-menu
+    {
+        position : absolute;
+        top : 0;
+        z-index : 1000;
+        left : 0;
+        max-width:150px;
+        margin-right: 0;
+        margin-left: 0;
+    }	
+
+    .navbar-right .dropdown-menu {left:0;right:auto;}
+    .navbar-collapse .navbar-nav.navbar-right:last-child {
+        margin-right: 0;
+    }
+}  
+.poly-menu>div>.panel-group>.panel-default > .panel-heading{
+    background-color: #888 !important;
+}
+
+.poly-menu>div>.panel-group>.panel-default,
+.poly-menu>div>.panel-group>.panel-default> .panel-heading{
+    border-color : #888 !important;
+    box-shadow: 0px 0px 0px #888;
+}
+
+
+
+.poly-menu>div>.panel-group>.panel-default > .panel-heading>h4{
+    color :#f0f0f0;
+    font-size : 13px;
+}
+.poly-menu>div>.panel-group>.panel-default > .panel-heading>h4:hover>a{
+    color :#fff;
+    text-decoration: none !important;
+}
+
+
+.poly-menu>div>.panel-group>.panel-default>.panel-collapse>.panel-body{
+    background-color: #888 !important;
+    color :#f0f0f0;
+    font-size : 12px;
+}
+
+.poly-menu>div>.panel-group>.panel-default>.panel-collapse>.panel-body>div>ul>li>a{
+    padding : 0;
+    color :#f0f0f0;
+    font-size : 12px;
+}
+
+.poly-menu>div>.panel-group>.panel-default>.panel-collapse>.panel-body>div>ul>li:hover{
+    background-color: #888 !important;
+    color :#44A1C9;
+}
+.poly-menu>div>.panel-group>.panel-default>.panel-collapse>.panel-body>div>ul>li:hover>a{
+    background-color: #777 !important;
+    color :#44A1C9;
+}
+.poly-menu>div>.panel-group>.panel-default>.panel-collapse>.panel-body{
+    background-color: #777 !important
+}
+.poly-menu>div>.panel-group>.panel-default>.panel-collapse>.panel-body>div>ul>li{
+    padding : 0;
+    font-size : 13px;
+    width : 100%;
+}
+
+#poly-menu{
+    margin-top : 85px;
+    width:10% ;
+    border-top: 1px #44A1C9 solid;
+    position: absolute;
+    min-width :110px;
+    z-index: 2000;    
+}
+#poly-menu>div>div>div{
+    border-radius: 0;
+    background-color :#28282E;
+}
+#poly-menu>div{
+    border-color: #28282E;
+    border-radius: 0;
+    background-color :#28282E;
+}
+#poly-menu>div>ul>li>a{
+    color :#f0f0f0;
+}
+#poly-menu>div>div>div>div>ul>li{
+    width : 100%;
+    transition: background-color 0.5s ease;
+}
+
+#poly-menu>div>div>.panel-body{
+    padding : 0;
+}
+.view{
+    transition: ease 0.5s all;
+    margin-left : 10%;
+    width : 90%;
+}
+
+.hideView{
+    transition: ease 0.5s all;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 99%;
+}
+#poly-menu{
+    transition: ease 0.5s all;
+}
+
+#collapseMenu{
+    height : 100% !important;
+}
+.collapseIn{
+    visibility:hidden;
+    width : 0;
+    opacity:0;
+}
+.collapseOut{
+
+    visibility:visible;
+    opacity:100;
+    width : 100%;
+}
+.menu{
+    transition:visibility 0.5s linear ,opacity 0.5s linear,width 0.15s linear; 
+}
+
+
+.collapseIn>div>div{  
+    display : none;
+}
+.collapseOut>div>div{
+    display : block;
+}
+
+.glyphicon-list,
+.glyphicon-plus{
+    text-align: center;
+    padding-top: 4px;
+    font-size:20px;
+    width : 35px; 
+    height : 35px;
+    z-index: 2000;
+    border: 1px solid #44A1C9;
+    border-radius: 20px; 
+    color :#888;
+    background-color : #f0f0f0;
+    transition: color 0.2s linear;
+}
+.glyphicon-list:hover{
+    background-color : #888;
+    color:#fff;  
+    border-radius: 20px; 
+}
+.glyphicon-plus{
+    background-color : #222;
+    color :#f0f0f0;
+    font-size:15px;
+    padding-top: 8px;
+    padding-left: 2px;
+}
+.glyphicon-plus:hover{
+    background-color : #f0f0f0;
+    color:#888; 
+}
