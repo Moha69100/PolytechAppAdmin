@@ -7,16 +7,15 @@ app.service('roomResource', ['$resource', function($resource) {
         var GET_BY_ID = BASE_URL + '/salles/:id';
 
         var actions = {
-            listRooms:
-                    {
-                        method: 'GET',
-                        isArray: true,
-                        url: FIND_ALL
-                    },
+            listRooms: {
+                method: 'GET',
+                isArray: true,
+                url: FIND_ALL
+            },
             getRoom: {
                 method: 'GET',
                 isArray: false,
-                url: GET_BY_ID
+                url: GET_BY_ID  
             }
         };
 
