@@ -30,7 +30,7 @@ app.controller('studentController', ['$rootScope', '$scope', '$http', '$timeout'
 
         };
 
-        $scope.addStudent = function () {
+        $scope.importStudents = function () {
             // ouverture modale, avec le type à modifier, et un flag
             var modalInstance = $modal.open({
                 templateUrl: 'app/partials/students/studentForm.html',
