@@ -6,6 +6,7 @@
 package com.polytech.model;
 
 import com.polytech.dao.Etudiant;
+import com.polytech.dao.manager.EtudiantManager;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -34,7 +35,7 @@ public class Ciell2CsvReader {
      * @throws FileNotFoundException
      * @throws ParseException 
      */
-    public void parse(byte[] bytes) throws IOException, FileNotFoundException, ParseException{
+    public void parse(byte[] bytes) throws IOException, FileNotFoundException, ParseException, Exception{
         // Enregistrement du fichier dans un dossier temporaire
         File file = uploadFile(bytes);
         
@@ -117,9 +118,10 @@ public class Ciell2CsvReader {
         }
     }
     
-    private void save(List<Etudiant> etudiants) {
+    private void save(List<Etudiant> etudiants) throws Exception {
+        EtudiantManager edtManager = new EtudiantManager();
         for (Etudiant etudiant : etudiants) {
-            
+            edtManager.addEtudiant(etudiant);
         }
     }
     
