@@ -1,18 +1,13 @@
+
 package com.polytech.controller;
 
-import com.polytech.dao.Entreprise;
 import com.polytech.dao.Etudiant;
 import com.polytech.dao.Salle;
-import com.polytech.dao.manager.EntrepriseManager;
 import com.polytech.dao.manager.EtudiantManager;
 import com.polytech.dao.manager.SalleManager;
 import com.polytech.exception.ExceptionHandler;
-import com.polytech.exception.SuccessHandler;
 import com.polytech.model.*;
-import com.sun.net.httpserver.Authenticator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
