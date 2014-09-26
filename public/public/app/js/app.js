@@ -161,3 +161,6 @@ app.factory('ajaxIndicatorHttpInterceptor', ['$q', '$rootScope', function ($q, $
 
     }]);
 
+app.config(['$httpProvider', function($httpProvider){
+    
+}]);

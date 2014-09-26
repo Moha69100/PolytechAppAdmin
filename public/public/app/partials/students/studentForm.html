@@ -1,12 +1,37 @@
-<div class="modal-header">
-    <h3>Etudiant</h3>
+<div class="form-header">
+    <h3 class="col-sm-2 control-label">{{student.prenom}}  {{student.nom}}</h3><br>
 </div>
 
-<div class="row">
-  <div class="col-md-12"><label for="firstName" class="col-sm-2 control-label">{{student.prenom}}  </label>
-  <label for="firstName" class="col-sm-2 control-label">{{student.nom}}</label></div>
+<div class="row">    
+    <div class="col-sm-12">    
+        <div>
+            <div class="col-xs-8 col-sm-6 left-column-form">
+                <h4 class="col-sm-12 control-label">Informations générales </h4>
+                <div>
+                    <label for="lastName" class="col-sm-3 control-label">Nom : </label>
+                    <input type="text" class="form-control col-sm-9" id="lastName" ng-model="student.nom" placeholder="Nom ..." />
+                </div>
+                <div>
+                    <label for="firstName" class="col-sm-3 control-label">Prénom :</label>
+                    <input type="text" class="form-control col-sm-9" id="firstName" ng-model="student.prenom" placeholder="Prénom ..." />
+                </div>
+                <div>
+                    <label for="birthDate" class="col-sm-3 control-label">Date de naissance : </label>
+                    <input type="text" class="form-control col-sm-9" id="birthDate" ng-model="student.datenaissance" placeholder="Date de naissance ..." />
+                </div>
+                <div>
+                    <label for="country" class="col-sm-3 control-label">Pays : </label>
+                    <input type="text" class="form-control col-sm-9" id="country" ng-model="student.pays" placeholder="Pays ..." />
+                </div><br>
+                
+            </div>
+            <div class="col-xs-4 col-sm-6 right-column-form">
+                <h4>Contact</h4>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 
-    
+

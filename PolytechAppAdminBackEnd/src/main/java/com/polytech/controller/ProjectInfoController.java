@@ -29,7 +29,6 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 public class ProjectInfoController {
 
-    EntrepriseManager entrepriseManager = new EntrepriseManager();
     EtudiantManager etuManager = new EtudiantManager();
     SalleManager salleManager = new SalleManager();
     AuthenticationManager authManager = new AuthenticationManager();
@@ -38,71 +37,7 @@ public class ProjectInfoController {
     public ProjectInfo hello() {
         return new ProjectInfo("0.1.0", "PolytechAppAdmin");
     }
-
-    //==================== ENTREPRISE ======================================
-    @RequestMapping(value = "/entreprises", method = RequestMethod.GET)
-    public Object allEnterprise() {
-
-        try {
-
-            List<Entreprise> entreprises = entrepriseManager.getAllEnterprise();
-            return entreprises;
-
-        } catch (Exception ex) {
-
-            return ExceptionHandler.handle(ex);
-
-        }
-
-    }
-
-    @RequestMapping(value = "/entreprise/{id}", method = RequestMethod.GET)
-    public Object oneEnterprise(@PathVariable String id) {
-
-        try {
-
-            Entreprise e = entrepriseManager.getEnterpriseById(Integer.parseInt(id));
-            return e;
-
-        } catch (Exception ex) {
-
-            return ExceptionHandler.handle(ex);
-
-        }
-    }
-
-    @RequestMapping(value = "/entreprise/{id}", method = RequestMethod.DELETE)
-    public Object deleteEnterprise(@PathVariable String id) {
-        
-        try {
-            
-            int idInt = Integer.parseInt(id);
-            return SuccessHandler.handle(entrepriseManager.deleteEnterpriseById(idInt));
-            
-        } catch (Exception ex) {
-            
-            return ExceptionHandler.handle(ex);
-            
-        }
-    }
-
-    @RequestMapping(value = "/entreprise/add", method = RequestMethod.POST)
-    public @ResponseBody
-    String createEntreprise(@RequestBody Entreprise ent) {
-
-        // json fonctionnement d'envoi 
-        // {"id" : 33 ,"libelle":"Salle 9994","localisation":"36 eme etage fond","capacite":350}
-        String error = "";
-        ent.setAdresse("TEST ADREESSE");
-        try {
-            entrepriseManager.addEntreprise(ent);
-        } catch (Exception e) {
-            error = e.getMessage();
-        }
-        return " Erreur : " + error;
-
-    }
-
+    
     //==================== ETUDIANT ======================================
     /**
      * GET all students
