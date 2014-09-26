@@ -101,29 +101,20 @@ public class EtudiantController {
         return " Erreur : " + error;
 
     }
-
-    @RequestMapping(value = "/etudiants/upload", method = RequestMethod.GET)
-    public @ResponseBody
-    String provideUploadInfo() {
-        return "You can upload a file by posting to this same URL.";
-    }
-
+    
     @RequestMapping(value = "/etudiants/upload", method = RequestMethod.POST)
     public @ResponseBody
-    String handleFileUpload(@RequestParam("file") MultipartFile file) {
+    Object handleFileUpload(@RequestParam("file") MultipartFile file) {
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
-
-                Ciell2CsvReader reader = new Ciell2CsvReader();
-                reader.parse(bytes);
-
-                return "You successfully uploaded file";
+                Ciell2CsvReader reader = new Ciell2CsvReader(); 
+                return reader.parse(bytes);
             } catch (Exception e) {
-                return "You failed to upload => " + e.getMessage();
+                return ExceptionHandler.handle(e);
             }
         } else {
-            return "You failed to upload file because the file was empty.";
+            return ExceptionHandler.handle(new Exception());
         }
     }
 
