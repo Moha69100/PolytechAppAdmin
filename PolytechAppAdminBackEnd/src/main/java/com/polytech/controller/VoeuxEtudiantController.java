@@ -34,7 +34,7 @@ public class VoeuxEtudiantController {
      *
      * @return A JSON object or a HTTP status in case of an error.
      */
-    @RequestMapping(value = "/voeuxetudiants", method = RequestMethod.GET)
+    @RequestMapping(value = "/voeuxEtudiants", method = RequestMethod.GET)
     public Object allVoeuxEtudiant() {
 
         try {
@@ -57,7 +57,7 @@ public class VoeuxEtudiantController {
      * @param id The identifier of the voeuxEtudiant to get retrieved from the URL.
      * @return A JSON object or a HTTP status in case of an error.
      */
-    @RequestMapping(value = "/voeuxetudiant/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/voeuxEtudiant/{id}", method = RequestMethod.GET)
     public Object oneVoeuxEtudiant(@PathVariable String id) {
 
         try {

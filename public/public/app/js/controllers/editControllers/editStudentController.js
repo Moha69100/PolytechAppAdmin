@@ -1,5 +1,5 @@
-app.controller("editStudentController", ['$scope', 'studentResource', '$routeParams',
-    function ($scope, studentResource, $routeParams) {
+app.controller("editStudentController", ['$scope', 'studentResource', '$routeParams', '$location',
+    function ($scope, studentResource, $routeParams, $location) {
         var init = function () {
             $scope.studentId = $routeParams.student;
             console.log($scope.studentId);
@@ -25,18 +25,19 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
         ];
 
         $scope.save = function (student) {
-            //$modalInstance.close($scope.student);
+            //appel ressource pour update
+            $location.path('/admin-student');
         };
 
         $scope.removeStudent = function (student) {
-
-            //$modalInstance.dismiss();
+            //appel ressource pour delete
+            $location.path('/admin-student');
         };
         /**
          * sortie par cancel()
          */
         $scope.cancel = function () {
-            //$modalInstance.dismiss();
+            $location.path('/admin-student');
         };
         
         init();
