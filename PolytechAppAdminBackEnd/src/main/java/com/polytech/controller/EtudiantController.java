@@ -105,8 +105,6 @@ public class EtudiantController {
         }
     }
     
-<<<<<<< HEAD
-=======
     /**
      * UPDATE ETUDIANT
      * @param etu
@@ -128,7 +126,6 @@ public class EtudiantController {
      * @param file
      * @return 
      */
->>>>>>> 8f8c73146a263e9707a0292e8479deea297b1f29
     @RequestMapping(value = "/etudiants/upload", method = RequestMethod.POST)
     public @ResponseBody
     Object handleFileUpload(@RequestParam("file") MultipartFile file) {
