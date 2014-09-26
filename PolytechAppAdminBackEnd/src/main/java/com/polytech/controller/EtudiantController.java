@@ -84,6 +84,11 @@ public class EtudiantController {
         }
     }
 
+    /**
+     * INSERT ETUDIANT
+     * @param etu
+     * @return 
+     */
     @RequestMapping(value = "/etudiant/add", method = RequestMethod.PUT)
     public Object createEtudiant(@RequestBody Etudiant etu) {
 
@@ -99,13 +104,28 @@ public class EtudiantController {
             return ExceptionHandler.handle(e);
         }
     }
-
-    @RequestMapping(value = "/etudiants/upload", method = RequestMethod.GET)
-    public @ResponseBody
-    String provideUploadInfo() {
-        return "You can upload a file by posting to this same URL.";
+    
+    /**
+     * UPDATE ETUDIANT
+     * @param etu
+     * @return 
+     */
+    @RequestMapping(value = "/etudiant/update", method = RequestMethod.POST)
+    public Object updateEtudiant(@RequestBody Etudiant etu) {
+        String error = "";
+        try {
+            return SuccessHandler.handle(etuManager.updateEtudiant(etu));
+        } catch (Exception e) {
+            error = e.getMessage();
+            return ExceptionHandler.handle(e);
+        }
     }
 
+    /**
+     * UPLOAD A CIEL FILE INTO DATABASE
+     * @param file
+     * @return 
+     */
     @RequestMapping(value = "/etudiants/upload", method = RequestMethod.POST)
     public @ResponseBody
     String handleFileUpload(@RequestParam("file") MultipartFile file) {
