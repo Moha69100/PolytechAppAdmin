@@ -9,6 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 @Component
 public class SimpleCORSFilter implements Filter {
@@ -30,3 +31,4 @@ public class SimpleCORSFilter implements Filter {
 	public void destroy() {}
 
 }
+
