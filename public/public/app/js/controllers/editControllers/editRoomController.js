@@ -1,6 +1,6 @@
-app.controller("editRoomModalController", ['$scope', '$routeParams', 'roomResource',
+app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource',
     function($scope, $routeParams, roomResource) {
-        $scope.init = function() {
+        var init = function() {
             $scope.roomId = $routeParams.room;
             roomResource.getRoom({"id": $scope.roomId}, function(data) {
                 console.log(data)
@@ -10,8 +10,6 @@ app.controller("editRoomModalController", ['$scope', '$routeParams', 'roomResour
 
         // 'feedback' serveur
         $scope.feedback = null;
-
-        $scope.room = items.roomEdited;
 
         $scope.save = function(room) {
             //$modalInstance.close($scope.room);
