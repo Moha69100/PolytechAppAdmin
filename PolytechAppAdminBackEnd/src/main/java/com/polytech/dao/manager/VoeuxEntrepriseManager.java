@@ -23,7 +23,7 @@ public class VoeuxEntrepriseManager {
 
         try {
 
-            Query query = session.createQuery("from VoeuxEntrepriseManager");
+            Query query = session.createQuery("from VoeuxEntreprise");
             List<VoeuxEntreprise> list = query.list();
             return list;
 
