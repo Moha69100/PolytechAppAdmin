@@ -31,7 +31,7 @@ public class ProjectInfoController {
 
     EtudiantManager etuManager = new EtudiantManager();
     SalleManager salleManager = new SalleManager();
-    AuthenticationManager authManager = new AuthenticationManager();
+   
     
     @RequestMapping("/")
     public ProjectInfo hello() {
@@ -99,24 +99,5 @@ public class ProjectInfoController {
     }
     
     
-    //AUTHENTIFICATION
-      //Page d'authentification
-    /*
-    @RequestMapping(value = "/auth", method = RequestMethod.GET)
-    public int authentication(@PathVariable String user, @PathVariable String password){
-        return authManager.auth(user,password);
-    }*/
-    
-    
-    @RequestMapping(value = "/auth", method = RequestMethod.GET)
-    public String authentication(){
-        String retour;
-        try{
-            retour = "Utilisateur : TestUsr ; clé API : " + authManager.auth("TestUsr","TestPwd");
-        }catch(Exception e){
-            retour = "Erreur : "+e.getMessage();
-        }
-        
-        return retour;
-    }
+
 }
