@@ -110,8 +110,13 @@ public class ProjectInfoController {
     
     @RequestMapping(value = "/auth", method = RequestMethod.GET)
     public String authentication(){
-        int myInt = authManager.auth("TestUsr","TestPwd");
-        String APIKey = Integer.toString(myInt);
-        return "Utilisateur : TestUsr ; clé API : "+APIKey;
+        String retour;
+        try{
+            retour = "Utilisateur : TestUsr ; clé API : " + authManager.auth("TestUsr","TestPwd");
+        }catch(Exception e){
+            retour = "Erreur : "+e.getMessage();
+        }
+        
+        return retour;
     }
 }

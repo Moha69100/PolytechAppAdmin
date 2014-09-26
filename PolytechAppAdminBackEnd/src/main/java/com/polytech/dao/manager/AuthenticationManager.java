@@ -28,7 +28,7 @@ public class AuthenticationManager {
      * @Return la clé API si l'utilisateur est autorisé, 0 sinon
      * Authentification d'un utilisateur
     */
-    public int auth(String _user, String _password) throws Exception{
+    public String auth(String _user, String _password) throws Exception{
         
         UtilisateurManager userManager = new UtilisateurManager();
         int APIkey = 0;
@@ -45,6 +45,6 @@ public class AuthenticationManager {
         }
         
         
-        return APIkey;
+        return Integer.toString(APIkey);
     }
 }
