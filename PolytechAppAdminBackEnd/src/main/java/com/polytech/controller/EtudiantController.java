@@ -91,7 +91,7 @@ public class EtudiantController {
         // json fonctionnement d'envoi 
         // {"id" : 33 ,"libelle":"Salle 9994","localisation":"36 eme etage fond","capacite":350}
         String error = "";
-        etu.setAdresse("TEST ADRESSE");
+
 
         try {
             etuManager.addEtudiant(etu);
