@@ -8,6 +8,7 @@ package com.polytech.controller;
 import com.polytech.dao.Etudiant;
 import com.polytech.dao.manager.EtudiantManager;
 import com.polytech.exception.ExceptionHandler;
+import com.polytech.exception.SuccessHandler;
 import com.polytech.model.Ciell2CsvReader;
 import java.util.List;
 import org.springframework.context.annotation.ComponentScan;
@@ -64,7 +65,7 @@ public class EtudiantController {
     }
 
     /**
-     * GET all etudiants
+     * DELETE etudiant
      *
      * @param id
      * @return
@@ -76,17 +77,15 @@ public class EtudiantController {
         int idEtu = Integer.parseInt(id);
 
         try {
-            etuManager.deleteEtudiantById(idEtu);
+            return SuccessHandler.handle(etuManager.deleteEtudiantById(idEtu));
         } catch (Exception e) {
             error = e.getMessage();
             return ExceptionHandler.handle(e);
         }
-        return " Erreur : " + error;
     }
 
-    @RequestMapping(value = "/etudiant/add", method = RequestMethod.POST)
-    public @ResponseBody
-    String createEtudiant(@RequestBody Etudiant etu) {
+    @RequestMapping(value = "/etudiant/add", method = RequestMethod.PUT)
+    public Object createEtudiant(@RequestBody Etudiant etu) {
 
         // json fonctionnement d'envoi 
         // {"id" : 33 ,"libelle":"Salle 9994","localisation":"36 eme etage fond","capacite":350}
@@ -94,12 +93,11 @@ public class EtudiantController {
         etu.setAdresse("TEST ADRESSE");
 
         try {
-            etuManager.addEtudiant(etu);
+            return SuccessHandler.handle(etuManager.addEtudiant(etu));
         } catch (Exception e) {
             error = e.getMessage();
+            return ExceptionHandler.handle(e);
         }
-        return " Erreur : " + error;
-
     }
 
     @RequestMapping(value = "/etudiants/upload", method = RequestMethod.GET)
