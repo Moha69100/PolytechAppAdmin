@@ -1,0 +1,366 @@
+body {
+  background-color: #f5f5f5;
+}
+
+/*
+    Components: navbar, logo and content header
+-------------------------------------------------
+*/
+body > .header {
+  position: relative;
+  max-height: 120px;
+  z-index: 1030;
+  background-color: #45b5e4;
+}
+body > .header .navbar {
+  height: 60px;
+  margin-bottom: 0;
+  margin-left: 250px;
+}
+body > .header .navbar .sidebar-toggle {
+  float: left;
+  padding: 9px 5px;
+  margin-top: 13px;
+  margin-right: 0;
+  margin-bottom: 13px;
+  margin-left: 13px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+body > .header .navbar .sidebar-toggle:hover .icon-bar {
+  background: #ffffff;
+}
+body > .header .navbar .sidebar-toggle .icon-bar {
+  background: #0177aa;
+  display: block;
+  width: 22px;
+  height: 2px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+body > .header .navbar .sidebar-toggle .icon-bar + .icon-bar {
+  margin-top: 4px;
+}
+body > .header .navbar .nav > li.user {
+  margin-right: 20px;
+}
+body > .header .navbar .nav > li.user > a {
+  font-weight: bold;
+  color: #ffffff;
+}
+body > .header .navbar .nav > li.user > a:hover {
+  background-color: #019cde;
+}
+body > .header .navbar .nav > li.user > a > .fa,
+body > .header .navbar .nav > li.user > a > .glyphicon,
+body > .header .navbar .nav > li.user > a > .ion {
+  margin-right: 5px;
+}
+body > .header .navbar .nav > li > a > .label {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+  top: 7px;
+  right: 2px;
+  font-size: 10px;
+  font-weight: normal;
+  width: 15px;
+  height: 15px;
+  line-height: 1.0em;
+  text-align: center;
+  padding: 2px;
+}
+body > .header .navbar .nav > li > a:hover > .label {
+  top: 3px;
+}
+body > .header .logo {
+  float: left;
+  font-size: 20px;
+  line-height: 60px;
+  text-align: center;
+  padding: 0 10px;
+  width: 250px;
+  font-family: 'Kaushan Script', cursive;
+  font-weight: 500;
+  height: 60px;
+  display: block;
+  /* Customize colors */
+  background-color: #019cde;
+  color: #ffffff;
+}
+body > .header .logo .icon {
+  margin: auto;
+  width: 200px;
+  height: 60px;
+  background-image: url('../img/logoPolytech.png');
+}
+.right-side .page-header {
+  margin-top: 16px;
+}
+@media (max-width: 767px) {
+  .navbar .navbar-nav > li {
+    float: left;
+  }
+  .navbar-nav {
+    margin: 0;
+    float: left;
+  }
+  .navbar-nav > li > a {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 20px;
+  }
+  .navbar .navbar-right {
+    float: right;
+  }
+}
+@media screen and (max-width: 560px) {
+  body > .header {
+    position: relative;
+  }
+  body > .header .logo,
+  body > .header .navbar {
+    width: 100%;
+    float: none;
+    position: relative!important;
+  }
+  body > .header .navbar {
+    margin: 0;
+  }
+  body.fixed > .header {
+    position: fixed;
+  }
+  body.fixed > .wrapper,
+  body.fixed .sidebar-offcanvas {
+    margin-top: 100px!important;
+  }
+}
+/*
+    Component: Sidebar
+--------------------------
+*/
+.sidebar {
+  margin-bottom: 5px;
+}
+.sidebar .sidebar-form input:focus {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border-color: transparent!important;
+}
+.sidebar .sidebar-menu {
+  list-style: none;
+  margin: 32px 0;
+  padding: 0;
+}
+.sidebar .sidebar-menu > li {
+  margin: 0;
+  padding: 0;
+}
+.sidebar .sidebar-menu > li.active, 
+.sidebar .sidebar-menu > li:hover {
+  background: #ededed url('../img/sidebar_shadow.png') repeat-y 100% 0;
+}
+.sidebar .sidebar-menu > li > a {
+  padding: 16px 4px 16px 24px;
+  display: block;
+  color: #333333;
+}
+.sidebar .sidebar-menu > li > a:hover {
+  text-decoration: none;
+}
+.sidebar .sidebar-menu > li > a > .fa,
+.sidebar .sidebar-menu > li > a > .glyphicon,
+.sidebar .sidebar-menu > li > a > .ion {
+  width: 20px;
+}
+.sidebar .sidebar-menu .treeview-menu {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar .sidebar-menu .treeview-menu > li {
+  margin: 0;
+}
+.sidebar .sidebar-menu .treeview-menu > li > a {
+  padding: 5px 5px 5px 15px;
+  display: block;
+  font-size: 14px;
+  margin: 0px 0px;
+}
+.sidebar .sidebar-menu .treeview-menu > li > a > .fa,
+.sidebar .sidebar-menu .treeview-menu > li > a > .glyphicon,
+.sidebar .sidebar-menu .treeview-menu > li > a > .ion {
+  width: 20px;
+}
+.user-panel {
+  padding: 10px;
+}
+.user-panel:before,
+.user-panel:after {
+  display: table;
+  content: " ";
+}
+.user-panel:after {
+  clear: both;
+}
+.user-panel > .image > img {
+  width: 45px;
+  height: 45px;
+}
+.user-panel > .info {
+  font-weight: 600;
+  padding: 5px 5px 5px 15px;
+  font-size: 14px;
+  line-height: 1;
+}
+.user-panel > .info > p {
+  margin-bottom: 9px;
+}
+.user-panel > .info > a {
+  text-decoration: none;
+  padding-right: 5px;
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: normal;
+}
+.user-panel > .info > a > .fa,
+.user-panel > .info > a > .ion,
+.user-panel > .info > a > .glyphicon {
+  margin-right: 3px;
+}
+
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ *  Gives us the push menu effect
+ */
+@media screen and (max-width: 992px) {
+  .relative {
+    position: relative;
+  }
+  .row-offcanvas-right .sidebar-offcanvas {
+    right: -250px;
+  }
+  .row-offcanvas-left .sidebar-offcanvas {
+    left: -250px;
+    top: 60px;
+  }
+  .row-offcanvas-right.active {
+    right: 250px;
+  }
+  .row-offcanvas-left.active {
+    left: 250px;
+  }
+  .sidebar-offcanvas {
+    left: 0;
+  }
+  body.fixed .sidebar-offcanvas {
+    margin-top: 50px;
+    left: -250px;
+  }
+  body.fixed .row-offcanvas-left.active .navbar {
+    left: 250px !important;
+    right: 0;
+  }
+  body.fixed .row-offcanvas-left.active .sidebar-offcanvas {
+    left: 0px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+
+  .row-offcanvas-left .sidebar-offcanvas {
+    top: 120px;
+  }
+}
+
+/* Layouts */
+.wrapper {
+  min-height: 100%;
+}
+.wrapper:before,
+.wrapper:after {
+  display: table;
+  content: " ";
+}
+.wrapper:after {
+  clear: both;
+}
+/* Header */
+body > .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+}
+/* Define 2 column template */
+.right-side,
+.left-side {
+  min-height: 100%;
+  display: block;
+}
+/*right side - contins main content*/
+.right-side {
+  background-color: #f9f9f9;
+  margin-left: 250px;
+}
+/*left side - contains sidebar*/
+.left-side {
+  position: absolute;
+  background: #f4f4f4 url('../img/sidebar_shadow.png') repeat-y 100% 0;
+  width: 250px;
+  top: 0;
+}
+@media screen and (min-width: 992px) {
+  .left-side {
+    top: 60px;
+  }
+  /*Right side strech mode*/
+  .right-side.strech {
+    margin-left: 0;
+  }
+  .right-side.strech > .content-header {
+    margin-top: 0px;
+  }
+  /* Left side collapse */
+  .left-side.collapse-left {
+    left: -250px;
+  }
+}
+/*Give content full width on xs screens*/
+@media screen and (max-width: 992px) {
+  .right-side {
+    margin-left: 0;
+  }
+}
+/*
+    By default the layout is not fixed but if you add the class .fixed to the body element
+    the sidebar and the navbar will automatically become poisitioned fixed
+*/
+body.fixed > .header,
+body.fixed .left-side,
+body.fixed .navbar {
+  position: fixed;
+}
+body.fixed > .header {
+  top: 0;
+  right: 0;
+  left: 0;
+}
+body.fixed .navbar {
+  left: 0;
+  right: 0;
+}
+body.fixed .wrapper {
+  margin-top: 60px;
+}

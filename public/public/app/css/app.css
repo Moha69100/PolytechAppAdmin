@@ -6848,7 +6848,7 @@ a:focus {
     outline-offset: -2px;
 }
 .centered {
-    margin-top: 20%;
+  //  margin-top: 20%;
     overflow: hidden;
 }
 .donneesLocalesModalBody > form > div > div > table > tbody > tr > td {
@@ -7502,7 +7502,7 @@ form {
     border-color: #5e5e5e;
 }
 div > .btn-group .dropdown-toggle {
-    background: url("../img/caret.png") no-repeat center center #ff7900;
+//   background: url("../img/caret.png") no-repeat center center #ff7900;
     margin-left: -3px !important;
 }
 .save:hover {
