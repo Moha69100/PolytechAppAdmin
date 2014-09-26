@@ -9,6 +9,7 @@ import com.polytech.dao.Etudiant;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -43,20 +44,27 @@ public class EtudiantManager {
      * @param etu_id
      * @throws Exception 
      */
-    public void deleteEtudiantById(int etu_id) throws Exception {
+    public Boolean deleteEtudiantById(int etu_id) throws Exception {
         
         Session session = SessionManager.openSession();
-        
+        Transaction tx = null;
         try {
-            
+            tx = session.beginTransaction();
+
             Etudiant ex = (Etudiant) session.get(Etudiant.class, etu_id);
             session.delete(ex);
-            
+
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e; // or display error message
         } finally {
-            
             session.close();
-            
         }
+        return true;
+        
     }
 
     /**
@@ -77,6 +85,28 @@ public class EtudiantManager {
             session.close();
             
         }
+    }
+    
+    
+    public Boolean addEtudiant(Etudiant etu) throws Exception {
+
+        Session session = SessionManager.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+
+            session.save(etu);
+
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e; // or display error message
+        } finally {
+            session.close();
+        }
+        return true;
     }
 
 }

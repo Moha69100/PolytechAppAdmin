@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22 sept. 2014 11:47:32 by Hibernate Tools 3.6.0 -->
+<!-- Generated 23 sept. 2014 09:06:03 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.polytech.dao.VoeuxEntreprise" table="voeux_entreprise" schema="appschema">
+    <class name="com.polytech.dao.VoeuxEntreprise" table="voeux_entreprise" schema="appschema" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
-        <many-to-one name="evenement" class="com.polytech.dao.Evenement" fetch="select">
-            <column name="evtid" />
-        </many-to-one>
         <many-to-one name="entreprise" class="com.polytech.dao.Entreprise" fetch="select">
             <column name="entid" />
         </many-to-one>
         <many-to-one name="etudiant" class="com.polytech.dao.Etudiant" fetch="select">
             <column name="etuid" />
+        </many-to-one>
+        <many-to-one name="evenement" class="com.polytech.dao.Evenement" fetch="select">
+            <column name="evtid" />
         </many-to-one>
     </class>
 </hibernate-mapping>

@@ -9,6 +9,7 @@ import com.polytech.dao.Salle;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -17,68 +18,80 @@ import org.hibernate.Session;
 public class SalleManager {
 
     public List<Salle> getAllSalle() throws Exception {
-        
+
         Session session = SessionManager.openSession();
-        
+
         try {
-            
+
             Query query = session.createQuery("from Salle");
             return query.list();
-            
+
         } finally {
-            
+
             session.close();
-            
+
         }
-        
+
     }
-    
-    public Salle getSalleById(int id)  throws Exception {
-        
+
+    public Salle getSalleById(int id) throws Exception {
+
         Session session = SessionManager.openSession();
-        
+
         try {
-            
+
             return (Salle) session.get(Salle.class, id);
-            
+
         } finally {
-            
+
             session.close();
-            
+
         }
-        
+
     }
-    
+
     public Boolean deleteSalleById(int id) throws Exception {
-        
+
         Session session = SessionManager.openSession();
-        
+        Transaction tx = null;
         try {
-            
+            tx = session.beginTransaction();
+
             Salle e = (Salle) session.get(Salle.class, id);
             session.delete(e);
-            return true;
-            
+
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e; // or display error message
         } finally {
-            
             session.close();
-            
         }
-        
-    }
-    
-      public Boolean addSalle(Salle salle) throws Exception {
-              
-        Session session = SessionManager.openSession();
-  try {
-        session.save(salle);
         return true;
-        
-            } finally {
-            
+
+    }
+
+    public Boolean addSalle(Salle salle) throws Exception {
+
+        Session session = SessionManager.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+
+            session.save(salle);
+
+            tx.commit();
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e; // or display error message
+        } finally {
             session.close();
-            
         }
+        return true;
     }
 
 }

@@ -1,5 +1,5 @@
 package com.polytech.dao;
-// Generated 22 sept. 2014 11:47:31 by Hibernate Tools 3.6.0
+// Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -25,6 +25,7 @@ public class Salle  implements java.io.Serializable {
     public Salle(int id) {
         this.id = id;
     }
+    
     public Salle(int id, String libelle, String localisation, Integer capacite, Set entreprisepresences, Set evenementsalles) {
        this.id = id;
        this.libelle = libelle;
