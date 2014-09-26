@@ -69,7 +69,7 @@ public class EntrepriseManager {
             session.delete(e);
 
             tx.commit();
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             if (tx != null) {
                 tx.rollback();
             }
