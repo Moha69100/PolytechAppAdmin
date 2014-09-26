@@ -28,8 +28,7 @@ public class UtilisateurManager {
     
     //Trouver un utilisateur avec son login
     public List<Utilisateur> getUtilisateurByLogin(String login){
-        String hql = "from appschema.utilisateur where user='"+login+"'";
-         Query query = session.createQuery(hql);
+         Query query = session.createQuery("from Utilisateur where login = '" + login + "'");
          return  query.list();
     }
     
