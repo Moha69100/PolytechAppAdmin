@@ -9,23 +9,15 @@
         <tbody>
             <tr>
                 <th>#</th>
-                <th>Id</th>
                 <th>Libellé</th>
                 <th>Localisation</th>
                 <th>Capacité</th>
             </tr>
-            <tr data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="s in rooms">
+            <tr style="cursor : pointer;" data-ng-click="editRoom(s)" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="s in rooms">
                 <td>{{s.id}}</td>
                 <td>{{s.libelle}}</td>
                 <td>{{s.localisation}}</td>
                 <td>{{s.capacite}}</td>
-
-                <td>
-                    <button class="btn btn-primary" data-ng-click="editRoom(s)">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </button>
-                  
-                </td>
             </tr>
 
         </tbody>

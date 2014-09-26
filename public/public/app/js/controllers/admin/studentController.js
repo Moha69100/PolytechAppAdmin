@@ -1,8 +1,12 @@
-app.controller('studentController', ['$scope', '$modal', '$location', 'studentInstance', function ($scope, $modal, $location, studentInstance) {
+app.controller('studentController', ['$rootScope', '$scope', '$http', '$timeout', '$location', '$window', "studentResource", "$modal",
+    function ($rootScope, $scope, $http, $timeout, $location, $window, studentResource, $modal)  {
 
 
         var init = function () {
-            $scope.students = [{
+            studentResource.listStudents(function (data) {
+                $scope.students = data;
+            });
+            /*$scope.students = [{
                     id: 1,
                     nom: "TOTO",
                     prenom: "Test",
@@ -22,7 +26,7 @@ app.controller('studentController', ['$scope', '$modal', '$location', 'studentIn
                     etablissement: "IUT A Lyon",
                     statCandidature: "Acceptée",
                     remarques: "rien a dire"
-                }];
+                }];*/
 
         };
 
@@ -52,8 +56,7 @@ app.controller('studentController', ['$scope', '$modal', '$location', 'studentIn
 
 
         $scope.editStudent = function (studentEdited) {
-            studentInstance.setStudent(studentEdited);
-            $location.url('/admin-student-modify');
+            $location.search('student', studentEdited.id).path('/edit-student');
         };
 
         init();

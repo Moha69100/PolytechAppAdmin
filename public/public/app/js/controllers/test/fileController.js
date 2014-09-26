@@ -1,19 +1,37 @@
-app.controller("fileController", ['$scope', '$modal', "FileUploader",
-    function ($scope, $modal, FileUploader) {
+app.controller("fileController", ['$scope', '$modal', "FileUploader", "fileResource", "$http",
+    function ($scope, $modal, FileUploader, fileResource, $http) {
         $scope.uploader = new FileUploader();
         $scope.filePresent = [];
         $scope.fileType = [];
-        $scope.linkToSave = [];
-        $scope.autresFile = [];
-        $scope.fileList = {};
-        $scope.uploader.url = "/upload/add-file";
+        $scope.fileList = [];
+        $scope.uploader.url = "http://localhost:8090/upload";
 
         var initFileList = function () {
-
-            $scope.fileList = responseDemandeDoc;
-            angular.forEach(responseDemandeDoc, function (file, key) {
-                $scope.filePresent[file.type] = true;
+            $http({
+                method: "GET",
+                url: "http://localhost:8090/files/student/1"}
+            ).success(function (data) {
+                angular.forEach(data, function (file, key) {
+                    $scope.fileList.push({
+                        name: file,
+                        type: "CV",
+                        fileType: "CV"
+                    });
+                    $scope.filePresent["CV"] = true;
+                });
             });
+        };
+        initFileList();
+
+        $scope.upload = function () {
+            $scope.uploader.uploadAll();
+        };
+
+        $scope.uploader.onCompleteAll = function () {
+            delete ($scope.filePresent);
+            $scope.filePresent = [];
+            $scope.uploader.clearQueue();
+            $scope.uploader.url = "http://localhost:8090/upload";
         };
 
         $scope.openDownloadPopup = function (fileTypeHtml) {
@@ -21,7 +39,6 @@ app.controller("fileController", ['$scope', '$modal', "FileUploader",
             var modalInstance = $modal.open({
                 templateUrl: 'app/partials/test/upload-simple-modal.html',
                 controller: 'uploadSimpleModalController',
-                windowClass: "centered",
                 scope: $scope,
                 resolve: {
                     items: function () {
@@ -32,6 +49,7 @@ app.controller("fileController", ['$scope', '$modal', "FileUploader",
                     }
                 }
             });
+
             modalInstance.result.then(function (result) {
                 var FileItem = {
                     demandeId: $routeParams.id,
@@ -41,7 +59,6 @@ app.controller("fileController", ['$scope', '$modal', "FileUploader",
                 };
                 $scope.filePresent[$scope.fileType] = true;
                 $scope.linkToSave.push(FileItem);
-
             }, function (result) {
                 if ($scope.filePresent[$scope.fileType]) {
                     $scope.filePresent[$scope.fileType] = false;
@@ -49,6 +66,7 @@ app.controller("fileController", ['$scope', '$modal', "FileUploader",
                 }
             });
         };
+
     }]);
 
 

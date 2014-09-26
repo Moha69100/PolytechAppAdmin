@@ -1,9 +1,17 @@
-app.controller("editStudentController", ['$scope', 'studentInstance',
-    function ($scope, studentInstance) {
+app.controller("editStudentController", ['$scope', 'studentResource', '$routeParams',
+    function ($scope, studentResource, $routeParams) {
+        var init = function () {
+            $scope.studentId = $routeParams.student;
+            console.log($scope.studentId);
+            studentResource.getStudent({"id": $scope.studentId}, function (data) {
+                console.log(data);
+                $scope.student = data;
+            });
+        };
+        
         // 'feedback' serveur
         $scope.feedback = null;
 
-        $scope.student = studentInstance.getStudent();
         $scope.bacList = [
             {"name": "S"},
             {"name": "L"},
@@ -30,14 +38,8 @@ app.controller("editStudentController", ['$scope', 'studentInstance',
         $scope.cancel = function () {
             //$modalInstance.dismiss();
         };
-    }]).config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/admin-student-modify', {
-            controller: 'editStudentController',
-            templateUrl: 'app/partials/students/studentForm.html',
-            menu: {
-                id: 'menu-student'
-            }
-        })
+        
+        init();
     }]);
 
 
