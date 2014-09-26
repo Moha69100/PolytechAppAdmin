@@ -3,8 +3,12 @@ package com.polytech.controller;
 
 import com.polytech.dao.Etudiant;
 import com.polytech.dao.Salle;
+
+import com.polytech.dao.manager.AuthenticationManager;
+import com.polytech.dao.manager.EntrepriseManager;
 import com.polytech.dao.manager.EtudiantManager;
 import com.polytech.dao.manager.SalleManager;
+import com.polytech.dao.manager.SessionManager;
 import com.polytech.exception.ExceptionHandler;
 import com.polytech.model.*;
 import java.util.List;
@@ -24,7 +28,8 @@ public class ProjectInfoController {
 
     EtudiantManager etuManager = new EtudiantManager();
     SalleManager salleManager = new SalleManager();
-
+    AuthenticationManager authManager = new AuthenticationManager();
+    
     @RequestMapping("/")
     public ProjectInfo hello() {
         return new ProjectInfo("0.1.0", "PolytechAppAdmin");
@@ -88,5 +93,27 @@ public class ProjectInfoController {
         }
         return " Erreur : " + error;
 
+    }
+    
+    
+    //AUTHENTIFICATION
+      //Page d'authentification
+    /*
+    @RequestMapping(value = "/auth", method = RequestMethod.GET)
+    public int authentication(@PathVariable String user, @PathVariable String password){
+        return authManager.auth(user,password);
+    }*/
+    
+    
+    @RequestMapping(value = "/auth", method = RequestMethod.GET)
+    public String authentication(){
+        String retour;
+        try{
+            retour = "Utilisateur : TestUsr ; clé API : " + authManager.auth("TestUsr","TestPwd");
+        }catch(Exception e){
+            retour = "Erreur : "+e.getMessage();
+        }
+        
+        return retour;
     }
 }
