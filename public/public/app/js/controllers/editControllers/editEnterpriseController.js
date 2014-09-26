@@ -1,6 +1,7 @@
 app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpriseResource",
     function ($scope, $routeParams, enterpriseResource) {
         $scope.init = function () {
+            console.log("IN")
             $scope.enterpriseId = $routeParams.enterprise;
             enterpriseResource.getEnterprise({"id": $scope.enterpriseId}, function (data) {
                 console.log(data)
