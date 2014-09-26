@@ -102,7 +102,7 @@ public class SalleController {
         // json fonctionnement d'envoi 
         // {"id" : 33 ,"libelle":"Salle 9994","localisation":"36 eme etage fond","capacite":350}
         String error = "";
-        salle.setLibelle("ZzZzzZzZzZ");
+        
 
         try {
             salleManager.addSalle(salle);

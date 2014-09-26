@@ -3,9 +3,11 @@ package com.polytech.controller;
 import com.polytech.dao.Entreprise;
 import com.polytech.dao.Etudiant;
 import com.polytech.dao.Salle;
+import com.polytech.dao.manager.AuthenticationManager;
 import com.polytech.dao.manager.EntrepriseManager;
 import com.polytech.dao.manager.EtudiantManager;
 import com.polytech.dao.manager.SalleManager;
+import com.polytech.dao.manager.SessionManager;
 import com.polytech.exception.ExceptionHandler;
 import com.polytech.exception.SuccessHandler;
 import com.polytech.model.*;
@@ -29,106 +31,32 @@ public class ProjectInfoController {
 
     EtudiantManager etuManager = new EtudiantManager();
     SalleManager salleManager = new SalleManager();
-
+    AuthenticationManager authManager = new AuthenticationManager();
+    
     @RequestMapping("/")
     public ProjectInfo hello() {
         return new ProjectInfo("0.1.0", "PolytechAppAdmin");
     }
-
-    //==================== ETUDIANT ======================================
-    /**
-     * GET all students
-     *
-     * @return
-     */
-    @RequestMapping(value = "/etudiants", method = RequestMethod.GET)
-    public Object allEtudiant() {
-        try {
-            List<Etudiant> etudiants = etuManager.getAllEtudiant();
-            return etudiants;
-        } catch (Exception ex) {
-            return ExceptionHandler.handle(ex);
+    
+    //AUTHENTIFICATION
+      //Page d'authentification
+    /*
+    @RequestMapping(value = "/auth", method = RequestMethod.GET)
+    public int authentication(@PathVariable String user, @PathVariable String password){
+        return authManager.auth(user,password);
+    }*/
+    
+    
+    @RequestMapping(value = "/auth", method = RequestMethod.GET)
+    public String authentication(){
+        String retour;
+        try{
+            retour = "Utilisateur : TestUsr ; clé API : " + authManager.auth("TestUsr","TestPwd");
+        }catch(Exception e){
+            retour = "Erreur : "+e.getMessage();
         }
+        
+        return retour;
     }
-
-    /**
-     * GET one etudiant
-     *
-     * @param id : id Etudiant
-     * @return
-     */
-    @RequestMapping(value = "/etudiant/{id}", method = RequestMethod.GET)
-    public Object oneEtudiant(@PathVariable String id) {
-        try {
-            Etudiant etudiant = etuManager.getEtudiantByID(Integer.parseInt(id));
-            return etudiant;
-        } catch (Exception ex) {
-            return ExceptionHandler.handle(ex);
-        }
-    }
-
-    /**
-     * GET all etudiants
-     *
-     * @param id
-     * @return
-     */
-    @RequestMapping(value = "/etudiant/{id}", method = RequestMethod.DELETE)
-    public Object deleteEtudiant(@PathVariable String id) {
-
-        String error = "";
-        int idEtu = Integer.parseInt(id);
-
-        try {
-            etuManager.deleteEtudiantById(idEtu);
-        } catch (Exception e) {
-            error = e.getMessage();
-            return ExceptionHandler.handle(e);
-        }
-        return " Erreur : " + error;
-    }
-
-    @RequestMapping(value = "/etudiant/add", method = RequestMethod.POST)
-    public @ResponseBody
-    String createEtudiant(@RequestBody Etudiant etu) {
-
-        // json fonctionnement d'envoi 
-        // {"id" : 33 ,"libelle":"Salle 9994","localisation":"36 eme etage fond","capacite":350}
-        String error = "";
-        etu.setAdresse("TEST ADRESSE");
-
-        try {
-            etuManager.addEtudiant(etu);
-        } catch (Exception e) {
-            error = e.getMessage();
-        }
-        return " Erreur : " + error;
-
-    }
-
-    @RequestMapping(value = "/etudiants/upload", method = RequestMethod.GET)
-    public @ResponseBody
-    String provideUploadInfo() {
-        return "You can upload a file by posting to this same URL.";
-    }
-
-    @RequestMapping(value = "/etudiants/upload", method = RequestMethod.POST)
-    public @ResponseBody
-    String handleFileUpload(@RequestParam("file") MultipartFile file) {
-        if (!file.isEmpty()) {
-            try {
-                byte[] bytes = file.getBytes();
-
-                Ciell2CsvReader reader = new Ciell2CsvReader();
-                reader.parse(bytes);
-
-                return "You successfully uploaded file";
-            } catch (Exception e) {
-                return "You failed to upload => " + e.getMessage();
-            }
-        } else {
-            return "You failed to upload file because the file was empty.";
-        }
-    }
-
+    
 }
