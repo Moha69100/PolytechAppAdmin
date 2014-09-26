@@ -2,9 +2,9 @@
 
 app.service('roomResource', ['$resource', function($resource) {
 
-        var BASE_URL = 'http://localhost:8080';
+        var BASE_URL = 'http://localhost:8090';
         var FIND_ALL = BASE_URL + '/salles';
-        var GET_BY_ID = BASE_URL + '/salles/:id';
+        var GET_BY_ID = BASE_URL + '/salle/:id';
 
         var actions = {
             listRooms: {
