@@ -1,4 +1,4 @@
-var app = angular.module('App', ['ui.bootstrap', 'ngResource', 'ngRoute']);
+var app = angular.module('App', ['ui.bootstrap', 'angularFileUpload', 'ngResource', 'ngRoute']);
 app.config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider.when('/admin-enterprise', {
@@ -19,6 +19,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             menu: {
                 id: 'menu-student'
             }
+        }).when('/edit-enterprise', {
+            controller: 'editEnterpriseController',
+            templateUrl: 'app/partials/enterprises/editEnterprise.html',
+            menu: {
+                id: 'menu-student'
+            }
         }).when('/admin-room', {
             controller: 'roomController',
             templateUrl: 'app/partials/admin/room.html',
@@ -30,6 +36,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'app/partials/admin/offers.html',
             menu: {
                 id: 'menu-offers'
+            }
+        }).when('/test-file', {
+            controller: 'fileController',
+            templateUrl: 'app/partials/test/file.html',
+            menu: {
+                id: 'menu-test-file'
             }
         }).when('/logout', {
             controller: 'logoutController',
