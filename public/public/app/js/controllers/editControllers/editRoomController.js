@@ -14,22 +14,21 @@ app.controller("editRoomModalController", ['$scope', '$routeParams', 'roomResour
         $scope.room = items.roomEdited;
 
         $scope.save = function(room) {
-            $scope.selected = {
-                item: $scope.room
-            };
-            $modalInstance.close($scope.room);
+            //$modalInstance.close($scope.room);
         };
 
         $scope.removeRoom = function(room) {
 
-            $modalInstance.dismiss();
+            //$modalInstance.dismiss();
         };
         /**
          * sortie par cancel()
          */
         $scope.cancel = function() {
-            $modalInstance.dismiss();
+            //$modalInstance.dismiss();
         };
+        
+        init();
     }]);
 
 
