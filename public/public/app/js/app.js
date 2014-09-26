@@ -19,6 +19,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             menu: {
                 id: 'menu-student'
             }
+        }).when('/edit-enterprise', {
+            controller: 'editEnterpriseController',
+            templateUrl: 'app/partials/enterprises/editEnterprise.html',
+            menu: {
+                id: 'menu-student'
+            }
         }).when('/admin-room', {
             controller: 'roomController',
             templateUrl: 'app/partials/admin/room.html',
