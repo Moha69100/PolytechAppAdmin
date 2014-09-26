@@ -16,11 +16,7 @@ import java.util.Random;
  * @author Epulapp
  */
 public class AuthenticationManager {
-    
-    //Pour faire les requêtes sur les utilisateurs
-    public UtilisateurManager userManager;
-    //La clé API retournée
-    public int APIkey = 0;
+
     
     public AuthenticationManager() {
         
@@ -32,14 +28,23 @@ public class AuthenticationManager {
      * @Return la clé API si l'utilisateur est autorisé, 0 sinon
      * Authentification d'un utilisateur
     */
-    public int auth(String _user, String _password){
-        userManager = new UtilisateurManager();
-        List<Utilisateur> users = userManager.getUtilisateurByLogin(_user);
-        Utilisateur user = users.get(0);
+    public int auth(String _user, String _password) throws Exception{
+        
+        UtilisateurManager userManager = new UtilisateurManager();
+        int APIkey = 0;
+        
+        try {
+            List<Utilisateur> users = userManager.getUtilisateurByLogin(_user);
+            Utilisateur user = users.get(0);
             if(user.getMdp().equals(_password)){
                 BigInteger bigInt = new BigInteger(16, new Random());
                 APIkey = bigInt.intValue();
             }
+        }catch (Exception e){
+            throw e;
+        }
+        
+        
         return APIkey;
     }
 }

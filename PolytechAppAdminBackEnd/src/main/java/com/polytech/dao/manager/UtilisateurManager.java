@@ -16,20 +16,61 @@ import org.hibernate.Session;
  * @author Epulapp
  */
 public class UtilisateurManager {
-    Session session = SessionManager.openSession();
+    //Session session = SessionManager.openSession();
     
     public UtilisateurManager() {
         
     }
     
-    public Utilisateur getUtilisateurManagerById(int id) {
-        return (Utilisateur) session.get(Utilisateur.class, id);
+    public Utilisateur getUtilisateurById(int id) throws Exception{
+        
+        Session session = SessionManager.openSession();
+
+        try {
+
+            Utilisateur user = (Utilisateur) session.get(Utilisateur.class, id);;
+
+            if (user == null) {
+                throw new NullPointerException();
+            }
+
+            return user;
+
+        } catch (Exception e) {
+
+            throw e;
+
+        } finally {
+
+            session.close();
+
+        }
     }
     
     //Trouver un utilisateur avec son login
-    public List<Utilisateur> getUtilisateurByLogin(String login){
-         Query query = session.createQuery("from Utilisateur where login = '" + login + "'");
-         return  query.list();
+    public List<Utilisateur> getUtilisateurByLogin(String login) throws Exception{
+        Session session = SessionManager.openSession();
+
+        try {
+
+           Query query = session.createQuery("from Utilisateur where login = '" + login + "'");
+           List<Utilisateur> userList = query.list();
+            if (userList.isEmpty() || userList == null) {
+                throw new NullPointerException();
+            }
+
+            return userList;
+
+        } catch (Exception e) {
+
+            throw e;
+
+        } finally {
+
+            session.close();
+
+        }
+        
     }
     
 }
