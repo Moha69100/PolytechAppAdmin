@@ -124,6 +124,7 @@ public class EtudiantManager {
         try {
             tx = session.beginTransaction();
             session.update(etu);
+            
             tx.commit();
 
         } catch (Exception e) {

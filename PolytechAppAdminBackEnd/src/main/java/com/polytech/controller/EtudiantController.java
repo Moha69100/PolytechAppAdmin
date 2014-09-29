@@ -46,6 +46,7 @@ public class EtudiantController {
         } catch (Exception ex) {
             return ExceptionHandler.handle(ex);
         }
+        
     }
 
     /**
