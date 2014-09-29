@@ -95,7 +95,7 @@ public class SalleController {
      * @param ent Object to insert created from the JSON file passed using POST.
      * @return A HTTP status regarding the status of the insertion.
      */
-    @RequestMapping(value = "/salle/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/salle/add", method = RequestMethod.PUT)
     public @ResponseBody
     String createSalle(@RequestBody Salle salle) {
 
