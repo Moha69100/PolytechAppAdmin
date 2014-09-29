@@ -2,7 +2,7 @@
     <form method="POST" action="#" class="form-horizontal" role="form" id="enterpriseForm">
         <div class="row">
             <div class="page-header">
-                <h2>Entreprise {{enterprise.raison}}</h2>
+                <h2>Informations générales</h2>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <div class="form-group">
@@ -101,9 +101,9 @@
         </div>
         <div class="row pull-right">
             <div class="form-buttons">
-                <button class="btn btn-warning" data-ng-click="remove(enterprise)">Supprimer</button>
+                <button class="btn btn-warning" data-ng-click="removeEnterprise(enterprise)">Supprimer</button>
                 <button type="submit" class="btn btn-primary" data-ng-disabled="!enterprise.raison" data-ng-click="save(enterprise)">Valider</button>
-                <button type="submit" ng-click="redirectEnterprise()" class="btn btn-default">Annuler</button>
+                <button type="submit" data-ng-click="cancel()" class="btn btn-default">Annuler</button>
             </div>
         </div>
     </form>
