@@ -125,6 +125,10 @@ body > .header .logo .icon {
   width: 74px;
   height: 74px;
   background: transparent url('../img/icon_material_plus.png');
+  cursor: pointer;
+}
+.right-side .page-header .form-actions i:hover {
+  background: transparent url('../img/icon_material_plus_hover.png');
 }
 @media (max-width: 767px) {
   .navbar .navbar-nav > li {
