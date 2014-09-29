@@ -76,6 +76,10 @@ body > .header .navbar .nav > li > a > .label {
   text-align: center;
   padding: 2px;
 }
+h2.form-header {
+  border-bottom : 1px solid #45b5e4;
+  margin: 16px 0;
+}
 body > .header .navbar .nav > li > a:hover > .label {
   top: 3px;
 }
@@ -104,8 +108,10 @@ body > .header .logo .icon {
   margin-top: 0px;
   padding: 16px;
   background-color: #ffffff;
+  box-shadow: 1px 1px 12px #E0E0E0;
 }
 .right-side .page-header h2 {
+  color: #019cde;
   display: inline;
 }
 @media (max-width: 767px) {
@@ -371,4 +377,11 @@ body.fixed .navbar {
 }
 body.fixed .wrapper {
   margin-top: 60px;
+}
+
+/* Card components */
+
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
 }
