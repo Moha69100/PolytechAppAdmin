@@ -39,8 +39,8 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
          * sortie par cancel()
          */
         $scope.cancel = function () {
-            $scope.student = null;
-            $scope.studentId = null;
+            delete ($scope.student);
+            delete ($scope.studentId); 
             $location.url('/admin-student');
         };
         

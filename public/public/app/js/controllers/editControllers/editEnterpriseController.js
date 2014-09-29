@@ -42,8 +42,8 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
          * sortie par cancel()
          */
         $scope.cancel = function () {
-            $scope.enterprise = null;
-            $scope.enterpriseId = null; 
+            delete ($scope.enterprise);
+            delete ($scope.enterpriseId); 
             $location.path('/admin-enterprise');
         };
         
