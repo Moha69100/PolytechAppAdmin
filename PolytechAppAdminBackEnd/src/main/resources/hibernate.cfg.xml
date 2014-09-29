@@ -8,7 +8,14 @@
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password"/>
     <property name="hibernate.show_sql">true</property>
+    
+    <!-- 
+        If you need to regenerate the database you need to use THIS VALUE PROPERTY FOR NETBEANS >= 7.4 VERSION and HIBERNATE >= 3.
+        FOR cfg.reveng.xml 
+        <property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+    -->
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+    
     <mapping resource="com/polytech/dao/Entreprisepresence.hbm.xml"/>
     <mapping resource="com/polytech/dao/Personnecontact.hbm.xml"/>
     <mapping resource="com/polytech/dao/Offrealternance.hbm.xml"/>
