@@ -84,6 +84,11 @@ public class EtudiantController {
         }
     }
 
+    /**
+     * INSERT ETUDIANT
+     * @param etu
+     * @return 
+     */
     @RequestMapping(value = "/etudiant/add", method = RequestMethod.PUT)
     public Object createEtudiant(@RequestBody Etudiant etu) {
 
@@ -99,29 +104,41 @@ public class EtudiantController {
             return ExceptionHandler.handle(e);
         }
     }
-
-    @RequestMapping(value = "/etudiants/upload", method = RequestMethod.GET)
-    public @ResponseBody
-    String provideUploadInfo() {
-        return "You can upload a file by posting to this same URL.";
+    
+    /**
+     * UPDATE ETUDIANT
+     * @param etu
+     * @return 
+     */
+    @RequestMapping(value = "/etudiant/update", method = RequestMethod.POST)
+    public Object updateEtudiant(@RequestBody Etudiant etu) {
+        String error = "";
+        try {
+            return SuccessHandler.handle(etuManager.updateEtudiant(etu));
+        } catch (Exception e) {
+            error = e.getMessage();
+            return ExceptionHandler.handle(e);
+        }
     }
 
+    /**
+     * UPLOAD A CIEL FILE INTO DATABASE
+     * @param file
+     * @return 
+     */
     @RequestMapping(value = "/etudiants/upload", method = RequestMethod.POST)
     public @ResponseBody
-    String handleFileUpload(@RequestParam("file") MultipartFile file) {
+    Object handleFileUpload(@RequestParam("file") MultipartFile file) {
         if (!file.isEmpty()) {
             try {
                 byte[] bytes = file.getBytes();
-
-                Ciell2CsvReader reader = new Ciell2CsvReader();
-                reader.parse(bytes);
-
-                return "You successfully uploaded file";
+                Ciell2CsvReader reader = new Ciell2CsvReader(); 
+                return reader.parse(bytes);
             } catch (Exception e) {
-                return "You failed to upload => " + e.getMessage();
+                return ExceptionHandler.handle(e);
             }
         } else {
-            return "You failed to upload file because the file was empty.";
+            return ExceptionHandler.handle(new Exception());
         }
     }
 

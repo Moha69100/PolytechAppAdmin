@@ -1,27 +1,7 @@
-'use strict';
+app.controller('roomController', ['$rootScope', '$scope', '$http', '$timeout', '$location', '$window', 'browser', 'roomResource', "$modal",
+    function($rootScope, $scope, $http, $timeout, $location, $window, browser, roomResource, $modal) {
 
-app.controller('roomController', ['$scope', "$modal", 'roomResource', function($scope, $modal, roomResource) {
 
-        $scope.rooms = {};
-
-        $scope.editRoom = function(roomEdited) {
-            var modalInstance = $modal.open({
-                templateUrl: 'app/partials/rooms/roomForm.html',
-                controller: 'editRoomModalController',
-                resolve: {
-                    items: function() {
-                        return {roomEdited: angular.copy(roomEdited), appel: "editRoom"};
-                    }
-
-                }
-            });
-            
-            modalInstance.result.then(function(room) {
-                ;
-            }, function() {
-                console.log("modal dismissed");
-            });
-        }
 
         var init = function() {
             roomResource.listRooms(function (data) {
@@ -30,8 +10,12 @@ app.controller('roomController', ['$scope', "$modal", 'roomResource', function($
         }
 
         $scope.addRoom = function() {
-
+            $location.path('/edit-room');
         };
+        
+        $scope.editRoom = function(roomEdited) {
+            $location.search('room', roomEdited.id).path('/edit-room');
+        }
 
         init();
 

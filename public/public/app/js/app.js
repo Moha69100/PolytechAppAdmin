@@ -23,11 +23,17 @@ app.config(['$routeProvider', function ($routeProvider) {
             controller: 'editEnterpriseController',
             templateUrl: 'app/partials/enterprises/editEnterprise.html',
             menu: {
-                id: 'menu-student'
+                id: 'menu-enterprise'
             }
         }).when('/admin-room', {
             controller: 'roomController',
             templateUrl: 'app/partials/admin/room.html',
+            menu: {
+                id: 'menu-room'
+            }
+        }).when('/edit-room', {
+            controller: 'editRoomController',
+            templateUrl: 'app/partials/rooms/roomForm.html',
             menu: {
                 id: 'menu-room'
             }
@@ -54,6 +60,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'app/partials/admin/events.html',
             menu: {
                 id: 'menu-events'
+            }
+        }).when('/edit-event', {
+            controller: 'editEventController',
+            templateUrl: 'app/partials/events/editEvent.html',
+            menu: {
+                id: 'menu-event'
             }
         }).otherwise({
             controller: 'accueilController',
