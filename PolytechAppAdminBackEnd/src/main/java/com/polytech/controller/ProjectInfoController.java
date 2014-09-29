@@ -26,9 +26,9 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 public class ProjectInfoController {
 
-    EtudiantManager etuManager = new EtudiantManager();
     SalleManager salleManager = new SalleManager();
     AuthenticationManager authManager = new AuthenticationManager();
+    
     
     @RequestMapping("/")
     public ProjectInfo hello() {
@@ -109,6 +109,7 @@ public class ProjectInfoController {
     public String authentication(){
         String retour;
         try{
+                
             retour = "Utilisateur : TestUsr ; clé API : " + authManager.auth("TestUsr","TestPwd");
         }catch(Exception e){
             retour = "Erreur : "+e.getMessage();
