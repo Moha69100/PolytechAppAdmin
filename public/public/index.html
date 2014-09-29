@@ -41,7 +41,6 @@ and open the template in the editor.
         <script src="app/js/controllers/editControllers/editEnterpriseController.js"></script>
         <script src="app/js/controllers/editControllers/editRoomController.js"></script>
         <script src="app/js/controllers/editControllers/editStudentController.js"></script>
-        <script src="app/js/controllers/editControllers/editEventController.js"></script>
         <script src="app/js/controllers/test/uploadSimpleModalController.js"></script>
         <!-- DIRECTIVES -->
         <script src="app/js/directives/autoHeightDirective.js"></script>
@@ -51,7 +50,6 @@ and open the template in the editor.
         <script src="app/js/resources/fileResource.js"></script>
         <script src="app/js/resources/enterpriseResource.js"></script>
         <script src="app/js/resources/studentResource.js"></script>
-        <script src="app/js/resources/eventResource.js"></script>
         <!-- Styles -->
         <link rel="stylesheet" href="app/css/bootstrap.css">
         <link rel="stylesheet" href="app/css/core.css">
@@ -118,15 +116,15 @@ and open the template in the editor.
             </nav>
         </header>
 
-        <div class="wrapper row-offcanvas row-offcanvas-left" style="min-height: 897px;">
+        <div class="wrapper row-offcanvas row-offcanvas-left" >
             <!-- Left side column. contains sidebar -->
-            <aside class="left-side sidebar-offcanvas" style="min-height: 1767px;">
+            <aside data-auto-height id="poly-menu" class="left-side sidebar-offcanvas">
                 <div data-ng-include="'app/partials/core/menu.html'"></div>
             </aside>
 
-            <aside class="right-side">
-                <!-- sidebar: content -->
-                <div id='view' data-ng-class="{view: isOpen,hideView : !isOpen}" class="row">
+            <aside id="poly-menu" class="right-side">
+                <!-- sidebar: contentata-ng-class="{view: isOpen,hideView : !isOpen}" -->
+                <div id='view'  >
                     <div data-auto-height style="overflow: auto;margin-top: 60px;  " ng-view>
                     </div>                
                 </div>

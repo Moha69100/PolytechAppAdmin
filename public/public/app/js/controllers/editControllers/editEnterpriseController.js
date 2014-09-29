@@ -1,5 +1,5 @@
-app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpriseResource",
-    function ($scope, $routeParams, enterpriseResource) {
+app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpriseResource", "$location",
+    function ($scope, $routeParams, enterpriseResource, $location) {
         $scope.init = function () {
             console.log("IN")
             $scope.enterpriseId = $routeParams.enterprise;
@@ -24,9 +24,16 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
          */
         $scope.cancel = function () {
             //  $modalInstance.dismiss();
-            $scope.$apply(function () {$location.path("/admin-enterprise");});
-            
+            $scope.$apply(function () {
+                $location.path("/admin-enterprise");
+            });
+
         };
+
+        $scope.rediretcEnterprise = function () {
+            $location.path('#/admin-enterprise');
+        };
+
         $scope.init();
     }]);
 
