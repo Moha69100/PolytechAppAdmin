@@ -93,5 +93,33 @@ public class SalleManager {
         }
         return true;
     }
+    
+    
+    /**
+     * UPDATE A STUDENT INTO DATABASE
+     * @param salle
+     * @return
+     * @throws Exception 
+     */
+    public boolean updateSalle(Salle salle) throws Exception {
+
+        Session session = SessionManager.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.update(salle);
+            tx.commit();
+
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e; // or display error message
+        } finally {
+            session.close();
+        }
+        
+        return true;
+    }
 
 }
