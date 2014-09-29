@@ -1,9 +1,7 @@
 <div class="container-fluid" style="margin-top : 20px;">
     <form method="POST" action="#" class="form-horizontal" role="form" id="enterpriseForm">
         <div class="row">
-            <div class="page-header">
-                <h2>Entreprise {{enterprise.raison}}</h2>
-            </div>
+            <h2 class="form-header">Entreprise {{enterprise.raison}}</h2>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <div class="form-group">
                     <label for="enterpriseName" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Raison sociale <span style="color: red;">*</span> : </label>
@@ -40,9 +38,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="page-header">
-                <h2>Adresse de l'entreprise</h2>
-            </div>
+            <h2 class="form-header">Adresse de l'entreprise</h2>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <div class="form-group">
                     <label for="adress" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Adresse : </label>
@@ -79,9 +75,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="page-header">
-                <h2>Informations complémentaires</h2>
-            </div>
+            <h2 class="form-header">Informations complémentaires</h2>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <div class="form-group">
                     <label for="forumAttendingYear" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Année participation forum : </label>
@@ -102,8 +96,9 @@
         <div class="row pull-right">
             <div class="form-buttons">
                 <button class="btn btn-warning" data-ng-click="remove(enterprise)">Supprimer</button>
-                <button type="submit" class="btn btn-primary" data-ng-disabled="!enterprise.raison" data-ng-click="save(enterprise)">Valider</button>
+                <button type="submit" class="btn btn-primary" data-ng-disabled="!enterprise.raison" data-ng-click="save()">Valider</button>
                 <button type="submit" ng-click="redirectEnterprise()" class="btn btn-default">Annuler</button>
-            </div></div>
+            </div>
+        </div>
     </form>
 </div>

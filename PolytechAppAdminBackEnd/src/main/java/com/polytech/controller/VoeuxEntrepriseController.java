@@ -121,7 +121,7 @@ public class VoeuxEntrepriseController {
      * @param voeuxEnt Object to update created from the JSON file passed using POST.
      * @return A HTTP status regarding the status of the update.
      */
-    @RequestMapping(value = "/voeuxentreprises/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/voeuxentreprise", method = RequestMethod.POST)
     public Object updateSalle(@RequestBody VoeuxEntreprise voeuxEnt) {
         String error = "";
         try {

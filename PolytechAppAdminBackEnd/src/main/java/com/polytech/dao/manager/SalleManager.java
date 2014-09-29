@@ -107,6 +107,7 @@ public class SalleManager {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
+            System.out.println("Update de la salle :" + salle.getId() + " libelle: " + salle.getLibelle() + " // loc : " + salle.getLocalisation());
             session.update(salle);
             tx.commit();
 
