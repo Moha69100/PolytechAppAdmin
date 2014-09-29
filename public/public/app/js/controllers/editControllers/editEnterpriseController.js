@@ -1,3 +1,4 @@
+
 app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpriseResource", "$location",
     function ($scope, $routeParams, enterpriseResource, $location) {
         $scope.init = function () {
@@ -37,5 +38,4 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
 
         $scope.init();
     }]);
-
 
