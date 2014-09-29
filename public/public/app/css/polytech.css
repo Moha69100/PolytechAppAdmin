@@ -1,7 +1,6 @@
 body{
     overflow-y: hidden;
 }
-
 /*
 #view{
     margin-left: 1%;
@@ -87,10 +86,6 @@ body{
 
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-}
-
-.page-header>h2{
-    border-bottom : 1px solid #45b5e4;
 }
 .row{
     margin : 0 !important;
