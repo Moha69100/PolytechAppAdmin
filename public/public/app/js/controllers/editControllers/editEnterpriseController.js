@@ -25,6 +25,8 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                 console.log(error + " error ");
             });
         };
+        
+        
         $scope.remove = function(enterprise) {
             console.log($scope.enterpriseId);
             enterpriseResource.removeEnterprise({"id": $scope.enterpriseId}, function(data) {
