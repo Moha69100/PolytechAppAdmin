@@ -29,7 +29,9 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                 console.log(error + " error ");
             });
         };
-        $scope.remove = function (enterprise) {
+        
+        
+        $scope.removeEnterprise = function(enterprise) {
             console.log($scope.enterpriseId);
             enterpriseResource.removeEnterprise({"id": $scope.enterpriseId}, function (data) {
                 console.log(data)
@@ -40,13 +42,11 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
          * sortie par cancel()
          */
         $scope.cancel = function () {
+            $scope.enterprise = null;
+            $scope.enterpriseId = null; 
             $location.path('/admin-enterprise');
         };
-
-        $scope.rediretcEnterprise = function () {
-            $location.path('/admin-enterprise');
-        };
-
+        
         $scope.init();
     }]);
 
