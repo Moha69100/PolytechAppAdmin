@@ -114,6 +114,10 @@ body > .header .logo .icon {
   color: #019cde;
   display: inline;
 }
+.right-side .page-header .form-actions {
+  margin-top: 20px;
+  float: right;
+}
 @media (max-width: 767px) {
   .navbar .navbar-nav > li {
     float: left;
