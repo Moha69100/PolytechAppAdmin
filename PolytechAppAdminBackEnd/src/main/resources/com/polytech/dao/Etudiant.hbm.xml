@@ -9,7 +9,7 @@
             <generator class="identity" />
         </id>
         <property name="candidid" type="java.lang.Integer">
-            <column name="candidid" />
+            <column name="candidid"/>
         </property>
         <property name="civilite" type="string">
             <column name="civilite" />
