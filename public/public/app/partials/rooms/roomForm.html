@@ -2,32 +2,31 @@
     <h3 class="col-sm-2 control-label">{{room.libelle}}</h3><br>
 </div>
 
-    <div class="row">    
-        <div class="col-sm-12">    
-            <div>
-                <div class="col-xs-8 col-sm-6 left-column-form">
-                    <h4 class="col-sm-12 control-label">Informations générales </h4>
-                    <div>
-                        <label for="libelle" class="col-sm-3 control-label">Libellé : </label>
-                        <input type="text" class="form-control col-sm-9" id="lastName" ng-model="room.libelle" placeholder="Libellé ..." />
-                    </div>
-                    <div>
-                        <label for="localisation" class="col-sm-3 control-label">Localisation : </label>
-                        <input type="text" class="form-control col-sm-9" id="firstName" ng-model="room.localisation" placeholder="Localisation ..." />
-                    </div>
-                    <div>
-                        <label for="capacite" class="col-sm-3 control-label">Capacité : </label>
-                        <input type="text" class="form-control col-sm-9" id="birthDate" ng-model="room.capacite" placeholder="Capacité ..." />
-                    </div>
+<div class="row">    
+    <div class="col-sm-12">    
+        <div>
+            <div class="col-xs-8 col-sm-6 left-column-form">
+                <h4 class="col-sm-12 control-label">Informations générales </h4>
+                <div>
+                    <label for="libelle" class="col-sm-3 control-label">Libellé : </label>
+                    <input type="text" class="form-control col-sm-9" id="lastName" ng-model="room.libelle" placeholder="Libellé ..." />
                 </div>
-            </div><br/>
-        </div>
+                <div>
+                    <label for="localisation" class="col-sm-3 control-label">Localisation : </label>
+                    <input type="text" class="form-control col-sm-9" id="firstName" ng-model="room.localisation" placeholder="Localisation ..." />
+                </div>
+                <div>
+                    <label for="capacite" class="col-sm-3 control-label">Capacité : </label>
+                    <input type="text" class="form-control col-sm-9" id="birthDate" ng-model="room.capacite" placeholder="Capacité ..." />
+                </div>
+            </div>
+        </div><br/>
     </div>
+</div>
 
 <br/>
 <div class="form-group">
-    <button class="btn btn-warning" data-ng-click="remove(room)">
-        Supprimer        </button>
+    <button type="submit" class="btn btn-warning" data-ng-click="removeRoom(room)">Supprimer</button>
     <button type="submit" class="btn btn-primary" data-ng-click="save(room)">Valider</button>
     <button type="submit" class="btn btn-default" data-ng-click="cancel()">Annuler</button>
 </div>

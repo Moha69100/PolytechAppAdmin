@@ -9,7 +9,7 @@ app.controller("fileController", ['$scope', '$modal', "FileUploader", "fileResou
         var initFileList = function () {
             $http({
                 method: "GET",
-                url: "http://localhost:8090/files/student/1"}
+                url: "http://localhost:8090/etudiants/upload"}
             ).success(function (data) {
                 angular.forEach(data, function (file, key) {
                     $scope.fileList.push({
