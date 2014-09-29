@@ -91,7 +91,7 @@ public class SalleController {
      * @param ent Object to insert created from the JSON file passed using POST.
      * @return A HTTP status regarding the status of the insertion.
      */
-    @RequestMapping(value = "/salle/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/salle/add", method = RequestMethod.PUT)
     public @ResponseBody
     Object createSalle(@RequestBody Salle salle) {
 
@@ -103,16 +103,17 @@ public class SalleController {
             return SuccessHandler.handle(salleManager.addSalle(salle));
         } catch (Exception e) {
             error = e.getMessage();
+            return ExceptionHandler.handle(e);
         }
-        return " Erreur : " + error;
 
     }
 
     /**
-     * UPDATE SALLE
+     * This method updates a salle into the database. A JSON object passed using
+     * POST represents the object to update.
      *
-     * @param salle
-     * @return
+     * @param salle Object to update created from the JSON file passed using POST.
+     * @return A HTTP status regarding the status of the insertion.
      */
     @RequestMapping(value = "/salle/update", method = RequestMethod.POST)
     public Object updateSalle(@RequestBody Salle salle) {
