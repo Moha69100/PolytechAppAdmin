@@ -22,11 +22,11 @@ public class SimpleCORSFilter implements Filter {
         String o = request.getHeader("api_key");
         HttpServletResponse response = (HttpServletResponse) res;
         
-        if (o == null) {
+        //if (o == null) {
             
-            response.setStatus(401);
+           // response.setStatus(401);
             
-        } else {
+        //} else {
 
             response.setHeader("Access-Control-Allow-Origin", "*");
             response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
@@ -34,7 +34,7 @@ public class SimpleCORSFilter implements Filter {
             response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
             chain.doFilter(request, response);
             
-        }
+        //}
         
     }
 
