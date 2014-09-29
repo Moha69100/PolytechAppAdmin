@@ -30,7 +30,7 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
         };
 
         $scope.redirectEnterprise = function () {
-            $location.url('/admin-enterprise');
+            $location.path('#/admin-enterprise');
         };
 
         $scope.init();
