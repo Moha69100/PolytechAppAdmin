@@ -1,11 +1,13 @@
 body{
     overflow-y: hidden;
 }
+
+/*
 #view{
     margin-left: 1%;
     margin-right: 1%;
     width: 99%;
-}
+}*/
 
 #poly-menu{
     transition: 0.7s;
@@ -88,7 +90,6 @@ body{
 }
 
 .page-header>h2{
-    width : 30%;
     border-bottom : 1px solid #45b5e4;
 }
 .row{
@@ -101,4 +102,7 @@ body{
 
 .form-buttons>button{
     margin-left: 15px;
+}
+.form-control:focus{
+    border-color: #019cde;
 }

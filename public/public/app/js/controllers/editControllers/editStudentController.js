@@ -25,13 +25,17 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
         ];
 
         $scope.save = function (student) {
-            //appel ressource pour update
-            $location.path('/admin-student');
+            studentResource.updateStudent({"id": $scope.studentId}, function (data) {
+                console.log(data);
+                $location.path('/edit-student');
+            });
         };
 
-        $scope.removeStudent = function (student) {
-            //appel ressource pour delete
-            $location.path('/admin-student');
+        $scope.removeStudent = function (student) {            
+            studentResource.removeStudent({"id": $scope.studentId}, function (data) {
+                console.log(data);
+                $location.path('/admin-student');
+            });            
         };
         /**
          * sortie par cancel()
