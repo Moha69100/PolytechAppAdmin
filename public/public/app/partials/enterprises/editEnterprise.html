@@ -1,7 +1,9 @@
 <div class="container-fluid" style="margin-top : 20px;">
     <form method="POST" action="#" class="form-horizontal" role="form" id="enterpriseForm">
         <div class="row">
-            <h2 class="form-header">Entreprise {{enterprise.raison}}</h2>
+            <div class="page-header">
+                <h2>Informations générales</h2>
+            </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <div class="form-group">
                     <label for="enterpriseName" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Raison sociale <span style="color: red;">*</span> : </label>
@@ -95,9 +97,9 @@
         </div>
         <div class="row pull-right">
             <div class="form-buttons">
-                <button class="btn btn-warning" data-ng-click="remove(enterprise)">Supprimer</button>
-                <button type="submit" class="btn btn-primary" data-ng-disabled="!enterprise.raison" data-ng-click="save()">Valider</button>
-                <button type="submit" ng-click="redirectEnterprise()" class="btn btn-default">Annuler</button>
+                <button class="btn btn-warning" data-ng-click="removeEnterprise(enterprise)">Supprimer</button>
+                <button type="submit" class="btn btn-primary" data-ng-disabled="!enterprise.raison" data-ng-click="save(enterprise)">Valider</button>
+                <button type="submit" data-ng-click="cancel()" class="btn btn-default">Annuler</button>
             </div>
         </div>
     </form>
