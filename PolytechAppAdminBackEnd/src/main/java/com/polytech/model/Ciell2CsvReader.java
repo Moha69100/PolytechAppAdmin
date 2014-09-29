@@ -28,6 +28,8 @@ import org.apache.commons.csv.CSVRecord;
  */
 public class Ciell2CsvReader {
     
+    private EtudiantManager edtManager = new EtudiantManager();
+     
     /***
      * Méthode permetant de parser un fichier csv puis de l'enregister dans la base
      * @param bytes
@@ -35,7 +37,7 @@ public class Ciell2CsvReader {
      * @throws FileNotFoundException
      * @throws ParseException 
      */
-    public void parse(byte[] bytes) throws IOException, FileNotFoundException, ParseException, Exception{
+    public List<Etudiant> parse(byte[] bytes) throws IOException, FileNotFoundException, ParseException, Exception{
         // Enregistrement du fichier dans un dossier temporaire
         File file = uploadFile(bytes);
         
@@ -45,6 +47,8 @@ public class Ciell2CsvReader {
         // Enregistement des fichiers en base
         save(etudiants);
         
+        // Retour de la liste
+        return etudiants;
     }
     
     /***
@@ -91,19 +95,19 @@ public class Ciell2CsvReader {
             // Parcours de la liste et création des étudiants
             for(CSVRecord record : parser){
                 Etudiant edt = new Etudiant();
-                edt.setCandidid(Integer.parseInt(record.get("Identifiant")));
-                edt.setNom(record.get("NOM"));
-                edt.setPrenom(record.get("Prénom"));
-                edt.setDatenaissance(formatter.parse(record.get("DATE NAISSANCE")));
-                edt.setAdresse(record.get("ADRESSE"));
-                edt.setCp(record.get("CODE POSTAL"));
-                edt.setVille(record.get("VILLE"));
-                edt.setPays(record.get("PAYS"));
-                edt.setEmail(record.get("EMAIL"));
-                edt.setTelfixe(record.get("TELEPHONE"));
-                edt.setTelportable(record.get("MOBILE"));
-                edt.setEtab(record.get("ETAB_EN_COURS_PATRONYME"));
-                edt.setEtabville(record.get("ETAB_EN_COURS_VILLE"));
+                if(record.isSet("Identifiant")) edt.setCandidid(Integer.parseInt(record.get("Identifiant")));
+                if(record.isSet("NOM")) edt.setNom(record.get("NOM"));
+                if(record.isSet("Prénom")) edt.setPrenom(record.get("Prénom"));
+                if(record.isSet("DATE NAISSANCE")) edt.setDatenaissance(formatter.parse(record.get("DATE NAISSANCE")));
+                if(record.isSet("ADRESSE")) edt.setAdresse(record.get("ADRESSE"));
+                if(record.isSet("CODE POSTAL")) edt.setCp(record.get("CODE POSTAL"));
+                if(record.isSet("VILLE")) edt.setVille(record.get("VILLE"));
+                if(record.isSet("PAYS")) edt.setPays(record.get("PAYS"));
+                if(record.isSet("EMAIL")) edt.setEmail(record.get("EMAIL"));
+                if(record.isSet("TELEPHONE")) edt.setTelfixe(record.get("TELEPHONE"));
+                if(record.isSet("MOBILE")) edt.setTelportable(record.get("MOBILE"));
+                if(record.isSet("ETAB_EN_COURS_PATRONYME")) edt.setEtab(record.get("ETAB_EN_COURS_PATRONYME"));
+                if(record.isSet("ETAB_EN_COURS_VILLE")) edt.setEtabville(record.get("ETAB_EN_COURS_VILLE"));
                 emps.add(edt);
             }
             
@@ -118,13 +122,21 @@ public class Ciell2CsvReader {
         }
     }
     
+    /*
+     * Méthode permetant d'enregistrer les étudiants dans la bdd 
+     * @param etudiants
+     * @throws Exception 
+     */
     private void save(List<Etudiant> etudiants) throws Exception {
-        EtudiantManager edtManager = new EtudiantManager();
         for (Etudiant etudiant : etudiants) {
             edtManager.addEtudiant(etudiant);
         }
     }
     
+    /*
+     * Méthode permettant de retourner le timestamp courant 
+     * @return 
+     */
     public String getCurrentTimeStamp() {
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyyMMdd_HH_mm_ss");
         Date now = new Date();

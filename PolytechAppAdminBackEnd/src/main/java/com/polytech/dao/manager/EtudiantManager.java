@@ -19,33 +19,32 @@ public class EtudiantManager {
 
     /**
      * Retrieve all students in database
-     * @return 
+     *
+     * @return
      */
     public List<Etudiant> getAllEtudiant() throws Exception {
-        
+
         Session session = SessionManager.openSession();
-        
+
         try {
-            
             Query query = session.createQuery("from Etudiant");
             return query.list();
-            
+
         } finally {
-            
             session.close();
-            
+
         }
-        
-        
+
     }
 
     /**
      * Delete one etudiant from database
+     *
      * @param etu_id
-     * @throws Exception 
+     * @throws Exception
      */
-    public Boolean deleteEtudiantById(int etu_id) throws Exception {
-        
+    public boolean deleteEtudiantById(int etu_id) throws Exception {
+
         Session session = SessionManager.openSession();
         Transaction tx = null;
         try {
@@ -55,7 +54,7 @@ public class EtudiantManager {
             session.delete(ex);
 
             tx.commit();
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             if (tx != null) {
                 tx.rollback();
             }
@@ -64,7 +63,7 @@ public class EtudiantManager {
             session.close();
         }
         return true;
-        
+
     }
 
     /**
@@ -72,23 +71,26 @@ public class EtudiantManager {
      * @param id : id etudiant
      * @return etudiant avec id correspondant
      */
-    public Etudiant getEtudiantByID(int id) throws Exception  {
-        
+    public Etudiant getEtudiantByID(int id) throws Exception {
+
         Session session = SessionManager.openSession();
-        
+
         try {
-            
             return (Etudiant) session.get(Etudiant.class, id);
-            
+
         } finally {
-            
             session.close();
-            
+
         }
     }
-    
-    
-    public Boolean addEtudiant(Etudiant etu) throws Exception {
+
+    /**
+     * ADD A STUDENT INTO DATABASE
+     * @param etu
+     * @return
+     * @throws Exception 
+     */
+    public boolean addEtudiant(Etudiant etu) throws Exception {
 
         Session session = SessionManager.openSession();
         Transaction tx = null;
@@ -98,7 +100,7 @@ public class EtudiantManager {
             session.save(etu);
 
             tx.commit();
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             if (tx != null) {
                 tx.rollback();
             }
@@ -106,6 +108,33 @@ public class EtudiantManager {
         } finally {
             session.close();
         }
+        return true;
+    }
+
+    /**
+     * UPDATE A STUDENT INTO DATABASE
+     * @param etu
+     * @return
+     * @throws Exception 
+     */
+    public boolean updateEtudiant(Etudiant etu) throws Exception {
+
+        Session session = SessionManager.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.update(etu);
+            tx.commit();
+
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e; // or display error message
+        } finally {
+            session.close();
+        }
+        
         return true;
     }
 

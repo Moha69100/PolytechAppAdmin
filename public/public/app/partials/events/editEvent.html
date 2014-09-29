@@ -1,0 +1,50 @@
+
+    <div class="page-header">
+        <h2>Evènement </h2>
+    </div>
+
+    <form method="POST" action="#" class="form-horizontal" role="form" id="eventForm">
+        <h3>Informations générales</h3>
+        <div class="form-group">
+            <label for="eventType" class="col-sm-2">Type d'évènement : </label>
+            <div class="col-sm-5">
+                <input type="text" id="eventType" class="form-control col-sm-10" data-ng-model='event.typeevt' />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="eventDate" class="col-sm-2">Date : </label>
+            <div class="col-sm-5">
+                <input type="text" id="eventDate" class="form-control col-sm-10" data-ng-model="event.dateevt" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="eventStartingTime" class="col-sm-2">Heure de début : </label>
+            <div class="col-sm-5">
+                <input type="text" id="eventStartingTime" class="form-control col-sm-10" data-ng-model="event.heuredebut" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="eventEndingTime" class="col-sm-2">Heure de fin : </label>
+            <div class="col-sm-5">
+                <input type="text" id="eventEndingTime" class="form-control col-sm-10" data-ng-model="event.heurefin"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="eventDescription" class="col-sm-2">Description : </label>
+            <div class="col-sm-5">
+                <textarea rows="3" id="eventDescription" class="form-control col-sm-10" data-ng-model="event.description" />
+            </div>
+        </div>
+    </form>
+    
+    <div id="attendingEnterprises" data-ng-show="event.id !== undefined">
+        <h3>Entreprise présentes</h3>
+        <button type="submit" class="btn btn-default" data-ng-click="editAttendingCompanies()">Editer la liste</button>
+    </div>
+
+    <div id="attendingCandidates" data-ng-show="event.id !== undefined">
+        <h3>Candidats présents</h3>
+        <button type="submit" class="btn btn-default" data-ng-click="editAttendingCandidates()">Editer la liste</button>
+    </div>
+
+

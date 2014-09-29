@@ -38,9 +38,6 @@ $(function() {
         $(this).removeClass('hover');
     });
 
-    //Activate tooltips
-    $("[data-toggle='tooltip']").tooltip();
-
     /*     
      * Add collapse and remove events to boxes
      */
@@ -63,16 +60,6 @@ $(function() {
     });
 
     /*
-     * ADD SLIMSCROLL TO THE TOP NAV DROPDOWNS
-     * ---------------------------------------
-     */
-    $(".navbar .menu").slimscroll({
-        height: "200px",
-        alwaysVisible: false,
-        size: "3px"
-    }).css("width", "100%");
-
-    /*
      * INITIALIZE BUTTON TOGGLE
      * ------------------------
      */
@@ -92,9 +79,6 @@ $(function() {
         box.slideUp();
     });
 
-    /* Sidebar tree view */
-    $(".sidebar .treeview").tree();
-
     /* 
      * Make sure that the sidebar is streched full height
      * ---------------------------------------------
@@ -109,13 +93,13 @@ $(function() {
         $(".wrapper").css("min-height", height + "px");
         var content = $(".wrapper").height();
         //If the wrapper height is greater than the window
-        if (content > height)
+       /* if (content > height)
             //then set sidebar height to the wrapper
-            $(".left-side, html, body").css("min-height", content + "px");
+           $(".left-side, html, body").css("min-height", content + "px");
         else {
             //Otherwise, set the sidebar to the height of the window
-            $(".left-side, html, body").css("min-height", height + "px");
-        }
+           $(".left-side, html, body").css("min-height", height + "px");
+        }*/
     }
     //Fire upon load
     _fix();
@@ -127,16 +111,6 @@ $(function() {
 
     //Fix the fixed layout sidebar scroll bug
     fix_sidebar();
-
-    /*
-     * We are gonna initialize all checkbox and radio inputs to 
-     * iCheck plugin in.
-     * You can find the documentation at http://fronteed.com/iCheck/
-     */
-    $("input[type='checkbox']:not(.simple), input[type='radio']:not(.simple)").iCheck({
-        checkboxClass: 'icheckbox_minimal',
-        radioClass: 'iradio_minimal'
-    });
 
 });
 function fix_sidebar() {

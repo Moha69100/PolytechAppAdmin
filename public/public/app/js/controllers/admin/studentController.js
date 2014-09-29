@@ -6,35 +6,13 @@ app.controller('studentController', ['$rootScope', '$scope', '$http', '$timeout'
             studentResource.listStudents(function (data) {
                 $scope.students = data;
             });
-            /*$scope.students = [{
-                    id: 1,
-                    nom: "TOTO",
-                    prenom: "Test",
-                    email: "test@eleve-polytech.gmail",
-                    adresse: "12 rue de polytech",
-                    dateNaiss: "12/12/1994",
-                    codePost: "69003",
-                    ville: "Lyon",
-                    pays: "France",
-                    tel: "0606060606",
-                    bac: "S",
-                    optBac: "SI",
-                    mentionBac: "AB",
-                    anneeBac: "2000",
-                    diplomeEu: "Licence langue",
-                    diplomeAavoir: "DUT Info",
-                    etablissement: "IUT A Lyon",
-                    statCandidature: "Acceptée",
-                    remarques: "rien a dire"
-                }];*/
-
         };
 
-        $scope.addStudent = function () {
+        $scope.importStudents = function () {
             // ouverture modale, avec le type à modifier, et un flag
             var modalInstance = $modal.open({
-                templateUrl: 'app/partials/students/studentForm.html',
-                controller: 'editStudentModalController',
+                templateUrl: 'app/partials/students/importStudentForm.html',
+                controller: 'importStudentModalController',
                 resolve: {
                     items: function () {
                         return {studentEdited: angular.copy($scope.students[2]),

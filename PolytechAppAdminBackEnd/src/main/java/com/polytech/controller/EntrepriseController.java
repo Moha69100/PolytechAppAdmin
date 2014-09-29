@@ -101,7 +101,7 @@ public class EntrepriseController {
     @RequestMapping(value = "/entreprise/add", method = RequestMethod.PUT)
     public Object createEntreprise(@RequestBody Entreprise ent) {
 
-        ent.setAdresse("TEST ADREESSE");
+      
         try {
             return SuccessHandler.handle(entrepriseManager.addEntreprise(ent));
         } catch (Exception e) {

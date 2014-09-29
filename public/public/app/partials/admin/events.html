@@ -5,23 +5,17 @@
             <i data-ng-click="add()" class="glyphicon glyphicon-plus"></i>   
         </div>
     </div>
-    <table class="table ">
+    <table class="table table-striped table-hover">
         <tbody>
             <tr>
                 <th>#</th>
-                <th>Nom</th>
+                <th>Type</th>
                 <th>Description</th>
             </tr>
-            <tr data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in events">
+            <tr data-ng-click="editEvent(e)" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in events">
                 <td>{{e.id}}</td>
-                <td>{{e.name}}</td>
-                <td>{{e.desc}}</td>
-
-                <td>
-                    <button class="btn btn-primary" data-ng-click="edit(e)">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </button>                
-                </td>
+                <td>{{e.typeevt}}</td>
+                <td>{{e.description}}</td>
             </tr>
 
         </tbody>
