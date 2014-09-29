@@ -9,7 +9,7 @@ app.controller('studentController', ['$rootScope', '$scope', '$http', '$timeout'
         };
 
         $scope.importStudents = function () {
-            // ouverture modale, avec le type à modifier, et un flag
+            // ouverture modale, pour ajouter fichier excel Ciell2 contenant les étudiants à importer.
             var modalInstance = $modal.open({
                 templateUrl: 'app/partials/students/importStudentForm.html',
                 controller: 'importStudentModalController',

@@ -101,7 +101,11 @@ body > .header .logo .icon {
   background-image: url('../img/logoPolytech.png');
 }
 .right-side .page-header {
-  margin-top: 16px;
+  margin-top: 0px;
+  /* background-color: #ffffff; */
+}
+.right-side .page-header h2 {
+  display: inline;
 }
 @media (max-width: 767px) {
   .navbar .navbar-nav > li {
@@ -313,6 +317,9 @@ body > .header {
 .right-side {
   background-color: #f9f9f9;
   margin-left: 250px;
+}
+.right-side .content {
+  padding: 16px;
 }
 /*left side - contains sidebar*/
 .left-side {
