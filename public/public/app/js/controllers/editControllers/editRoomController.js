@@ -3,7 +3,6 @@ app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource', 
         var init = function() {
             $scope.roomId = $routeParams.room;
             roomResource.getRoom({"id": $scope.roomId}, function(data) {
-                console.log(data)
                 $scope.room = data;
             });
         };
@@ -13,14 +12,12 @@ app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource', 
 
         $scope.save = function(room) {
             roomResource.updateRoom({"id": $scope.roomId}, function (data) {
-                console.log(data);
                 $location.path('/edit-room');
             });
         };
 
         $scope.removeRoom = function(room) {          
             roomResource.removeRoom({"id": $scope.roomId}, function (data) {
-                console.log(data);
                 $location.path('/admin-room');
             });            
         };
