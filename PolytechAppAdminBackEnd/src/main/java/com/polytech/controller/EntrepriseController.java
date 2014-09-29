@@ -115,7 +115,7 @@ public class EntrepriseController {
      * @param ent Company to update into database
      * @return A HTTP status regarding the status of the update.
      */
-    @RequestMapping(value = "/entreprise/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/entreprise", method = RequestMethod.POST)
     public Object updateEntreprise(@RequestBody Entreprise ent) {
         String error = "";
         try {

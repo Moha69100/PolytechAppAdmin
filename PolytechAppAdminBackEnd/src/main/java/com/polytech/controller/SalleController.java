@@ -115,7 +115,7 @@ public class SalleController {
      * @param salle Object to update created from the JSON file passed using POST.
      * @return A HTTP status regarding the status of the insertion.
      */
-    @RequestMapping(value = "/salle/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/salle", method = RequestMethod.POST)
     public Object updateSalle(@RequestBody Salle salle) {
         String error = "";
         try {
