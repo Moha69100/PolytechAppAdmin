@@ -108,5 +108,32 @@ public class VoeuxEntrepriseManager {
         }
         return true;
     }
+    
+    /**
+     * UPDATE A VoeuxEntreprise INTO DATABASE
+     * @param voeuxEnt
+     * @return
+     * @throws Exception 
+     */
+    public boolean updateVoeuxEntreprise(VoeuxEntreprise voeuxEnt) throws Exception {
+
+        Session session = SessionManager.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.update(voeuxEnt);
+            tx.commit();
+
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e; // or display error message
+        } finally {
+            session.close();
+        }
+        
+        return true;
+    }
 
 }

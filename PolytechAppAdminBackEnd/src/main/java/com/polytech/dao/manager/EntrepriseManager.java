@@ -6,8 +6,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-
-
 public class EntrepriseManager {
 
     public List<Entreprise> getAllEnterprise() throws Exception {
@@ -99,6 +97,34 @@ public class EntrepriseManager {
         } finally {
             session.close();
         }
+        return true;
+    }
+
+    /**
+     * UPDATE A company INTO DATABASE
+     *
+     * @param ent
+     * @return
+     * @throws Exception
+     */
+    public boolean updateEntreprise(Entreprise ent) throws Exception {
+
+        Session session = SessionManager.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.update(ent);
+            tx.commit();
+
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e; // or display error message
+        } finally {
+            session.close();
+        }
+
         return true;
     }
 
