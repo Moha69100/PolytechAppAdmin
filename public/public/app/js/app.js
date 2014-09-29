@@ -61,6 +61,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             menu: {
                 id: 'menu-events'
             }
+        }).when('/edit-event', {
+            controller: 'editEventController',
+            templateUrl: 'app/partials/events/editEvent.html',
+            menu: {
+                id: 'menu-event'
+            }
         }).otherwise({
             controller: 'accueilController',
             redirectTo: '',
