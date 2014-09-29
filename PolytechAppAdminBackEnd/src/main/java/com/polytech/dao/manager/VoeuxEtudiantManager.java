@@ -107,5 +107,32 @@ public class VoeuxEtudiantManager {
         }
         return true;
     }
+    
+    /**
+     * UPDATE A VoeuxEtudiant INTO DATABASE
+     * @param voeuxEtu
+     * @return
+     * @throws Exception 
+     */
+    public boolean updateVoeuxEtudiant(VoeuxEtudiant voeuxEtu) throws Exception {
+
+        Session session = SessionManager.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.update(voeuxEtu);
+            tx.commit();
+
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e; // or display error message
+        } finally {
+            session.close();
+        }
+        
+        return true;
+    }
 
 }
