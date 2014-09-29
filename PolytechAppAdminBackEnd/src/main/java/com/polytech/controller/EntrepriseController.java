@@ -110,4 +110,20 @@ public class EntrepriseController {
 
     }
     
+    /**
+     * This method updates a company into database
+     * @param ent Company to update into database
+     * @return A HTTP status regarding the status of the update.
+     */
+    @RequestMapping(value = "/entreprise", method = RequestMethod.POST)
+    public Object updateEntreprise(@RequestBody Entreprise ent) {
+        String error = "";
+        try {
+            return SuccessHandler.handle(entrepriseManager.updateEntreprise(ent));
+        } catch (Exception e) {
+            error = e.getMessage();
+            return ExceptionHandler.handle(e);
+        }
+    }
+    
 }

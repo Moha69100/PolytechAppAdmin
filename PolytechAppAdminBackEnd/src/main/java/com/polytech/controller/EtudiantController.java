@@ -46,6 +46,7 @@ public class EtudiantController {
         } catch (Exception ex) {
             return ExceptionHandler.handle(ex);
         }
+        
     }
 
     /**
@@ -110,7 +111,7 @@ public class EtudiantController {
      * @param etu
      * @return 
      */
-    @RequestMapping(value = "/etudiant/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/etudiant", method = RequestMethod.POST)
     public Object updateEtudiant(@RequestBody Etudiant etu) {
         String error = "";
         try {
