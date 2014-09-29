@@ -117,6 +117,9 @@ public class SalleController {
     @RequestMapping(value = "/salle/update", method = RequestMethod.POST)
     public Object updateSalle(@RequestBody Salle salle) {
         String error = "";
+        
+        
+     
         try {
             return SuccessHandler.handle(salleManager.updateSalle(salle));
         } catch (Exception e) {
