@@ -1,11 +1,12 @@
 body{
     overflow-y: hidden;
 }
+/*
 #view{
     margin-left: 1%;
     margin-right: 1%;
     width: 99%;
-}
+}*/
 
 #poly-menu{
     transition: 0.7s;
