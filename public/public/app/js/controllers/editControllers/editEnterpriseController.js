@@ -1,7 +1,6 @@
 app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpriseResource", "$location",
     function ($scope, $routeParams, enterpriseResource, $location) {
         $scope.init = function () {
-            console.log("IN")
             $scope.enterpriseId = $routeParams.enterprise;
             enterpriseResource.getEnterprise({"id": $scope.enterpriseId}, function (data) {
                 console.log(data)
@@ -30,7 +29,7 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
 
         };
 
-        $scope.rediretcEnterprise = function () {
+        $scope.redirectEnterprise = function () {
             $location.path('#/admin-enterprise');
         };
 
