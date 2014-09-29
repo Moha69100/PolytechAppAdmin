@@ -102,7 +102,8 @@ body > .header .logo .icon {
 }
 .right-side .page-header {
   margin-top: 0px;
-  /* background-color: #ffffff; */
+  padding: 16px;
+  background-color: #ffffff;
 }
 .right-side .page-header h2 {
   display: inline;
