@@ -1,84 +1,83 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 23 sept. 2014 09:06:03 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.polytech.dao.Entreprise" table="entreprise" schema="appschema" optimistic-lock="version">
-        <id name="id" type="int">
-            <column name="id" />
-            <generator class="identity" />
-        </id>
-        <property name="raison" type="string">
-            <column name="raison" />
-        </property>
-        <property name="naf" type="string">
-            <column name="naf" />
-        </property>
-        <property name="siret" type="string">
-            <column name="siret" />
-        </property>
-        <property name="effectif" type="string">
-            <column name="effectif" />
-        </property>
-        <property name="organisme" type="string">
-            <column name="organisme" />
-        </property>
-        <property name="adresse" type="string">
-            <column name="adresse" />
-        </property>
-        <property name="adresse2" type="string">
-            <column name="adresse2" />
-        </property>
-        <property name="cp" type="string">
-            <column name="cp" />
-        </property>
-        <property name="ville" type="string">
-            <column name="ville" />
-        </property>
-        <property name="tel" type="string">
-            <column name="tel" />
-        </property>
-        <property name="anneeparticipforum" type="string">
-            <column name="anneeparticipforum" />
-        </property>
-        <property name="nbrapprenti" type="java.lang.Integer">
-            <column name="nbrapprenti" />
-        </property>
-        <set name="entreprisepresences" table="entreprisepresence" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="entid" />
-            </key>
-            <one-to-many class="com.polytech.dao.Entreprisepresence" />
-        </set>
-        <set name="offrealternances" table="offrealternance" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="entid" />
-            </key>
-            <one-to-many class="com.polytech.dao.Offrealternance" />
-        </set>
-        <set name="voeuxEntreprises" table="voeux_entreprise" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="entid" />
-            </key>
-            <one-to-many class="com.polytech.dao.VoeuxEntreprise" />
-        </set>
-        <set name="voeuxEtudiants" table="voeux_etudiant" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="entid" />
-            </key>
-            <one-to-many class="com.polytech.dao.VoeuxEtudiant" />
-        </set>
-        <set name="entretiens" table="entretien" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="entid" />
-            </key>
-            <one-to-many class="com.polytech.dao.Entretien" />
-        </set>
-        <set name="personnecontacts" table="personnecontact" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="entid" />
-            </key>
-            <one-to-many class="com.polytech.dao.Personnecontact" />
-        </set>
-    </class>
+  <class name="com.polytech.dao.Entreprise" optimistic-lock="version" schema="appschema" table="entreprise">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="raison" type="string">
+      <column name="raison"/>
+    </property>
+    <property name="naf" type="string">
+      <column name="naf"/>
+    </property>
+    <property name="siret" type="string">
+      <column name="siret"/>
+    </property>
+    <property name="effectif" type="string">
+      <column name="effectif"/>
+    </property>
+    <property name="organisme" type="string">
+      <column name="organisme"/>
+    </property>
+    <property name="adresse" type="string">
+      <column name="adresse"/>
+    </property>
+    <property name="adresse2" type="string">
+      <column name="adresse2"/>
+    </property>
+    <property name="cp" type="string">
+      <column name="cp"/>
+    </property>
+    <property name="ville" type="string">
+      <column name="ville"/>
+    </property>
+    <property name="tel" type="string">
+      <column name="tel"/>
+    </property>
+    <property name="anneeparticipforum" type="string">
+      <column name="anneeparticipforum"/>
+    </property>
+    <property name="nbrapprenti" type="java.lang.Integer">
+      <column name="nbrapprenti"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="false" name="entreprisepresences" table="entreprisepresence">
+      <key>
+        <column name="entid"/>
+      </key>
+      <one-to-many class="com.polytech.dao.Entreprisepresence"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="false" name="offrealternances" table="offrealternance">
+      <key>
+        <column name="entid"/>
+      </key>
+      <one-to-many class="com.polytech.dao.OffreAlternance"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="false" name="voeuxEntreprises" table="voeux_entreprise">
+      <key>
+        <column name="entid"/>
+      </key>
+      <one-to-many class="com.polytech.dao.VoeuxEntreprise"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="false" name="voeuxEtudiants" table="voeux_etudiant">
+      <key>
+        <column name="entid"/>
+      </key>
+      <one-to-many class="com.polytech.dao.VoeuxEtudiant"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="false" name="entretiens" table="entretien">
+      <key>
+        <column name="entid"/>
+      </key>
+      <one-to-many class="com.polytech.dao.Entretien"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="false" name="personnecontacts" table="personnecontact">
+      <key>
+        <column name="entid"/>
+      </key>
+      <one-to-many class="com.polytech.dao.Personnecontact"/>
+    </set>
+  </class>
 </hibernate-mapping>
