@@ -1,9 +1,8 @@
-app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource',
-    function($scope, $routeParams, roomResource) {
+app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource', '$location',
+    function($scope, $routeParams, roomResource, $location) {
         var init = function() {
             $scope.roomId = $routeParams.room;
             roomResource.getRoom({"id": $scope.roomId}, function(data) {
-                console.log(data)
                 $scope.room = data;
             });
         };
@@ -12,18 +11,29 @@ app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource',
         $scope.feedback = null;
 
         $scope.save = function(room) {
-            //$modalInstance.close($scope.room);
+            var postData = {
+                room: $scope.room
+            };
+            console.log("IN")
+            roomResource.addRoom(postData, function (data) {
+                console.log(data + "success");
+            }, function (error) {
+                console.log(error + " error ");
+            });
         };
 
-        $scope.removeRoom = function(room) {
-
-            //$modalInstance.dismiss();
+        $scope.removeRoom = function(room) {          
+            roomResource.removeRoom({"id": $scope.roomId}, function (data) {
+                $location.path('/admin-room');
+            });            
         };
         /**
          * sortie par cancel()
          */
         $scope.cancel = function() {
-            //$modalInstance.dismiss();
+            delete ($scope.room);
+            delete ($scope.roomId); 
+            $location.path('/admin-room');
         };
         
         init();

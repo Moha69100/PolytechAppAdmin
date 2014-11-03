@@ -1,62 +1,158 @@
-
-
-
-
-<div class="form-header">
-    <h3 class="col-sm-6 control-label">{{student.prenom}}  {{student.nom}}</h3><br>
-</div>    
-<div class="row">    
-    <div class="col-sm-12"> 
-        <div class="col-xs-8 col-sm-6 left-column-form">
-            <h4 class="col-sm-12 control-label">Informations générales </h4>
-            <div class="form-group">
-                <label for="lastName" class="col-sm-3 control-label">Nom <span style="color: red;">*</span> : </label>
-                <div class="col-sm-10 col-xs-10 col-md-2 col-lg-2">
-                    <input type="text" class="form-control" id="civilite" ng-model="student.civilite" data-ng-required="true" placeholder="...">
+<div class="container-fluid" style="margin-top : 20px;">
+    <form method="POST" class="form-horizontal" role="form" id="studentForm">
+        <div class="row">
+            <h2 class="form-header">Informations générales</h2>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="lastName" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Nom <span style="color: red;">*</span> : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="lastName" ng-model="student.nom" data-ng-required="true" placeholder="Nom ...">
+                    </div>
                 </div>
-                <div class="col-sm-10 col-xs-10 col-md-7 col-lg-7">
-                    <input type="text" class="form-control" id="lastName" ng-model="student.nom" data-ng-required="true" placeholder="Nom ...">
+                <div class="form-group">
+                    <label for="firstName" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Prénom <span style="color: red;">*</span> : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="firstName" ng-model="student.prenom" data-ng-required="true" placeholder="Prénom ...">
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="firstName" class="col-sm-3 control-label">Prénom <span style="color: red;">*</span> : </label>
-                <div class="col-sm-10 col-xs-10 col-md-9 col-lg-9">
-                    <input type="text" class="form-control" id="firstName" ng-model="student.prenom" data-ng-required="true" placeholder="Prénom ...">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="civilite" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Civilité : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="civilite" ng-model="student.civilite" placeholder="Civilité ...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Date de naissance : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="birthDate" ng-model="student.datenaissance" placeholder="Date de naissance ...">
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="birthDate" class="col-sm-3 control-label">Date de naissance <span style="color: red;">*</span> : </label>
-                <div class="col-sm-10 col-xs-10 col-md-9 col-lg-9">
-                    <input type="text" class="form-control" id="birthDate" ng-model="student.datenaissance" data-ng-required="true" placeholder="Date de naissance ...">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="country" class="col-sm-3 control-label">Pays <span style="color: red;">*</span> : </label>
-                <div class="col-sm-10 col-xs-10 col-md-9 col-lg-9">
-                    <input type="text" class="form-control" id="country" ng-model="student.pays" data-ng-required="true" placeholder="Pays ...">
-                </div>
-            </div>  <br>                
         </div>
-        <div class="col-xs-8 col-sm-6 right-column-form">
-            <h4 class="col-sm-12 control-label">Contact</h4>                   
-            <div class="form-group">
-                <label for="adress" class="col-sm-3 control-label">Adresse <span style="color: red;">*</span> : </label>
-                <div class="col-sm-10 col-xs-10 col-md-9 col-lg-9">
-                    <input type="text" class="form-control" id="adress" ng-model="student.adresse" data-ng-required="true" placeholder="Adresse ...">
+        <div class="row">
+            <h2 class="form-header">Données de contact</h2>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="adresse" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Adresse : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="adresse" ng-model="student.adresse" placeholder="Adresse ...">
+                    </div>
                 </div>
-            </div>  
-            <br>
+                <div class="form-group">
+                    <label for="postalCode" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Code postal : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="postalCode" ng-model="student.cp" placeholder="Code postal ...">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="city" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Ville : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="city" ng-model="student.ville" placeholder="Ville ...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="country" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Pays : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="country" ng-model="student.pays" placeholder="Pays ...">
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="row" style="padding-top: 50px;">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="mainPhone" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Téléphone fixe : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="mainPhone" ng-model="student.telfixe" placeholder="Téléphone fixe ...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mobilePhone" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Téléphone portable : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="mobilePhone" ng-model="student.telportable" placeholder="Téléphone portable ...">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="mail" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">E-mail : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="mail" ng-model="student.email" placeholder="E-mail ...">
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="row">
+            <h2 class="form-header">Informations scolaires</h2>
+
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="bacType" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Type de BAC obtenu : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="bacType" ng-model="student.bactype" placeholder="Type de BAC ...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="bacYear" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Année d'obtention : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="bacYear" ng-model="student.bacannee" placeholder="Année d'obtention ...">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="bacMention" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Mention obtenue : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="bacMention" ng-model="student.bacmention" placeholder="Mention obtenue ...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="bacOptions" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Options (séparées apr virgules) : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="bacOptions" ng-model="student.bacoption" placeholder="Options ...">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 50px;">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="vow1" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Premier voeu : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="voeu1" ng-model="student.voeu1" placeholder="Premier voeu ...">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="vow2" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Second voeu : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="voeu2" ng-model="student.voeu2" placeholder="Second voeu ...">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="vow3" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Troisième voeu : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="voeu3" ng-model="student.voeu3" placeholder="Troisième voeu ...">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pull-right">
+            <div class="form-buttons">
+                <button class="btn btn-warning" data-ng-click="removeStudent(student)">Supprimer</button>
+                <button type="submit" class="btn btn-primary" data-ng-disabled="!student.nom || !student.prenom" data-ng-click="save()">Valider</button>
+                <button type="submit" ng-click="cancel()" class="btn btn-default">Annuler</button>
+            </div>
+        </div>
+    </form>
 </div>
-
-<div class="col-xs-8 col-sm-6 left-column-form"></div>
-<div class="col-xs-8 col-sm-6 right-column-form">
-    <button type="submit" class="btn btn-default" data-ng-click="cancel()">Annuler</button>
-    <button type="submit" class="btn btn-default" data-ng-click="save()">Valider</button>
-    <button type="submit" class="btn btn-default" data-ng-click="removeStudent(student)">Supprimer</button>
-</div>
-
-
-

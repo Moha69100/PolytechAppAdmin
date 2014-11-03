@@ -34,7 +34,7 @@ public class VoeuxEtudiantController {
      *
      * @return A JSON object or a HTTP status in case of an error.
      */
-    @RequestMapping(value = "/voeuxEtudiants", method = RequestMethod.GET)
+    @RequestMapping(value = "/voeuxetudiants", method = RequestMethod.GET)
     public Object allVoeuxEtudiant() {
 
         try {
@@ -57,7 +57,7 @@ public class VoeuxEtudiantController {
      * @param id The identifier of the voeuxEtudiant to get retrieved from the URL.
      * @return A JSON object or a HTTP status in case of an error.
      */
-    @RequestMapping(value = "/voeuxEtudiant/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/voeuxetudiants/{id}", method = RequestMethod.GET)
     public Object oneVoeuxEtudiant(@PathVariable String id) {
 
         try {
@@ -80,7 +80,7 @@ public class VoeuxEtudiantController {
      * URL.
      * @return A HTTP status regarding the status of the deletion.
      */
-    @RequestMapping(value = "/voeuxEtudiant/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/voeuxetudiants/{id}", method = RequestMethod.DELETE)
     public Object deleteEnterprise(@PathVariable String id) {
 
         try {
@@ -102,7 +102,7 @@ public class VoeuxEtudiantController {
      * @param ent Object to insert created from the JSON file passed using POST.
      * @return A HTTP status regarding the status of the insertion.
      */
-    @RequestMapping(value = "/voeuxEtudiant/add", method = RequestMethod.PUT)
+    @RequestMapping(value = "/voeuxetudiants/add", method = RequestMethod.PUT)
     public Object createEntreprise(@RequestBody VoeuxEtudiant voeuxEtu) {
 
         
@@ -112,6 +112,24 @@ public class VoeuxEtudiantController {
             return ExceptionHandler.handle(e);
         }
 
+    }
+    
+    /**
+     * This method updates a voeuxEtudiant into the database. A JSON object passed using
+     * POST represents the object to update.
+     *
+     * @param voeuxEtu Object to update created from the JSON file passed using POST.
+     * @return A HTTP status regarding the status of the update.
+     */
+    @RequestMapping(value = "/voeuxetudiant", method = RequestMethod.POST)
+    public Object updateSalle(@RequestBody VoeuxEtudiant voeuxEtu) {
+        String error = "";
+        try {
+            return SuccessHandler.handle(voeuxEtuManager.updateVoeuxEtudiant(voeuxEtu));
+        } catch (Exception e) {
+            error = e.getMessage();
+            return ExceptionHandler.handle(e);
+        }
     }
 
 }

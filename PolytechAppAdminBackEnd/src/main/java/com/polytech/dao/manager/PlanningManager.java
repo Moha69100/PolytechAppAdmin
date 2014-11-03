@@ -5,7 +5,8 @@
  */
 package com.polytech.dao.manager;
 
-import com.polytech.dao.VoeuxEntreprise;
+import com.polytech.dao.Planning;
+
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -15,21 +16,17 @@ import org.hibernate.Transaction;
  *
  * @author Epulapp
  */
-public class VoeuxEntrepriseManager {
-
-    public List<VoeuxEntreprise> getAllVoeuxEntreprise() throws Exception {
+public class PlanningManager {
+    
+    
+    public List<Planning> getAllPlanning() throws Exception {
 
         Session session = SessionManager.openSession();
 
         try {
 
-            Query query = session.createQuery("from VoeuxEntreprise");
-            List<VoeuxEntreprise> list = query.list();
-            return list;
-
-        } catch (Exception e) {
-
-            throw e;
+            Query query = session.createQuery("from Planning");
+            return query.list();
 
         } finally {
 
@@ -39,23 +36,13 @@ public class VoeuxEntrepriseManager {
 
     }
 
-    public VoeuxEntreprise getVoeuxEntrepriseById(int id) throws Exception {
+    public Planning getPlanningById(int id) throws Exception {
 
         Session session = SessionManager.openSession();
 
         try {
 
-            VoeuxEntreprise e = (VoeuxEntreprise) session.get(VoeuxEntreprise.class, id);
-
-            if (e == null) {
-                throw new NullPointerException();
-            }
-
-            return e;
-
-        } catch (Exception e) {
-
-            throw e;
+            return (Planning) session.get(Planning.class, id);
 
         } finally {
 
@@ -65,14 +52,14 @@ public class VoeuxEntrepriseManager {
 
     }
 
-    public Boolean deleteVoeuxEnterpriseById(int id) throws Exception {
+    public Boolean deletePlanningById(int id) throws Exception {
 
         Session session = SessionManager.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
 
-            VoeuxEntreprise e = (VoeuxEntreprise) session.get(VoeuxEntreprise.class, id);
+            Planning e = (Planning) session.get(Planning.class, id);
             session.delete(e);
 
             tx.commit();
@@ -88,17 +75,17 @@ public class VoeuxEntrepriseManager {
 
     }
 
-    public Boolean addVoeuxEntreprise(VoeuxEntreprise ent) throws Exception {
+    public Boolean addPlanning(Planning evenement) throws Exception {
 
         Session session = SessionManager.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
 
-            session.save(ent);
+            session.save(evenement);
 
             tx.commit();
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             if (tx != null) {
                 tx.rollback();
             }
@@ -108,20 +95,21 @@ public class VoeuxEntrepriseManager {
         }
         return true;
     }
-    
+
     /**
-     * UPDATE A VoeuxEntreprise INTO DATABASE
-     * @param voeuxEnt
+     * UPDATE A STUDENT INTO DATABASE
+     *
+     * @param evenement
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
-    public boolean updateVoeuxEntreprise(VoeuxEntreprise voeuxEnt) throws Exception {
+    public boolean updatePlanning(Planning evenement) throws Exception {
 
         Session session = SessionManager.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            session.update(voeuxEnt);
+            session.update(evenement);
             tx.commit();
 
         } catch (Exception e) {
@@ -132,8 +120,9 @@ public class VoeuxEntrepriseManager {
         } finally {
             session.close();
         }
-        
+
         return true;
     }
 
+    
 }

@@ -34,7 +34,7 @@ public class VoeuxEntrepriseController {
      *
      * @return A JSON object or a HTTP status in case of an error.
      */
-    @RequestMapping(value = "/voeuxEntreprises", method = RequestMethod.GET)
+    @RequestMapping(value = "/voeuxentreprises", method = RequestMethod.GET)
     public Object allVoeuxEnterprise() {
 
         try {
@@ -58,7 +58,7 @@ public class VoeuxEntrepriseController {
      * URL.
      * @return A JSON object or a HTTP status in case of an error.
      */
-    @RequestMapping(value = "/voeuxEntreprise/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/voeuxentreprises/{id}", method = RequestMethod.GET)
     public Object oneVoeuxEnterprise(@PathVariable String id) {
 
         try {
@@ -81,7 +81,7 @@ public class VoeuxEntrepriseController {
      * the URL.
      * @return A HTTP status regarding the status of the deletion.
      */
-    @RequestMapping(value = "/voeuxEntreprise/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/voeuxentreprises/{id}", method = RequestMethod.DELETE)
     public Object deleteVoeuxEnterprise(@PathVariable String id) {
 
         try {
@@ -100,10 +100,10 @@ public class VoeuxEntrepriseController {
      * This method adds an voeuxEntreprise into the database. A JSON object
      * passed using POST represents the object to insert.
      *
-     * @param ent Object to insert created from the JSON file passed using POST.
+     * @param voeuxEnt Object to insert created from the JSON file passed using POST.
      * @return A HTTP status regarding the status of the insertion.
      */
-    @RequestMapping(value = "/voeuxEntreprise/add", method = RequestMethod.PUT)
+    @RequestMapping(value = "/voeuxentreprises/add", method = RequestMethod.PUT)
     public Object createVoeuxEntreprise(@RequestBody VoeuxEntreprise voeuxEnt) {
 
         try {
@@ -112,5 +112,23 @@ public class VoeuxEntrepriseController {
             return ExceptionHandler.handle(e);
         }
 
+    }
+    
+    /**
+     * This method updates a voeuxEntreprise into the database. A JSON object passed using
+     * POST represents the object to update.
+     *
+     * @param voeuxEnt Object to update created from the JSON file passed using POST.
+     * @return A HTTP status regarding the status of the update.
+     */
+    @RequestMapping(value = "/voeuxentreprise", method = RequestMethod.POST)
+    public Object updateSalle(@RequestBody VoeuxEntreprise voeuxEnt) {
+        String error = "";
+        try {
+            return SuccessHandler.handle(voeuxEntrepriseManager.updateVoeuxEntreprise(voeuxEnt));
+        } catch (Exception e) {
+            error = e.getMessage();
+            return ExceptionHandler.handle(e);
+        }
     }
 }

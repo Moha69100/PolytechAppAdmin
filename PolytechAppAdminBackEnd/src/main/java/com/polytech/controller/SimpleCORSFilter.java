@@ -26,6 +26,7 @@ public class SimpleCORSFilter implements Filter {
 
         String o = request.getHeader("api_key");
         HttpServletResponse response = (HttpServletResponse) res;
+        
 
 //        if (o == null && !request.getRequestURI().endsWith("/auth")) {
 //            
@@ -39,8 +40,11 @@ public class SimpleCORSFilter implements Filter {
             response.setHeader("Access-Control-Max-Age", "4600");
             chain.doFilter(request, response);
 
-//        }
-
+            
+            
+        //}
+        
+            
     }
 
     @Override
