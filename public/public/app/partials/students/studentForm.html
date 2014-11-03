@@ -1,5 +1,5 @@
 <div class="container-fluid" style="margin-top : 20px;">
-    <form method="POST" action="#" class="form-horizontal" role="form" id="studentForm">
+    <form method="POST" class="form-horizontal" role="form" id="studentForm">
         <div class="row">
             <h2 class="form-header">Informations générales</h2>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -119,10 +119,40 @@
                 </div>
             </div>
         </div>
+        <div class="row" style="padding-top: 50px;">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="vow1" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Premier voeu : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="voeu1" ng-model="student.voeu1" placeholder="Premier voeu ...">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="vow2" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Second voeu : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="voeu2" ng-model="student.voeu2" placeholder="Second voeu ...">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="vow3" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Troisième voeu : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="voeu3" ng-model="student.voeu3" placeholder="Troisième voeu ...">
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row pull-right">
             <div class="form-buttons">
                 <button class="btn btn-warning" data-ng-click="removeStudent(student)">Supprimer</button>
                 <button type="submit" class="btn btn-primary" data-ng-disabled="!student.nom || !student.prenom" data-ng-click="save()">Valider</button>
                 <button type="submit" ng-click="cancel()" class="btn btn-default">Annuler</button>
             </div>
-        </div
+        </div>
+    </form>
+</div>
