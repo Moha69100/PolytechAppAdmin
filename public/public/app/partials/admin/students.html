@@ -14,7 +14,7 @@
                 <th>Email</th>
                 <th>Adresse</th>
             </tr>
-            <tr data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in students" data-ng-click="editStudent(e)">
+            <tr data-ng-class-odd="'odd'" style="cursor : pointer;" data-ng-class-even="'even'" data-ng-repeat="e in students" data-ng-click="editStudent(e)">
                 <td>{{e.id}}</td>
                 <td>{{e.nom}}</td>
                 <td>{{e.prenom}}</td>
