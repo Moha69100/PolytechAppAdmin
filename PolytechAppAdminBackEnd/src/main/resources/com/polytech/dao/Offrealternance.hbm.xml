@@ -1,21 +1,20 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 23 sept. 2014 09:06:03 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.polytech.dao.Offrealternance" table="offrealternance" schema="appschema" optimistic-lock="version">
-        <id name="id" type="int">
-            <column name="id" />
-            <generator class="identity" />
-        </id>
-        <many-to-one name="entreprise" class="com.polytech.dao.Entreprise" fetch="select">
-            <column name="entid" />
-        </many-to-one>
-        <property name="titre" type="string">
-            <column name="titre" />
-        </property>
-        <property name="url" type="string">
-            <column name="url" />
-        </property>
-    </class>
+  <class name="com.polytech.dao.Offrealternance" optimistic-lock="version" schema="appschema" table="offrealternance">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.polytech.dao.Entreprise" fetch="select" name="entreprise">
+      <column name="entid"/>
+    </many-to-one>
+    <property name="titre" type="string">
+      <column name="titre"/>
+    </property>
+    <property name="url" type="string">
+      <column name="url"/>
+    </property>
+  </class>
 </hibernate-mapping>
