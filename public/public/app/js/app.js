@@ -75,7 +75,32 @@ app.config(['$routeProvider', function ($routeProvider) {
     }]);
 /** sur démarrage de l'application */
 app.run(['$rootScope', function ($rootScope) {
+        
+        $rootScope.$on(Events.Modale.OPEN_DIALOG_CONFIRM, function (event, data) {
 
+            var modalInstance = $modal.open({
+                windowClass: "confirmation",
+                templateUrl: 'app/partials/core/confirmation.html',
+                controller: 'confirmModalController',
+                backdrop: 'static',
+                resolve: {
+                    items: function () {
+                        return data;
+                    }
+
+                }
+            });
+
+            modalInstance.opened.then(function () {
+                setTimeout(function () {
+                    modalInstance.close();
+                }, 1000);
+            });
+        });
+
+        $rootScope.openConfirmModal = function (data) {
+            $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, data);
+        };
         $rootScope.$on('$routeChangeSuccess', function (event, next, current) {
             // console.info('>>> $routeChangeSuccess : $location path=',
             // $location.path());
@@ -147,19 +172,55 @@ app.config(['$httpProvider', function ($httpProvider) {
     }]);
 app.config(['$httpProvider', function ($httpProvider) {
 
-        // Ajax indicator
-        //   $httpProvider.interceptors.push('ajaxIndicatorHttpInterceptor');
+        $httpProvider.responseInterceptors.push(['$q', '$rootScope', function ($q, $rootScope) {
+                return function (promise) {
+                    return promise.then(function (response) {
+                        // do something on success
+                        // console.info('>> myHttpInterceptor - success', response);
+                        return response || $q.when(response);
+
+                    }, function (rejection) {
+                        // console.info('>> myHttpInterceptor - error', rejection);
+
+                        // do something on error
+                        if (rejection.status == 400) { // <=>
+                            // console.log("httpProvider --> 400 -
+                            // FunctionalException");
+                            // FunctionalException
+                            return $q.reject(rejection);
+
+                        } else if (rejection.status == 401) {
+                            // console.log("httpProvider -> 401 - vous n etes pas
+                            // autorisé");
+                            // unauthorized
+                            $rootScope.$broadcast(Events.Modale.OPEN_DIALOG, rejection);
+                            return $q.reject(rejection);
+                            // return;
+
+                        } else {
+                            $rootScope.$broadcast(Events.Modale.OPEN_DIALOG, rejection);
+                            return $q.reject(rejection);
+                            // return;
+                        }
+                    });
+                };
+            }]);
     }]);
+
+app.config(['$httpProvider', function ($httpProvider) {
+
+        // Ajax indicator
+        $httpProvider.interceptors.push('ajaxIndicatorHttpInterceptor');
+    }]);
+
 // register the interceptor as a service, intercepts ALL angular ajax http calls
 app.factory('ajaxIndicatorHttpInterceptor', ['$q', '$rootScope', function ($q, $rootScope) {
-        console.log('in');
         return {
             // optional method
             'request': function (config) {
                 // do something on success
                 // console.log("ajaxIndicatorHttpInterceptor >>> request");
                 $rootScope.isLoading = true;
-                console.log("in")
                 return config || $q.when(config);
             },
             // optional method
@@ -186,4 +247,3 @@ app.factory('ajaxIndicatorHttpInterceptor', ['$q', '$rootScope', function ($q, $
         };
 
     }]);
-

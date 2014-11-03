@@ -29,6 +29,21 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                 console.log(error + " error ");
             });
         };
+        
+        $scope.update = function () {
+        /**FIXME
+         * 
+         * @type type
+         */
+            var postData = {
+                enterprise: $scope.enterprise
+            };
+            enterpriseResource.addEnterprise(postData, function (data) {
+                console.log(data + "success");
+            }, function (error) {
+                console.log(error + " error ");
+            });
+        };
 
 
         $scope.removeEnterprise = function (enterprise) {
