@@ -6,7 +6,7 @@
 
 package com.polytech.controller;
 
-import com.polytech.dao.OffreAlternance;
+import com.polytech.dao.Offrealternance;
 import com.polytech.dao.manager.OffreAlternanceManager;
 import com.polytech.exception.ExceptionHandler;
 import com.polytech.exception.SuccessHandler;
@@ -40,7 +40,7 @@ public class OffreAlternanceController {
 
         try {
 
-            List<OffreAlternance> offres = offreAlternanceManager.getAllOffresAlternance();
+            List<Offrealternance> offres = offreAlternanceManager.getAllOffresAlternance();
             return offres;
 
         } catch (Exception ex) {
@@ -63,7 +63,7 @@ public class OffreAlternanceController {
 
         try {
 
-            OffreAlternance offre = offreAlternanceManager.getOffreAlternanceById(Integer.parseInt(id));
+            Offrealternance offre = offreAlternanceManager.getOffreAlternanceById(Integer.parseInt(id));
             return offre;
 
         } catch (Exception ex) {
@@ -106,7 +106,7 @@ public class OffreAlternanceController {
      * @return A HTTP status regarding the status of the insertion.
      */
     @RequestMapping(value = "/offre/add", method = RequestMethod.PUT)
-    public Object createOffreAlternance(@RequestBody OffreAlternance offre) {
+    public Object createOffreAlternance(@RequestBody Offrealternance offre) {
 
       
         try {
@@ -124,7 +124,7 @@ public class OffreAlternanceController {
      * @return A HTTP status regarding the status of the update.
      */
     @RequestMapping(value = "/offre", method = RequestMethod.POST)
-    public Object updateOffreAlternance(@RequestBody OffreAlternance offre) {
+    public Object updateOffreAlternance(@RequestBody Offrealternance offre) {
         String error = "";
         try {
             return SuccessHandler.handle(offreAlternanceManager.updateOffreAlternance(offre));
