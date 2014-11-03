@@ -37,7 +37,7 @@ public class AuthenticationManager {
             List<Utilisateur> users = userManager.getUtilisateurByLogin(_user);
             Utilisateur user = users.get(0);
             if(user.getMdp().equals(_password)){
-                BigInteger bigInt = new BigInteger(16, new Random());
+                BigInteger bigInt = new BigInteger(512, new Random());
                 APIkey = bigInt.intValue();
             }
         }catch (Exception e){
