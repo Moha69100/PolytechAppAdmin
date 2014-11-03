@@ -6,7 +6,7 @@
 
 package com.polytech.dao.manager;
 
-import com.polytech.dao.OffreAlternance;
+import com.polytech.dao.Offrealternance;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -18,14 +18,14 @@ import org.hibernate.Transaction;
  */
 public class OffreAlternanceManager {
     
-   public List<OffreAlternance> getAllOffresAlternance() throws Exception {
+   public List<Offrealternance> getAllOffresAlternance() throws Exception {
 
         Session session = SessionManager.openSession();
 
         try {
 
             Query query = session.createQuery("from offrealternance");
-            List<OffreAlternance> list = query.list();
+            List<Offrealternance> list = query.list();
             return list;
 
         } catch (Exception e) {
@@ -40,13 +40,13 @@ public class OffreAlternanceManager {
 
     }
 
-    public OffreAlternance getOffreAlternanceById(int id) throws Exception {
+    public Offrealternance getOffreAlternanceById(int id) throws Exception {
 
         Session session = SessionManager.openSession();
 
         try {
 
-            OffreAlternance o = (OffreAlternance) session.get(OffreAlternance.class, id);
+            Offrealternance o = (Offrealternance) session.get(Offrealternance.class, id);
 
             if (o == null) {
                 throw new NullPointerException();
@@ -73,7 +73,7 @@ public class OffreAlternanceManager {
         try {
             tx = session.beginTransaction();
 
-            OffreAlternance o = (OffreAlternance) session.get(OffreAlternance.class, id);
+            Offrealternance o = (Offrealternance) session.get(Offrealternance.class, id);
             session.delete(o);
 
             tx.commit();
@@ -89,7 +89,7 @@ public class OffreAlternanceManager {
 
     }
 
-    public Boolean addOffreAlternance(OffreAlternance offre) throws Exception {
+    public Boolean addOffreAlternance(Offrealternance offre) throws Exception {
 
         Session session = SessionManager.openSession();
         Transaction tx = null;
@@ -117,7 +117,7 @@ public class OffreAlternanceManager {
      * @return
      * @throws Exception
      */
-    public boolean updateOffreAlternance(OffreAlternance offre) throws Exception {
+    public boolean updateOffreAlternance(Offrealternance offre) throws Exception {
 
         Session session = SessionManager.openSession();
         Transaction tx = null;

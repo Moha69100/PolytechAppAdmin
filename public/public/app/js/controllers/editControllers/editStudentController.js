@@ -1,5 +1,6 @@
 app.controller("editStudentController", ['$scope', 'studentResource', '$routeParams', '$location',
     function ($scope, studentResource, $routeParams, $location) {
+        
         var init = function () {
             $scope.studentId = $routeParams.student;
             studentResource.getStudent({"id": $scope.studentId}, function (data) {
@@ -24,7 +25,6 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
 
         $scope.save = function (student) {
             studentResource.updateStudent({"student": student}, function (data) {
-                console.log(data)
                 $location.path('/admin-student');
             });
         };
@@ -42,7 +42,6 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
             delete ($scope.studentId);
             $location.url('/admin-student');
         };
-
         init();
     }]);
 
