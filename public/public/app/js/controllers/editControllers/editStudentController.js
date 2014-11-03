@@ -2,9 +2,7 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
     function ($scope, studentResource, $routeParams, $location) {
         var init = function () {
             $scope.studentId = $routeParams.student;
-            console.log($scope.studentId);
             studentResource.getStudent({"id": $scope.studentId}, function (data) {
-                console.log(data);
                 $scope.student = data;
             });
         };
@@ -41,7 +39,9 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
          * sortie par cancel()
          */
         $scope.cancel = function () {
-            $location.path('/admin-student');
+            delete ($scope.student);
+            delete ($scope.studentId); 
+            $location.url('/admin-student');
         };
         
         init();

@@ -32,7 +32,7 @@
         <property name="email" type="string">
             <column name="email" />
         </property>
-        <set name="entreprisepresences" table="entreprisepresence" inverse="true" lazy="false" fetch="select">
+        <set name="entreprisepresences" table="appschema.entreprisepresence" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="perid" />
             </key>

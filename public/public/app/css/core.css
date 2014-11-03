@@ -112,11 +112,23 @@ body > .header .logo .icon {
 }
 .right-side .page-header h2 {
   color: #019cde;
+  margin-left: 16px;
   display: inline;
 }
 .right-side .page-header .form-actions {
-  margin-top: 20px;
-  float: right;
+  margin-top: -18px;
+  position: absolute;
+  right: 120px;
+}
+.right-side .page-header .form-actions i {
+  display: block;
+  width: 74px;
+  height: 74px;
+  background: transparent url('../img/icon_material_plus.png');
+  cursor: pointer;
+}
+.right-side .page-header .form-actions i:hover {
+  background: transparent url('../img/icon_material_plus_hover.png');
 }
 @media (max-width: 767px) {
   .navbar .navbar-nav > li {
@@ -329,8 +341,10 @@ body > .header {
   background-color: #f9f9f9;
   margin-left: 250px;
 }
+
 .right-side .content {
   padding: 16px;
+  margin-top: 40px;
 }
 /*left side - contains sidebar*/
 .left-side {
@@ -387,5 +401,6 @@ body.fixed .wrapper {
 
 .card {
   background-color: #ffffff;
-  border-radius: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 10px #E7E7E7;
 }

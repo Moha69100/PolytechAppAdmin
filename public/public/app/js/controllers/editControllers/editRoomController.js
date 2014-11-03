@@ -25,6 +25,8 @@ app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource', 
          * sortie par cancel()
          */
         $scope.cancel = function() {
+            delete ($scope.room);
+            delete ($scope.roomId); 
             $location.path('/admin-room');
         };
         
