@@ -31,8 +31,9 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
 
         $scope.removeStudent = function (student) {            
             studentResource.removeStudent({"id": $scope.studentId}, function (data) {
-                console.log(data);
-                $location.path('/admin-student');
+                delete ($scope.student);
+                delete ($scope.studentId); 
+                $location.url('/admin-student');
             });            
         };
         /**

@@ -9,6 +9,8 @@ app.factory('enterpriseResource', ['$resource', function ($resource) {
         var FIND_ALL = BASE_URL + '/entreprises';
         var GET_BY_ID = BASE_URL + '/entreprise/:id';
         var ADD_ENTERPRISE = BASE_URL + '/entreprise/add';
+        var UPDATE = BASE_URL + '/entreprise/';
+        var REMOVE_BY_ID = BASE_URL + '/entreprise/:id';
 
         var actions = {
             listEnterprises:
@@ -26,6 +28,14 @@ app.factory('enterpriseResource', ['$resource', function ($resource) {
                 method: 'POST',
                 isArray: false,
                 url: ADD_ENTERPRISE
+            }, 
+            removeEnterprise: {
+                method: 'DELETE',
+                url: REMOVE_BY_ID
+            },
+            updateEnterprise: {
+                method: 'POST',
+                url: UPDATE
             }
         };
 
