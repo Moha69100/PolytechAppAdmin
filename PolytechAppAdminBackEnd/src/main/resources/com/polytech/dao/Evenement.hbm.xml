@@ -26,37 +26,37 @@
         <property name="description" type="string">
             <column name="description" length="512" />
         </property>
-        <set name="evenementsalles" table="evenementsalle" inverse="true" lazy="false" fetch="select">
+        <set name="evenementsalles" table="appschema.evenementsalle" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="evtid" not-null="true" />
             </key>
             <one-to-many class="com.polytech.dao.Evenementsalle" />
         </set>
-        <set name="evenementsalles_1" table="evenementsalle" inverse="true" lazy="false" fetch="select">
+        <set name="evenementsalles_1" table="appschema.evenementsalle" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="evtid" not-null="true" />
             </key>
             <one-to-many class="com.polytech.dao.Evenementsalle" />
         </set>
-        <set name="entreprisepresences" table="entreprisepresence" inverse="true" lazy="false" fetch="select">
+        <set name="entreprisepresences" table="appschema.entreprisepresence" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="evtid" />
             </key>
             <one-to-many class="com.polytech.dao.Entreprisepresence" />
         </set>
-        <set name="plannings" table="planning" inverse="true" lazy="false" fetch="select">
+        <set name="plannings" table="appschema.planning" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="evtid" />
             </key>
             <one-to-many class="com.polytech.dao.Planning" />
         </set>
-        <set name="voeuxEtudiants" table="voeux_etudiant" inverse="true" lazy="false" fetch="select">
+        <set name="voeuxEtudiants" table="appschema.voeux_etudiant" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="evtid" />
             </key>
             <one-to-many class="com.polytech.dao.VoeuxEtudiant" />
         </set>
-        <set name="etudiants" table="etudiantevenement" inverse="false" lazy="false" fetch="select">
+        <set name="etudiants" table="appschema.etudiantevenement" inverse="false" lazy="false" fetch="select">
             <key>
                 <column name="evtid" not-null="true" />
             </key>
@@ -64,7 +64,7 @@
                 <column name="etuid" not-null="true" />
             </many-to-many>
         </set>
-        <set name="voeuxEntreprises" table="voeux_entreprise" inverse="true" lazy="false" fetch="select">
+        <set name="voeuxEntreprises" table="appschema.voeux_entreprise" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="evtid" />
             </key>
