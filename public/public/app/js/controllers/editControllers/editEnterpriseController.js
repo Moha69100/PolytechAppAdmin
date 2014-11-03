@@ -11,7 +11,7 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                     $scope.enterprise = data;
                 });
             } else {
-                
+
             }
         };
         // 'feedback' serveur
@@ -29,9 +29,9 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                 console.log(error + " error ");
             });
         };
-        
-        
-        $scope.removeEnterprise = function(enterprise) {
+
+
+        $scope.removeEnterprise = function (enterprise) {
             console.log($scope.enterpriseId);
             enterpriseResource.removeEnterprise({"id": $scope.enterpriseId}, function (data) {
                 console.log(data)
@@ -43,10 +43,10 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
          */
         $scope.cancel = function () {
             delete ($scope.enterprise);
-            delete ($scope.enterpriseId); 
+            delete ($scope.enterpriseId);
             $location.path('/admin-enterprise');
         };
-        
+
         $scope.init();
     }]);
 

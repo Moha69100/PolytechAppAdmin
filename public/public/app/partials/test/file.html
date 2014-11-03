@@ -1,10 +1,33 @@
-<div style="margin-top : 20px;">
-    <div class="page-header">
-        <span>Test upload fichier</span>
-    </div>
-    <div class="col-lg-12 col-sm-12">
-        <div data-add-file data-file-type="CV"></div>
-    </div>
-    <button type="submit" class="btn btn-primary"  data-ng-click="upload()">Valider</button>
+<div class="page-header">
+    <h1>Test upload file</h1>
+</div>    <form method="POST" action="#" class="form-horizontal" role="form" id="enterpriseForm">
 
-</div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+                <label  class="col-sm-6 col-xs-6 col-md-6 col-lg-6 control-label">  Lettre de motivation : </label>
+                <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+                    <div class="file" data-add-file data-file-type="lettreMotiv"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-6 col-xs-6 col-md-6 col-lg-6 control-label">  CV : </label>
+                <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+                    <div class="file" data-add-file data-file-type="CV"></div>
+                </div>
+            </div>
+            <div class="form-group">
+            <label  class="col-sm-6 col-xs-6 col-md-6 col-lg-6 control-label">  Autres : </label>
+                <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+                    <div class="file" data-add-file data-file-type="autre"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row pull-right">
+        <div class="form-buttons">
+            <button type="submit" class="btn btn-primary"  data-ng-click="upload()">Valider</button>
+        </div>
+    </div>
+</form>

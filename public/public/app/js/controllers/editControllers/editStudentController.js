@@ -6,7 +6,7 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
                 $scope.student = data;
             });
         };
-        
+
         // 'feedback' serveur
         $scope.feedback = null;
 
@@ -23,27 +23,26 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
         ];
 
         $scope.save = function (student) {
-            studentResource.updateStudent({"id": $scope.studentId}, function (data) {
-                console.log(data);
-                $location.path('/edit-student');
+            studentResource.updateStudent({"student": student}, function (data) {
+                console.log(data)
+                $location.path('/admin-student');
             });
         };
 
-        $scope.removeStudent = function (student) {            
+        $scope.removeStudent = function (student) {
             studentResource.removeStudent({"id": $scope.studentId}, function (data) {
-                console.log(data);
                 $location.path('/admin-student');
-            });            
+            });
         };
         /**
          * sortie par cancel()
          */
         $scope.cancel = function () {
             delete ($scope.student);
-            delete ($scope.studentId); 
+            delete ($scope.studentId);
             $location.url('/admin-student');
         };
-        
+
         init();
     }]);
 

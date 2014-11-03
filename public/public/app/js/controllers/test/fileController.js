@@ -9,17 +9,30 @@ app.controller("fileController", ['$scope', '$modal', "FileUploader", "fileResou
         var initFileList = function () {
             $http({
                 method: "GET",
-                url: "http://localhost:8090/etudiants/upload"}
+                url: "http://localhost:8090/upload/student/1"}
             ).success(function (data) {
                 angular.forEach(data, function (file, key) {
                     $scope.fileList.push({
-                        name: file,
-                        type: "CV",
-                        fileType: "CV"
+                        name: file.name,
+                        type: "CV"
                     });
                     $scope.filePresent["CV"] = true;
                 });
             });
+            $scope.fileList.push({
+                name: "CV",
+                type: "CV"
+            },{
+                name: "lettreMotiv",
+                type: "lettreMotiv"
+            });
+            $scope.filePresent["CV"] = true;
+            $scope.filePresent["lettreMotiv"] = true;
+        };
+
+        $scope.removeFileFromQueue = function (item) {
+            item.remove();
+            $scope.filePresent[item.fileType] = false;
         };
         initFileList();
 
@@ -34,7 +47,7 @@ app.controller("fileController", ['$scope', '$modal', "FileUploader", "fileResou
             $scope.uploader.url = "http://localhost:8090/upload";
         };
 
-        $scope.openDownloadPopup = function (fileTypeHtml) {
+        $scope.openUploadPopup = function (fileTypeHtml) {
             $scope.fileType = fileTypeHtml;
             var modalInstance = $modal.open({
                 templateUrl: 'app/partials/test/upload-simple-modal.html',
@@ -44,21 +57,15 @@ app.controller("fileController", ['$scope', '$modal', "FileUploader", "fileResou
                     items: function () {
                         return {
                             uploader: $scope.uploader,
-                            fileType: $scope.fileType
+                            fileType: fileTypeHtml
                         };
                     }
                 }
             });
 
             modalInstance.result.then(function (result) {
-                var FileItem = {
-                    demandeId: $routeParams.id,
-                    link: result.fileLink,
-                    name: 'LINK',
-                    type: result.fileType
-                };
                 $scope.filePresent[$scope.fileType] = true;
-                $scope.linkToSave.push(FileItem);
+                console.log($scope)
             }, function (result) {
                 if ($scope.filePresent[$scope.fileType]) {
                     $scope.filePresent[$scope.fileType] = false;

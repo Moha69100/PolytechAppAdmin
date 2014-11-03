@@ -152,12 +152,14 @@ app.config(['$httpProvider', function ($httpProvider) {
     }]);
 // register the interceptor as a service, intercepts ALL angular ajax http calls
 app.factory('ajaxIndicatorHttpInterceptor', ['$q', '$rootScope', function ($q, $rootScope) {
+        console.log('in');
         return {
             // optional method
             'request': function (config) {
                 // do something on success
                 // console.log("ajaxIndicatorHttpInterceptor >>> request");
-                //  $rootScope.isLoading = true;
+                $rootScope.isLoading = true;
+                console.log("in")
                 return config || $q.when(config);
             },
             // optional method
@@ -170,14 +172,14 @@ app.factory('ajaxIndicatorHttpInterceptor', ['$q', '$rootScope', function ($q, $
             'response': function (response) {
                 // do something on success
                 // console.log("ajaxIndicatorHttpInterceptor >>> response");
-                //  $rootScope.isLoading = false;
+                $rootScope.isLoading = false;
                 return response || $q.when(response);
             },
             // optional method
             'responseError': function (rejection) {
                 // do something on error
                 // console.log("ajaxIndicatorHttpInterceptor >>> responseError");
-                // $rootScope.isLoading = false;
+                $rootScope.isLoading = false;
                 return $q.reject(rejection);
             }
 
@@ -185,6 +187,3 @@ app.factory('ajaxIndicatorHttpInterceptor', ['$q', '$rootScope', function ($q, $
 
     }]);
 
-app.config(['$httpProvider', function($httpProvider){
-    
-}]);
