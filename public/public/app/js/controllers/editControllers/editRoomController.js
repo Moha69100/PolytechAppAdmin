@@ -11,11 +11,8 @@ app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource', 
         $scope.feedback = null;
 
         $scope.save = function(room) {
-            var postData = {
-                room: $scope.room
-            };
             console.log("IN")
-            roomResource.addRoom(postData, function (data) {
+            roomResource.addRoom({}, $scope.room, function (data) {
                 console.log(data + "success");
             }, function (error) {
                 console.log(error + " error ");
