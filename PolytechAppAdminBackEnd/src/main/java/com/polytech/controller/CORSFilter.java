@@ -13,33 +13,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CORSFilter implements Filter {
-    
+
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 
         HttpServletRequest request = (HttpServletRequest) req;
-
-        String o = request.getHeader("api_key");
         HttpServletResponse response = (HttpServletResponse) res;
-        
 
-        if (o == null && !request.getRequestURI().endsWith("/auth")) {
-            
-            response.setStatus(401);
-            
-        } else if (request.getRequestURI().endsWith("/auth") || ((String) o).equals(request.getSession().getAttribute("api_key"))) {
+        response.setHeader("Access-Control-Allow-Headers", request.getHeader("Access-Control-Request-Headers"));
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+        response.setHeader("Access-Control-Max-Age", "4600");
+        chain.doFilter(request, response);
 
-            response.setHeader("Access-Control-Allow-Headers", request.getHeader("Access-Control-Request-Headers"));
-            response.setHeader("Access-Control-Allow-Origin", "*");
-            response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
-            response.setHeader("Access-Control-Max-Age", "4600");
-            chain.doFilter(request, response);
-
-            
-            
-        }
-        
-            
     }
 
     @Override
