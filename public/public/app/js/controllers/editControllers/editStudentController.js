@@ -31,7 +31,7 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
             studentResource.updateStudent({}, postData, function (data) {
                 console.log(data + "success");
             }, function (error) {
-                console.log(error + " error ");
+                console.log(error + " post error ");
             });
         };
 
