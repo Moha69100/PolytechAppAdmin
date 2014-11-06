@@ -16,7 +16,12 @@ import org.springframework.http.ResponseEntity;
 public class ExceptionHandler {
     
     public static ResponseEntity<String> handle(Exception e) {
-        return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+        
+        if (e instanceof java.net.ConnectException) {
+            return new ResponseEntity<String>(HttpStatus.SERVICE_UNAVAILABLE);
+        } else {
+            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+        }
     }
 
     public ExceptionHandler() {
