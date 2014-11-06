@@ -47,8 +47,11 @@
 
 
 <br/>
-<div class="form-group">
-    <button type="submit" class="btn btn-warning" data-ng-click="removeRoom(room)">Supprimer</button>
-    <button type="submit" class="btn btn-primary" data-ng-click="save(room)">Valider</button>
-    <button type="submit" class="btn btn-default" data-ng-click="cancel()">Annuler</button>
+<div class="row pull-right">
+    <div class="form-buttons">
+        <button type="submit" class="btn btn-warning" data-ng-click="removeRoom()">Supprimer</button>
+        <button type="submit" class="btn btn-primary" data-ng-show="room.id" data-ng-click="update()">Enregistrer</button>
+        <button type="submit" class="btn btn-primary" data-ng-show="!room.id" data-ng-click="save()">Ajouter</button>
+        <button type="submit" class="btn btn-default" data-ng-click="cancel()">Annuler</button>
+    </div>
 </div>
