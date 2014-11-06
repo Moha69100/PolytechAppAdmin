@@ -24,8 +24,13 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
         ];
 
         $scope.save = function (student) {
-            studentResource.updateStudent({"student": student}, function (data) {
-                $location.path('/admin-student');
+            var postData = {
+                student: $scope.student
+            };
+            studentResource.updateStudent(postData, function (data) {
+                console.log(data + "success");
+            }, function (error) {
+                console.log(error + " error ");
             });
         };
 

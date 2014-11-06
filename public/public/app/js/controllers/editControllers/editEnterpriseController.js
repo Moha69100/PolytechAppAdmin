@@ -38,7 +38,7 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
             var postData = {
                 enterprise: $scope.enterprise
             };
-            enterpriseResource.addEnterprise(postData, function (data) {
+            enterpriseResource.updateEnterprise(postData, function (data) {
                 console.log(data + "success");
             }, function (error) {
                 console.log(error + " error ");
