@@ -1,9 +1,6 @@
 package com.polytech.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -15,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SimpleCORSFilter implements Filter {
-    
-//    private List<String> allowedHeaders = Arrays.asList("Buenos Aires", "Córdoba", "La Plata");
+public class APIKeyFilter implements Filter {
     
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
@@ -28,22 +23,13 @@ public class SimpleCORSFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         
 
-        if (o == null && !request.getRequestURI().endsWith("/auth")) {
+        if ((o == null && !request.getRequestURI().endsWith("/auth")) || (o != null && !((String) o).equals(request.getSession().getAttribute("api_key")))) {
             
             response.setStatus(401);
             
-        } else if (request.getRequestURI().endsWith("/auth") || ((String) o).equals(request.getSession().getAttribute("api_key"))) {
-
-            response.setHeader("Access-Control-Allow-Headers", request.getHeader("Access-Control-Request-Headers"));
-            response.setHeader("Access-Control-Allow-Origin", "*");
-            response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
-            response.setHeader("Access-Control-Max-Age", "4600");
-            chain.doFilter(request, response);
-
-            
-            
         }
         
+        chain.doFilter(request, response);
             
     }
 
