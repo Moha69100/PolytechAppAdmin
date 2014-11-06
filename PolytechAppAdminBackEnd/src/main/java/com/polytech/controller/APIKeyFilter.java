@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class APIKeyFilter implements Filter {
-    
+
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 
@@ -21,16 +21,27 @@ public class APIKeyFilter implements Filter {
 
         String o = request.getHeader("api_key");
         HttpServletResponse response = (HttpServletResponse) res;
-        
 
-        if ((o == null && !request.getRequestURI().endsWith("/auth")) || (o != null && !((String) o).equals(request.getSession().getAttribute("api_key")))) {
+        System.out.println("Plop : " + request.getMethod());
+
+        if (!request.getMethod().equals("OPTIONS")) {
+
+            if ((o == null && !request.getRequestURI().endsWith("/auth")) || (o != null && !((String) o).equals(request.getSession().getAttribute("api_key")))) {
+
+                response.setStatus(401);
+                
+            } else {
+                
+                chain.doFilter(request, response);
+                
+            }
             
-            response.setStatus(401);
+        } else {
+            
+            chain.doFilter(request, response);
             
         }
-        
-        chain.doFilter(request, response);
-            
+
     }
 
     @Override
