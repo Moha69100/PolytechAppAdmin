@@ -12,7 +12,7 @@
                 <th>Type</th>
                 <th>Description</th>
             </tr>
-            <tr data-ng-click="editEvent(e)" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in events">
+            <tr style="cursor : pointer;" data-ng-click="editEvent(e)" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in events">
                 <td>{{e.id}}</td>
                 <td>{{e.typeevt}}</td>
                 <td>{{e.description}}</td>
