@@ -7,7 +7,6 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
 
                 $scope.enterpriseId = $routeParams.enterprise;
                 enterpriseResource.getEnterprise({"id": $scope.enterpriseId}, function (data) {
-                    console.log(data)
                     $scope.enterprise = data;
                 });
             } else {
@@ -23,7 +22,7 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                 enterprise: $scope.enterprise
             };
             console.log("IN")
-            enterpriseResource.addEnterprise(postData, function (data) {
+            enterpriseResource.addEnterprise({}, postData, function (data) {
                 console.log(data + "success");
             }, function (error) {
                 console.log(error + " error ");
@@ -38,7 +37,7 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
             var postData = {
                 enterprise: $scope.enterprise
             };
-            enterpriseResource.updateEnterprise(postData, function (data) {
+            enterpriseResource.updateEnterprise({}, postData, function (data) {
                 console.log(data + "success");
             }, function (error) {
                 console.log(error + " error ");

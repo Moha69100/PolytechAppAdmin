@@ -27,10 +27,11 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
             var postData = {
                 student: $scope.student
             };
-            studentResource.updateStudent(postData, function (data) {
+            console.log("in");
+            studentResource.updateStudent({}, postData, function (data) {
                 console.log(data + "success");
             }, function (error) {
-                console.log(error + " error ");
+                console.log(error + " post error ");
             });
         };
 
