@@ -28,11 +28,11 @@ public class SimpleCORSFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         
 
-        if (o == null && !request.getRequestURI().endsWith("/auth")) {
-            
-            response.setStatus(401);
-            
-        } else if (request.getRequestURI().endsWith("/auth") || ((String) o).equals(request.getSession().getAttribute("api_key"))) {
+//        if (o == null && !request.getRequestURI().endsWith("/auth")) {
+//            
+//            response.setStatus(401);
+//            
+//        } else if (request.getRequestURI().endsWith("/auth") || ((String) o).equals(request.getSession().getAttribute("api_key"))) {
 
             response.setHeader("Access-Control-Allow-Headers", "X-Requested-With, content-type, api_key, Accept");
             response.setHeader("Access-Control-Allow-Origin", "*");
@@ -42,7 +42,7 @@ public class SimpleCORSFilter implements Filter {
 
             
             
-        }
+//        }
         
             
     }
