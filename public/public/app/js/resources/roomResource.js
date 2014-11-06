@@ -7,6 +7,7 @@ app.service('roomResource', ['$resource', function($resource) {
         var GET_BY_ID = BASE_URL + '/salle/:id';
         var REMOVE_BY_ID = BASE_URL + '/salle/:id';
         var UPDATE = BASE_URL + '/salle';
+        var CREATE = BASE_URL + '/salle/add';
 
         var actions = {
             listRooms: {
@@ -26,6 +27,10 @@ app.service('roomResource', ['$resource', function($resource) {
             updateRoom: {
                 method: 'POST',
                 url: UPDATE
+            },
+            addRoom: {
+                method: 'PUT',
+                url: CREATE
             }
         };
 

@@ -7,6 +7,10 @@
 package com.polytech.controller;
 
 import com.polytech.dao.manager.AuthenticationManager;
+import com.polytech.exception.ExceptionHandler;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,14 +35,18 @@ public class AuthentificationController {
     
     
     @RequestMapping(value = "/auth", method = RequestMethod.GET)
-    public String authentication(){
-        String retour;
+    public Object authentication(HttpSession session){
+        
         try{
-            retour = "Utilisateur : TestUsr ; clé API : " + authManager.auth("TestUsr","TestPwd");
+            
+            session.setAttribute("api_key", authManager.auth("TestUsr","TestPwd"));
+            String jsonKey = "{ \"api_key\" : " + session.getAttribute("api_key") + " }";
+            return jsonKey;
+            
         }catch(Exception e){
-            retour = "Erreur : "+e.getMessage();
+            return ExceptionHandler.handle(e);
         }
         
-        return retour;
     }
+    
 }

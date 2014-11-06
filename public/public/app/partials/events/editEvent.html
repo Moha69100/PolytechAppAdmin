@@ -1,50 +1,62 @@
-
-    <div class="page-header">
-        <h2>Evènement </h2>
-    </div>
-
-    <form method="POST" action="#" class="form-horizontal" role="form" id="eventForm">
-        <h3>Informations générales</h3>
-        <div class="form-group">
-            <label for="eventType" class="col-sm-2">Type d'évènement : </label>
-            <div class="col-sm-5">
-                <input type="text" id="eventType" class="form-control col-sm-10" data-ng-model='event.typeevt' />
+<div class="container-fluid content">
+    <form method="POST"  class="form-horizontal" role="form" id="enterpriseForm">
+        <div class="row">
+            <h2 class="form-header">Informations générales</h2>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="eventType" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Type d'évènement<span style="color: red;">*</span> : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="eventType" ng-model="event.typeevt" data-ng-required="true" placeholder="Type d'événement ...">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="eventDate" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Date <span style="color: #aaa;font-weight: lighter;"><i>(JJ/MM/AAAA)</i></span> : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="eventDate" ng-model="event.dateevt" placeholder="Date ...">
+                    </div>
+                </div>  
             </div>
         </div>
-        <div class="form-group">
-            <label for="eventDate" class="col-sm-2">Date : </label>
-            <div class="col-sm-5">
-                <input type="text" id="eventDate" class="form-control col-sm-10" data-ng-model="event.dateevt" />
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="eventStartingTime" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Heure de début : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="eventStartingTime" ng-model="event.heuredebut" placeholder="Heure de début ...">
+                    </div>
+                </div>  
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="eventEndingTime" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Heure de fin : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="eventEndingTime" ng-model="event.heurefin" placeholder="Heure de fin ...">
+                    </div>
+                </div>  
             </div>
         </div>
-        <div class="form-group">
-            <label for="eventStartingTime" class="col-sm-2">Heure de début : </label>
-            <div class="col-sm-5">
-                <input type="text" id="eventStartingTime" class="form-control col-sm-10" data-ng-model="event.heuredebut" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="eventEndingTime" class="col-sm-2">Heure de fin : </label>
-            <div class="col-sm-5">
-                <input type="text" id="eventEndingTime" class="form-control col-sm-10" data-ng-model="event.heurefin"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="eventDescription" class="col-sm-2">Description : </label>
-            <div class="col-sm-5">
-                <textarea rows="3" id="eventDescription" class="form-control col-sm-10" data-ng-model="event.description" />
-            </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="eventDescription" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Description : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="eventDescription" ng-model="event.description" placeholder="Description ...">
+                    </div>
+                </div>  
+            </div>            
         </div>
     </form>
-    
-    <div id="attendingEnterprises" data-ng-show="event.id !== undefined">
-        <h3>Entreprise présentes</h3>
-        <button type="submit" class="btn btn-default" data-ng-click="editAttendingCompanies()">Editer la liste</button>
+    <div class="row" style="padding-top: 50px;">
+        <h2>Listes de présence</h2>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                Tableau de présence des entreprises à faire<br/>
+                <button type="submit" class="btn btn-default" data-ng-click="editAttendingCompanies()">Editer la liste</button>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                Tableau de présence des étudiants à faire<br/>
+                <button type="submit" class="btn btn-default" data-ng-click="editAttendingCandidates()">Editer la liste</button>
+            </div>
     </div>
-
-    <div id="attendingCandidates" data-ng-show="event.id !== undefined">
-        <h3>Candidats présents</h3>
-        <button type="submit" class="btn btn-default" data-ng-click="editAttendingCandidates()">Editer la liste</button>
-    </div>
-
-
+</div>
