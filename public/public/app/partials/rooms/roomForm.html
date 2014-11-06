@@ -32,28 +32,10 @@
         <div class="row pull-right">
             <div class="form-buttons">
                 <button class="btn btn-warning" data-ng-click="removeRoom(room)">Supprimer</button>
-                <button type="submit" class="btn btn-primary" data-ng-show="room.id"  data-ng-disabled="!room.libelle" data-ng-click="save(room)">Enregistrer</button>
-                <button type="submit" class="btn btn-primary" data-ng-show="!room.id" data-ng-click="save(enterprise)">Ajouter</button>
+                <button type="submit" class="btn btn-primary" data-ng-show="room.id"  data-ng-disabled="!room.libelle" data-ng-click="update()">Enregistrer</button>
+                <button type="submit" class="btn btn-primary" data-ng-show="!room.id" data-ng-click="save()">Ajouter</button>
                 <button type="submit" data-ng-click="cancel()" class="btn btn-default">Annuler</button>
             </div>
         </div>
     </form>
-<<<<<<< HEAD
-=======
-</div>
-
-<div class="form-header">
-    <h3 class="col-sm-2 control-label">{{room.libelle}}</h3><br>
-</div>
-
-
-<br/>
-<div class="row pull-right">
-    <div class="form-buttons">
-        <button type="submit" class="btn btn-warning" data-ng-click="removeRoom()">Supprimer</button>
-        <button type="submit" class="btn btn-primary" data-ng-show="room.id" data-ng-click="update()">Enregistrer</button>
-        <button type="submit" class="btn btn-primary" data-ng-show="!room.id" data-ng-click="save()">Ajouter</button>
-        <button type="submit" class="btn btn-default" data-ng-click="cancel()">Annuler</button>
-    </div>
->>>>>>> e976090f238c669f02a03d1f9cd183bfe0c2976e
 </div>
