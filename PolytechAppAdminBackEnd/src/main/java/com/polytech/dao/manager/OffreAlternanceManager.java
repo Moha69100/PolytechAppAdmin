@@ -24,7 +24,7 @@ public class OffreAlternanceManager {
 
         try {
 
-            Query query = session.createQuery("from offrealternance");
+            Query query = session.createQuery("from Offrealternance");
             List<Offrealternance> list = query.list();
             return list;
 
