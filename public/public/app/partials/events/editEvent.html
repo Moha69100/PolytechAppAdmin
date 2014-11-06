@@ -49,14 +49,54 @@
         </div>
     </form>
     <div class="row" style="padding-top: 50px;">
-        <h2>Listes de présence</h2>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                Tableau de présence des entreprises à faire<br/>
-                <button type="submit" class="btn btn-default" data-ng-click="editAttendingCompanies()">Editer la liste</button>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                Tableau de présence des étudiants à faire<br/>
-                <button type="submit" class="btn btn-default" data-ng-click="editAttendingCandidates()">Editer la liste</button>
-            </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2>Entreprise(s) participante(s)</h2>
+            <button type="submit" class="btn btn-default" data-ng-click="editAttendingCompanies()">Editer la liste</button>
+            <!--Tableau de présence des entreprises à faire<br/>
+            <button type="submit" class="btn btn-default" data-ng-click="editAttendingCompanies()">Editer la liste</button>-->
+            <table class="table table-striped table-hover card">
+                <tbody>
+                    <tr>
+                        <th>#</th>
+                        <th>Raison sociale</th>
+                        <th>Numéro SIRET</th>
+                        <th>Adresse</th>
+                        <th>Ville</th>
+                    </tr>
+                    <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in enterprises">
+                        <td>{{e.id}}</td>
+                        <td>{{e.raison}}</td>
+                        <td>{{e.siret}}</td>
+                        <td>{{e.adresse}}</td>
+                        <td>{{e.ville}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2>Étudiant(s) participant(s)</h2>
+            <button type="submit" class="btn btn-default" data-ng-click="editAttendingCandidates()">Editer la liste</button>
+            <!--Tableau de présence des étudiants à faire<br/>
+            <button type="submit" class="btn btn-default" data-ng-click="editAttendingCandidates()">Editer la liste</button>-->
+            <table class="table table-striped table-hover card">
+                <tbody>
+                    <tr>
+                        <th>#</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Adresse</th>
+                    </tr>
+                    <tr data-ng-class-odd="'odd'" style="cursor : pointer;" data-ng-class-even="'even'" data-ng-repeat="e in students" data-ng-click="editStudent(e)">
+                        <td>{{e.id}}</td>
+                        <td>{{e.nom}}</td>
+                        <td>{{e.prenom}}</td>
+                        <td>{{e.email}}</td>
+                        <td>{{e.adresse}}</td>   
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
