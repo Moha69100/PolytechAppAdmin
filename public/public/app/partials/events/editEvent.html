@@ -47,31 +47,46 @@
                 </div>  
             </div>            
         </div>
+        <div class="row pull-right">
+            <div class="form-buttons">
+                <button class="btn btn-warning" data-ng-click="">Supprimer</button>
+                <button type="submit" class="btn btn-primary" data-ng-show="event.id"  data-ng-disabled="!event.typeevt" data-ng-click="">Enregistrer</button>
+                <button type="submit" class="btn btn-primary" data-ng-show="!event.id" data-ng-click="">Ajouter</button>
+                <button type="submit" data-ng-click="cancel()" class="btn btn-default">Annuler</button>
+            </div>
+        </div>
+
     </form>
     <div class="row" style="padding-top: 50px;">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <h2>Entreprise(s) participante(s)</h2>
-            <button type="submit" class="btn btn-default" data-ng-click="editAttendingCompanies()">Editer la liste</button>
-            <!--Tableau de présence des entreprises à faire<br/>
-            <button type="submit" class="btn btn-default" data-ng-click="editAttendingCompanies()">Editer la liste</button>-->
-            <table class="table table-striped table-hover card">
-                <tbody>
-                    <tr>
-                        <th>#</th>
-                        <th>Raison sociale</th>
-                        <th>Numéro SIRET</th>
-                        <th>Adresse</th>
-                        <th>Ville</th>
-                    </tr>
-                    <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in enterprises">
-                        <td>{{e.id}}</td>
-                        <td>{{e.raison}}</td>
-                        <td>{{e.siret}}</td>
-                        <td>{{e.adresse}}</td>
-                        <td>{{e.ville}}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="row">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span></button>
+                    <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-minus"></span></button>
+                </div>
+            </div>
+            <div class="row">
+                <table class="table table-striped table-hover card">
+                    <tbody>
+                        <tr>
+                            <th>#</th>
+                            <th>Raison sociale</th>
+                            <th>Numéro SIRET</th>
+                            <th>Adresse</th>
+                            <th>Ville</th>
+                        </tr>
+                        <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in enterprises">
+                            <td>{{e.id}}</td>
+                            <td>{{e.raison}}</td>
+                            <td>{{e.siret}}</td>
+                            <td>{{e.adresse}}</td>
+                            <td>{{e.ville}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--<button type="submit" class="btn btn-default" data-ng-click="editAttendingCompanies()">Editer la liste</button>!-->
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <h2>Étudiant(s) participant(s)</h2>
