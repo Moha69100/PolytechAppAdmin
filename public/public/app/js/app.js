@@ -67,6 +67,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             menu: {
                 id: 'menu-event'
             }
+        }).when('/test-planning', {
+            controller: 'planningController', 
+            templateUrl: 'app/partials/test/planning.html', 
+            menu: {
+                id: 'menu-test-planning'
+            }
         }).otherwise({
             controller: 'accueilController',
             redirectTo: '',

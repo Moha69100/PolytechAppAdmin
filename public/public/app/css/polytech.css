@@ -129,3 +129,40 @@ body{
 .form-control:focus{
     border-color: #019cde;
 }
+
+/************/
+/* Planning */
+/************/
+
+.appAdminPlanning {
+    /* Manage scrollbars */
+    overflow-x: scroll;
+    overflow-y: auto;
+    white-space: nowrap;
+
+    min-height: 600px;
+}
+
+.appAdminPlanning .room {
+    width: 200px;
+    display: inline-block;
+}
+
+.appAdminPlanning .room .meeting {
+    color: #ffffff;
+    background-color: #45b5e4;
+    margin: 5px;
+    padding: 5px 10px;
+}
+
+.appAdminPlanning .room .meeting p {
+    margin: 0;
+}
+
+.appAdminPlanning .room .meeting p span {
+    display: block;
+}
+
+.appAdminPlanning .room .meeting p span.meeting-label {
+    font-size: 8pt;
+}
