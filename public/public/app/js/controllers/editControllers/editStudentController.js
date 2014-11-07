@@ -1,9 +1,9 @@
 app.controller("editStudentController", ['$scope', 'studentResource', '$routeParams', '$location',
-    function ($scope, studentResource, $routeParams, $location) {
-        
-        var init = function () {
+    function($scope, studentResource, $routeParams, $location) {
+
+        var init = function() {
             $scope.studentId = $routeParams.student;
-            studentResource.getStudent({"id": $scope.studentId}, function (data) {
+            studentResource.getStudent({"id": $scope.studentId}, function(data) {
                 $scope.student = data;
             });
         };
@@ -23,27 +23,20 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
             {"name": "Rejetée"}
         ];
 
-        $scope.save = function (student) {
-            var postData = {
-                student: $scope.student
-            };
-            console.log("in");
-            studentResource.updateStudent({}, postData, function (data) {
-                console.log(data + "success");
-            }, function (error) {
-                console.log(error + " post error ");
-            });
+        $scope.save = function(student) {
+            var postData = $scope.student;
+            studentResource.updateStudent({}, postData);
         };
 
-        $scope.removeStudent = function (student) {
-            studentResource.removeStudent({"id": $scope.studentId}, function (data) {
+        $scope.removeStudent = function(student) {
+            studentResource.removeStudent({"id": $scope.studentId}, function(data) {
                 $location.path('/admin-student');
             });
         };
         /**
          * sortie par cancel()
          */
-        $scope.cancel = function () {
+        $scope.cancel = function() {
             delete ($scope.student);
             delete ($scope.studentId);
             $location.url('/admin-student');

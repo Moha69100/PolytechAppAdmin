@@ -25,8 +25,7 @@ app.factory('enterpriseResource', ['$resource', function ($resource) {
                 url: GET_BY_ID
             },
             addEnterprise: {
-                method: 'POST',
-                isArray: false,
+                method: 'PUT',
                 url: ADD_ENTERPRISE
             }, 
             removeEnterprise: {
