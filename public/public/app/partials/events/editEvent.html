@@ -1,50 +1,117 @@
+<div class="container-fluid content">
+    <form method="POST"  class="form-horizontal" role="form" id="enterpriseForm">
+        <div class="row">
+            <h2 class="form-header">Informations générales</h2>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="eventType" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Type d'évènement<span style="color: red;">*</span> : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="eventType" ng-model="event.typeevt" data-ng-required="true" placeholder="Type d'événement ...">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="eventDate" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Date <span style="color: #aaa;font-weight: lighter;"><i>(JJ/MM/AAAA)</i></span> : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="eventDate" ng-model="event.dateevt" placeholder="Date ...">
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="eventStartingTime" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Heure de début : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="eventStartingTime" ng-model="event.heuredebut" placeholder="Heure de début ...">
+                    </div>
+                </div>  
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="eventEndingTime" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Heure de fin : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="eventEndingTime" ng-model="event.heurefin" placeholder="Heure de fin ...">
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    <label for="eventDescription" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Description : </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="text" class="form-control" id="eventDescription" ng-model="event.description" placeholder="Description ...">
+                    </div>
+                </div>  
+            </div>            
+        </div>
+        <div class="row pull-right">
+            <div class="form-buttons">
+                <button class="btn btn-warning" data-ng-click="">Supprimer</button>
+                <button type="submit" class="btn btn-primary" data-ng-show="event.id"  data-ng-disabled="!event.typeevt" data-ng-click="">Enregistrer</button>
+                <button type="submit" class="btn btn-primary" data-ng-show="!event.id" data-ng-click="">Ajouter</button>
+                <button type="submit" data-ng-click="cancel()" class="btn btn-default">Annuler</button>
+            </div>
+        </div>
 
-    <div class="page-header">
-        <h2>Evènement </h2>
-    </div>
-
-    <form method="POST" action="#" class="form-horizontal" role="form" id="eventForm">
-        <h3>Informations générales</h3>
-        <div class="form-group">
-            <label for="eventType" class="col-sm-2">Type d'évènement : </label>
-            <div class="col-sm-5">
-                <input type="text" id="eventType" class="form-control col-sm-10" data-ng-model='event.typeevt' />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="eventDate" class="col-sm-2">Date : </label>
-            <div class="col-sm-5">
-                <input type="text" id="eventDate" class="form-control col-sm-10" data-ng-model="event.dateevt" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="eventStartingTime" class="col-sm-2">Heure de début : </label>
-            <div class="col-sm-5">
-                <input type="text" id="eventStartingTime" class="form-control col-sm-10" data-ng-model="event.heuredebut" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="eventEndingTime" class="col-sm-2">Heure de fin : </label>
-            <div class="col-sm-5">
-                <input type="text" id="eventEndingTime" class="form-control col-sm-10" data-ng-model="event.heurefin"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="eventDescription" class="col-sm-2">Description : </label>
-            <div class="col-sm-5">
-                <textarea rows="3" id="eventDescription" class="form-control col-sm-10" data-ng-model="event.description" />
-            </div>
-        </div>
     </form>
-    
-    <div id="attendingEnterprises" data-ng-show="event.id !== undefined">
-        <h3>Entreprise présentes</h3>
-        <button type="submit" class="btn btn-default" data-ng-click="editAttendingCompanies()">Editer la liste</button>
+    <div class="row" style="padding-top: 50px;">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2>Entreprise(s) participante(s)</h2>
+            <div class="row">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span></button>
+                    <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-minus"></span></button>
+                </div>
+            </div>
+            <div class="row">
+                <table class="table table-striped table-hover card">
+                    <tbody>
+                        <tr>
+                            <th>#</th>
+                            <th>Raison sociale</th>
+                            <th>Numéro SIRET</th>
+                            <th>Adresse</th>
+                            <th>Ville</th>
+                        </tr>
+                        <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in enterprises">
+                            <td>{{e.id}}</td>
+                            <td>{{e.raison}}</td>
+                            <td>{{e.siret}}</td>
+                            <td>{{e.adresse}}</td>
+                            <td>{{e.ville}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--<button type="submit" class="btn btn-default" data-ng-click="editAttendingCompanies()">Editer la liste</button>!-->
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2>Étudiant(s) participant(s)</h2>
+            <button type="submit" class="btn btn-default" data-ng-click="editAttendingCandidates()">Editer la liste</button>
+            <!--Tableau de présence des étudiants à faire<br/>
+            <button type="submit" class="btn btn-default" data-ng-click="editAttendingCandidates()">Editer la liste</button>-->
+            <table class="table table-striped table-hover card">
+                <tbody>
+                    <tr>
+                        <th>#</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Adresse</th>
+                    </tr>
+                    <tr data-ng-class-odd="'odd'" style="cursor : pointer;" data-ng-class-even="'even'" data-ng-repeat="e in students" data-ng-click="editStudent(e)">
+                        <td>{{e.id}}</td>
+                        <td>{{e.nom}}</td>
+                        <td>{{e.prenom}}</td>
+                        <td>{{e.email}}</td>
+                        <td>{{e.adresse}}</td>   
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <div id="attendingCandidates" data-ng-show="event.id !== undefined">
-        <h3>Candidats présents</h3>
-        <button type="submit" class="btn btn-default" data-ng-click="editAttendingCandidates()">Editer la liste</button>
-    </div>
-
-
+</div>

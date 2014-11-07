@@ -1,5 +1,6 @@
 body{
     overflow-y: hidden;
+    outline : 0;
 }
 /*
 #view{
@@ -41,6 +42,33 @@ body{
 .glyphicon-plus:hover{
     background-color : #f0f0f0;
     color:#888; 
+}
+.glyphicon-upload:hover,
+.glyphicon-file:hover{
+    color:#45b5e4; 
+}
+.uploaded > .glyphicon-file{
+    font-size:20px; 
+    color:#44A1C9; 
+    cursor :pointer;
+}
+
+.file{
+    padding-top : 8px;
+}
+
+.uploaded > .glyphicon-file:hover{
+    font-size:20px; 
+    color:#45b5e4; 
+    cursor :pointer;
+
+}
+
+.glyphicon-upload,
+.glyphicon-file{
+    font-size:20px; 
+    color:#333333; 
+    cursor :pointer;
 }
 .right-side{
     background-color: transparent;

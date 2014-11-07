@@ -7,11 +7,10 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
 
                 $scope.enterpriseId = $routeParams.enterprise;
                 enterpriseResource.getEnterprise({"id": $scope.enterpriseId}, function (data) {
-                    console.log(data)
                     $scope.enterprise = data;
                 });
             } else {
-                
+
             }
         };
         // 'feedback' serveur
@@ -23,15 +22,30 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                 enterprise: $scope.enterprise
             };
             console.log("IN")
-            enterpriseResource.addEnterprise(postData, function (data) {
+            enterpriseResource.addEnterprise({}, postData, function (data) {
                 console.log(data + "success");
             }, function (error) {
                 console.log(error + " error ");
             });
         };
         
-        
-        $scope.removeEnterprise = function(enterprise) {
+        $scope.update = function () {
+        /**FIXME
+         * 
+         * @type type
+         */
+            var postData = {
+                enterprise: $scope.enterprise
+            };
+            enterpriseResource.updateEnterprise({}, postData, function (data) {
+                console.log(data + "success");
+            }, function (error) {
+                console.log(error + " error ");
+            });
+        };
+
+
+        $scope.removeEnterprise = function (enterprise) {
             console.log($scope.enterpriseId);
             enterpriseResource.removeEnterprise({"id": $scope.enterpriseId}, function (data) {
                 console.log(data)
@@ -43,10 +57,10 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
          */
         $scope.cancel = function () {
             delete ($scope.enterprise);
-            delete ($scope.enterpriseId); 
+            delete ($scope.enterpriseId);
             $location.path('/admin-enterprise');
         };
-        
+
         $scope.init();
     }]);
 

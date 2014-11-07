@@ -10,20 +10,26 @@ app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource', 
         // 'feedback' serveur
         $scope.feedback = null;
 
-        $scope.save = function(room) {
-            var postData = {
-                room: $scope.room
-            };
-            console.log("IN")
-            roomResource.addRoom(postData, function (data) {
+        $scope.save = function() {
+            
+            roomResource.addRoom({}, $scope.room, function (data) {
+                console.log(data + "success");
+            }, function (error) {
+                console.log(error + " error ");
+            });
+        };
+        
+        $scope.update = function () {
+            
+            roomResource.updateRoom({}, $scope.room, function (data) {
                 console.log(data + "success");
             }, function (error) {
                 console.log(error + " error ");
             });
         };
 
-        $scope.removeRoom = function(room) {          
-            roomResource.removeRoom({"id": $scope.roomId}, function (data) {
+        $scope.removeRoom = function() {          
+            roomResource.removeRoom({"id": $scope.roomId}, function () {
                 $location.path('/admin-room');
             });            
         };
