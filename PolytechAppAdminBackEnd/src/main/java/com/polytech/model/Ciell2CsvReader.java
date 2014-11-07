@@ -95,7 +95,8 @@ public class Ciell2CsvReader {
             // Parcours de la liste et création des étudiants
             for(CSVRecord record : parser){
                 Etudiant edt = new Etudiant();
-                if(record.isSet("Identifiant")) edt.setCandidid(Integer.parseInt(record.get("Identifiant")));
+                if(record.isSet("Identifiant")) edt.setCandidid(Integer.parseInt(record.get("Identifiant")));    
+                if(record.isSet("Civilité")) edt.setCivilite(record.get("Civilité"));
                 if(record.isSet("NOM")) edt.setNom(record.get("NOM"));
                 if(record.isSet("Prénom")) edt.setPrenom(record.get("Prénom"));
                 if(record.isSet("DATE NAISSANCE")) edt.setDatenaissance(formatter.parse(record.get("DATE NAISSANCE")));
@@ -108,6 +109,11 @@ public class Ciell2CsvReader {
                 if(record.isSet("MOBILE")) edt.setTelportable(record.get("MOBILE"));
                 if(record.isSet("ETAB_EN_COURS_PATRONYME")) edt.setEtab(record.get("ETAB_EN_COURS_PATRONYME"));
                 if(record.isSet("ETAB_EN_COURS_VILLE")) edt.setEtabville(record.get("ETAB_EN_COURS_VILLE"));
+              
+                 if(record.isSet("SEB_LIBELLE")) edt.setBactype(record.get("SEB_LIBELLE"));
+                if(record.isSet("Mention BAC")) edt.setBacmention(record.get("Mention BAC"));
+                if(record.isSet("BCA_ANNEE")) edt.setBacannee(Integer.parseInt(record.get("BCA_ANNEE")));
+                if(record.isSet("BAC_LIBELLE")) edt.setBacoption(record.get("BAC_LIBELLE"));
                 emps.add(edt);
             }
             
