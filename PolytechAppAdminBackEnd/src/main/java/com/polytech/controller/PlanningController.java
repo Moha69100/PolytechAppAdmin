@@ -26,6 +26,22 @@ public class PlanningController {
 
     PlanningManager planningManager = new PlanningManager();
 
+    
+    /**
+     * used by the planning algorithm
+     */
+    @RequestMapping(value = "/planningGenerate/{id}", method = RequestMethod.GET)
+    public void algoPlanning(@PathVariable String id) {
+       
+        String error = "";
+        try {
+            // mettre ta méthode ici
+
+        } catch (Exception ex) {
+            error = ex.getMessage();
+        }
+    }
+    
     /**
      * This method returns all planning when the .../plannings URL is called.
      *
