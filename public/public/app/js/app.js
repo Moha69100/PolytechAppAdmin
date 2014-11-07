@@ -1,4 +1,4 @@
-var app = angular.module('App', ['ui.bootstrap', 'angularFileUpload', 'ngResource', 'ngRoute']);
+var app = angular.module('App', ['ui.bootstrap', 'angularFileUpload', 'ngResource', 'ngRoute', 'http-auth-interceptor', 'ngCookies']);
 app.config(['$routeProvider', function ($routeProvider) {
 
         $routeProvider.when('/admin-enterprise', {
@@ -74,9 +74,13 @@ app.config(['$routeProvider', function ($routeProvider) {
         });
     }]);
 /** sur démarrage de l'application */
+<<<<<<< HEAD
 app.run(['$rootScope', function ($rootScope) {
         
         $rootScope.$on(Events.Modale.OPEN_DIALOG_CONFIRM, function (event, data) {
+=======
+app.run(['$rootScope', 'Authentication', function ($rootScope, auth) {
+>>>>>>> with-api-key
 
             var modalInstance = $modal.open({
                 windowClass: "confirmation",
@@ -124,8 +128,10 @@ app.run(['$rootScope', function ($rootScope) {
                 //var dropdownToggle = $(".dropdown-toggle", dropdown);
                 li.addClass('active');
             }
-
-
+        });
+        
+        $rootScope.$on('event:auth-loginRequired', function(event) {
+            auth.login();
         });
     }]);
 /**
@@ -136,6 +142,8 @@ app.run(['$rootScope', function ($rootScope) {
 app.config(['$httpProvider', function ($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
+        $httpProvider.interceptors.push('AuthenticationInterceptor');
+        $httpProvider.defaults.withCredentials = true;
         /*
          
          $httpProvider.responseInterceptors.push(['$q', '$rootScope', function ($q, $rootScope) {

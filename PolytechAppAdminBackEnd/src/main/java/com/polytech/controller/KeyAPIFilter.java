@@ -1,9 +1,6 @@
 package com.polytech.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -15,10 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SimpleCORSFilter implements Filter {
-    
-//    private List<String> allowedHeaders = Arrays.asList("Buenos Aires", "Córdoba", "La Plata");
-    
+public class KeyAPIFilter implements Filter {
+
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 
@@ -26,23 +21,24 @@ public class SimpleCORSFilter implements Filter {
 
         String o = request.getHeader("api_key");
         HttpServletResponse response = (HttpServletResponse) res;
-        
 
-//        if (o == null && !request.getRequestURI().endsWith("/auth")) {
-//            
-//            response.setStatus(401);
-//            
-//        } else if (request.getRequestURI().endsWith("/auth") || ((String) o).equals(request.getSession().getAttribute("api_key"))) {
+        System.out.println("Plop : " + request.getMethod());
 
-            response.setHeader("Access-Control-Allow-Headers", "X-Requested-With, content-type, api_key, Accept");
-            response.setHeader("Access-Control-Allow-Origin", "*");
-            response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
-            response.setHeader("Access-Control-Max-Age", "3600");
-            chain.doFilter(request, response);
- 
-//        }
-        
+        if (!request.getMethod().equals("OPTIONS")) {
+
+            if ((o == null && !request.getRequestURI().endsWith("/auth")) || (o != null && !((String) o).equals(request.getSession().getAttribute("api_key")))) {
+                response.setStatus(401);
+                
+            } else {
+                chain.doFilter(request, response);
+            }
             
+        } else {
+            
+            chain.doFilter(request, response);
+            
+        }
+
     }
 
     @Override
