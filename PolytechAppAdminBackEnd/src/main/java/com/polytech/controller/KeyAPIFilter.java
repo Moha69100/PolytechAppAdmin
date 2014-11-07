@@ -27,10 +27,12 @@ public class KeyAPIFilter implements Filter {
         if (!request.getMethod().equals("OPTIONS")) {
 
             if ((o == null && !request.getRequestURI().endsWith("/auth")) || (o != null && !((String) o).equals(request.getSession().getAttribute("api_key")))) {
-
+                System.out.println("Received key : " + o);
+                System.out.println("key : " + request.getSession().getAttribute("api_key"));
                 response.setStatus(401);
                 
             } else {
+                System.out.println(request.getSession().getAttribute("api_key"));
                 
                 chain.doFilter(request, response);
                 
