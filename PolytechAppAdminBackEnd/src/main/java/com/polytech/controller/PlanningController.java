@@ -1,9 +1,12 @@
 package com.polytech.controller;
 
+import com.polytech.dao.Evenement;
 import com.polytech.dao.Planning;
+import com.polytech.dao.manager.EvenementManager;
 import com.polytech.dao.manager.PlanningManager;
 import com.polytech.exception.ExceptionHandler;
 import com.polytech.exception.SuccessHandler;
+import com.polytech.model.PlanningGenerator;
 import java.util.List;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,15 +31,18 @@ public class PlanningController {
 
     
     /**
-     * used by the planning algorithm
+     * used to call the planning algorithm
+     * @id id of the evenement
      */
     @RequestMapping(value = "/planningGenerate/{id}", method = RequestMethod.GET)
     public void algoPlanning(@PathVariable String id) {
        
         String error = "";
         try {
-            // mettre ta méthode ici
-
+            EvenementManager evenementManager = new EvenementManager();
+            Evenement evt = evenementManager.getEvenementById(Integer.parseInt(id));
+            PlanningGenerator planning = new PlanningGenerator(evt, 30);
+            planning.generate();
         } catch (Exception ex) {
             error = ex.getMessage();
         }
