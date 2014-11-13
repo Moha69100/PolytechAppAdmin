@@ -80,14 +80,9 @@ app.config(['$routeProvider', function ($routeProvider) {
         });
     }]);
 /** sur démarrage de l'application */
-<<<<<<< HEAD
-app.run(['$rootScope', function ($rootScope) {
-        
-        $rootScope.$on(Events.Modale.OPEN_DIALOG_CONFIRM, function (event, data) {
-=======
-app.run(['$rootScope', 'Authentication', function ($rootScope, auth) {
->>>>>>> with-api-key
 
+    app.run(['$rootScope', 'Authentication', function ($rootScope, auth) {
+        $rootScope.$on(Events.Modale.OPEN_DIALOG_CONFIRM, function (event, data) {
             var modalInstance = $modal.open({
                 windowClass: "confirmation",
                 templateUrl: 'app/partials/core/confirmation.html',
