@@ -40,6 +40,7 @@ public class Etudiant implements java.io.Serializable {
     private String avisperso;
     private String rmq;
     private String candidstatut;
+   
     private Set diplomes = new HashSet(0);
     private Set evenements = new HashSet(0);
     private Set voeuxEtudiants = new HashSet(0);
@@ -130,11 +131,12 @@ public class Etudiant implements java.io.Serializable {
         this.prenom = prenom;
     }
 
-    @JsonSerialize(using = JsonDateSerializer.class)
+   @JsonSerialize(using = JsonDateSerializer.class)
     public Date getDatenaissance() {
         return this.datenaissance;
     }
 
+    
     public void setDatenaissance(Date datenaissance) {
         this.datenaissance = datenaissance;
     }

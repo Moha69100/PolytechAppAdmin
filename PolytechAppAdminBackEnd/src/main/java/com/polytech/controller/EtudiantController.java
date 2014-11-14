@@ -113,8 +113,10 @@ public class EtudiantController {
      */
     @RequestMapping(value = "/etudiant", method = RequestMethod.POST)
     public Object updateEtudiant(@RequestBody Etudiant etu) {
+        
         String error = "";
         try {
+            
             return SuccessHandler.handle(etuManager.updateEtudiant(etu));
         } catch (Exception e) {
             error = e.getMessage();

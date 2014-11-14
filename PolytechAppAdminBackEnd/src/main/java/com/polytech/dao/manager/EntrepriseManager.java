@@ -4,55 +4,59 @@ import com.polytech.dao.Entreprise;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import webadmin.NewHibernateUtil;
 
 public class EntrepriseManager {
 
     public List<Entreprise> getAllEnterprise() throws Exception {
 
-        Session session = SessionManager.openSession();
-
+        //Session session = SessionManager.openSession();
+        SessionFactory sessionFactory = (SessionFactory) NewHibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
         try {
+            tx = session.beginTransaction();
 
             Query query = session.createQuery("from Entreprise");
             List<Entreprise> list = query.list();
+
+            tx.commit();
             return list;
-
         } catch (Exception e) {
-
+            if (tx != null) {
+                tx.rollback();
+            }
             throw e;
-
         } finally {
 
-            session.close();
-
+           // session.close();
         }
 
     }
 
     public Entreprise getEnterpriseById(int id) throws Exception {
 
-        Session session = SessionManager.openSession();
-
+        SessionFactory sessionFactory = (SessionFactory) NewHibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
         try {
+            tx = session.beginTransaction();
 
             Entreprise e = (Entreprise) session.get(Entreprise.class, id);
 
-            if (e == null) {
-                throw new NullPointerException();
-            }
-
+            tx.commit();
             return e;
-
         } catch (Exception e) {
-
-            throw e;
-
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e; // or display error message
         } finally {
-
             session.close();
-
         }
+        
 
     }
 

@@ -43,37 +43,37 @@
         <property name="nbrapprenti" type="java.lang.Integer">
             <column name="nbrapprenti" />
         </property>
-        <set name="entreprisepresences" table="appschema.entreprisepresence" inverse="true" lazy="false" fetch="select">
+        <set name="entreprisepresences" table="appschema.entreprisepresence" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="entid" />
             </key>
             <one-to-many class="com.polytech.dao.Entreprisepresence" />
         </set>
-        <set name="offrealternances" table="appschema.offrealternance" inverse="true" lazy="false" fetch="select">
+        <set name="offrealternances" table="appschema.offrealternance" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="entid" />
             </key>
             <one-to-many class="com.polytech.dao.Offrealternance" />
         </set>
-        <set name="voeuxEntreprises" table="appschema.voeux_entreprise" inverse="true" lazy="false" fetch="select">
+        <set name="voeuxEntreprises" table="appschema.voeux_entreprise" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="entid" />
             </key>
             <one-to-many class="com.polytech.dao.VoeuxEntreprise" />
         </set>
-        <set name="voeuxEtudiants" table="appschema.voeux_etudiant" inverse="true" lazy="false" fetch="select">
+        <set name="voeuxEtudiants" table="appschema.voeux_etudiant" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="entid" />
             </key>
             <one-to-many class="com.polytech.dao.VoeuxEtudiant" />
         </set>
-        <set name="entretiens" table="appschema.entretien" inverse="true" lazy="false" fetch="select">
+        <set name="entretiens" table="appschema.entretien" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="entid" />
             </key>
             <one-to-many class="com.polytech.dao.Entretien" />
         </set>
-        <set name="personnecontacts" table="appschema.personnecontact" inverse="true" lazy="false" fetch="select">
+        <set name="personnecontacts" table="appschema.personnecontact" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="entid" />
             </key>
