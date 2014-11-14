@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2>Liste des offres d'alternance</h2>
     <div class="form-actions"> 
-        <i data-ng-click="add()"></i>   
+        <i data-ng-click="addOffer()"></i>   
     </div>
 </div>
 <div class="content">
@@ -14,7 +14,7 @@
             </tr>
             <tr data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in offers">
                 <td>{{e.id}}</td>
-                <td>{{e.name}}</td>
+                <td>{{e.titre}}</td>
                 <td>{{e.desc}}</td>
             </tr>
 

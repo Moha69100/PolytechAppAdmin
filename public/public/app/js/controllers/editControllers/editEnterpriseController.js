@@ -18,37 +18,18 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
         //     $scope.enterprise = items.enterpriseEdited;
 
         $scope.save = function () {
-            var postData = {
-                enterprise: $scope.enterprise
-            };
-            console.log("IN")
-            enterpriseResource.addEnterprise({}, postData, function (data) {
-                console.log(data + "success");
-            }, function (error) {
-                console.log(error + " error ");
-            });
+            var postData = $scope.enterprise;
+            enterpriseResource.addEnterprise({}, postData);
         };
         
         $scope.update = function () {
-        /**FIXME
-         * 
-         * @type type
-         */
-            var postData = {
-                enterprise: $scope.enterprise
-            };
-            enterpriseResource.updateEnterprise({}, postData, function (data) {
-                console.log(data + "success");
-            }, function (error) {
-                console.log(error + " error ");
-            });
+            var postData = $scope.enterprise;
+            enterpriseResource.updateEnterprise({}, postData);
         };
 
 
         $scope.removeEnterprise = function (enterprise) {
-            console.log($scope.enterpriseId);
             enterpriseResource.removeEnterprise({"id": $scope.enterpriseId}, function (data) {
-                console.log(data)
                 $location.path('/admin-enterprise');
             });
         };
