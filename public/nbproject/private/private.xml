@@ -5,6 +5,12 @@
 <<<<<<< HEAD
         <group/>
 =======
+<<<<<<< HEAD
+        <group/>
+=======
+<<<<<<< HEAD
+        <group/>
+=======
         <group>
             <file>file:/D:/Xampp/htdocs/polytech_app_admin/public/public/app/js/modules/authentication/http-auth-interceptor.js</file>
             <file>file:/D:/Xampp/htdocs/polytech_app_admin/public/public/app/js/app.js</file>
@@ -13,5 +19,7 @@
             <file>file:/D:/Xampp/htdocs/polytech_app_admin/public/public/app/js/services/authentication-interceptor.js</file>
         </group>
 >>>>>>> 672d46691da857fad2c10ddd142bfc9b57496c23
+>>>>>>> d4cbd0c680836fe72f1d962b02e3b9e0780440bf
+>>>>>>> c9b4bed556633db796ad8015880fb703af05fb9f
     </open-files>
 </project-private>
