@@ -1,5 +1,5 @@
-var app = angular.module('App', ['ui.bootstrap', 'angularFileUpload', 'ngResource', 'ngRoute']);
-app.config(['$routeProvider', function ($routeProvider) {
+var app = angular.module('App', ['ui.bootstrap', 'angularFileUpload', 'ngResource', 'ngRoute', 'http-auth-interceptor', 'ngCookies']);
+app.config(['$routeProvider', function($routeProvider) {
 
         $routeProvider.when('/admin-enterprise', {
             controller: 'enterpriseController',
@@ -43,6 +43,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             menu: {
                 id: 'menu-offers'
             }
+        }).when('/edit-offer', {
+            controller: 'editOfferController',
+            templateUrl: 'app/partials/offers/editOffer.html',
+            menu: {
+                id: 'menu-offers'
+            }
         }).when('/test-file', {
             controller: 'fileController',
             templateUrl: 'app/partials/test/file.html',
@@ -68,8 +74,8 @@ app.config(['$routeProvider', function ($routeProvider) {
                 id: 'menu-event'
             }
         }).when('/test-planning', {
-            controller: 'planningController', 
-            templateUrl: 'app/partials/test/planning.html', 
+            controller: 'planningController',
+            templateUrl: 'app/partials/test/planning.html',
             menu: {
                 id: 'menu-test-planning'
             }
@@ -80,34 +86,33 @@ app.config(['$routeProvider', function ($routeProvider) {
         });
     }]);
 /** sur démarrage de l'application */
-app.run(['$rootScope', function ($rootScope) {
-        
-        $rootScope.$on(Events.Modale.OPEN_DIALOG_CONFIRM, function (event, data) {
 
+app.run(['$rootScope', 'Authentication', function($rootScope, auth) {
+        $rootScope.$on(Events.Modale.OPEN_DIALOG_CONFIRM, function(event, data) {
             var modalInstance = $modal.open({
                 windowClass: "confirmation",
                 templateUrl: 'app/partials/core/confirmation.html',
                 controller: 'confirmModalController',
                 backdrop: 'static',
                 resolve: {
-                    items: function () {
+                    items: function() {
                         return data;
                     }
 
                 }
             });
 
-            modalInstance.opened.then(function () {
-                setTimeout(function () {
+            modalInstance.opened.then(function() {
+                setTimeout(function() {
                     modalInstance.close();
                 }, 1000);
             });
         });
 
-        $rootScope.openConfirmModal = function (data) {
+        $rootScope.openConfirmModal = function(data) {
             $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, data);
         };
-        $rootScope.$on('$routeChangeSuccess', function (event, next, current) {
+        $rootScope.$on('$routeChangeSuccess', function(event, next, current) {
             // console.info('>>> $routeChangeSuccess : $location path=',
             // $location.path());
             // console.info('>>> $routeChangeSuccess : current=', current);
@@ -130,8 +135,10 @@ app.run(['$rootScope', function ($rootScope) {
                 //var dropdownToggle = $(".dropdown-toggle", dropdown);
                 li.addClass('active');
             }
+        });
 
-
+        $rootScope.$on('event:auth-loginRequired', function(event) {
+            auth.login();
         });
     }]);
 /**
@@ -139,9 +146,11 @@ app.run(['$rootScope', function ($rootScope) {
  */
 
 
-app.config(['$httpProvider', function ($httpProvider) {
+app.config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
+        $httpProvider.interceptors.push('AuthenticationInterceptor');
+        $httpProvider.defaults.withCredentials = true;
         /*
          
          $httpProvider.responseInterceptors.push(['$q', '$rootScope', function ($q, $rootScope) {
@@ -176,16 +185,16 @@ app.config(['$httpProvider', function ($httpProvider) {
          };
          }]);*/
     }]);
-app.config(['$httpProvider', function ($httpProvider) {
+app.config(['$httpProvider', function($httpProvider) {
 
-        $httpProvider.responseInterceptors.push(['$q', '$rootScope', function ($q, $rootScope) {
-                return function (promise) {
-                    return promise.then(function (response) {
+        $httpProvider.responseInterceptors.push(['$q', '$rootScope', function($q, $rootScope) {
+                return function(promise) {
+                    return promise.then(function(response) {
                         // do something on success
                         // console.info('>> myHttpInterceptor - success', response);
                         return response || $q.when(response);
 
-                    }, function (rejection) {
+                    }, function(rejection) {
                         // console.info('>> myHttpInterceptor - error', rejection);
 
                         // do something on error
@@ -213,37 +222,37 @@ app.config(['$httpProvider', function ($httpProvider) {
             }]);
     }]);
 
-app.config(['$httpProvider', function ($httpProvider) {
+app.config(['$httpProvider', function($httpProvider) {
 
         // Ajax indicator
         $httpProvider.interceptors.push('ajaxIndicatorHttpInterceptor');
     }]);
 
 // register the interceptor as a service, intercepts ALL angular ajax http calls
-app.factory('ajaxIndicatorHttpInterceptor', ['$q', '$rootScope', function ($q, $rootScope) {
+app.factory('ajaxIndicatorHttpInterceptor', ['$q', '$rootScope', function($q, $rootScope) {
         return {
             // optional method
-            'request': function (config) {
+            'request': function(config) {
                 // do something on success
                 // console.log("ajaxIndicatorHttpInterceptor >>> request");
                 $rootScope.isLoading = true;
                 return config || $q.when(config);
             },
             // optional method
-            'requestError': function (rejection) {
+            'requestError': function(rejection) {
                 // do something on error
                 // console.log("ajaxIndicatorHttpInterceptor >>> requestError");
                 return $q.reject(rejection);
             },
             // optional method
-            'response': function (response) {
+            'response': function(response) {
                 // do something on success
                 // console.log("ajaxIndicatorHttpInterceptor >>> response");
                 $rootScope.isLoading = false;
                 return response || $q.when(response);
             },
             // optional method
-            'responseError': function (rejection) {
+            'responseError': function(rejection) {
                 // do something on error
                 // console.log("ajaxIndicatorHttpInterceptor >>> responseError");
                 $rootScope.isLoading = false;

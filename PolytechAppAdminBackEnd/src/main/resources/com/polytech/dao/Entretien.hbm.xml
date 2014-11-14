@@ -14,7 +14,7 @@
         <many-to-one name="etudiant" class="com.polytech.dao.Etudiant" fetch="select">
             <column name="etuid" />
         </many-to-one>
-        <many-to-one name="planning" class="com.polytech.dao.Planning" fetch="select">
+        <many-to-one name="planning" class="com.polytech.dao.Planning"  fetch="select">
             <column name="planid" />
         </many-to-one>
         <property name="priorite" type="java.lang.Integer">

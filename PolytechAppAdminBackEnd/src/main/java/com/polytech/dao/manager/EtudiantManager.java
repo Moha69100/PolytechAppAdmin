@@ -6,6 +6,7 @@
 package com.polytech.dao.manager;
 
 import com.polytech.dao.Etudiant;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -29,6 +30,7 @@ public class EtudiantManager {
         try {
             Query query = session.createQuery("from Etudiant");
             return query.list();
+            
 
         } finally {
             session.close();
@@ -86,9 +88,10 @@ public class EtudiantManager {
 
     /**
      * ADD A STUDENT INTO DATABASE
+     *
      * @param etu
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
     public boolean addEtudiant(Etudiant etu) throws Exception {
 
@@ -113,18 +116,22 @@ public class EtudiantManager {
 
     /**
      * UPDATE A STUDENT INTO DATABASE
+     *
      * @param etu
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
     public boolean updateEtudiant(Etudiant etu) throws Exception {
 
+        
         Session session = SessionManager.openSession();
         Transaction tx = null;
+
+        System.out.println("ATTENTION A LA DATE DE LUPDATE OU DE LAJOUT  :" + etu.getDatenaissance());
         try {
             tx = session.beginTransaction();
             session.update(etu);
-            
+
             tx.commit();
 
         } catch (Exception e) {
@@ -135,7 +142,7 @@ public class EtudiantManager {
         } finally {
             session.close();
         }
-        
+
         return true;
     }
 

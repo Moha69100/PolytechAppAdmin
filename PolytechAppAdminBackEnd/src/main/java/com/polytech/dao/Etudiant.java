@@ -1,6 +1,7 @@
 package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Date;
 import java.util.HashSet;
@@ -40,10 +41,16 @@ public class Etudiant implements java.io.Serializable {
     private String avisperso;
     private String rmq;
     private String candidstatut;
+   
+     @JsonBackReference
     private Set diplomes = new HashSet(0);
+      @JsonBackReference
     private Set evenements = new HashSet(0);
+       @JsonBackReference
     private Set voeuxEtudiants = new HashSet(0);
+        @JsonBackReference
     private Set entretiens = new HashSet(0);
+         @JsonBackReference
     private Set voeuxEntreprises = new HashSet(0);
 
     public Etudiant() {
@@ -130,11 +137,12 @@ public class Etudiant implements java.io.Serializable {
         this.prenom = prenom;
     }
 
-    @JsonSerialize(using = JsonDateSerializer.class)
+   @JsonSerialize(using = JsonDateSerializer.class)
     public Date getDatenaissance() {
         return this.datenaissance;
     }
 
+    
     public void setDatenaissance(Date datenaissance) {
         this.datenaissance = datenaissance;
     }

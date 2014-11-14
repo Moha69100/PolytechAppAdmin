@@ -2,6 +2,7 @@ package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,12 +20,19 @@ public class Evenement  implements java.io.Serializable {
      private Date heuredebut;
      private Date heurefin;
      private String description;
+     @JsonBackReference
      private Set evenementsalles = new HashSet(0);
+     @JsonBackReference
      private Set evenementsalles_1 = new HashSet(0);
+     @JsonBackReference
      private Set entreprisepresences = new HashSet(0);
+     @JsonBackReference
      private Set plannings = new HashSet(0);
+     @JsonBackReference
      private Set voeuxEtudiants = new HashSet(0);
+     @JsonBackReference
      private Set etudiants = new HashSet(0);
+     @JsonBackReference
      private Set voeuxEntreprises = new HashSet(0);
 
     public Evenement() {
