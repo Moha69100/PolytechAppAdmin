@@ -134,6 +134,21 @@ body{
 /* Planning */
 /************/
 
+.appAdminPlanningSidebar {
+    width: 60px;
+    float: left;
+}
+
+.appAdminPlanningSidebar .legend{
+    color: #797979;
+    font-size: 10pt;
+    text-align: center;
+    height: 110px;
+    border-top: 1px solid #CBCBCB;
+    margin: 4px 5px 5px 5px;
+    padding-top: 8px;
+}
+
 .appAdminPlanning {
     /* Manage scrollbars */
     overflow-x: scroll;
@@ -148,11 +163,28 @@ body{
     display: inline-block;
 }
 
-.appAdminPlanning .room .meeting {
+.appAdminPlanning .room .meeting, 
+.appAdminPlanning .room .room-header {
+    height: 110px;
+    margin: 5px 5px 2px 5px;
+    padding: 5px 10px;
     color: #ffffff;
     background-color: #45b5e4;
-    margin: 5px;
-    padding: 5px 10px;
+    border-top: 1px solid #86CCE8;
+    border-bottom: 2px solid #3C96BB;
+    /* Border radius */
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.appAdminPlanning .room .room-header {
+    height: auto;
+    text-align: center;
+    color: #4F4F4F;
+    background-color: #C0C0C0;
+    border-top: 1px solid #ffffff;
+    border-bottom: 2px solid #949494;
 }
 
 .appAdminPlanning .room .meeting p {
@@ -161,8 +193,33 @@ body{
 
 .appAdminPlanning .room .meeting p span {
     display: block;
+    overflow: hidden;
 }
 
 .appAdminPlanning .room .meeting p span.meeting-label {
+    font-size: 8pt;
+    color: #316B83;
+}
+
+.appAdminPlanning .room .meeting p.meeting-meta-start {
+    float: left;
+}
+
+.appAdminPlanning .room .meeting p.meeting-meta-end {
+    float: right;
+}
+
+.appAdminPlanning .room .meeting p.meeting-meta-duration {
+    text-align: right;
+}
+
+.appAdminPlanning .room .meeting p.meeting-meta-start span, 
+.appAdminPlanning .room .meeting p.meeting-meta-end span {
+    display: inline;
+    font-size: 10pt;
+} 
+
+.appAdminPlanning .room .meeting p.meeting-meta-duration span {
+    display: inline;
     font-size: 8pt;
 }
