@@ -2,6 +2,7 @@ package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,7 +16,9 @@ public class Salle  implements java.io.Serializable {
      private String libelle;
      private String localisation;
      private Integer capacite;
+      @JsonBackReference
      private Set entreprisepresences = new HashSet(0);
+       @JsonBackReference
      private Set evenementsalles = new HashSet(0);
 
     public Salle() {

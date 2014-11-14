@@ -2,6 +2,7 @@ package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,6 +14,7 @@ public class Planning  implements java.io.Serializable {
 
      private int id;
      private Evenement evenement;
+      @JsonBackReference
      private Set entretiens = new HashSet(0);
 
     public Planning() {

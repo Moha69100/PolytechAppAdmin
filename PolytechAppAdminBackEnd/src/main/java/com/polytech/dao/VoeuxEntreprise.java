@@ -1,6 +1,9 @@
 package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+
 
 
 /**
@@ -10,6 +13,7 @@ public class VoeuxEntreprise  implements java.io.Serializable {
 
 
      private int id;
+     @JsonManagedReference
      private Entreprise entreprise;
      private Etudiant etudiant;
      private Evenement evenement;
