@@ -142,7 +142,7 @@ public class EntretienManager {
         return true;
     }
 
-    public List<Entretien> getEntretiensByPlanning(int id) throws Exception{
+    public List<Entretien> getEntretiensByEvent(int id) throws Exception{
         Session session = SessionManager.openSession();
 
         try {

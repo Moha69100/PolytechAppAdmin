@@ -47,24 +47,7 @@ public class PlanningController {
         }
     }
 
-    /**
-     * used to call the planning algorithm
-     *
-     * @id id of the evenement
-     */
-    @RequestMapping(value = "/getPlanningsByEvt/{id}", method = RequestMethod.GET)
-    public Object planningByEvt(@PathVariable String id) {
-
-        List<Object> planning = null;
-        String error = "";
-        try {
-            planning = planningManager.getPlanningByEvt(Integer.parseInt(id));
-            System.out.println("Taille liste :" + planning.size());
-        } catch (Exception ex) {
-            error = ex.getMessage();
-        }
-        return planning;
-    }
+  
 
     /**
      * This method returns all planning when the .../plannings URL is called.
