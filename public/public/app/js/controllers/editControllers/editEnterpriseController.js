@@ -1,14 +1,11 @@
-
-
-app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpriseResource", "$location",
-    function($scope, $routeParams, enterpriseResource, $location) {
+app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpriseResource", "$location", "$rootScope",
+    function($scope, $routeParams, enterpriseResource, $location, $rootScope) {
         $scope.init = function() {
             if ($routeParams.enterprise) {
 
                 $scope.enterpriseId = $routeParams.enterprise;
                 enterpriseResource.getEnterprise({"id": $scope.enterpriseId}, function(data) {
                     $scope.enterprise = data;
-                    $scope.enterprise.contacts = [];
                     $scope.enterprise.contacts.push({
                         id: '',
                         nom: '',
@@ -26,12 +23,20 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
 
         $scope.save = function() {
             var postData = $scope.enterprise;
-            enterpriseResource.addEnterprise({}, postData);
+            enterpriseResource.addEnterprise({}, postData, function(){
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Entreprise enregistrée");
+            }, function(){
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de la sauvergarde");
+            });
         };
 
-        $scope.update = function() {
-            var postData = $scope.enterprise;
-            enterpriseResource.updateEnterprise({}, postData);
+        $scope.update = function(enterprise) {
+            var postData = enterprise;
+            enterpriseResource.updateEnterprise({}, postData, function(){
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Entreprise enregistrée");
+            }, function(){
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de la sauvergarde");
+            });
         };
 
 
