@@ -134,6 +134,11 @@ body{
 /* Planning */
 /************/
 
+.appAdminPlanningModal .modal-dialog {
+    min-width: 80%;
+    min-height: 80%;
+}
+
 .appAdminPlanningSidebar {
     width: 60px;
     float: left;
@@ -154,8 +159,6 @@ body{
     overflow-x: scroll;
     overflow-y: auto;
     white-space: nowrap;
-
-    
 }
 
 .appAdminPlanning .room {

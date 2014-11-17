@@ -24,7 +24,25 @@ app.controller('planningController', ['$rootScope', '$scope', 'meetingResource',
 					// On ajoute salleId sur les objets meeting (facilite le groupBy)
 					result.salleId = result.salle.id;
 					// Calcul des dates debut / fin
-					result.horaire = result.horaire.substring(0, result.horaire.length - 3);
+					var horaireStart = result.horaire.split(':'),
+						horaireEnd = result.duree.split(':');
+					horaireStart = _.map(horaireStart, function(value) {
+						return parseInt(value);
+					});
+					horaireEnd = _.map(horaireEnd, function(value) {
+						return parseInt(value);
+					});
+
+					horaireEnd[0] = horaireStart[0] + Math.floor((horaireStart[1] + horaireEnd[1]) / 60);
+					horaireEnd[1] = (horaireStart[1] + horaireEnd[1]) % 60;
+					// Reformat to string
+					var formatDigit = function(value) {
+						return ("0" + value).slice(-2);
+					};
+					horaireStart = _.map(horaireStart, formatDigit);
+					horaireEnd = _.map(horaireEnd, formatDigit);
+					result.horaire = horaireStart[0] + ':' + horaireStart[1];
+					result.horaireEnd = horaireEnd[0] + ':' + horaireEnd[1];
 					preData.push(result);
 				});
 				// On applique le groupBy

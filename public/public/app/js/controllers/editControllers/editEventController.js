@@ -97,9 +97,10 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
         // --------------------- CODE DE LA MODAL ------------------------------
         $scope.openModal = function(size) {
             var myModal = $modal.open({
-                templateUrl: "planning.html",
+                templateUrl: 'planning.html',
                 controller: 'planningController',
-                size: "size",
+                size: 'size',
+                windowClass: 'appAdminPlanningModal', 
                 resolve: {
                     eventId: function() {
                         return $scope.eventId;
