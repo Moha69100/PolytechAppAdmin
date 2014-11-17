@@ -105,7 +105,7 @@ public class EntrepriseController {
         try {
             return SuccessHandler.handle(entrepriseManager.addEntreprise(ent));
         } catch (Exception e) {
-            e.printStackTrace();
+            
             return ExceptionHandler.handle(e);
         }
 

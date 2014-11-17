@@ -13,7 +13,7 @@ public class VoeuxEntreprise  implements java.io.Serializable {
 
 
      private int id;
-     @JsonManagedReference
+     @JsonManagedReference("Ent_voeuxEntreprises")
      private Entreprise entreprise;
      private Etudiant etudiant;
      private Evenement evenement;

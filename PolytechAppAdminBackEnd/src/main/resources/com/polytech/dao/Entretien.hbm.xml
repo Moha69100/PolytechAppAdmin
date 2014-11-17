@@ -26,7 +26,7 @@
         <many-to-one name="salle" class="com.polytech.dao.Salle" fetch="select" lazy="false">
             <column name="salleid" />
         </many-to-one>
-        <property name="duree" type="timestamp">
+        <property name="duree" type="time">
             <column name="duree" length="29" />
         </property>
     </class>
