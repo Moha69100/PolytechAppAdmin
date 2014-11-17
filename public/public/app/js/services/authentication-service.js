@@ -5,12 +5,16 @@ angular.module('App').service('Authentication', ['$http', 'authService', 'Authen
     var BASE_URL = 'http://localhost:8090';
     var apiKeyEndpoint = '/auth';
     
+    var isLogingIn = false;
+    
     this.login = function() {
-        if (!authData.isAuthenticated()) {
+        if (!authData.isAuthenticated() && !isLogingIn) {
+            isLogingIn = true;
             var promise = $http.get(BASE_URL + apiKeyEndpoint);
             promise.then(function(response) {
                 authData.setApiKey(response.data.api_key);
-            }).then(function() { 
+            }).then(function() {
+                isLogingIn = false;
                 authBuffer.loginConfirmed()
             });
         }

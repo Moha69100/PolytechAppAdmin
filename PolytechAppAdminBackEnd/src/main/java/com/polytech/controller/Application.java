@@ -1,5 +1,8 @@
 package com.polytech.controller;
 
+import com.polytech.dao.Evenement;
+import com.polytech.dao.manager.EvenementManager;
+import com.polytech.model.PlanningGenerator;
 import javax.servlet.MultipartConfigElement;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -15,6 +18,7 @@ public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+        
     }
     
     @Bean
