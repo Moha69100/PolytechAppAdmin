@@ -2,17 +2,13 @@ package com.polytech.model;
 
 import com.polytech.dao.*;
 import com.polytech.dao.manager.EntretienManager;
-import com.polytech.dao.manager.EvenementManager;
 import com.polytech.dao.manager.PlanningManager;
-import com.polytech.dao.manager.VoeuxEntrepriseManager;
-import com.polytech.dao.manager.VoeuxEtudiantManager;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
@@ -67,12 +63,9 @@ public class PlanningGenerator {
         //
         
         //Récupérations des voeux entreprises pour un évènement donné
-        //List<VoeuxEntreprise> dbVoeuxEntreprises = voeuxEntrepriseManager.getAllVoeuxEntrepriseByIDEvEnement(evt.getId());
         Set<VoeuxEntreprise> dbVoeuxEntreprises = evt.getVoeuxEntreprises();
         //Récupération des voeux étudiants pour un évènement donné
-        //List<VoeuxEtudiant> dbVoeuxEtudiant = voeuxEtudiantManager.getAllVoeuxEtudiantByIDEvEnement(evt.getId());
         Set<VoeuxEtudiant> dbVoeuxEtudiant = evt.getVoeuxEtudiants();
-
 
         for (VoeuxEntreprise voeuxEntreprise : dbVoeuxEntreprises) {
             ArrayList<Etudiant> etudiants;

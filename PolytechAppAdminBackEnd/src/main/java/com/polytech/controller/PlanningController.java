@@ -39,6 +39,8 @@ public class PlanningController {
         String error = "";
         try {
             EvenementManager evenementManager = new EvenementManager();
+//            Evenement evt = null;
+//            evt = evenementManager.getEvenementById(Integer.parseInt(id));
             Evenement evt = evenementManager.getEvenementById(Integer.parseInt(id));
             PlanningGenerator planning = new PlanningGenerator(evt, 30);
             return SuccessHandler.handle(
