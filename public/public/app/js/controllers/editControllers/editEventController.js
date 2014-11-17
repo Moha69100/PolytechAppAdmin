@@ -3,10 +3,6 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
     function($scope, $routeParams, eventResource, enterpriseResource, studentResource) {
 
         var eventId;
-        $scope.event = [];
-
-        $scope.attendingEnterprises = [];
-        $scope.attendingStudents = [];
         $scope.enterprisesToRemove = [];
         $scope.studentsToRemove = [];
         // TODO supprimer ce tableau une fois le retour de la connexion à la base de données
@@ -32,7 +28,7 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
                 adresse: "polyech !",
                 role: "manager"
             }];
-        $scope.etudiants = [{
+        $scope.students = [{
                 id: 1,
                 nom: "TRICHARD",
                 prenom: "Maxime"
@@ -46,7 +42,7 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
                 prenom: "Anthony"
             }];
         $scope.addEnterprise = function() {
-            $scope.attendingEnterprises.push($scope.attendingEnterprise);
+            $scope.event.entreprisepresences.push($scope.attendingEnterprise);
             angular.forEach($scope.enterprises, function(val, key) {
                 if (val.id == $scope.attendingEnterprise.id) {
                     $scope.enterprises.splice(key, 1);
@@ -55,27 +51,37 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
         }
 
         $scope.addStudent = function() {
-            $scope.attendingStudents.push($scope.attendingStudent);
+            $scope.event.etudiants.push($scope.attendingStudent);
             angular.forEach($scope.students, function(val, key) {
-                if (val.id = $scope.attendingStudent.id) {
+                if (val.id == $scope.attendingStudent.id) {
                     $scope.students.splice(key, 1);
                 }
             });
         }
 
         $scope.prepareRemoveEnterprise = function(index) {
-            $scope.enterprisesToRemove.push($scope.attendingEnterprises[index]);
+            if ($scope.enterprisesToRemove[index] == null) {
+                $scope.enterprisesToRemove[index] = $scope.event.entreprisepresences[index];
+            } else {
+                $scope.enterprisesToRemove.splice(index, 1);
+            }
+            console.log($scope.enterprisesToRemove);
         }
 
         $scope.prepareRemoveStudent = function(index) {
-            $scope.studentsToRemove.push($scope.attendingStudents[index]);
+            if ($scope.studentsToRemove[index] == null) {
+                $scope.studentsToRemove[index] = $scope.event.etudiants[index];
+            } else {
+                $scope.studentsToRemove.splice(index, 1);
+            }
+            console.log($scope.studentsToRemove);
         }
 
         $scope.removeEnterprise = function() {
             angular.forEach($scope.enterprisesToRemove, function(val1, key1) {
-                angular.forEach($scope.attendingEnterprises, function(val2, key2) {
+                angular.forEach($scope.event.entreprisepresences, function(val2, key2) {
                     if (val1.id == val2.id) {
-                        $scope.attendingEnterprises.splice(key2, 1);
+                        $scope.event.entreprisepresences.splice(key2, 1);
                         $scope.enterprises.push(val1);
                     }
                 });
@@ -85,9 +91,9 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
 
         $scope.removeStudent = function() {
             angular.forEach($scope.studentsToRemove, function(val1, key1) {
-                angular.forEach($scope.attendingStudents, function(val2, key2) {
+                angular.forEach($scope.event.etudiants, function(val2, key2) {
                     if (val1.id == val2.id) {
-                        $scope.attendingStudents.splice(key2, 1);
+                        $scope.event.etudiants.splice(key2, 1);
                         $scope.students.push(val1);
                     }
                 });
@@ -102,6 +108,8 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
             eventResource.getEvent({'id': eventId}, function(data) {
                 console.log(data);
                 $scope.event = data;
+                $scope.event.entreprisepresences = [];
+                $scope.event.etudiants = [];
             });
             enterpriseResource.listEnterprises(function(data) {
                 $scope.enterprises = data;
