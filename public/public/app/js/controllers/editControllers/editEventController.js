@@ -4,6 +4,9 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
     function($scope, $routeParams, eventResource, enterpriseResource, studentResource) {
 
         var eventId;
+        $scope.event = [];
+        
+        $scope.event.attendingEnterprises = [];
 
         $scope.enterprisesToRemove = [];
 
@@ -33,10 +36,9 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
 
         $scope.attendingEnterprise = null;
 
-        $scope.attendingEnterprises = [];
 
         $scope.addEnterprise = function() {
-            $scope.attendingEnterprises.push($scope.attendingEnterprise);
+            $scope.event.attendingEnterprises.push($scope.attendingEnterprise);
 
             angular.forEach($scope.enterprises, function(val, key) {
                 if (val.id == $scope.attendingEnterprise.id) {
@@ -52,8 +54,8 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
         $scope.removeEnterprise = function() {
             angular.forEach($scope.enterprisesToRemove, function(val1, key1) {
                 angular.forEach($scope.attendingEnterprises, function(val2, key2) {
-                    if(val1.id == val2.id) {
-                        $scope.attendingEnterprises.splice(key2, 1);
+                    if (val1.id == val2.id) {
+                        $scope.event.attendingEnterprises.splice(key2, 1);
                         $scope.enterprises.push(val1);
                     }
                 });
@@ -61,7 +63,10 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
             $scope.enterprisesToRemove = [];
         }
 
-        $scope.event = {}
+        $scope.save = function() {
+            // TODO Enregistrer un event modifié
+        };
+
         var init = function() {
             eventId = $routeParams.eventId;
             eventResource.getEvent({'id': eventId}, function(data) {

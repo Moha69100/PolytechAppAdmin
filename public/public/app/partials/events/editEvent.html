@@ -79,7 +79,7 @@
                             <th>Raison sociale</th>
                             <th>Contact</th>
                         </tr>
-                        <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="a in attendingEnterprises">
+                        <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="a in event.attendingEnterprises">
                             <td><input type="checkbox" ng-click="prepareRemove($index)" id="enterprise{{a.id}}"></td>
                             <td>{{a.id}}</td>
                             <td>{{a.name}}</td>
@@ -126,7 +126,7 @@
         <div style="padding-top: 50px" class="row pull-right">
             <div class="form-buttons">
                 <button class="btn btn-warning" data-ng-click="">Supprimer</button>
-                <button type="submit" class="btn btn-primary" data-ng-show="event.id"  data-ng-disabled="!event.typeevt" data-ng-click="">Enregistrer</button>
+                <button type="submit" class="btn btn-primary" data-ng-show="event.id"  data-ng-disabled="!event.typeevt" data-ng-click="save()">Enregistrer</button>
                 <button type="submit" class="btn btn-primary" data-ng-show="!event.id" data-ng-click="">Ajouter</button>
                 <button type="submit" data-ng-click="cancel()" class="btn btn-default">Annuler</button>
             </div>
