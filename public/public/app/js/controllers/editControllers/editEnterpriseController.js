@@ -9,6 +9,12 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                 enterpriseResource.getEnterprise({"id": $scope.enterpriseId}, function(data) {
                     $scope.enterprise = data;
                     $scope.enterprise.contacts = [];
+                    $scope.enterprise.contacts.push({
+                        id: '',
+                        nom: '',
+                        prenom: ''
+                    });
+                    $scope.contact = [];
                 });
             } else {
 
@@ -47,25 +53,11 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
 
         // ----------------- GESTION DES CONTACTS ------------------------------
         $scope.contactsToRemove = [];
-        $scope.mockcontacts = [{
-                id: 1,
-                nom: "TRICHARD",
-                prenom: "Maxime",
-                mail: "test@polytech.com"
-            }, {
-                id: 2,
-                nom: "LEROUX",
-                prenom: "Geoffrey",
-                mail: "test2@polytech.com"
-            }];
+        
+        $scope.idActuelContact = 0;
 
         $scope.addContact = function() {
-            $scope.enterprise.contacts.push($scope.newContact);
-            angular.forEach($scope.mockcontacts, function(val, key) {
-                if (val.id == $scope.newContact.id) {
-                    $scope.mockcontacts.splice(key, 1);
-                }
-            });
+            $scope.enterprise.contacts.push(null);
         }
 
         $scope.prepareRemoveContact = function(index) {
@@ -82,15 +74,11 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                 angular.forEach($scope.enterprise.contacts, function(val2, key2) {
                     if (val1.id == val2.id) {
                         $scope.enterprise.contacts.splice(key2, 1);
-                        $scope.mockcontacts.push(val1);
                     }
                 });
             });
             $scope.contactsToRemove = [];
         }
-
-
-
         // ---------------------------------------------------------------------
     }]);
 
