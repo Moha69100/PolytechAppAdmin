@@ -1,6 +1,6 @@
 'use strict';
-app.controller('editEventController', ['$scope', '$routeParams', 'eventResource', 'enterpriseResource', 'studentResource',
-    function($scope, $routeParams, eventResource, enterpriseResource, studentResource) {
+app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'eventResource', 'enterpriseResource', 'studentResource',
+    function($scope, $modal, $routeParams, eventResource, enterpriseResource, studentResource) {
 
         var eventId;
         $scope.enterprisesToRemove = [];
@@ -128,4 +128,14 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
         }
 
         init();
+        
+        // --------------------- CODE DE LA MODAL ------------------------------
+        $scope.openModal = function(size) {
+            var myModal = $modal.open({
+                templateUrl: "planning.html", 
+                controller: 'planningController', 
+                size: "size"
+            });
+        }
+        // ---------------------------------------------------------------------
     }]);
