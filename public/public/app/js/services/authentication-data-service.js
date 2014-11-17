@@ -5,7 +5,7 @@ angular.module('App').service('AuthenticationData', [function() {
     var apiKey = null;
     
     this.isAuthenticated = function() {
-        console.log(apiKey);
+        //console.log(apiKey);
         return apiKey !== null;
     }
     
