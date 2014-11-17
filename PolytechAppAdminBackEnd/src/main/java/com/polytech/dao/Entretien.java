@@ -11,13 +11,14 @@ import java.util.Date;
 public class Entretien implements java.io.Serializable {
 
     private int id;
-    @JsonIgnore
+
+    
     private Entreprise entreprise;
-    @JsonIgnore
+
     private Etudiant etudiant;
-    @JsonIgnore
+    
     private Planning planning;
-    @JsonIgnore
+
     private Integer priorite;
     private Date horaire;
     private Integer salleid;

@@ -24,19 +24,18 @@ import org.springframework.web.bind.annotation.RestController;
 @ComponentScan
 @RestController
 public class PlanningController {
-    
-    /* The database manager */
 
+    /* The database manager */
     PlanningManager planningManager = new PlanningManager();
 
-    
     /**
      * used to call the planning algorithm
+     *
      * @id id of the evenement
      */
     @RequestMapping(value = "/planningGenerate/{id}", method = RequestMethod.GET)
     public void algoPlanning(@PathVariable String id) {
-       
+
         String error = "";
         try {
             EvenementManager evenementManager = new EvenementManager();
@@ -47,7 +46,26 @@ public class PlanningController {
             error = ex.getMessage();
         }
     }
-    
+
+    /**
+     * used to call the planning algorithm
+     *
+     * @id id of the evenement
+     */
+    @RequestMapping(value = "/getPlanningsByEvt/{id}", method = RequestMethod.GET)
+    public Object planningByEvt(@PathVariable String id) {
+
+        List<Object> planning = null;
+        String error = "";
+        try {
+            planning = planningManager.getPlanningByEvt(Integer.parseInt(id));
+            System.out.println("Taille liste :" + planning.size());
+        } catch (Exception ex) {
+            error = ex.getMessage();
+        }
+        return planning;
+    }
+
     /**
      * This method returns all planning when the .../plannings URL is called.
      *
@@ -66,8 +84,8 @@ public class PlanningController {
     }
 
     /**
-     * This method returns an planning retrieved using its id passed as parameter
-     * into the URL. For instance .../planning/1.
+     * This method returns an planning retrieved using its id passed as
+     * parameter into the URL. For instance .../planning/1.
      *
      * @param id The identifier of the planning to get retrieved from the URL.
      * @return A JSON object or a HTTP status in case of an error.
@@ -89,7 +107,8 @@ public class PlanningController {
      * This method deletes the planning from the database using the id passed as
      * parameter into the URL.
      *
-     * @param id The identifier of the planning to delete retrieved from the URL.
+     * @param id The identifier of the planning to delete retrieved from the
+     * URL.
      * @return A HTTP status regarding the status of the deletion.
      */
     @RequestMapping(value = "/planning/{id}", method = RequestMethod.DELETE)
@@ -108,8 +127,8 @@ public class PlanningController {
     }
 
     /**
-     * This method adds an planning into the database. A JSON object passed using
-     * POST represents the object to insert.
+     * This method adds an planning into the database. A JSON object passed
+     * using POST represents the object to insert.
      *
      * @param ent Object to insert created from the JSON file passed using POST.
      * @return A HTTP status regarding the status of the insertion.
@@ -119,7 +138,6 @@ public class PlanningController {
     Object createPlanning(@RequestBody Planning planning) {
 
         // json fonctionnement d'envoi 
-      
         String error = "";
 
         try {
@@ -132,8 +150,8 @@ public class PlanningController {
     }
 
     /**
-     * This method updates a planning into the database. A JSON object passed using
-     * POST represents the object to update.
+     * This method updates a planning into the database. A JSON object passed
+     * using POST represents the object to update.
      *
      * @param planning Object to update created from the JSON file passed using
      * POST.
@@ -150,5 +168,5 @@ public class PlanningController {
             return ExceptionHandler.handle(e);
         }
     }
-    
+
 }
