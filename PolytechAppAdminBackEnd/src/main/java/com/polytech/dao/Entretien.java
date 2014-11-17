@@ -14,7 +14,7 @@ public class Entretien implements java.io.Serializable {
 
     @JsonManagedReference("Ent_entretiens")
     private Entreprise entreprise;
-
+    @JsonManagedReference("Etu_entretiens")
     private Etudiant etudiant;
 
     private Planning planning;

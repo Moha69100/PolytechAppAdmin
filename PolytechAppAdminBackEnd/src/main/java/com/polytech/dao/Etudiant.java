@@ -2,6 +2,7 @@ package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Date;
@@ -47,11 +48,11 @@ public class Etudiant implements java.io.Serializable {
     private Set diplomes = new HashSet(0);
     @JsonBackReference("Etu_evenements")
     private Set evenements = new HashSet(0);
-    @JsonBackReference("voeuxEtudiants")
+    @JsonBackReference("Etu_voeuxEtudiants")
     private Set voeuxEtudiants = new HashSet(0);
-    @JsonBackReference("entretiens")
+    @JsonBackReference("Etu_entretiens")
     private Set entretiens = new HashSet(0);
-    @JsonBackReference("voeuxEntreprises")
+    @JsonBackReference("Etu_voeuxEntreprises")
     private Set voeuxEntreprises = new HashSet(0);
 
     public Etudiant() {
