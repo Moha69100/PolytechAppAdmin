@@ -28,17 +28,17 @@ public class Entreprise implements java.io.Serializable {
     private String anneeparticipforum;
     private Integer nbrapprenti;
     
-    @JsonBackReference
+    @JsonBackReference("Ent_entreprise")
     private Set entreprisepresences = new HashSet(0);
-    @JsonBackReference
+    @JsonBackReference("Ent_offrealternances")
     private Set offrealternances = new HashSet(0);
-    @JsonBackReference
+    @JsonBackReference("Ent_voeuxEntreprises")
     private Set voeuxEntreprises = new HashSet(0);
-    @JsonBackReference
+    @JsonBackReference("Ent_voeuxEtudiants")
     private Set voeuxEtudiants = new HashSet(0);
-    @JsonBackReference
+    @JsonBackReference("Ent_entretiens")
     private Set entretiens = new HashSet(0);
-    @JsonBackReference
+    @JsonBackReference("Ent_personnecontacts")
     private Set personnecontacts = new HashSet(0);
 
     public Entreprise() {

@@ -12,11 +12,11 @@ public class Entretien implements java.io.Serializable {
 
     private int id;
 
-    
+    @JsonManagedReference("Ent_entretiens")
     private Entreprise entreprise;
 
     private Etudiant etudiant;
-    
+
     private Planning planning;
     private Salle salle;
 

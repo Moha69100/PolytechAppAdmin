@@ -14,7 +14,7 @@ import java.util.Date;
 public class Entreprisepresence implements java.io.Serializable {
 
     private int id;
-    
+    @JsonManagedReference("Ent_entreprise")
     private Entreprise entreprise;
     private Evenement evenement;
     private Personnecontact personnecontact;
