@@ -19,19 +19,19 @@ public class Evenement implements java.io.Serializable {
     private Date heuredebut;
     private Date heurefin;
     private String description;
-    @JsonBackReference
+    @JsonBackReference("Evt_evenementsalles")
     private Set evenementsalles = new HashSet(0);
-    @JsonBackReference
+    
     private Set evenementsalles_1 = new HashSet(0);
-    @JsonBackReference
+    @JsonBackReference("Evt_entreprisepresences")
     private Set entreprisepresences = new HashSet(0);
-    @JsonBackReference
+    @JsonBackReference("Evt_plannings")
     private Set plannings = new HashSet(0);
-    @JsonBackReference
+    @JsonBackReference("Evt_voeuxEtudiants")
     private Set voeuxEtudiants = new HashSet(0);
     @JsonManagedReference("Etu_evenements")
     private Set etudiants = new HashSet(0);
-    @JsonBackReference
+    @JsonBackReference("Evt_voeuxEntreprises")
     private Set voeuxEntreprises = new HashSet(0);
 
     public Evenement() {
