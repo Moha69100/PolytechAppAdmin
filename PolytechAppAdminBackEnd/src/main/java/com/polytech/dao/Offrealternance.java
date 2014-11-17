@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class Offrealternance implements java.io.Serializable {
 
     private int id;
-    @JsonManagedReference("Ent_offrealternances")
+    //@JsonManagedReference("Ent_offrealternances")
     private Entreprise entreprise;
     private String titre;
     private String url;
