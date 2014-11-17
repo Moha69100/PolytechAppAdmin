@@ -18,10 +18,10 @@ public class Entretien implements java.io.Serializable {
     private Etudiant etudiant;
     
     private Planning planning;
+    private Salle salle;
 
     private Integer priorite;
     private Date horaire;
-    private Integer salleid;
     private Date duree;
 
     public Entretien() {
@@ -31,14 +31,14 @@ public class Entretien implements java.io.Serializable {
         this.id = id;
     }
 
-    public Entretien(int id, Entreprise entreprise, Etudiant etudiant, Planning planning, Integer priorite, Date horaire, Integer salleid, Date duree) {
+    public Entretien(int id, Entreprise entreprise, Etudiant etudiant, Planning planning, Integer priorite, Date horaire, Salle salle, Date duree) {
         this.id = id;
         this.entreprise = entreprise;
         this.etudiant = etudiant;
         this.planning = planning;
         this.priorite = priorite;
         this.horaire = horaire;
-        this.salleid = salleid;
+        this.salle = salle;
         this.duree = duree;
     }
 
@@ -90,12 +90,12 @@ public class Entretien implements java.io.Serializable {
         this.horaire = horaire;
     }
 
-    public Integer getSalleid() {
-        return this.salleid;
+    public Salle getSalle() {
+        return this.salle;
     }
 
-    public void setSalleid(Integer salleid) {
-        this.salleid = salleid;
+    public void setSalle(Salle salle) {
+        this.salle = salle;
     }
 
     public Date getDuree() {
