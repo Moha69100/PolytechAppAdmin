@@ -10,12 +10,14 @@
             <tr>
                 <th>#</th>
                 <th>Offre</th>
-                <th>Description</th>
+                <th>Url</th>
+                <th>Entreprise</th>
             </tr>
             <tr style="cursor : pointer;" data-ng-click="editOffer(o)" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="o in offers">
                 <td>{{o.id}}</td>
                 <td>{{o.titre}}</td>
-                <td>{{o.desc}}</td>
+                <td>{{o.url}}</td>
+                <td>{{o.entreprise.raison}}</td>
             </tr>
 
         </tbody>
