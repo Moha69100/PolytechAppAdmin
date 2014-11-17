@@ -31,7 +31,7 @@ public class EntrepriseManager {
             throw e;
         } finally {
 
-           // session.close();
+           session.close();
         }
 
     }

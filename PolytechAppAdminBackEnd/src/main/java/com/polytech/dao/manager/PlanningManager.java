@@ -23,7 +23,9 @@ public class PlanningManager {
             Query query = session.createQuery("from Planning");
             return query.list();
 
-        } finally {
+        } catch(Exception e){
+            throw(e);
+        }finally {
 
             session.close();
 
@@ -39,7 +41,9 @@ public class PlanningManager {
 
             return (Planning) session.get(Planning.class, id);
 
-        } finally {
+        } catch(Exception e){
+            throw(e);
+        }finally {
 
             session.close();
 
@@ -60,7 +64,9 @@ public class PlanningManager {
             // retourner liste entretiens associé au planning
             
 
-        } finally {
+        } catch(Exception e){
+            throw(e);
+        }finally {
 
             session.close();
 

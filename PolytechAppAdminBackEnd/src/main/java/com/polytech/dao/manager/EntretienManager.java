@@ -27,7 +27,9 @@ public class EntretienManager {
             List<Entretien> result = query.list();
             return result;
 
-        } finally {
+        }catch(Exception e){
+            throw(e);
+        }finally {
             session.close();
 
         }
@@ -75,7 +77,9 @@ public class EntretienManager {
         try {
             return (Entretien) session.get(Entretien.class, id);
 
-        } finally {
+        }catch(Exception e){
+            throw(e);
+        }finally {
             session.close();
 
         }
@@ -138,7 +142,7 @@ public class EntretienManager {
         return true;
     }
 
-    public List<Entretien> getEntretiensByPlanning(int id) {
+    public List<Entretien> getEntretiensByPlanning(int id) throws Exception{
         Session session = SessionManager.openSession();
 
         try {
@@ -152,7 +156,9 @@ public class EntretienManager {
             query.setParameter("evt_id", id);      
             return query.list();
 
-        } finally {
+        }catch(Exception e){
+            throw(e);
+        }finally {
             session.close();
 
         }

@@ -32,7 +32,9 @@ public class EtudiantManager {
             return query.list();
             
 
-        } finally {
+        }catch(Exception e){
+            throw(e);
+        }finally {
             session.close();
 
         }
@@ -80,7 +82,9 @@ public class EtudiantManager {
         try {
             return (Etudiant) session.get(Etudiant.class, id);
 
-        } finally {
+        } catch(Exception e){
+            throw(e);
+        }finally {
             session.close();
 
         }
