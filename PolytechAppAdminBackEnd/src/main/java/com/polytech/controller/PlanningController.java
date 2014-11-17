@@ -87,6 +87,7 @@ public class PlanningController {
 
         } catch (Exception ex) {
             error = ex.getMessage();
+            return ExceptionHandler.handle(ex);
         }
         return planning;
     }

@@ -1,5 +1,5 @@
-app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource', '$location',
-    function($scope, $routeParams, roomResource, $location) {
+app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource', '$location', "$rootScope",
+    function($scope, $routeParams, roomResource, $location, $rootScope) {
         var init = function() {
             $scope.roomId = $routeParams.room;
             roomResource.getRoom({"id": $scope.roomId}, function(data) {
@@ -13,24 +13,26 @@ app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource', 
         $scope.save = function() {
             
             roomResource.addRoom({}, $scope.room, function (data) {
-                console.log(data + "success");
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Salle ajoutée");
             }, function (error) {
-                console.log(error + " error ");
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de l'ajout");
             });
         };
         
         $scope.update = function () {
             
             roomResource.updateRoom({}, $scope.room, function (data) {
-                console.log(data + "success");
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Salle enregistrée");
             }, function (error) {
-                console.log(error + " error ");
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de la sauvegarde");
             });
         };
 
         $scope.removeRoom = function() {          
             roomResource.removeRoom({"id": $scope.roomId}, function () {
                 $location.path('/admin-room');
+            }, function (error) {
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de la suppression");
             });            
         };
         /**
