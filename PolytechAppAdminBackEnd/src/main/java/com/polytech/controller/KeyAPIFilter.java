@@ -24,20 +24,20 @@ public class KeyAPIFilter implements Filter {
 
         System.out.println("Plop : " + request.getMethod());
 
-      /*  if (!request.getMethod().equals("OPTIONS")) {
+        if (!request.getMethod().equals("OPTIONS")) {
 
             if ((o == null && !request.getRequestURI().endsWith("/auth")) || (o != null && !((String) o).equals(request.getSession().getAttribute("api_key")))) {
                 response.setStatus(401);
-                
+
             } else {
                 chain.doFilter(request, response);
             }
-            
-        } else {*/
-            
+
+        } else {
+
             chain.doFilter(request, response);
-            
-      //  }
+
+        }
 
     }
 
