@@ -1,5 +1,5 @@
 <div class="container-fluid content">
-    <form method="POST"  class="form-horizontal" role="form" id="enterpriseForm">
+    <form  class="form-horizontal"  id="enterpriseForm">
         <div class="row">
             <h2 class="form-header">Informations générales</h2>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -98,21 +98,9 @@
                 <h2 class="form-header">Liste des contacts de l'entreprise</h2>
                 <div class="row">
                     <div class="btn-group col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <button type="button" class="btn btn-info" ng-click="showSelectContact = true;"><span class="glyphicon glyphicon-plus-sign"></span></button>
+                        <button type="button" class="btn btn-info" ng-click="addContact()"><span class="glyphicon glyphicon-plus-sign"></span></button>
                         <button type="button" class="btn btn-info" ng-click="removeContact()"><span class="glyphicon glyphicon-minus-sign"></span></button>
                     </div>
-
-                    <div ng-show="showSelectContact && mockcontacts.length > 0" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                            <select ng-model="newContact" ng-options="cont.nom + ' ' + cont.prenom for cont in mockcontacts | orderBy: 'nom'" class="form-control input-sm">
-
-                            </select>
-                        </div>
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                            <button type="button" class="btn btn-info btn-sm" ng-click="addContact()">Valider</button>
-                        </div>
-                    </div>
-
                 </div>
                 <div class="row" style="padding-top: 25px;">
                     <table class="table table-striped table-hover card">
@@ -124,10 +112,10 @@
                                 <th>Mail</th>
                             </tr>
                             <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="c in enterprise.contacts| orderBy: nom">
-                                <td><input type="checkbox" ng-click="prepareRemoveContact($index)" id="student{{s.id}}"></td>
-                                <td>{{c.nom}}</td>
-                                <td>{{c.prenom}}</td>
-                                <td>{{c.mail}}</td>
+                                <td style="vertical-align: middle; text-align: center;"><input type="checkbox" ng-click="prepareRemoveContact($index)"></td>
+                                <td><input type="text" class="form-control" ng-model="contact.nom" placeholder="Nom ..." value="{{c.nom}}"></td>
+                                <td><input type="text" class="form-control" ng-model="contact.prenom" placeholder="Prénom ..." value="{{c.prenom}}"></td>
+                                <td><input type="text" class="form-control" ng-model="contact.mail" placeholder="Mail ..." value="{{c.mail}}"></td>
                             </tr>
                         </tbody>
                     </table>

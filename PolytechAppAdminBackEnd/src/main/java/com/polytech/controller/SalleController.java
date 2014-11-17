@@ -58,6 +58,7 @@ public class SalleController {
 
         } catch (Exception ex) {
             error = ex.getMessage();
+            return ExceptionHandler.handle(ex);
         }
         return salle;
     }
