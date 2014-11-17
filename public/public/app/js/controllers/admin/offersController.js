@@ -15,7 +15,8 @@ app.controller('offersController', ['$rootScope', '$scope', '$http', '$timeout',
         };
 
         $scope.editOffer = function(offerEdited) {
-            $location.search('offer', offerEdited.id).path('/offer-student');
+            console.log("id : " + offerEdited.id)
+            $location.search('offer', offerEdited.id).path('/edit-offer');
         };
 
         init();

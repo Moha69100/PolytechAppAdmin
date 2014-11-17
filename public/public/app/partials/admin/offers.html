@@ -12,10 +12,10 @@
                 <th>Offre</th>
                 <th>Description</th>
             </tr>
-            <tr data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="e in offers">
-                <td>{{e.id}}</td>
-                <td>{{e.titre}}</td>
-                <td>{{e.desc}}</td>
+            <tr style="cursor : pointer;" data-ng-click="editOffer(o)" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="o in offers">
+                <td>{{o.id}}</td>
+                <td>{{o.titre}}</td>
+                <td>{{o.desc}}</td>
             </tr>
 
         </tbody>
