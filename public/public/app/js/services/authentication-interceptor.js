@@ -7,7 +7,7 @@ angular.module('App').service('AuthenticationInterceptor', ['AuthenticationData'
         }
         
         return config;
-    }
+    };
     
     
 }]); 

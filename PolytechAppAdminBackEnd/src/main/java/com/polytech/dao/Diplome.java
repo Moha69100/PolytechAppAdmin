@@ -2,7 +2,8 @@ package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ public class Diplome  implements java.io.Serializable {
      private String typediplome;
      private Integer anneediplome;
      private String libelle;
-      @JsonBackReference
+     @JsonManagedReference("Etu_diplomes")
      private Set etudiants = new HashSet(0);
 
     public Diplome() {
