@@ -18,6 +18,7 @@ public class Entreprisepresence implements java.io.Serializable {
     private Entreprise entreprise;
     private Evenement evenement;
     private Personnecontact personnecontact;
+    @JsonManagedReference("Sa_entreprisepresences")
     private Salle salle;
     private Boolean entreprisepresence;
     private Date dureeentretien;
