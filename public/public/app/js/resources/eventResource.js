@@ -5,6 +5,7 @@ app.service('eventResource', ['$resource', '$q', '$timeout', function($resource,
         var BASE_URL = 'http://localhost:8090';
         var FIND_ALL = '/events';
         var FIND_BY_ID = '/event/:id';
+        var UPDATE = "/evenement";
         
         var actions = {
             'listEvents': {
@@ -15,6 +16,11 @@ app.service('eventResource', ['$resource', '$q', '$timeout', function($resource,
             'getEvent': {
                 'method': 'GET',
                 'url': BASE_URL + FIND_BY_ID,
+                'isArray': false
+            }, 
+            'updateEvent': {
+                'method': 'POST', 
+                'url': BASE_URL + UPDATE,
                 'isArray': false
             }
         };
