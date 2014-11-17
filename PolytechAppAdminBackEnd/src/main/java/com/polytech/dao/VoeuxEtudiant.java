@@ -11,6 +11,7 @@ public class VoeuxEtudiant implements java.io.Serializable {
     private int id;
     @JsonManagedReference("Ent_voeuxEtudiants")
     private Entreprise entreprise;
+    @JsonManagedReference("Etu_voeuxEtudiants")
     private Etudiant etudiant;
     private Evenement evenement;
     private Integer niveau;

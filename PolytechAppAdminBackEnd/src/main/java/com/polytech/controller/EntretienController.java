@@ -44,6 +44,7 @@ public class EntretienController {
 
         } catch (Exception ex) {
             error = ex.getMessage();
+            return ExceptionHandler.handle(ex);
         }
         return entretiens;
     }
@@ -81,6 +82,7 @@ public class EntretienController {
 
         } catch (Exception ex) {
             error = ex.getMessage();
+            return ExceptionHandler.handle(ex);
         }
         return entretien;
     }

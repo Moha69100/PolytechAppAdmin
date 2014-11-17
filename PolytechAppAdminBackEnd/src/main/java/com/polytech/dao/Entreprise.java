@@ -27,10 +27,10 @@ public class Entreprise implements java.io.Serializable {
     private String tel;
     private String anneeparticipforum;
     private Integer nbrapprenti;
-    
+
     @JsonBackReference("Ent_entreprise")
     private Set entreprisepresences = new HashSet(0);
-    @JsonBackReference("Ent_offrealternances")
+    @JsonIgnore// Sinon impossible d'ajouter une offre d'alternance car impossible de sérialisé
     private Set offrealternances = new HashSet(0);
     @JsonBackReference("Ent_voeuxEntreprises")
     private Set voeuxEntreprises = new HashSet(0);
