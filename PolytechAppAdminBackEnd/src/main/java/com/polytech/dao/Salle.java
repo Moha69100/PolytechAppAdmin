@@ -16,9 +16,9 @@ public class Salle  implements java.io.Serializable {
      private String libelle;
      private String localisation;
      private Integer capacite;
-      @JsonBackReference
+     @JsonBackReference("Sa_entreprisepresences")
      private Set entreprisepresences = new HashSet(0);
-       @JsonBackReference
+     @JsonBackReference("Sa_evenementsalles")
      private Set evenementsalles = new HashSet(0);
 
     public Salle() {
