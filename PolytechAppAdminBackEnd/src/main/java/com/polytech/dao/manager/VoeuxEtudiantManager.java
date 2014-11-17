@@ -37,6 +37,27 @@ public class VoeuxEtudiantManager {
         }
 
     }
+      
+    public List<VoeuxEtudiant> getAllVoeuxEtudiantByIDEvEnement(int idEvt) throws Exception {
+
+        Session session = SessionManager.openSession();
+
+        try {
+
+            Query query = session.createQuery("from VoeuxEtudiant where evtid  = " + idEvt);
+            List<VoeuxEtudiant> list = query.list();
+            return list;
+
+        } catch (Exception e) {
+
+            throw e;
+
+        } finally {
+
+            session.close();
+
+        }
+    }
 
     public VoeuxEtudiant getVoeuxEtudiantById(int id) throws Exception {
 
