@@ -106,7 +106,7 @@ public class OffreAlternanceController {
      * @return A HTTP status regarding the status of the insertion.
      */
     @RequestMapping(value = "/offre/add", method = RequestMethod.PUT)
-    public Object createOffreAlternance(@RequestBody Offrealternance offre) {
+    public @ResponseBody createOffreAlternance(@RequestBody Offrealternance offre) {
 
       
         try {
