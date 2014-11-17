@@ -8,16 +8,16 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="entreprise" class="com.polytech.dao.Entreprise" fetch="select">
+        <many-to-one name="entreprise" class="com.polytech.dao.Entreprise" lazy="false" fetch="select">
             <column name="entid" />
         </many-to-one>
-        <many-to-one name="evenement" class="com.polytech.dao.Evenement" fetch="select">
+        <many-to-one name="evenement" class="com.polytech.dao.Evenement" lazy="false" fetch="select">
             <column name="evtid" />
         </many-to-one>
-        <many-to-one name="personnecontact" class="com.polytech.dao.Personnecontact" fetch="select">
+        <many-to-one name="personnecontact" class="com.polytech.dao.Personnecontact" lazy="false" fetch="select">
             <column name="perid" />
         </many-to-one>
-        <many-to-one name="salle" class="com.polytech.dao.Salle" fetch="select">
+        <many-to-one name="salle" class="com.polytech.dao.Salle" lazy="false" fetch="select">
             <column name="salleid" />
         </many-to-one>
         <property name="entreprisepresence" type="java.lang.Boolean">
