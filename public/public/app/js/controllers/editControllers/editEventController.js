@@ -101,7 +101,10 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
             var myModal = $modal.open({
                 templateUrl: "planning.html",
                 controller: 'planningController',
-                size: "size"
+                size: "size", 
+                resolve:  {
+                    eventId: eventId
+                }
             });
         }
         // ---------------------------------------------------------------------
