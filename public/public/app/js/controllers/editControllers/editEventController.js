@@ -1,15 +1,14 @@
 'use strict';
-
 app.controller('editEventController', ['$scope', '$routeParams', 'eventResource', 'enterpriseResource', 'studentResource',
     function($scope, $routeParams, eventResource, enterpriseResource, studentResource) {
 
         var eventId;
         $scope.event = [];
-        
-        $scope.event.attendingEnterprises = [];
 
+        $scope.attendingEnterprises = [];
+        $scope.attendingStudents = [];
         $scope.enterprisesToRemove = [];
-
+        $scope.studentsToRemove = [];
         // TODO supprimer ce tableau une fois le retour de la connexion à la base de données
         $scope.enterprises = [{
                 id: 1,
@@ -33,13 +32,21 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
                 adresse: "polyech !",
                 role: "manager"
             }];
-
-        $scope.attendingEnterprise = null;
-
-
+        $scope.etudiants = [{
+                id: 1,
+                nom: "TRICHARD",
+                prenom: "Maxime"
+            }, {
+                id: 2,
+                nom: "LEROUX",
+                prenom: "Geoffrey"
+            }, {
+                id: 3,
+                nom: "RAMPON",
+                prenom: "Anthony"
+            }];
         $scope.addEnterprise = function() {
-            $scope.event.attendingEnterprises.push($scope.attendingEnterprise);
-
+            $scope.attendingEnterprises.push($scope.attendingEnterprise);
             angular.forEach($scope.enterprises, function(val, key) {
                 if (val.id == $scope.attendingEnterprise.id) {
                     $scope.enterprises.splice(key, 1);
@@ -47,15 +54,28 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
             });
         }
 
-        $scope.prepareRemove = function(index) {
+        $scope.addStudent = function() {
+            $scope.attendingStudents.push($scope.attendingStudent);
+            angular.forEach($scope.students, function(val, key) {
+                if (val.id = $scope.attendingStudent.id) {
+                    $scope.students.splice(key, 1);
+                }
+            });
+        }
+
+        $scope.prepareRemoveEnterprise = function(index) {
             $scope.enterprisesToRemove.push($scope.attendingEnterprises[index]);
+        }
+
+        $scope.prepareRemoveStudent = function(index) {
+            $scope.studentsToRemove.push($scope.attendingStudents[index]);
         }
 
         $scope.removeEnterprise = function() {
             angular.forEach($scope.enterprisesToRemove, function(val1, key1) {
                 angular.forEach($scope.attendingEnterprises, function(val2, key2) {
                     if (val1.id == val2.id) {
-                        $scope.event.attendingEnterprises.splice(key2, 1);
+                        $scope.attendingEnterprises.splice(key2, 1);
                         $scope.enterprises.push(val1);
                     }
                 });
@@ -63,22 +83,29 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
             $scope.enterprisesToRemove = [];
         }
 
+        $scope.removeStudent = function() {
+            angular.forEach($scope.studentsToRemove, function(val1, key1) {
+                angular.forEach($scope.attendingStudents, function(val2, key2) {
+                    if (val1.id == val2.id) {
+                        $scope.attendingStudents.splice(key2, 1);
+                        $scope.students.push(val1);
+                    }
+                });
+            });
+        }
+
         $scope.save = function() {
             // TODO Enregistrer un event modifié
         };
-
         var init = function() {
             eventId = $routeParams.eventId;
             eventResource.getEvent({'id': eventId}, function(data) {
                 console.log(data);
-
                 $scope.event = data;
             });
-
             enterpriseResource.listEnterprises(function(data) {
                 $scope.enterprises = data;
             });
-
             studentResource.listStudents(function(data) {
                 $scope.students = data;
             });

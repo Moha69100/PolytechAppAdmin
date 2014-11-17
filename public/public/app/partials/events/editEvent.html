@@ -79,7 +79,7 @@
                             <th>Raison sociale</th>
                             <th>Contact</th>
                         </tr>
-                        <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="a in event.attendingEnterprises">
+                        <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="a in attendingEnterprises">
                             <td><input type="checkbox" ng-click="prepareRemove($index)" id="enterprise{{a.id}}"></td>
                             <td>{{a.id}}</td>
                             <td>{{a.name}}</td>
