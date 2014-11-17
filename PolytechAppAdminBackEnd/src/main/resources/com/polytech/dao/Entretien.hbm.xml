@@ -23,9 +23,9 @@
         <property name="horaire" type="time">
             <column name="horaire" length="15" />
         </property>
-        <property name="salleid" type="java.lang.Integer">
+        <many-to-one name="salle" class="com.polytech.dao.Salle" fetch="select" lazy="false">
             <column name="salleid" />
-        </property>
+        </many-to-one>
         <property name="duree" type="timestamp">
             <column name="duree" length="29" />
         </property>

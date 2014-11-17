@@ -35,12 +35,12 @@ public class EntretienController {
     /**
      * Return list of entretien where id planning = id
      */
-    @RequestMapping(value = "/entretiensByPlanning/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/entretiensByEvent/{id}", method = RequestMethod.GET)
     public Object entretienByPlanning(@PathVariable String id) {
         List<Entretien> entretiens = null;
         String error = "";
         try {
-            entretiens = entretienManager.getEntretiensByPlanning(Integer.parseInt(id));
+            entretiens = entretienManager.getEntretiensByEvent(Integer.parseInt(id));
 
         } catch (Exception ex) {
             error = ex.getMessage();

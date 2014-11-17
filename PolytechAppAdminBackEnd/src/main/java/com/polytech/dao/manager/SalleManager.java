@@ -26,6 +26,8 @@ public class SalleManager {
             Query query = session.createQuery("from Salle");
             return query.list();
 
+        }catch(Exception e){
+            throw(e);
         } finally {
 
             session.close();
@@ -42,6 +44,8 @@ public class SalleManager {
 
             return (Salle) session.get(Salle.class, id);
 
+        }catch(Exception e){
+            throw(e);
         } finally {
 
             session.close();

@@ -27,7 +27,9 @@ public class EvenementManager {
             Query query = session.createQuery("from Evenement");
             return query.list();
 
-        } finally {
+        } catch(Exception e){
+            throw(e);
+        }finally {
 
             session.close();
 
@@ -43,6 +45,8 @@ public class EvenementManager {
 
             return (Evenement) session.get(Evenement.class, id);
 
+        }catch(Exception e){
+            throw(e);
         } finally {
 
             session.close();

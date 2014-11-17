@@ -3,8 +3,8 @@
 app.service('eventResource', ['$resource', '$q', '$timeout', function($resource, $q, $timeout) {
         
         var BASE_URL = 'http://localhost:8090';
-        var FIND_ALL = '/events';
-        var FIND_BY_ID = '/event/:id';
+        var FIND_ALL = '/evenements';
+        var FIND_BY_ID = '/evenement/:id';
         var UPDATE = "/evenement";
         
         var actions = {
@@ -25,7 +25,7 @@ app.service('eventResource', ['$resource', '$q', '$timeout', function($resource,
             }
         };
         
-        // return $resource(BASE_URL, {'id':'@id'}, actions);
+        return $resource(BASE_URL, {'id':'@id'}, actions);
         // à retirer quand branché au backend
         
         var mock = function() {
@@ -53,9 +53,9 @@ app.service('eventResource', ['$resource', '$q', '$timeout', function($resource,
                 }
             ]; 
                 
-            this.listEvents = function(callback) {
+           /* this.listEvents = function(callback) {
                 return events;
-            }
+            }*/
 
             this.getEvent = function(params, callback) {
                 var deferred = $q.defer();

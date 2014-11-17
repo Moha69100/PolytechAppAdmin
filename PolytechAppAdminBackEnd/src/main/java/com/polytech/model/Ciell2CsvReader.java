@@ -47,6 +47,9 @@ public class Ciell2CsvReader {
         // Enregistement des fichiers en base
         save(etudiants);
         
+        // Suppresion du fichier 
+        file.delete();
+        
         // Retour de la liste
         return etudiants;
     }
@@ -59,8 +62,9 @@ public class Ciell2CsvReader {
      * @throws IOException 
      */
     private File uploadFile(byte[] bytes) throws FileNotFoundException, IOException{
-        String name = getCurrentTimeStamp();
-        File file = new File("C:\\temp\\" + name + "_uploaded.csv");
+        String uri = System.getProperty("catalina.base") + "\\" + getCurrentTimeStamp() + "_uploaded.csv";
+        System.out.println("Uri : " + uri);
+        File file = new File(uri);
         BufferedOutputStream stream =  new BufferedOutputStream(new FileOutputStream(file));
         stream.write(bytes);
         stream.close();

@@ -151,7 +151,17 @@ public class PlanningGenerator {
             // Ajout des voeux etudiant
             for (Etudiant etu : voeuxEtudiants.keySet()) {
                 LinkedList<Entreprise> listEntreprises = voeuxEtudiants.get(etu);
-
+                // si il reste des voeux des étudiants
+                if (!listEntreprises.isEmpty()){
+                    //récupération de la première entreprise dispo
+                    Entreprise entr = getEntrepriseDispo(listEntreprises,listEntretiens);
+                    if(entr != null){
+                        Entretien entretien = createEntretien(listEntreprises.remove(listEntreprises.indexOf(entr)),etu,calCur.getTime());
+                        listEntretiens.add(entretien);
+                        entretiens.add(entretien);
+                    }
+                }
+                
             }
         }
 
@@ -183,6 +193,22 @@ public class PlanningGenerator {
     }//isEtudiantDispo()
 
     /**
+     * Détermine si une entreprise est disponible pour un entretien dans la liste donnée
+     * @param entr l'entreprise 
+     * @param entretiens la liste d'entretiens que l'on souhaite vérifier
+     * @return TRUE si l'entreprise est disponible, FALSE sinon
+     */
+    private boolean isEntrepriseDispo(Entreprise entr,ArrayList<Entretien> entretiens){
+        for (Entretien entretien : entretiens){
+            if(entretien.getEntreprise() == entr){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    
+    /**
      * Utilitaire pour la génération du planning
      *
      * @param listEtu
@@ -197,7 +223,24 @@ public class PlanningGenerator {
         }
         return null;
     }
-
+    
+    /**
+     * Retourne la première entreprise disponible en fonction de la liste des entretiens planifiés
+     * @param listEntreprises liste des entreprises à considérer
+     * @param entretiens les entretiens déjà planifiés
+     * @return une entreprise ou NULL
+     */
+    private Entreprise getEntrepriseDispo(LinkedList<Entreprise> listEntreprises, ArrayList<Entretien> entretiens){
+        for(Entreprise entr : listEntreprises){
+            if (isEntrepriseDispo(entr,entretiens)){
+                return entr;
+            }
+        }
+        
+        return null;
+    }
+    
+    
     private Entretien createEntretien(Entreprise ent, Etudiant etu, Date time) {
         Entretien entretien = new Entretien();
         entretien.setEntreprise(ent);

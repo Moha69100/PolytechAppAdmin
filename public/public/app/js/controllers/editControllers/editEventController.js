@@ -1,46 +1,13 @@
 'use strict';
-app.controller('editEventController', ['$scope', '$routeParams', 'eventResource', 'enterpriseResource', 'studentResource',
-    function($scope, $routeParams, eventResource, enterpriseResource, studentResource) {
+app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'eventResource', 'enterpriseResource', 'studentResource',
+    function($scope, $modal, $routeParams, eventResource, enterpriseResource, studentResource) {
 
         var eventId;
         $scope.enterprisesToRemove = [];
         $scope.studentsToRemove = [];
         // TODO supprimer ce tableau une fois le retour de la connexion à la base de données
-        $scope.enterprises = [{
-                id: 1,
-                name: "VOLVO",
-                representant: "Anthony RAMPON",
-                phone: "01 01 01 01 01",
-                adresse: "polyech !",
-                role: "manager"
-            }, {
-                id: 2,
-                name: "ORANGE",
-                representant: "COHEN David",
-                phone: "01 01 01 01 01",
-                adresse: "polyech !",
-                role: "manager"
-            }, {
-                id: 3,
-                name: "GENERAL ELECTRICS",
-                representant: "LONJON Louis",
-                phone: "01 01 01 01 01",
-                adresse: "polyech !",
-                role: "manager"
-            }];
-        $scope.students = [{
-                id: 1,
-                nom: "TRICHARD",
-                prenom: "Maxime"
-            }, {
-                id: 2,
-                nom: "LEROUX",
-                prenom: "Geoffrey"
-            }, {
-                id: 3,
-                nom: "RAMPON",
-                prenom: "Anthony"
-            }];
+        $scope.enterprises = [];
+        $scope.students = [];
         $scope.addEnterprise = function() {
             $scope.event.entreprisepresences.push($scope.attendingEnterprise);
             angular.forEach($scope.enterprises, function(val, key) {
@@ -128,4 +95,14 @@ app.controller('editEventController', ['$scope', '$routeParams', 'eventResource'
         }
 
         init();
+
+        // --------------------- CODE DE LA MODAL ------------------------------
+        $scope.openModal = function(size) {
+            var myModal = $modal.open({
+                templateUrl: "planning.html",
+                controller: 'planningController',
+                size: "size"
+            });
+        }
+        // ---------------------------------------------------------------------
     }]);
