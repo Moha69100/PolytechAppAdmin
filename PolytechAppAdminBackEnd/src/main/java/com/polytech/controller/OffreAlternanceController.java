@@ -105,7 +105,7 @@ public class OffreAlternanceController {
      * @param offre Object to insert created from the JSON file passed using POST.
      * @return A HTTP status regarding the status of the insertion.
      */
-    @RequestMapping(value = "/offre/add", method = RequestMethod.PUT)
+    @RequestMapping(value = "/offre/add", method = RequestMethod.PUT,consumes="application/json" )
     public Object createOffreAlternance(@RequestBody Offrealternance offre) {
 
       
