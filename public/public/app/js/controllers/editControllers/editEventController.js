@@ -67,22 +67,38 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
         }
 
         $scope.save = function() {
-            // TODO Enregistrer un event modifié
+            if ($scope.eventId != null) {
+                update();
+            } else {
+                create();
+            }
         };
+        
+        var update = function() {
+            
+        }
+        
+        var create = function() {
+            
+        }
+        
         var init = function() {
             $scope.eventId = $routeParams.eventId;
-            eventResource.getEvent({'id': $scope.eventId}, function(data) {
-                console.log(data);
-                $scope.event = data;
-                $scope.event.entreprisepresences = [];
-                $scope.event.etudiants = [];
-            });
-            enterpriseResource.listEnterprises(function(data) {
-                $scope.enterprises = data;
-            });
-            studentResource.listStudents(function(data) {
-                $scope.students = data;
-            });
+            if ($scope.eventId != null) {
+                eventResource.getEvent({'id': $scope.eventId}, function(data) {
+                    console.log(data);
+                    $scope.event = data;
+                    $scope.event.entreprisepresences = [];
+                    $scope.event.etudiants = [];
+                });
+                enterpriseResource.listEnterprises(function(data) {
+                    $scope.enterprises = data;
+                });
+                studentResource.listStudents(function(data) {
+                    $scope.students = data;
+                });
+            }
+            
         }
 
         $scope.editAttendingCompanies = function() {
