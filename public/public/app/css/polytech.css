@@ -160,7 +160,7 @@ body{
 
 .appAdminPlanning .room {
     width: 200px;
-    display: inline-block;
+    display: inline-table;
 }
 
 .appAdminPlanning .room .meeting, 
