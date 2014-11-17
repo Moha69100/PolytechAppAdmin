@@ -4,9 +4,12 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
 
         $scope.enterprisesToRemove = [];
         $scope.studentsToRemove = [];
-        // TODO supprimer ce tableau une fois le retour de la connexion à la base de données
+
+        
         $scope.enterprises = [];
         $scope.students = [];
+        
+        
         $scope.addEnterprise = function() {
             $scope.event.entreprisepresences.push($scope.attendingEnterprise);
             angular.forEach($scope.enterprises, function(val, key) {
