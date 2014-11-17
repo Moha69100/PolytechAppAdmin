@@ -138,7 +138,7 @@ public class EntretienManager {
         return true;
     }
 
-    public List<Entretien> getEntretiensByPlanning(int id) {
+    public List<Entretien> getEntretiensByEvent(int id) {
         Session session = SessionManager.openSession();
 
         try {
