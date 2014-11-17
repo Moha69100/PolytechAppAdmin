@@ -39,6 +39,8 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
         $scope.removeEnterprise = function(enterprise) {
             enterpriseResource.removeEnterprise({"id": $scope.enterpriseId}, function(data) {
                 $location.path('/admin-enterprise');
+            }, function() {
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de la suppression");
             });
         };
         /**
