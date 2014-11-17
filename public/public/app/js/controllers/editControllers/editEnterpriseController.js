@@ -6,11 +6,7 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                 $scope.enterpriseId = $routeParams.enterprise;
                 enterpriseResource.getEnterprise({"id": $scope.enterpriseId}, function(data) {
                     $scope.enterprise = data;
-                    $scope.enterprise.contacts.push({
-                        id: '',
-                        nom: '',
-                        prenom: ''
-                    });
+                    $scope.enterprise.contacts = [];
                     $scope.contact = [];
                 });
             } else {
@@ -23,18 +19,18 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
 
         $scope.save = function() {
             var postData = $scope.enterprise;
-            enterpriseResource.addEnterprise({}, postData, function(){
+            enterpriseResource.addEnterprise({}, postData, function() {
                 $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Entreprise enregistrée");
-            }, function(){
+            }, function() {
                 $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de la sauvergarde");
             });
         };
 
         $scope.update = function(enterprise) {
             var postData = enterprise;
-            enterpriseResource.updateEnterprise({}, postData, function(){
+            enterpriseResource.updateEnterprise({}, postData, function() {
                 $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Entreprise enregistrée");
-            }, function(){
+            }, function() {
                 $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de la sauvergarde");
             });
         };
@@ -58,11 +54,15 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
 
         // ----------------- GESTION DES CONTACTS ------------------------------
         $scope.contactsToRemove = [];
-        
+
         $scope.idActuelContact = 0;
 
         $scope.addContact = function() {
-            $scope.enterprise.contacts.push(null);
+            $scope.enterprise.contacts.push({
+                id: '',
+                nom: '',
+                prenom: ''
+            });
         }
 
         $scope.prepareRemoveContact = function(index) {
