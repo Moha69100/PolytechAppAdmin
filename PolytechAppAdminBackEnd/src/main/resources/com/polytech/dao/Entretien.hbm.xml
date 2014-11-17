@@ -8,13 +8,13 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="entreprise" class="com.polytech.dao.Entreprise" fetch="select">
+        <many-to-one name="entreprise" class="com.polytech.dao.Entreprise" fetch="select" lazy="false" >
             <column name="entid" />
         </many-to-one>
-        <many-to-one name="etudiant" class="com.polytech.dao.Etudiant" fetch="select">
+        <many-to-one name="etudiant" class="com.polytech.dao.Etudiant" fetch="select" lazy="false" >
             <column name="etuid" />
         </many-to-one>
-        <many-to-one name="planning" class="com.polytech.dao.Planning"  fetch="select">
+        <many-to-one name="planning" class="com.polytech.dao.Planning"  fetch="select" lazy="false">
             <column name="planid" />
         </many-to-one>
         <property name="priorite" type="java.lang.Integer">

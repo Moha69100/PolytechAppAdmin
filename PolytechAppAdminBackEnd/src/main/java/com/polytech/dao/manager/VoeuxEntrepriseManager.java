@@ -38,6 +38,27 @@ public class VoeuxEntrepriseManager {
         }
 
     }
+    
+    public List<VoeuxEntreprise> getAllVoeuxEntrepriseByIDEvEnement(int idEvt) throws Exception {
+
+        Session session = SessionManager.openSession();
+
+        try {
+
+            Query query = session.createQuery("from VoeuxEntreprise where evtid  = " + idEvt);
+            List<VoeuxEntreprise> list = query.list();
+            return list;
+
+        } catch (Exception e) {
+
+            throw e;
+
+        } finally {
+
+            session.close();
+
+        }
+    }
 
     public VoeuxEntreprise getVoeuxEntrepriseById(int id) throws Exception {
 

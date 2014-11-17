@@ -3,6 +3,7 @@ package com.polytech.dao.manager;
 import com.polytech.dao.Entretien;
 import java.util.List;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -23,7 +24,8 @@ public class EntretienManager {
 
         try {
             Query query = session.createQuery("from Entretien");
-            return query.list();
+            List<Entretien> result = query.list();
+            return result;
 
         } finally {
             session.close();
@@ -136,15 +138,19 @@ public class EntretienManager {
         return true;
     }
 
-
     public List<Entretien> getEntretiensByPlanning(int id) {
-          Session session = SessionManager.openSession();
+        Session session = SessionManager.openSession();
 
         try {
-          
-            Query query = session.createQuery("from Entretien where planid = " + id);
+
+            String sql = "Select e.* "
+                    + "from appschema.Planning p, appschema.entretien e "
+                    + "where p.evtid = :evt_id and p.id = (select distinct id from appschema.planning limit 1) "
+                    + "and e.planid=p.id";
+            SQLQuery query = session.createSQLQuery(sql);
+            query.addEntity(Entretien.class);
+            query.setParameter("evt_id", id);      
             return query.list();
-            
 
         } finally {
             session.close();

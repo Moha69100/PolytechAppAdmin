@@ -46,6 +46,28 @@ public class PlanningManager {
         }
 
     }
+    
+    
+        public List<Object> getPlanningByEvt(int id) throws Exception {
+
+        Session session = SessionManager.openSession();
+
+        try {
+
+           
+            Query query = session.createQuery("from Planning where evtid = " + id);
+            return query.list();
+            // retourner liste entretiens associé au planning
+            
+
+        } finally {
+
+            session.close();
+
+        }
+
+    }
+    
 
     public Boolean deletePlanningById(int id) throws Exception {
 
