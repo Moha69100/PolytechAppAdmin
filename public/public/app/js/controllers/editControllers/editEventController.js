@@ -2,7 +2,6 @@
 app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'eventResource', 'enterpriseResource', 'studentResource',
     function($scope, $modal, $routeParams, eventResource, enterpriseResource, studentResource) {
 
-        var eventId;
         $scope.enterprisesToRemove = [];
         $scope.studentsToRemove = [];
         // TODO supprimer ce tableau une fois le retour de la connexion à la base de données
@@ -71,8 +70,8 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
             // TODO Enregistrer un event modifié
         };
         var init = function() {
-            eventId = $routeParams.eventId;
-            eventResource.getEvent({'id': eventId}, function(data) {
+            $scope.eventId = $routeParams.eventId;
+            eventResource.getEvent({'id': $scope.eventId}, function(data) {
                 console.log(data);
                 $scope.event = data;
                 $scope.event.entreprisepresences = [];
@@ -98,12 +97,13 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
         // --------------------- CODE DE LA MODAL ------------------------------
         $scope.openModal = function(size) {
             var myModal = $modal.open({
-                templateUrl: "planning.html",
+                templateUrl: 'planning.html',
                 controller: 'planningController',
-                size: "size",
+                size: 'size',
+                windowClass: 'appAdminPlanningModal', 
                 resolve: {
                     eventId: function() {
-                        return eventId;
+                        return $scope.eventId;
                     }
                 }
             });
