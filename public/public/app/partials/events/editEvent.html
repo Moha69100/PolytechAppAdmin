@@ -47,7 +47,7 @@
                 </div>  
             </div>            
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <div class="form-group">
+                <div class="form-group" data-ng-show="eventId != null">
                     <label for="planning" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Planning : </label>
                     <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
                         <input type="button" class="form-control btn btn-info" id="planning" value="voir le planning" ng-click="openModal('lg')">
@@ -91,7 +91,7 @@
         </div>
 
     </form>
-    <div class="row" style="padding-top: 50px;">
+    <div class="row" style="padding-top: 50px;" data-ng-show="eventId != null">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <h2>Entreprise(s) participante(s)</h2>
             <div class="row">
@@ -171,14 +171,13 @@
                 </table>
             </div>
         </div>
-        <div style="padding-top: 50px" class="row pull-right">
-            <div class="form-buttons">
-                <button class="btn btn-warning" data-ng-click="">Supprimer</button>
-                <button type="submit" class="btn btn-primary" data-ng-show="event.id"  data-ng-disabled="!event.typeevt" data-ng-click="save()">Enregistrer</button>
-                <button type="submit" class="btn btn-primary" data-ng-show="!event.id" data-ng-click="">Ajouter</button>
-                <button type="submit" data-ng-click="cancel()" class="btn btn-default">Annuler</button>
-            </div>
+    </div>
+    <div style="padding-top: 50px" class="row pull-right">
+        <div class="form-buttons">
+            <button class="btn btn-warning" data-ng-click="">Supprimer</button>
+            <button type="submit" class="btn btn-primary" data-ng-show="event.id"  data-ng-disabled="!event.typeevt" data-ng-click="save()">Enregistrer</button>
+            <button type="submit" class="btn btn-primary" data-ng-show="!event.id" data-ng-click="save()">Ajouter</button>
+            <button type="submit" data-ng-click="cancel()" class="btn btn-default">Annuler</button>
         </div>
-
     </div>
 </div>

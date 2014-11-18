@@ -13,6 +13,10 @@ app.controller('eventsController', ['$rootScope', '$scope', '$http', '$timeout',
         $scope.editEvent = function(event) {
             $location.search('eventId', event.id).path('edit-event');
         }
+        
+        $scope.addEvent = function() {
+            $location.path("edit-event");
+        }
 
         init();
 
