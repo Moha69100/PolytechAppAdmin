@@ -10,7 +10,7 @@
     <a  class=" dropdown-toggle uploaded"   data-toggle="dropdown">
         <i class="glyphicon glyphicon-file" ></i>
     </a>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <ul class="dropdown-menu" role="menu" >
         <li>
             <a data-ng-click="removeFileFromServer(item)" href="">
                 <i class="glyphicon glyphicon-remove"></i>
@@ -18,7 +18,7 @@
             </a>
         </li>
         <li>
-            <a target="_blank" href="app/upload/students/1/{{item.name}}">
+            <a target="_blank" href="{{item.name}}">
                 <i class="glyphicon glyphicon-save"></i>
                 Télécharger
             </a>

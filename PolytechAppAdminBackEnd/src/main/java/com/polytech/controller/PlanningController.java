@@ -34,16 +34,21 @@ public class PlanningController {
      * @id id of the evenement
      */
     @RequestMapping(value = "/planningGenerate/{id}", method = RequestMethod.GET)
-    public void algoPlanning(@PathVariable String id) {
+    public Object algoPlanning(@PathVariable String id) {
 
         String error = "";
         try {
             EvenementManager evenementManager = new EvenementManager();
+//            Evenement evt = null;
+//            evt = evenementManager.getEvenementById(Integer.parseInt(id));
             Evenement evt = evenementManager.getEvenementById(Integer.parseInt(id));
             PlanningGenerator planning = new PlanningGenerator(evt, 30);
-            planning.generate();
+            return SuccessHandler.handle(
+                    planning.generate()
+            );
         } catch (Exception ex) {
             error = ex.getMessage();
+            return ExceptionHandler.handle(ex);
         }
     }
 

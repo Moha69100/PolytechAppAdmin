@@ -3,6 +3,8 @@ package com.polytech.dao;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,15 +23,16 @@ public class Evenement implements java.io.Serializable {
     private String description;
     @JsonBackReference("Evt_evenementsalles")
     private Set evenementsalles = new HashSet(0);
-    
+
     private Set evenementsalles_1 = new HashSet(0);
+
     @JsonBackReference("Evt_entreprisepresences")
     private Set entreprisepresences = new HashSet(0);
     @JsonBackReference("Evt_plannings")
     private Set plannings = new HashSet(0);
     @JsonBackReference("Evt_voeuxEtudiants")
     private Set voeuxEtudiants = new HashSet(0);
-    @JsonManagedReference("Etu_evenements")
+    //@JsonManagedReference("Etu_evenements")
     private Set etudiants = new HashSet(0);
     @JsonBackReference("Evt_voeuxEntreprises")
     private Set voeuxEntreprises = new HashSet(0);
@@ -74,10 +77,12 @@ public class Evenement implements java.io.Serializable {
         this.typeevt = typeevt;
     }
 
+    @JsonSerialize(using = JsonDateSerializer.class)
     public Date getDateevt() {
         return this.dateevt;
     }
 
+    @JsonDeserialize(using = JsonDateDeserializer.class)
     public void setDateevt(Date dateevt) {
         this.dateevt = dateevt;
     }
@@ -90,18 +95,20 @@ public class Evenement implements java.io.Serializable {
         this.duree = duree;
     }
 
+    @JsonSerialize(using = JsonDateSerializer_hour.class)
     public Date getHeuredebut() {
         return this.heuredebut;
     }
-
+   @JsonDeserialize(using = JsonDateDeserializer_hour.class)
     public void setHeuredebut(Date heuredebut) {
         this.heuredebut = heuredebut;
     }
 
+       @JsonSerialize(using = JsonDateSerializer_hour.class)
     public Date getHeurefin() {
         return this.heurefin;
     }
-
+  @JsonDeserialize(using = JsonDateDeserializer_hour.class)
     public void setHeurefin(Date heurefin) {
         this.heurefin = heurefin;
     }
