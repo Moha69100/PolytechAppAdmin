@@ -88,4 +88,20 @@ public class FileController {
         }
     }
 
+    @RequestMapping(value = "/upload/remove/{id}/type/{type}", method = RequestMethod.POST)
+    public Object upload(@PathVariable String id, @PathVariable String type) {
+        File path = new File("C:/Temp/test/student_" + id + "/" + type);
+        if (path.isDirectory()) {
+            File[] listOfFiles = path.listFiles();
+            for (File listOfFile : listOfFiles) {
+                if (listOfFile.isFile()) {
+                    listOfFile.delete();
+                }
+            }
+            path.delete();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
