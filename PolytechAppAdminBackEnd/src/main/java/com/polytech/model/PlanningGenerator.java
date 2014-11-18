@@ -3,6 +3,8 @@ package com.polytech.model;
 import com.polytech.dao.*;
 import com.polytech.dao.manager.EntretienManager;
 import com.polytech.dao.manager.PlanningManager;
+import com.polytech.dao.manager.SalleManager;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,6 +26,7 @@ public class PlanningGenerator {
 
     private final PlanningManager planningManager = new PlanningManager();
     private final EntretienManager entretienManager = new EntretienManager();
+    private final SalleManager salleManager = new SalleManager();
 
     private Evenement evt;
     private Planning planning;
@@ -56,12 +59,10 @@ public class PlanningGenerator {
 
         //Récupération de la reference des entretiens du planning (vide, pour la remplir)
         Set<Entretien> entretiens = this.planning.getEntretiens();
-        
 
         //
         // recuperation des voeux
         //
-        
         //Récupérations des voeux entreprises pour un évènement donné
         Set<VoeuxEntreprise> dbVoeuxEntreprises = evt.getVoeuxEntreprises();
         //Récupération des voeux étudiants pour un évènement donné
@@ -91,13 +92,13 @@ public class PlanningGenerator {
         }
 
         // Suppression des voeux etudiants qui ne sont pas dans les voeux entreprise
-        for (Map.Entry<Etudiant, LinkedList<Entreprise>> voeuxEtudiant : voeuxEtudiants.entrySet()) {
-            for (Entreprise ent : voeuxEtudiant.getValue()) {
-                if (!voeuxEntreprises.get(ent).contains(voeuxEtudiant.getKey())) {
-                    voeuxEtudiant.getValue().remove(voeuxEtudiant.getValue().indexOf(ent));
-                }
-            }
-        }
+//        for (Map.Entry<Etudiant, LinkedList<Entreprise>> voeuxEtudiant : voeuxEtudiants.entrySet()) {
+//            for (Entreprise ent : voeuxEtudiant.getValue()) {
+//                if (!voeuxEntreprises.get(ent).contains(voeuxEtudiant.getKey())) {
+//                    voeuxEtudiant.getValue().remove(voeuxEtudiant.getValue().indexOf(ent));
+//                }
+//            }
+//        }
 
         // Detection des voeux Entreprise non dans les voeux Etudiants
         // TODO
@@ -109,18 +110,18 @@ public class PlanningGenerator {
         calDeb.setTime(evt.getDateevt());
         calDeb.set(Calendar.HOUR_OF_DAY, evt.getHeuredebut().getHours());
         calDeb.set(Calendar.MINUTE, evt.getHeuredebut().getMinutes());
-        System.out.println(calDeb.toString());
+//        System.out.println(calDeb.toString());
 
         // Date et heure de Fin des entretients
         Calendar calEnd = (Calendar) calDeb.clone();
         calEnd.set(Calendar.HOUR_OF_DAY, evt.getHeurefin().getHours());
         calEnd.set(Calendar.MINUTE, evt.getHeurefin().getMinutes());
-        System.out.println(calEnd.toString());
+//        System.out.println(calEnd.toString());
 
         // Date limite pour commencer le dernier entretien
         Calendar calLast = (Calendar) calEnd.clone();
         calLast.add(Calendar.MINUTE, -dureeEntretiens);
-        System.out.println(calLast.toString());
+//        System.out.println(calLast.toString());
 
         entretiensByCal.put(calDeb, new ArrayList<Entretien>());
         for (Calendar calCur = (Calendar) calDeb.clone(); calCur.before(calLast); calCur.add(Calendar.MINUTE, dureeEntretiens)) {
@@ -152,16 +153,16 @@ public class PlanningGenerator {
             for (Etudiant etu : voeuxEtudiants.keySet()) {
                 LinkedList<Entreprise> listEntreprises = voeuxEtudiants.get(etu);
                 // si il reste des voeux des étudiants
-                if (!listEntreprises.isEmpty()){
+                if (!listEntreprises.isEmpty()) {
                     //récupération de la première entreprise dispo
-                    Entreprise entr = getEntrepriseDispo(listEntreprises,listEntretiens);
-                    if(entr != null){
-                        Entretien entretien = createEntretien(listEntreprises.remove(listEntreprises.indexOf(entr)),etu,calCur.getTime());
+                    Entreprise entr = getEntrepriseDispo(listEntreprises, listEntretiens);
+                    if (entr != null) {
+                        Entretien entretien = createEntretien(listEntreprises.remove(listEntreprises.indexOf(entr)), etu, calCur.getTime());
                         listEntretiens.add(entretien);
                         entretiens.add(entretien);
                     }
                 }
-                
+
             }
         }
 
@@ -170,10 +171,13 @@ public class PlanningGenerator {
         //
         try {
             planningManager.addPlanning(planning);
-//            for (Entretien entretien : entretiens) {
-//                entretienManager.addEntretien(entretien);
-//            }
+          
+            
+            for (Entretien entretien : entretiens) {
+                entretienManager.addEntretien(entretien);
+            }
         } catch (Exception ex) {
+          
             Logger.getLogger(PlanningGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
@@ -196,21 +200,22 @@ public class PlanningGenerator {
     }//isEtudiantDispo()
 
     /**
-     * Détermine si une entreprise est disponible pour un entretien dans la liste donnée
-     * @param entr l'entreprise 
+     * Détermine si une entreprise est disponible pour un entretien dans la
+     * liste donnée
+     *
+     * @param entr l'entreprise
      * @param entretiens la liste d'entretiens que l'on souhaite vérifier
      * @return TRUE si l'entreprise est disponible, FALSE sinon
      */
-    private boolean isEntrepriseDispo(Entreprise entr,ArrayList<Entretien> entretiens){
-        for (Entretien entretien : entretiens){
-            if(entretien.getEntreprise() == entr){
+    private boolean isEntrepriseDispo(Entreprise entr, ArrayList<Entretien> entretiens) {
+        for (Entretien entretien : entretiens) {
+            if (entretien.getEntreprise() == entr) {
                 return false;
             }
         }
         return true;
     }
-    
-    
+
     /**
      * Utilitaire pour la génération du planning
      *
@@ -226,33 +231,47 @@ public class PlanningGenerator {
         }
         return null;
     }
-    
+
     /**
-     * Retourne la première entreprise disponible en fonction de la liste des entretiens planifiés
+     * Retourne la première entreprise disponible en fonction de la liste des
+     * entretiens planifiés
+     *
      * @param listEntreprises liste des entreprises à considérer
      * @param entretiens les entretiens déjà planifiés
      * @return une entreprise ou NULL
      */
-    private Entreprise getEntrepriseDispo(LinkedList<Entreprise> listEntreprises, ArrayList<Entretien> entretiens){
-        for(Entreprise entr : listEntreprises){
-            if (isEntrepriseDispo(entr,entretiens)){
+    private Entreprise getEntrepriseDispo(LinkedList<Entreprise> listEntreprises, ArrayList<Entretien> entretiens) {
+        for (Entreprise entr : listEntreprises) {
+            if (isEntrepriseDispo(entr, entretiens)) {
                 return entr;
             }
         }
-        
+
         return null;
     }
-    
-    
+
     private Entretien createEntretien(Entreprise ent, Etudiant etu, Date time) {
         Entretien entretien = new Entretien();
-        entretien.setEntreprise(ent);
-        entretien.setEtudiant(etu);
-        entretien.setHoraire(time);
-        entretien.setPlanning(planning);
-        //entretien.setSalleid();
-        //entretien.setDuree(dureeEntretiens);
+        
+        Date dureeEntretien = new Date();
+       // SimpleDateFormat dateFormat = new SimpleDateFormat("mm");
+       // dateFormat.format(dureeEntretien);
+        //dateFormat.
+        dureeEntretien.setMinutes(32);
+        try {
+
+            entretien.setEntreprise(ent);
+            entretien.setEtudiant(etu);
+            entretien.setHoraire(time);
+            entretien.setPlanning(planning);
+            entretien.setSalle(salleManager.getSalleById(32));
+            entretien.setDuree(dureeEntretien);
+
+        } catch (Exception ex) {
+            Logger.getLogger(PlanningGenerator.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return entretien;
+
     }
 
 }
