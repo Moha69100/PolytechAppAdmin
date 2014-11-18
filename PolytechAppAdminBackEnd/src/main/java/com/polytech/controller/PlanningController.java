@@ -7,7 +7,7 @@ import com.polytech.dao.manager.PlanningManager;
 import com.polytech.exception.ExceptionHandler;
 import com.polytech.exception.SuccessHandler;
 import com.polytech.model.PlanningGenerator;
-import com.polytech.model.testInsert;
+
 import java.util.List;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,19 +53,6 @@ public class PlanningController {
         }
     }
 
-      @RequestMapping(value = "/louis/{id}", method = RequestMethod.GET)
-    public Object testLouis(@PathVariable String id) {
-
-        String error = "";
-        try {
-          testInsert ti = new testInsert();
-          ti.generate();
-        } catch (Exception ex) {
-            error = ex.getMessage();
-            return ExceptionHandler.handle(ex);
-        }
-        return null;
-    }
 
 
     /**
