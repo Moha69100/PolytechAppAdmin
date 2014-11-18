@@ -2,6 +2,7 @@ package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -46,7 +47,8 @@ public class Etudiant implements java.io.Serializable {
 
     @JsonBackReference("Etu_diplomes")
     private Set diplomes = new HashSet(0);
-    @JsonBackReference("Etu_evenements")
+   // @JsonBackReference("Etu_evenements") Pas de back refrecence sinon pas de deserialisation de la classe evenements
+    @JsonIgnore
     private Set evenements = new HashSet(0);
     @JsonBackReference("Etu_voeuxEtudiants")
     private Set voeuxEtudiants = new HashSet(0);
