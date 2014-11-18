@@ -1,6 +1,6 @@
 'use strict';
-app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'eventResource', 'enterpriseResource', 'studentResource',
-    function($scope, $modal, $routeParams, eventResource, enterpriseResource, studentResource) {
+app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'eventResource', 'enterpriseResource', 'studentResource', '$location',
+    function($scope, $modal, $routeParams, eventResource, enterpriseResource, studentResource, $location) {
 
         $scope.enterprisesToRemove = [];
         $scope.studentsToRemove = [];
@@ -78,11 +78,13 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
         };
         
         var update = function() {
-            
+            eventResource.updateEvent({}, $scope.event);
+            $location.url('admin-events');
         }
         
         var create = function() {
-            
+            eventResource.createEvent({}, $scope.event);
+            $location.path("admin-event");
         }
         
         var init = function() {
