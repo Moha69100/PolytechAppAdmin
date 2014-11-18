@@ -113,9 +113,9 @@
                             </tr>
                             <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="c in enterprise.contacts| orderBy: nom">
                                 <td style="vertical-align: middle; text-align: center;"><input type="checkbox" ng-click="prepareRemoveContact($index)"></td>
-                                <td><input type="text" class="form-control" ng-model="contact.nom" placeholder="Nom ..." value="{{c.nom}}"></td>
-                                <td><input type="text" class="form-control" ng-model="contact.prenom" placeholder="Prénom ..." value="{{c.prenom}}"></td>
-                                <td><input type="text" class="form-control" ng-model="contact.mail" placeholder="Mail ..." value="{{c.mail}}"></td>
+                                <td><input type="text" class="form-control" ng-model="contact[$index].nom" placeholder="Nom ..." value="{{c.nom}}"></td>
+                                <td><input type="text" class="form-control" ng-model="contact[$index].prenom" placeholder="Prénom ..." value="{{c.prenom}}"></td>
+                                <td><input type="text" class="form-control" ng-model="contact[$index].mail" placeholder="Mail ..." value="{{c.mail}}"></td>
                             </tr>
                         </tbody>
                     </table>

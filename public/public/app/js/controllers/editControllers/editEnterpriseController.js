@@ -7,7 +7,11 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                 enterpriseResource.getEnterprise({"id": $scope.enterpriseId}, function(data) {
                     $scope.enterprise = data;
                     $scope.enterprise.contacts = [];
-                    $scope.contact = [];
+                    $scope.contact = [{
+                            nom: '', 
+                            prenom: '',
+                            mail: ''
+                    }];
                 });
             } else {
 
@@ -63,6 +67,7 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                 nom: '',
                 prenom: ''
             });
+            console.log($scope.contact)
         }
 
         $scope.prepareRemoveContact = function(index) {
