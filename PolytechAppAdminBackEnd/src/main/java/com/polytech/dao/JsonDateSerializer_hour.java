@@ -21,7 +21,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class JsonDateSerializer_hour extends JsonSerializer<Date>{
     
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        
 
 	public void serialize(Date date, JsonGenerator gen, SerializerProvider provider)
 			throws IOException, JsonProcessingException {

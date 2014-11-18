@@ -28,7 +28,7 @@ public class JsonDateDeserializer_hour extends JsonDeserializer<Date>{
       
  if(jsonparser.getText() != null && !jsonparser.getText().trim().equals(""))
                 {
-                        SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");
+                        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
                         String date = jsonparser.getText();
                         try {
                                 return format.parse(date);
