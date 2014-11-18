@@ -1,18 +1,13 @@
 app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpriseResource", "$location", "$rootScope",
     function($scope, $routeParams, enterpriseResource, $location, $rootScope) {
         $scope.init = function() {
+            
             if ($routeParams.enterprise) {
 
                 $scope.enterpriseId = $routeParams.enterprise;
-                enterpriseResource.getEnterprise({"id": $scope.enterpriseId}, function(data) {
+                return enterpriseResource.getEnterprise({"id": $scope.enterpriseId}, function(data) {
                     $scope.enterprise = data;
-                    $scope.enterprise.contacts = [];
-                    $scope.contact = [{
-                            nom: '', 
-                            prenom: '',
-                            mail: ''
-                    }];
-                });
+                }).$promise;
             } else {
 
             }
@@ -56,41 +51,39 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
             $location.path('/admin-enterprise');
         };
 
-        $scope.init();
+        var promise = $scope.init();
 
         // ----------------- GESTION DES CONTACTS ------------------------------
-        $scope.contactsToRemove = [];
-
-        $scope.idActuelContact = 0;
-
-        $scope.addContact = function() {
-            $scope.enterprise.contacts.push({
-                id: '',
-                nom: '',
-                prenom: ''
-            });
-            console.log($scope.contact)
-        }
-
-        $scope.prepareRemoveContact = function(index) {
-            if ($scope.contactsToRemove[index] == null) {
-                $scope.contactsToRemove[index] = $scope.enterprise.contacts[index];
-            } else {
-                $scope.contactsToRemove.splice(index, 1);
-            }
-            console.log($scope.contactsToRemove);
-        }
-
-        $scope.removeContact = function() {
-            angular.forEach($scope.contactsToRemove, function(val1, key1) {
-                angular.forEach($scope.enterprise.contacts, function(val2, key2) {
-                    if (val1.id == val2.id) {
-                        $scope.enterprise.contacts.splice(key2, 1);
-                    }
-                });
-            });
+        promise.then(function() {
             $scope.contactsToRemove = [];
-        }
+
+            $scope.idActuelContact = 0;
+
+            $scope.addContact = function() {
+                $scope.enterprise.personnecontacts = $scope.enterprise.personnecontacts || []; 
+                $scope.enterprise.personnecontacts.push({});
+            }
+
+            $scope.prepareRemoveContact = function(index) {
+                if ($scope.contactsToRemove[index] == null) {
+                    $scope.contactsToRemove[index] = $scope.enterprise.personnecontacts[index];
+                } else {
+                    $scope.contactsToRemove.splice(index, 1);
+                }
+                console.log($scope.contactsToRemove);
+            }
+
+            $scope.removeContact = function() {
+                angular.forEach($scope.contactsToRemove, function(val1, key1) {
+                    angular.forEach($scope.enterprise.personnecontacts, function(val2, key2) {
+                        if (val1.id == val2.id) {
+                            $scope.enterprise.personnecontacts.splice(key2, 1);
+                        }
+                    });
+                });
+                $scope.contactsToRemove = [];
+            }
+        })
         // ---------------------------------------------------------------------
     }]);
 

@@ -107,15 +107,21 @@
                         <tbody>
                             <tr>
                                 <th></th>
+                                <th>Civilité</th>
                                 <th>Nom</th>
                                 <th>Prénom</th>
                                 <th>Mail</th>
+                                <th>Téléphone</th>
+                                <th>Rôle</th>
                             </tr>
-                            <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="c in enterprise.contacts| orderBy: nom">
+                            <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="c in enterprise.personnecontacts| orderBy: nom">
                                 <td style="vertical-align: middle; text-align: center;"><input type="checkbox" ng-click="prepareRemoveContact($index)"></td>
-                                <td><input type="text" class="form-control" ng-model="contact[$index].nom" placeholder="Nom ..." value="{{c.nom}}"></td>
-                                <td><input type="text" class="form-control" ng-model="contact[$index].prenom" placeholder="Prénom ..." value="{{c.prenom}}"></td>
-                                <td><input type="text" class="form-control" ng-model="contact[$index].mail" placeholder="Mail ..." value="{{c.mail}}"></td>
+                                <td><input type="text" class="form-control" ng-model="c.civilite" placeholder="Civilité ..."></td>
+                                <td><input type="text" class="form-control" ng-model="c.nom" placeholder="Nom ..."></td>
+                                <td><input type="text" class="form-control" ng-model="c.prenom" placeholder="Prénom ..."></td>
+                                <td><input type="text" class="form-control" ng-model="c.mail" placeholder="Mail ..."></td>
+                                <td><input type="text" class="form-control" ng-model="c.telportable" placeholder="Téléphone ..."></td>
+                                <td><input type="text" class="form-control" ng-model="c.role" placeholder="Rôle ..."></td>
                             </tr>
                         </tbody>
                     </table>
