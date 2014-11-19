@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
@@ -36,8 +37,14 @@ public class PlanningGenerator {
     public PlanningGenerator(Evenement evt, int dureeEntretiens) {
         this.evt = evt;
         this.dureeEntretiens = dureeEntretiens;
-        this.planning = new Planning(); // TODO création d'un planning
-        this.planning.setEvenement(evt);
+        
+//        this.planning = new Planning(); // TODO création d'un planning
+//        this.planning.setEvenement(evt);
+        try {
+            this.planning = (Planning) planningManager.getPlanningByEvt(evt.getId()).get(0);
+        } catch (Exception ex) {
+            Logger.getLogger(PlanningGenerator.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.planning.setEntretiens(new HashSet<Entretien>());
     }
 
@@ -53,12 +60,18 @@ public class PlanningGenerator {
         HashMap<Etudiant, LinkedList<Entreprise>> voeuxEtudiants = new HashMap();
 
         // Entretiens
-        HashMap<Calendar, ArrayList<Entretien>> entretiensByCal = new HashMap();
+        LinkedHashMap<Calendar, ArrayList<Entretien>> entretiensByCal = new LinkedHashMap();
 //        HashMap<Calendar, ArrayList<Entreprise>> entrepriseByCal = new HashMap();
 //        HashMap<Calendar, ArrayList<Etudiant>> etudiantByCal = new HashMap();
 
         //Récupération de la reference des entretiens du planning (vide, pour la remplir)
         Set<Entretien> entretiens = this.planning.getEntretiens();
+
+        // Suppression des anciens entretiens
+        for (Entretien entretien : entretiens) {
+            entretienManager.deleteEntretienById(entretien.getId()); 
+        }
+        entretiens = new HashSet<Entretien>();
 
         //
         // recuperation des voeux
@@ -90,21 +103,11 @@ public class PlanningGenerator {
             // TODO trier les voeux
             entreprises.add(voeuxEtudiant.getEntreprise());
         }
-
-        // Suppression des voeux etudiants qui ne sont pas dans les voeux entreprise
-//        for (Map.Entry<Etudiant, LinkedList<Entreprise>> voeuxEtudiant : voeuxEtudiants.entrySet()) {
-//            for (Entreprise ent : voeuxEtudiant.getValue()) {
-//                if (!voeuxEntreprises.get(ent).contains(voeuxEtudiant.getKey())) {
-//                    voeuxEtudiant.getValue().remove(voeuxEtudiant.getValue().indexOf(ent));
-//                }
-//            }
-//        }
-
-        // Detection des voeux Entreprise non dans les voeux Etudiants
-        // TODO
+        
         //
         // Generation des dates
         //
+        
         // Date et heure de début des entretients
         Calendar calDeb = Calendar.getInstance();
         calDeb.setTime(evt.getDateevt());
@@ -132,6 +135,7 @@ public class PlanningGenerator {
         // Creation du planning best-first
         // Pour chaque voeux (dans l'ordre de préférence), ajout dans le premier crenaux horaire disponible
         //
+        
         // pour chaque crenaux d'entretiens
         for (Calendar calCur : entretiensByCal.keySet()) { // AMELIORATION : utilisation d'iterateurs
             ArrayList<Entretien> listEntretiens = entretiensByCal.get(calCur);
@@ -170,14 +174,12 @@ public class PlanningGenerator {
         // Ajout du planning dans la base
         //
         try {
-            planningManager.addPlanning(planning);
-          
-            
+//            planningManager.addPlanning(planning);
+            planningManager.updatePlanning(planning);
             for (Entretien entretien : entretiens) {
                 entretienManager.addEntretien(entretien);
             }
         } catch (Exception ex) {
-          
             Logger.getLogger(PlanningGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
@@ -252,26 +254,19 @@ public class PlanningGenerator {
 
     private Entretien createEntretien(Entreprise ent, Etudiant etu, Date time) {
         Entretien entretien = new Entretien();
-        
-        Date dureeEntretien = new Date();
-       // SimpleDateFormat dateFormat = new SimpleDateFormat("mm");
-       // dateFormat.format(dureeEntretien);
-        //dateFormat.
-        dureeEntretien.setMinutes(32);
+        Date dateDureeEntretien = new Date();
+        dateDureeEntretien.setMinutes(32);
+        entretien.setEntreprise(ent);
+        entretien.setEtudiant(etu);
+        entretien.setHoraire(time);
+        entretien.setPlanning(planning);
+        entretien.setDuree(dateDureeEntretien);
         try {
-
-            entretien.setEntreprise(ent);
-            entretien.setEtudiant(etu);
-            entretien.setHoraire(time);
-            entretien.setPlanning(planning);
             entretien.setSalle(salleManager.getSalleById(32));
-            entretien.setDuree(dureeEntretien);
-
         } catch (Exception ex) {
             Logger.getLogger(PlanningGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
         return entretien;
-
     }
 
 }

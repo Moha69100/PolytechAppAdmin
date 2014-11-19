@@ -51,8 +51,26 @@ public class PlanningManager {
 
     }
     
-    
-        public List<Object> getPlanningByEvt(int id) throws Exception {
+    /**
+     * Retourne le planning associé à un évènement
+     * La base de données permet d'avoir plusieurs entretiens, mais uniquement 1 doit être utilisé
+     * La requete est donc être la même que EntretienManager.getEntretienByEvent()
+     * @param id
+     * @return
+     * @throws Exception 
+     */
+//    public List<Object> getPlanningByEvt(int id) throws Exception {
+//        Session session = SessionManager.openSession();
+//        try {
+//            Query query = session.createQuery("from Planning where evtid = " + id + " limit 1");
+//            return query.list();
+//        } catch(Exception e){
+//            throw(e);
+//        }finally {
+//            session.close();
+//        }
+//    }
+    public List<Object> getPlanningByEvt(int id) throws Exception {
 
         Session session = SessionManager.openSession();
 
@@ -73,6 +91,7 @@ public class PlanningManager {
         }
 
     }
+    
     
 
     public Boolean deletePlanningById(int id) throws Exception {
