@@ -45,13 +45,13 @@ public class Ciell2CsvReader {
         List<Etudiant> etudiants = readCSVToBean(new FileReader(file));
         
         // Enregistement des fichiers en base
-        save(etudiants);
+        List<Etudiant> saveEtudiants = save(etudiants);
         
         // Suppresion du fichier 
         file.delete();
         
         // Retour de la liste
-        return etudiants;
+        return saveEtudiants;
     }
     
     /***
@@ -113,8 +113,7 @@ public class Ciell2CsvReader {
                 if(record.isSet("MOBILE")) edt.setTelportable(record.get("MOBILE"));
                 if(record.isSet("ETAB_EN_COURS_PATRONYME")) edt.setEtab(record.get("ETAB_EN_COURS_PATRONYME"));
                 if(record.isSet("ETAB_EN_COURS_VILLE")) edt.setEtabville(record.get("ETAB_EN_COURS_VILLE"));
-              
-                 if(record.isSet("SEB_LIBELLE")) edt.setBactype(record.get("SEB_LIBELLE"));
+                if(record.isSet("SEB_LIBELLE")) edt.setBactype(record.get("SEB_LIBELLE"));
                 if(record.isSet("Mention BAC")) edt.setBacmention(record.get("Mention BAC"));
                 if(record.isSet("BCA_ANNEE")) edt.setBacannee(Integer.parseInt(record.get("BCA_ANNEE")));
                 if(record.isSet("BAC_LIBELLE")) edt.setBacoption(record.get("BAC_LIBELLE"));
@@ -137,10 +136,20 @@ public class Ciell2CsvReader {
      * @param etudiants
      * @throws Exception 
      */
-    private void save(List<Etudiant> etudiants) throws Exception {
+    private List<Etudiant> save(List<Etudiant> etudiants) throws Exception {
+        List<Etudiant> list = new ArrayList<Etudiant>();
         for (Etudiant etudiant : etudiants) {
-            edtManager.addEtudiant(etudiant);
+            try {       
+                edtManager.addEtudiant(etudiant);
+                list.add(etudiant);
+            }
+            catch(Exception ex)
+            {
+                
+            }
         }
+        
+        return list;
     }
     
     /*
