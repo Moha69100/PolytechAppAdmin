@@ -50,7 +50,7 @@
                 <div class="form-group" data-ng-show="eventId != null">
                     <label for="planning" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label">Planning : </label>
                     <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
-                        <input type="button" class="form-control btn btn-info" id="planning" value="voir le planning" ng-click="openModal('lg')">
+                        <input type="button" class="form-control btn btn-info" id="planning" value="Voir le planning" ng-click="openModal('lg')">
                         <script type="text/ng-template" id="planning.html">
                         <div class="modal-header">
                             <h3 class="modal-title">Planning de l&apos;événement</h3>
@@ -86,7 +86,13 @@
                         </div>
     </script>
                     </div>
-                </div>  
+                </div>
+                <div class="form-group">
+                     <label for="generatePlanning" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label"> </label>
+                    <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+                        <input type="button" class="form-control btn btn-info" id="generatePlanning" value="(Re)générer le planning" ng-click="generatePlanning()">
+                    </div>
+                </div>
             </div>            
         </div>
 
