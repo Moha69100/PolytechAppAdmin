@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
@@ -37,7 +38,7 @@ public class PlanningGenerator {
     public PlanningGenerator(Evenement evt, int dureeEntretiens) {
         this.evt = evt;
         this.dureeEntretiens = dureeEntretiens;
-        
+
 //        this.planning = new Planning(); // TODO création d'un planning
 //        this.planning.setEvenement(evt);
         try {
@@ -69,9 +70,16 @@ public class PlanningGenerator {
 
         // Suppression des anciens entretiens
         for (Entretien entretien : entretiens) {
-            entretienManager.deleteEntretienById(entretien.getId()); 
+            entretienManager.deleteEntretienById(entretien.getId());
         }
         entretiens = new HashSet<Entretien>();
+
+        //Solution de contournement pour la suppression des entretiens du planning courant
+        List<Entretien> entretiensToDelete = entretienManager.getEntretiensByEvent(this.planning.getId());
+        // Suppression des anciens entretiens
+        for (Entretien entretienSupp : entretiensToDelete) {
+            entretienManager.deleteEntretienById(entretienSupp.getId());
+        }
 
         //
         // recuperation des voeux
@@ -103,11 +111,10 @@ public class PlanningGenerator {
             // TODO trier les voeux
             entreprises.add(voeuxEtudiant.getEntreprise());
         }
-        
+
         //
         // Generation des dates
         //
-        
         // Date et heure de début des entretients
         Calendar calDeb = Calendar.getInstance();
         calDeb.setTime(evt.getDateevt());
@@ -135,7 +142,6 @@ public class PlanningGenerator {
         // Creation du planning best-first
         // Pour chaque voeux (dans l'ordre de préférence), ajout dans le premier crenaux horaire disponible
         //
-        
         // pour chaque crenaux d'entretiens
         for (Calendar calCur : entretiensByCal.keySet()) { // AMELIORATION : utilisation d'iterateurs
             ArrayList<Entretien> listEntretiens = entretiensByCal.get(calCur);
