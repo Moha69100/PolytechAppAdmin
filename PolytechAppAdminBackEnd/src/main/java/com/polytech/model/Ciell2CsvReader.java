@@ -24,7 +24,8 @@ import org.apache.commons.csv.CSVRecord;
 
 /**
  *
- * @author Epulapp
+ * @author Mohamed CHOUCHANE
+ * Last Update : 20/11/2014
  */
 public class Ciell2CsvReader {
     
@@ -98,34 +99,39 @@ public class Ciell2CsvReader {
             
             // Parcours de la liste et création des étudiants
             for(CSVRecord record : parser){
-                
-                Etudiant edt = new Etudiant();
-                
-                // Les champs Identifiant, Nom et prénom sont obligatoire (Enfin c'est mois qui les décidé :) )
-                if(this.isValid(record, "Identifiant") && this.isValid(record, "NOM") && this.isValid(record, "Prénom")) 
+                try{
+                    Etudiant edt = new Etudiant();
+
+                    // Les champs Identifiant, Nom et prénom sont obligatoire (Enfin c'est mois qui les décidé :) )
+                    if(this.isValid(record, "Identifiant") && this.isValid(record, "NOM") && this.isValid(record, "Prénom")) 
+                    {
+                        // Affectation des champs obligation
+                        edt.setCandidid(Integer.parseInt(record.get("Identifiant")));   
+                        edt.setNom(record.get("NOM"));
+                        edt.setPrenom(record.get("Prénom"));
+
+                        // Test de chaque colonne + affectation
+                        if(this.isValid(record, "Civilité")) edt.setCivilite(record.get("Civilité"));
+                        if(this.isValid(record, "DATE NAISSANCE")) edt.setDatenaissance(formatter.parse(record.get("DATE NAISSANCE")));
+                        if(this.isValid(record, "ADRESSE")) edt.setAdresse(record.get("ADRESSE"));
+                        if(this.isValid(record, "CODE POSTAL")) edt.setCp(record.get("CODE POSTAL"));
+                        if(this.isValid(record, "VILLE")) edt.setVille(record.get("VILLE"));
+                        if(this.isValid(record, "PAYS")) edt.setPays(record.get("PAYS"));
+                        if(this.isValid(record, "EMAIL")) edt.setEmail(record.get("EMAIL"));
+                        if(this.isValid(record, "TELEPHONE")) edt.setTelfixe(record.get("TELEPHONE"));
+                        if(this.isValid(record, "MOBILE")) edt.setTelportable(record.get("MOBILE"));
+                        if(this.isValid(record, "ETAB_EN_COURS_PATRONYME")) edt.setEtab(record.get("ETAB_EN_COURS_PATRONYME"));
+                        if(this.isValid(record, "ETAB_EN_COURS_VILLE")) edt.setEtabville(record.get("ETAB_EN_COURS_VILLE"));
+                        if(this.isValid(record, "SEB_LIBELLE")) edt.setBactype(record.get("SEB_LIBELLE"));
+                        if(this.isValid(record, "Mention BAC")) edt.setBacmention(record.get("Mention BAC"));
+                        if(this.isValid(record, "BCA_ANNEE")) edt.setBacannee(Integer.parseInt(record.get("BCA_ANNEE")));
+                        if(this.isValid(record, "BAC_LIBELLE")) edt.setBacoption(record.get("BAC_LIBELLE"));
+                        emps.add(edt);
+                    }
+                } 
+                finally
                 {
-                    // Affectation des champs obligation
-                    edt.setCandidid(Integer.parseInt(record.get("Identifiant")));   
-                    edt.setNom(record.get("NOM"));
-                    edt.setPrenom(record.get("Prénom"));
-                    
-                    // Test de chaque colonne + affectation
-                    if(this.isValid(record, "Civilité")) edt.setCivilite(record.get("Civilité"));
-                    if(this.isValid(record, "DATE NAISSANCE")) edt.setDatenaissance(formatter.parse(record.get("DATE NAISSANCE")));
-                    if(this.isValid(record, "ADRESSE")) edt.setAdresse(record.get("ADRESSE"));
-                    if(this.isValid(record, "CODE POSTAL")) edt.setCp(record.get("CODE POSTAL"));
-                    if(this.isValid(record, "VILLE")) edt.setVille(record.get("VILLE"));
-                    if(this.isValid(record, "PAYS")) edt.setPays(record.get("PAYS"));
-                    if(this.isValid(record, "EMAIL")) edt.setEmail(record.get("EMAIL"));
-                    if(this.isValid(record, "TELEPHONE")) edt.setTelfixe(record.get("TELEPHONE"));
-                    if(this.isValid(record, "MOBILE")) edt.setTelportable(record.get("MOBILE"));
-                    if(this.isValid(record, "ETAB_EN_COURS_PATRONYME")) edt.setEtab(record.get("ETAB_EN_COURS_PATRONYME"));
-                    if(this.isValid(record, "ETAB_EN_COURS_VILLE")) edt.setEtabville(record.get("ETAB_EN_COURS_VILLE"));
-                    if(this.isValid(record, "SEB_LIBELLE")) edt.setBactype(record.get("SEB_LIBELLE"));
-                    if(this.isValid(record, "Mention BAC")) edt.setBacmention(record.get("Mention BAC"));
-                    if(this.isValid(record, "BCA_ANNEE")) edt.setBacannee(Integer.parseInt(record.get("BCA_ANNEE")));
-                    if(this.isValid(record, "BAC_LIBELLE")) edt.setBacoption(record.get("BAC_LIBELLE"));
-                    emps.add(edt);
+
                 }
             }
             
@@ -152,7 +158,7 @@ public class Ciell2CsvReader {
                 edtManager.addEtudiant(etudiant);
                 list.add(etudiant);
             }
-            catch(Exception ex)
+            finally
             {
                 
             }
@@ -172,6 +178,13 @@ public class Ciell2CsvReader {
         return strDate;
     }
     
+    /**
+     * Méthode permeetant de vérifier si un champs du csv est vide. La méthode IsSet de la classe CSVRecord n'est pas suffisante. 
+     * Il faut aussi vérifier que le champs n'est pas vide 
+     * @param record Record Csv
+     * @param column Nom de la colonnes
+     * @return Valid = true sinon false
+     */
     private boolean isValid(CSVRecord record, String column){
         return (record.isSet(column) && !record.get(column).isEmpty());
     }
