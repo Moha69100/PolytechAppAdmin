@@ -165,7 +165,8 @@ public class EntretienManager {
             
             String sql = "Select * "
              + "from appschema.entretien "
-             + "where planid = " + onePlanning.getId();
+             + "where planid = " + onePlanning.getId()
+             + "ORDER BY horaire ASC";
             
             System.out.println("REQUETE SQL : " + sql);
 
