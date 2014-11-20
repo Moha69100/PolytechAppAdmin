@@ -51,6 +51,7 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
         $scope.cancel = function () {
             delete ($scope.student);
             delete ($scope.studentId);
+            $location.url($location.path());
             $location.url('/admin-student');
         };
         var initFileList = function () {
