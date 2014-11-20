@@ -108,16 +108,8 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
                     $scope.students = data;
                 });
             }
+        };
 
-        }
-
-        $scope.editAttendingCompanies = function () {
-            console.log("Le bouton fonctionne");
-        }
-
-        $scope.editAttendingCandidate = function () {
-            console.log("le bouton fonctionne");
-        }
 
         init();
         // --------------------- CODE DE LA MODAL ------------------------------
@@ -142,8 +134,15 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
             $location.url($location.path());
             $location.url('/admin-events');
         };
-        
+        $scope.removeEvent = function () {
+            eventResource.deleteEvenement({'id': $routeParams.eventId}, function (data) {
+                $scope.cancel();
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Evênement supprimé");
+            });
+        };
         $scope.generatePlanning = function () {
-            // GENERATION DU PLANNING
+            eventResource.generatePlanning({'id': $routeParams.eventId}, function (data) {
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Planning généré avec succès");
+            });
         };
     }]);
