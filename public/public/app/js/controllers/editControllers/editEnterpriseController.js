@@ -7,7 +7,7 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                 $scope.enterpriseId = $routeParams.enterprise;
                 return enterpriseResource.getEnterprise({"id": $scope.enterpriseId}, function (data) {
                     $scope.enterprise = data;
-                }).$promise;
+                });
             } else {
 
             }
@@ -20,6 +20,7 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
             var postData = $scope.enterprise;
             enterpriseResource.addEnterprise({}, postData, function () {
                 $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Entreprise ajoutée");
+                $scope.cancel();
             }, function () {
                 $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de l'ajout");
             });

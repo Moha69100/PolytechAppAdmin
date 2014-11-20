@@ -1,19 +1,21 @@
 app.controller("editOfferController", ['$scope', 'offerResource', 'enterpriseResource', '$routeParams', '$location', '$rootScope',
     function ($scope, offerResource, enterpriseResource, $routeParams, $location, $rootScope) {
 
-        $scope.offer = [];
+        $scope.offer = {};
 
         $scope.offer.entreprise;
         $scope.enterprises;
 
-        var init = function() {
+        var init = function () {
             $scope.offerId = $routeParams.offer;
-            enterpriseResource.listEnterprises(function(data) {
+            enterpriseResource.listEnterprises(function (data) {
                 $scope.enterprises = data;
-                offerResource.getOffer({"id": $scope.offerId}, function(data) {
-                    $scope.offer = data;
+                if ($routeParams.offer) {
+                    offerResource.getOffer({"id": $scope.offerId}, function (data) {
+                        $scope.offer = data;
 
-                });
+                    });
+                }
             });
 
 
@@ -27,12 +29,13 @@ app.controller("editOfferController", ['$scope', 'offerResource', 'enterpriseRes
         $scope.saveOffer = function (offer) {
             offerResource.addOffer({}, $scope.offer, function (data) {
                 $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Offre d'alternance ajoutée");
+                $scope.cancel();
             }, function (error) {
                 $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de l'ajout");
             });
         };
 
-        $scope.updateOffer = function() {
+        $scope.updateOffer = function () {
             offerResource.updateOffer({}, $scope.offer, function (data) {
                 $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Offre d'alternance enregistrée");
             }, function (error) {
@@ -41,8 +44,8 @@ app.controller("editOfferController", ['$scope', 'offerResource', 'enterpriseRes
             });
         };
 
-        $scope.removeOffer = function(offer) {
-            offerResource.removeOffer({"id": $scope.offerId}, function(data) {
+        $scope.removeOffer = function (offer) {
+            offerResource.removeOffer({"id": $scope.offerId}, function (data) {
                 $location.path('/admin-offers');
             }, function (error) {
                 $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de la suppression");
@@ -51,7 +54,7 @@ app.controller("editOfferController", ['$scope', 'offerResource', 'enterpriseRes
         /**
          * sortie par cancel()
          */
-        $scope.cancel = function() {
+        $scope.cancel = function () {
             delete ($scope.offer);
             delete ($scope.offerId);
             $location.url($location.path());

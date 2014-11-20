@@ -1,6 +1,6 @@
 'use strict';
-app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'eventResource', 'enterpriseResource', 'studentResource', '$location',
-    function ($scope, $modal, $routeParams, eventResource, enterpriseResource, studentResource, $location) {
+app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'eventResource', 'enterpriseResource', 'studentResource', '$location', "$rootScope",
+    function ($scope, $modal, $routeParams, eventResource, enterpriseResource, studentResource, $location, $rootScope) {
 
         $scope.enterprisesToRemove = [];
         $scope.studentsToRemove = [];
@@ -79,11 +79,17 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
         };
 
         var update = function () {
-            eventResource.updateEvent({}, $scope.event);
+            eventResource.updateEvent({}, $scope.event, function () {
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Evênement mis à jour");
+
+            });
         };
 
         var create = function () {
-            eventResource.createEvent({}, $scope.event);
+            eventResource.createEvent({}, $scope.event, function () {
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Evênement enregistré");
+
+            });
         };
 
         var init = function () {
@@ -127,6 +133,13 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
                     }
                 }
             });
-        }
+        };
         // ---------------------------------------------------------------------
+
+        $scope.cancel = function () {
+            delete ($scope.event);
+            delete ($scope.eventId);
+            $location.url($location.path());
+            $location.url('/admin-events');
+        };
     }]);

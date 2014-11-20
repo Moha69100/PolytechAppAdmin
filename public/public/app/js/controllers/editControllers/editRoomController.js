@@ -14,6 +14,7 @@ app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource', 
 
             roomResource.addRoom({}, $scope.room, function (data) {
                 $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Salle ajoutée");
+                $scope.cancel();
             }, function (error) {
                 $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de l'ajout");
             });
