@@ -1,5 +1,5 @@
-app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource', '$location',
-    function($scope, $routeParams, roomResource, $location) {
+app.controller("editRoomController", ['$scope', '$routeParams', 'roomResource', '$location', "$rootScope",
+    function($scope, $routeParams, roomResource, $location, $rootScope) {
         var init = function() {
             $scope.roomId = $routeParams.room;
             roomResource.getRoom({"id": $scope.roomId}, function(data) {

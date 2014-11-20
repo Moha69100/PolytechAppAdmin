@@ -9,7 +9,7 @@ app.factory('enterpriseResource', ['$resource', function ($resource) {
         var FIND_ALL = BASE_URL + '/entreprises';
         var GET_BY_ID = BASE_URL + '/entreprise/:id';
         var ADD_ENTERPRISE = BASE_URL + '/entreprise/add';
-        var UPDATE = BASE_URL + '/entreprise/';
+        var UPDATE = BASE_URL + '/entreprise';
         var REMOVE_BY_ID = BASE_URL + '/entreprise/:id';
 
         var actions = {

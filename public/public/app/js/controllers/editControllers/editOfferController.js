@@ -1,5 +1,5 @@
-app.controller("editOfferController", ['$scope', 'offerResource', 'enterpriseResource', '$routeParams', '$location',
-    function($scope, offerResource, enterpriseResource, $routeParams, $location) {
+app.controller("editOfferController", ['$scope', 'offerResource', 'enterpriseResource', '$routeParams', '$location', '$rootScope',
+    function ($scope, offerResource, enterpriseResource, $routeParams, $location, $rootScope) {
 
         $scope.offer = [];
 
@@ -24,27 +24,28 @@ app.controller("editOfferController", ['$scope', 'offerResource', 'enterpriseRes
         // 'feedback' serveur
         $scope.feedback = null;
 
-        $scope.saveOffer = function(offer) {
-            offerResource.addOffer({}, $scope.offer, function(data) {
-                console.log(data + "success");
-            }, function(error) {
-                console.log(error + " error ");
+        $scope.saveOffer = function (offer) {
+            offerResource.addOffer({}, $scope.offer, function (data) {
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Offre d'alternance ajoutée");
+            }, function (error) {
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de l'ajout");
             });
         };
 
         $scope.updateOffer = function() {
+            offerResource.updateOffer({}, $scope.offer, function (data) {
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Offre d'alternance enregistrée");
+            }, function (error) {
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de la sauvergarde");
 
-            offerResource.updateOffer({}, $scope.offer, function(data) {
-                console.log($scope.offer);
-                console.log(data + "success");
-            }, function(error) {
-                console.log(error + " error ");
             });
         };
 
         $scope.removeOffer = function(offer) {
             offerResource.removeOffer({"id": $scope.offerId}, function(data) {
                 $location.path('/admin-offers');
+            }, function (error) {
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de la suppression");
             });
         };
         /**

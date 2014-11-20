@@ -13,7 +13,7 @@ app.controller('uploadSimpleModalController', ['$scope', '$modalInstance', 'item
         };
 
         $scope.valider = function (link, type) {
-            //$scope.controlFilesValidation();
+            $scope.controlFilesValidation();
             $modalInstance.close({
                 datas: $scope.uploader
             });

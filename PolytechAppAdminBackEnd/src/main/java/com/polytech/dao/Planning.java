@@ -15,7 +15,7 @@ public class Planning  implements java.io.Serializable {
 
 
      private int id;
-     @JsonIgnore
+     @JsonManagedReference("Evt_plannings")
      private Evenement evenement;
      
      @JsonBackReference

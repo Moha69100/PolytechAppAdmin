@@ -41,8 +41,9 @@ public class SalleManager {
         Session session = SessionManager.openSession();
 
         try {
-
-            return (Salle) session.get(Salle.class, id);
+            
+            Salle s = (Salle) session.get(Salle.class, id);
+            return s;
 
         }catch(Exception e){
             throw(e);

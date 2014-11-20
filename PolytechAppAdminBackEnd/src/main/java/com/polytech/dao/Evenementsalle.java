@@ -13,6 +13,7 @@ public class Evenementsalle  implements java.io.Serializable {
 
 
      private EvenementsalleId id;
+     @JsonManagedReference("Evt_evenementsalles")
      private Evenement evenement;
      @JsonManagedReference("Sa_evenementsalles")
      private Salle salle;
