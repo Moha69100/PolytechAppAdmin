@@ -1,6 +1,7 @@
 package com.polytech.dao.manager;
 
 import com.polytech.dao.Entretien;
+import com.polytech.dao.Planning;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
@@ -27,9 +28,9 @@ public class EntretienManager {
             List<Entretien> result = query.list();
             return result;
 
-        }catch(Exception e){
-            throw(e);
-        }finally {
+        } catch (Exception e) {
+            throw (e);
+        } finally {
             session.close();
 
         }
@@ -77,9 +78,9 @@ public class EntretienManager {
         try {
             return (Entretien) session.get(Entretien.class, id);
 
-        }catch(Exception e){
-            throw(e);
-        }finally {
+        } catch (Exception e) {
+            throw (e);
+        } finally {
             session.close();
 
         }
@@ -142,23 +143,41 @@ public class EntretienManager {
         return true;
     }
 
-    public List<Entretien> getEntretiensByEvent(int id) throws Exception{
+    public List<Entretien> getEntretiensByEvent(int id) throws Exception {
         Session session = SessionManager.openSession();
 
         try {
-            String sql = "Select e.* "
+            PlanningManager planningManager = new PlanningManager();
+            List<Planning> planning = planningManager.getPlanningByEvt(id);
+            Planning onePlanning = planning.get(0);
+
+            /*String sql = "Select e.* "
                     + "from appschema.Planning p, appschema.entretien e "
                     // remplacer la requete par l'appele par PlanningManager.getPlanningByEvent()
                     + "where p.evtid = :evt_id and p.id = (select distinct id from appschema.planning limit 1) "
-                    + "and e.planid=p.id";
+                    + "and e.planid=p.id";*/
+            
+            //Query query = session.createQuery("from appschema.entretien where planid = " + onePlanning.getId());
+
+            //SQLQuery query = session.createSQLQuery(sql);
+            //query.addEntity(Entretien.class);
+            //query.setParameter("evt_id", id);
+            
+            String sql = "Select * "
+             + "from appschema.entretien "
+             + "where planid = " + onePlanning.getId();
+            
+            System.out.println("REQUETE SQL : " + sql);
+
             SQLQuery query = session.createSQLQuery(sql);
             query.addEntity(Entretien.class);
-            query.setParameter("evt_id", id);      
             return query.list();
+            
+            //return query.list();
 
-        }catch(Exception e){
-            throw(e);
-        }finally {
+        } catch (Exception e) {
+            throw (e);
+        } finally {
             session.close();
 
         }
