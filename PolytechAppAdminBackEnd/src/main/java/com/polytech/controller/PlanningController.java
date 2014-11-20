@@ -7,6 +7,7 @@ import com.polytech.dao.manager.PlanningManager;
 import com.polytech.exception.ExceptionHandler;
 import com.polytech.exception.SuccessHandler;
 import com.polytech.model.PlanningGenerator;
+import com.polytech.model.testInsert;
 import java.util.List;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,20 +35,38 @@ public class PlanningController {
      * @id id of the evenement
      */
     @RequestMapping(value = "/planningGenerate/{id}", method = RequestMethod.GET)
-    public void algoPlanning(@PathVariable String id) {
+    public Object algoPlanning(@PathVariable String id) {
 
         String error = "";
         try {
             EvenementManager evenementManager = new EvenementManager();
+//            Evenement evt = null;
+//            evt = evenementManager.getEvenementById(Integer.parseInt(id));
             Evenement evt = evenementManager.getEvenementById(Integer.parseInt(id));
             PlanningGenerator planning = new PlanningGenerator(evt, 30);
-            planning.generate();
+            return SuccessHandler.handle(
+                    planning.generate()
+            );
         } catch (Exception ex) {
             error = ex.getMessage();
+            return ExceptionHandler.handle(ex);
         }
     }
 
-  
+      @RequestMapping(value = "/louis/{id}", method = RequestMethod.GET)
+    public Object testLouis(@PathVariable String id) {
+
+        String error = "";
+        try {
+          testInsert ti = new testInsert();
+          ti.generate();
+        } catch (Exception ex) {
+            error = ex.getMessage();
+            return ExceptionHandler.handle(ex);
+        }
+        return null;
+    }
+
 
     /**
      * This method returns all planning when the .../plannings URL is called.

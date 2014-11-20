@@ -7,7 +7,11 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                 enterpriseResource.getEnterprise({"id": $scope.enterpriseId}, function(data) {
                     $scope.enterprise = data;
                     $scope.enterprise.contacts = [];
-                    $scope.contact = [];
+                    $scope.contact = [{
+                            nom: '', 
+                            prenom: '',
+                            mail: ''
+                    }];
                 });
             } else {
 
@@ -20,9 +24,9 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
         $scope.save = function() {
             var postData = $scope.enterprise;
             enterpriseResource.addEnterprise({}, postData, function() {
-                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Entreprise enregistrée");
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Entreprise ajoutée");
             }, function() {
-                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de la sauvergarde");
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de l'ajout");
             });
         };
 
@@ -39,6 +43,8 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
         $scope.removeEnterprise = function(enterprise) {
             enterpriseResource.removeEnterprise({"id": $scope.enterpriseId}, function(data) {
                 $location.path('/admin-enterprise');
+            }, function() {
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Erreur lors de la suppression");
             });
         };
         /**
@@ -63,6 +69,7 @@ app.controller("editEnterpriseController", ['$scope', '$routeParams', "enterpris
                 nom: '',
                 prenom: ''
             });
+            console.log($scope.contact)
         }
 
         $scope.prepareRemoveContact = function(index) {

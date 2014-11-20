@@ -10,12 +10,10 @@ app.controller('offersController', ['$rootScope', '$scope', '$http', '$timeout',
         };
         
         $scope.addOffer = function() {
-            console.log("test");
             $location.path('/edit-offer');
         };
 
         $scope.editOffer = function(offerEdited) {
-            console.log("id : " + offerEdited.id)
             $location.search('offer', offerEdited.id).path('/edit-offer');
         };
 

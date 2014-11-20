@@ -2,17 +2,13 @@ package com.polytech.model;
 
 import com.polytech.dao.*;
 import com.polytech.dao.manager.EntretienManager;
-import com.polytech.dao.manager.EvenementManager;
 import com.polytech.dao.manager.PlanningManager;
-import com.polytech.dao.manager.VoeuxEntrepriseManager;
-import com.polytech.dao.manager.VoeuxEtudiantManager;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
@@ -26,10 +22,8 @@ import java.util.logging.Logger;
  */
 public class PlanningGenerator {
 
-    private PlanningManager planningManager = new PlanningManager();
-    private EntretienManager entretienManager = new EntretienManager();
-    private VoeuxEntrepriseManager voeuxEntrepriseManager = new VoeuxEntrepriseManager();
-    private VoeuxEtudiantManager voeuxEtudiantManager = new VoeuxEtudiantManager();
+    private final PlanningManager planningManager = new PlanningManager();
+    private final EntretienManager entretienManager = new EntretienManager();
 
     private Evenement evt;
     private Planning planning;
@@ -44,7 +38,7 @@ public class PlanningGenerator {
         this.planning.setEntretiens(new HashSet<Entretien>());
     }
 
-    public void generate() throws Exception {
+    public boolean generate() throws Exception {
 
         //
         // Structures de données
@@ -60,23 +54,24 @@ public class PlanningGenerator {
 //        HashMap<Calendar, ArrayList<Entreprise>> entrepriseByCal = new HashMap();
 //        HashMap<Calendar, ArrayList<Etudiant>> etudiantByCal = new HashMap();
 
-        //Récupération des entretiens du planning
+        //Récupération de la reference des entretiens du planning (vide, pour la remplir)
         Set<Entretien> entretiens = this.planning.getEntretiens();
         
 
         //
         // recuperation des voeux
         //
+        
         //Récupérations des voeux entreprises pour un évènement donné
-        List<VoeuxEntreprise> dbVoeuxEntreprises = voeuxEntrepriseManager.getAllVoeuxEntrepriseByIDEvEnement(evt.getId());
+        Set<VoeuxEntreprise> dbVoeuxEntreprises = evt.getVoeuxEntreprises();
         //Récupération des voeux étudiants pour un évènement donné
-        List<VoeuxEtudiant> dbVoeuxEtudiant = voeuxEtudiantManager.getAllVoeuxEtudiantByIDEvEnement(evt.getId());
-
+        Set<VoeuxEtudiant> dbVoeuxEtudiant = evt.getVoeuxEtudiants();
 
         for (VoeuxEntreprise voeuxEntreprise : dbVoeuxEntreprises) {
             ArrayList<Etudiant> etudiants;
             if (!voeuxEntreprises.containsKey(voeuxEntreprise.getEntreprise())) {
-                etudiants = voeuxEntreprises.put(voeuxEntreprise.getEntreprise(), new ArrayList<Etudiant>());
+                etudiants = new ArrayList<Etudiant>();
+                voeuxEntreprises.put(voeuxEntreprise.getEntreprise(), etudiants);
             } else {
                 etudiants = voeuxEntreprises.get(voeuxEntreprise.getEntreprise());
             }
@@ -86,7 +81,8 @@ public class PlanningGenerator {
         for (VoeuxEtudiant voeuxEtudiant : dbVoeuxEtudiant) {
             LinkedList<Entreprise> entreprises;
             if (!voeuxEtudiants.containsKey(voeuxEtudiant.getEtudiant())) {
-                entreprises = voeuxEtudiants.put(voeuxEtudiant.getEtudiant(), new LinkedList<Entreprise>());
+                entreprises = new LinkedList<Entreprise>();
+                voeuxEtudiants.put(voeuxEtudiant.getEtudiant(), entreprises);
             } else {
                 entreprises = voeuxEtudiants.get(voeuxEtudiant.getEtudiant());
             }
@@ -113,18 +109,22 @@ public class PlanningGenerator {
         calDeb.setTime(evt.getDateevt());
         calDeb.set(Calendar.HOUR_OF_DAY, evt.getHeuredebut().getHours());
         calDeb.set(Calendar.MINUTE, evt.getHeuredebut().getMinutes());
+        System.out.println(calDeb.toString());
 
         // Date et heure de Fin des entretients
         Calendar calEnd = (Calendar) calDeb.clone();
+        calEnd.set(Calendar.HOUR_OF_DAY, evt.getHeurefin().getHours());
         calEnd.set(Calendar.MINUTE, evt.getHeurefin().getMinutes());
+        System.out.println(calEnd.toString());
 
         // Date limite pour commencer le dernier entretien
         Calendar calLast = (Calendar) calEnd.clone();
         calLast.add(Calendar.MINUTE, -dureeEntretiens);
+        System.out.println(calLast.toString());
 
         entretiensByCal.put(calDeb, new ArrayList<Entretien>());
         for (Calendar calCur = (Calendar) calDeb.clone(); calCur.before(calLast); calCur.add(Calendar.MINUTE, dureeEntretiens)) {
-            entretiensByCal.put(calCur, new ArrayList<Entretien>());
+            entretiensByCal.put((Calendar) calCur.clone(), new ArrayList<Entretien>());
         }
 
         //
@@ -170,10 +170,13 @@ public class PlanningGenerator {
         //
         try {
             planningManager.addPlanning(planning);
+//            for (Entretien entretien : entretiens) {
+//                entretienManager.addEntretien(entretien);
+//            }
         } catch (Exception ex) {
             Logger.getLogger(PlanningGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        return true;
     }
 
     /**

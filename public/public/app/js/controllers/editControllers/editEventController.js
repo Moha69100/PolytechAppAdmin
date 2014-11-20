@@ -1,6 +1,6 @@
 'use strict';
-app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'eventResource', 'enterpriseResource', 'studentResource',
-    function($scope, $modal, $routeParams, eventResource, enterpriseResource, studentResource) {
+app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'eventResource', 'enterpriseResource', 'studentResource', '$location',
+    function($scope, $modal, $routeParams, eventResource, enterpriseResource, studentResource, $location) {
 
         $scope.enterprisesToRemove = [];
         $scope.studentsToRemove = [];
@@ -70,22 +70,40 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
         }
 
         $scope.save = function() {
-            // TODO Enregistrer un event modifié
+            if ($scope.eventId != null) {
+                update();
+            } else {
+                create();
+            }
         };
+        
+        var update = function() {
+            eventResource.updateEvent({}, $scope.event);
+            $location.url('admin-events');
+        }
+        
+        var create = function() {
+            eventResource.createEvent({}, $scope.event);
+            $location.path("admin-event");
+        }
+        
         var init = function() {
             $scope.eventId = $routeParams.eventId;
-            eventResource.getEvent({'id': $scope.eventId}, function(data) {
-                console.log(data);
-                $scope.event = data;
-                $scope.event.entreprisepresences = [];
-                $scope.event.etudiants = [];
-            });
-            enterpriseResource.listEnterprises(function(data) {
-                $scope.enterprises = data;
-            });
-            studentResource.listStudents(function(data) {
-                $scope.students = data;
-            });
+            if ($scope.eventId != null) {
+                eventResource.getEvent({'id': $scope.eventId}, function(data) {
+                    console.log(data);
+                    $scope.event = data;
+                    $scope.event.entreprisepresences = [];
+                    $scope.event.etudiants = [];
+                });
+                enterpriseResource.listEnterprises(function(data) {
+                    $scope.enterprises = data;
+                });
+                studentResource.listStudents(function(data) {
+                    $scope.students = data;
+                });
+            }
+            
         }
 
         $scope.editAttendingCompanies = function() {
