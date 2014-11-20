@@ -51,6 +51,7 @@ app.controller("editOfferController", ['$scope', 'offerResource', 'enterpriseRes
         $scope.cancel = function () {
             delete ($scope.offer);
             delete ($scope.offerId);
+            $location.url($location.path());
             $location.url('/admin-offers');
         };
 
