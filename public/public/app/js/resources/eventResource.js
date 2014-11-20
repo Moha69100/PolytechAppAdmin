@@ -2,7 +2,7 @@
 
 app.service('eventResource', ['$resource', '$q', '$timeout', function($resource, $q, $timeout) {
         
-        var BASE_URL = 'http://localhost:8090';
+        var BASE_URL = 'http://projet-a5a.univ-lyon1.fr:8090';
         var FIND_ALL = '/evenements';
         var FIND_BY_ID = '/evenement/:id';
         var UPDATE = "/evenement";

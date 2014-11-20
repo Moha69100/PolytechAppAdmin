@@ -2,7 +2,7 @@
 
 angular.module('App').service('Authentication', ['$http', 'authService', 'AuthenticationData', function($http, authBuffer, authData){
     var root = this;
-    var BASE_URL = 'http://localhost:8090';
+    var BASE_URL = 'http://projet-a5a.univ-lyon1.fr:8090'; 
     var apiKeyEndpoint = '/auth';
     
     var isLogingIn = false;

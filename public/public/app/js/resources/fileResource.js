@@ -5,7 +5,7 @@
  */
 app.factory('fileResource', ['$resource', function ($resource) {
 
-        var BASE_URL = 'http://localhost:8090';
+        var BASE_URL = 'http://projet-a5a.univ-lyon1.fr:8090';
         var FIND_ALL = BASE_URL + '/files/student/:id';
 
         var actions = {

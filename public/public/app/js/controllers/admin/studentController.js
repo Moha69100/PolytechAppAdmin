@@ -22,7 +22,7 @@ app.controller('studentController', ['$rootScope', '$scope', '$http', '$timeout'
         };
         $scope.addStudent = function () {
 
-            $scope.uploader.url = "http://localhost:8090/etudiants/upload";
+            $scope.uploader.url = "http://projet-a5a.univ-lyon1.fr:8090/etudiants/upload";
             $scope.upload = function () {
                 $scope.uploader.uploadAll();
             };
