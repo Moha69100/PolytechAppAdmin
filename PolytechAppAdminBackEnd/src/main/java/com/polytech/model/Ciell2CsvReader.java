@@ -24,7 +24,8 @@ import org.apache.commons.csv.CSVRecord;
 
 /**
  *
- * @author Epulapp
+ * @author Mohamed CHOUCHANE
+ * Last Update : 20/11/2014
  */
 public class Ciell2CsvReader {
     
@@ -177,6 +178,13 @@ public class Ciell2CsvReader {
         return strDate;
     }
     
+    /**
+     * Méthode permeetant de vérifier si un champs du csv est vide. La méthode IsSet de la classe CSVRecord n'est pas suffisante. 
+     * Il faut aussi vérifier que le champs n'est pas vide 
+     * @param record Record Csv
+     * @param column Nom de la colonnes
+     * @return Valid = true sinon false
+     */
     private boolean isValid(CSVRecord record, String column){
         return (record.isSet(column) && !record.get(column).isEmpty());
     }
