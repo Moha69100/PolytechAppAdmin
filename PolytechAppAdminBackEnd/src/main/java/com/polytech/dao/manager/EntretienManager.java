@@ -146,9 +146,9 @@ public class EntretienManager {
         Session session = SessionManager.openSession();
 
         try {
-
             String sql = "Select e.* "
                     + "from appschema.Planning p, appschema.entretien e "
+                    // remplacer la requete par l'appele par PlanningManager.getPlanningByEvent()
                     + "where p.evtid = :evt_id and p.id = (select distinct id from appschema.planning limit 1) "
                     + "and e.planid=p.id";
             SQLQuery query = session.createSQLQuery(sql);

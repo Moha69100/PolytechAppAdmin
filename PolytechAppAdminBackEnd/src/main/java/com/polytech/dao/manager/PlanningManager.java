@@ -70,6 +70,13 @@ public class PlanningManager {
 //            session.close();
 //        }
 //    }
+/*
+    Modifier requête, qui renvoie un seul planning
+    SELECT * FROM planning WHERE planning.id = (
+        SELECT MIN(id) FROM planning WHERE evtid = {id}
+    )
+    
+    */
     public List<Object> getPlanningByEvt(int id) throws Exception {
 
         Session session = SessionManager.openSession();
