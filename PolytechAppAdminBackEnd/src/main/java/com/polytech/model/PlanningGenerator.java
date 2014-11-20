@@ -261,14 +261,14 @@ public class PlanningGenerator {
     private Entretien createEntretien(Entreprise ent, Etudiant etu, Date time) {
         Entretien entretien = new Entretien();
         Date dateDureeEntretien = new Date();
-        dateDureeEntretien.setMinutes(32);
+        dateDureeEntretien.setMinutes(dureeEntretiens);
         entretien.setEntreprise(ent);
         entretien.setEtudiant(etu);
         entretien.setHoraire(time);
         entretien.setPlanning(planning);
         entretien.setDuree(dateDureeEntretien);
         try {
-            entretien.setSalle(salleManager.getSalleById(32));
+            entretien.setSalle(salleManager.getSalleById(0));
         } catch (Exception ex) {
             Logger.getLogger(PlanningGenerator.class.getName()).log(Level.SEVERE, null, ex);
         }
