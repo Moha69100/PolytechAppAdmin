@@ -142,4 +142,8 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
             $location.url($location.path());
             $location.url('/admin-events');
         };
+        
+        $scope.generatePlanning = function () {
+            // GENERATION DU PLANNING
+        };
     }]);

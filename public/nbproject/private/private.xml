@@ -7,11 +7,13 @@
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; d4cbd0c680836fe72f1d962b02e3b9e0780440bf
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; c9b4bed556633db796ad8015880fb703af05fb9f
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; 0167340b7b7c6bcc0dda2d48bda84ea9b107b979
+    
+    
+    
+    
     <group>
-            <file>file:/C:/Users/Epulapp/Documents/Ecole/Projet_tutore/PolytechAppAdmin/public/public/app/js/controllers/editControllers/editEnterpriseController.js</file>
+            <file>file:/C:/Users/Epulapp/Documents/Ecole/Projet_tutore/PolytechAppAdmin/public/public/app/js/controllers/planning/planningController.js</file>
             <file>file:/C:/Users/Epulapp/Documents/Ecole/Projet_tutore/PolytechAppAdmin/public/public/app/js/controllers/editControllers/editEventController.js</file>
-            <file>file:/C:/Users/Epulapp/Documents/Ecole/Projet_tutore/PolytechAppAdmin/public/public/app/partials/enterprises/editEnterprise.html</file>
-            <file>file:/C:/Users/Epulapp/Documents/Ecole/Projet_tutore/PolytechAppAdmin/public/public/app/partials/events/editEvent.html</file>
         </group>
     </open-files>
 </project-private>
