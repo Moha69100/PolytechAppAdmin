@@ -1,11 +1,12 @@
 package com.polytech.dao.manager;
 
 import com.polytech.dao.Planning;
-import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.List;
 
 /**
  *

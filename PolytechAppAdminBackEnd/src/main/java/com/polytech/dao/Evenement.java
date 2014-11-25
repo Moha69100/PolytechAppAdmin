@@ -2,9 +2,9 @@ package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,12 +30,8 @@ public class Evenement implements java.io.Serializable {
     private Set entreprisepresences = new HashSet(0);
     @JsonBackReference("Evt_plannings")
     private Set plannings = new HashSet(0);
-    @JsonBackReference("Evt_voeuxEtudiants")
-    private Set voeuxEtudiants = new HashSet(0);
     //@JsonManagedReference("Etu_evenements")
-    private Set etudiants = new HashSet(0);
-    @JsonBackReference("Evt_voeuxEntreprises")
-    private Set voeuxEntreprises = new HashSet(0);
+    private Set etudiantpresents = new HashSet(0);
 
     public Evenement() {
     }
@@ -44,7 +40,7 @@ public class Evenement implements java.io.Serializable {
         this.id = id;
     }
 
-    public Evenement(int id, String typeevt, Date dateevt, String duree, Date heuredebut, Date heurefin, String description, Set evenementsalles, Set evenementsalles_1, Set entreprisepresences, Set plannings, Set voeuxEtudiants, Set etudiants, Set voeuxEntreprises) {
+    public Evenement(int id, String typeevt, Date dateevt, String duree, Date heuredebut, Date heurefin, String description, Set evenementsalles, Set evenementsalles_1, Set entreprisepresences, Set plannings, Set voeuxEtudiants, Set etudiantpresents, Set voeuxEntreprises) {
         this.id = id;
         this.typeevt = typeevt;
         this.dateevt = dateevt;
@@ -56,9 +52,7 @@ public class Evenement implements java.io.Serializable {
         this.evenementsalles_1 = evenementsalles_1;
         this.entreprisepresences = entreprisepresences;
         this.plannings = plannings;
-        this.voeuxEtudiants = voeuxEtudiants;
-        this.etudiants = etudiants;
-        this.voeuxEntreprises = voeuxEntreprises;
+        this.etudiantpresents = etudiantpresents;
     }
 
     public int getId() {
@@ -153,28 +147,12 @@ public class Evenement implements java.io.Serializable {
         this.plannings = plannings;
     }
 
-    public Set getVoeuxEtudiants() {
-        return this.voeuxEtudiants;
-    }
-
-    public void setVoeuxEtudiants(Set voeuxEtudiants) {
-        this.voeuxEtudiants = voeuxEtudiants;
-    }
-
     public Set getEtudiants() {
-        return this.etudiants;
+        return this.etudiantpresents;
     }
 
     public void setEtudiants(Set etudiants) {
-        this.etudiants = etudiants;
-    }
-
-    public Set getVoeuxEntreprises() {
-        return this.voeuxEntreprises;
-    }
-
-    public void setVoeuxEntreprises(Set voeuxEntreprises) {
-        this.voeuxEntreprises = voeuxEntreprises;
+        this.etudiantpresents = etudiants;
     }
 
 }

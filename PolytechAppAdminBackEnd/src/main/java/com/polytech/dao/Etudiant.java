@@ -3,9 +3,9 @@ package com.polytech.dao;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -45,17 +45,8 @@ public class Etudiant implements java.io.Serializable {
     private String rmq;
     private String candidstatut;
 
-    @JsonBackReference("Etu_diplomes")
-    private Set diplomes = new HashSet(0);
-   // @JsonBackReference("Etu_evenements") Pas de back refrecence sinon pas de deserialisation de la classe evenements
-    @JsonIgnore
-    private Set evenements = new HashSet(0);
-    @JsonBackReference("Etu_voeuxEtudiants")
-    private Set voeuxEtudiants = new HashSet(0);
-    @JsonBackReference("Etu_entretiens")
-    private Set entretiens = new HashSet(0);
-    @JsonBackReference("Etu_voeuxEntreprises")
-    private Set voeuxEntreprises = new HashSet(0);
+    /*@JsonBackReference("Etu_diplomes")
+    private Set diplomes = new HashSet(0);*/
 
     public Etudiant() {
     }
@@ -64,7 +55,7 @@ public class Etudiant implements java.io.Serializable {
         this.id = id;
     }
 
-    public Etudiant(int id, Integer candidid, String civilite, String nom, String prenom, Date datenaissance, String adresse, String cp, String ville, String pays, String telfixe, String telportable, String email, Integer bacannee, String bacmention, String bactype, String bacoption, String formation, String etab, String etabcp, String etabville, String nivanglais, String classement, String cv, String lettremotiv, String avispoursuite, String avisperso, String rmq, String candidstatut, Set diplomes, Set evenements, Set voeuxEtudiants, Set entretiens, Set voeuxEntreprises) {
+    public Etudiant(int id, Integer candidid, String civilite, String nom, String prenom, Date datenaissance, String adresse, String cp, String ville, String pays, String telfixe, String telportable, String email, Integer bacannee, String bacmention, String bactype, String bacoption, String formation, String etab, String etabcp, String etabville, String nivanglais, String classement, String cv, String lettremotiv, String avispoursuite, String avisperso, String rmq, String candidstatut/*, Set diplomes*/) {
         this.id = id;
         this.candidid = candidid;
         this.civilite = civilite;
@@ -94,11 +85,7 @@ public class Etudiant implements java.io.Serializable {
         this.avisperso = avisperso;
         this.rmq = rmq;
         this.candidstatut = candidstatut;
-        this.diplomes = diplomes;
-        this.evenements = evenements;
-        this.voeuxEtudiants = voeuxEtudiants;
-        this.entretiens = entretiens;
-        this.voeuxEntreprises = voeuxEntreprises;
+        /*this.diplomes = diplomes;*/
     }
 
     public int getId() {
@@ -335,44 +322,13 @@ public class Etudiant implements java.io.Serializable {
         this.candidstatut = candidstatut;
     }
 
-    public Set getDiplomes() {
+    /*public Set getDiplomes() {
         return this.diplomes;
     }
 
     public void setDiplomes(Set diplomes) {
         this.diplomes = diplomes;
     }
-
-    public Set getEvenements() {
-        return this.evenements;
-    }
-
-    public void setEvenements(Set evenements) {
-        this.evenements = evenements;
-    }
-
-    public Set getVoeuxEtudiants() {
-        return this.voeuxEtudiants;
-    }
-
-    public void setVoeuxEtudiants(Set voeuxEtudiants) {
-        this.voeuxEtudiants = voeuxEtudiants;
-    }
-
-    public Set getEntretiens() {
-        return this.entretiens;
-    }
-
-    public void setEntretiens(Set entretiens) {
-        this.entretiens = entretiens;
-    }
-
-    public Set getVoeuxEntreprises() {
-        return this.voeuxEntreprises;
-    }
-
-    public void setVoeuxEntreprises(Set voeuxEntreprises) {
-        this.voeuxEntreprises = voeuxEntreprises;
-    }
+*/
 
 }

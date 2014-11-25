@@ -4,17 +4,8 @@ import com.polytech.dao.*;
 import com.polytech.dao.manager.EntretienManager;
 import com.polytech.dao.manager.PlanningManager;
 import com.polytech.dao.manager.SalleManager;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -85,7 +76,7 @@ public class PlanningGenerator {
         // recuperation des voeux
         //
         //Récupérations des voeux entreprises pour un évènement donné
-        Set<VoeuxEntreprise> dbVoeuxEntreprises = evt.getVoeuxEntreprises();
+        Set<VoeuxEntreprise> dbVoeuxEntreprises = evt.getEtudiantpresents();
         //Récupération des voeux étudiants pour un évènement donné
         Set<VoeuxEtudiant> dbVoeuxEtudiant = evt.getVoeuxEtudiants();
 
@@ -97,7 +88,7 @@ public class PlanningGenerator {
             } else {
                 etudiants = voeuxEntreprises.get(voeuxEntreprise.getEntreprise());
             }
-            etudiants.add(voeuxEntreprise.getEtudiant());
+            etudiants.add(voeuxEntreprise.getEtudiantevenement());
         }
 
         for (VoeuxEtudiant voeuxEtudiant : dbVoeuxEtudiant) {

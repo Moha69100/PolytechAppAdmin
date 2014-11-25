@@ -17,17 +17,5 @@
         <property name="capacite" type="java.lang.Integer">
             <column name="capacite" />
         </property>
-        <set name="entreprisepresences" table="appschema.entreprisepresence" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="salleid" />
-            </key>
-            <one-to-many class="com.polytech.dao.Entreprisepresence" />
-        </set>
-        <set name="evenementsalles" table="appschema.evenementsalle" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="evtid" not-null="true" />
-            </key>
-            <one-to-many class="com.polytech.dao.Evenementsalle" />
-        </set>
     </class>
 </hibernate-mapping>

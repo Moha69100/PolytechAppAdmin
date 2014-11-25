@@ -5,20 +5,16 @@
  */
 package com.polytech.dao;
 
-import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.databind.SerializerProvider;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-
-import org.springframework.stereotype.Component;
 
 /**
  * Used to serialize Java.util.Date, which is not a common JSON

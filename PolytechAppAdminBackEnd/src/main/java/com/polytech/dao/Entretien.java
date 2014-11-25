@@ -1,8 +1,8 @@
 package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Date;
 
 /**
@@ -13,9 +13,9 @@ public class Entretien implements java.io.Serializable {
     private int id;
 
     @JsonManagedReference("Ent_entretiens")
-    private Entreprise entreprise;
+    private Entreprisepresence entreprisepresence;
     @JsonManagedReference("Etu_entretiens")
-    private Etudiant etudiant;
+    private Etudiantevenement etudiantevenement;
 
     private Planning planning;
     private Salle salle;
@@ -31,10 +31,10 @@ public class Entretien implements java.io.Serializable {
         this.id = id;
     }
 
-    public Entretien(int id, Entreprise entreprise, Etudiant etudiant, Planning planning, Integer priorite, Date horaire, Salle salle, Date duree) {
+    public Entretien(int id, Entreprisepresence entreprisepresence, Etudiantevenement etudiantevenement, Planning planning, Integer priorite, Date horaire, Salle salle, Date duree) {
         this.id = id;
-        this.entreprise = entreprise;
-        this.etudiant = etudiant;
+        this.entreprisepresence = entreprisepresence;
+        this.etudiantevenement = etudiantevenement;
         this.planning = planning;
         this.priorite = priorite;
         this.horaire = horaire;
@@ -50,20 +50,20 @@ public class Entretien implements java.io.Serializable {
         this.id = id;
     }
 
-    public Entreprise getEntreprise() {
-        return this.entreprise;
+    public Entreprisepresence getEntreprisepresence() {
+        return this.entreprisepresence;
     }
 
-    public void setEntreprise(Entreprise entreprise) {
-        this.entreprise = entreprise;
+    public void setEntreprisepresence(Entreprisepresence entreprise) {
+        this.entreprisepresence = entreprise;
     }
 
-    public Etudiant getEtudiant() {
-        return this.etudiant;
+    public Etudiantevenement getEtudiantevenement() {
+        return this.etudiantevenement;
     }
 
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
+    public void setEtudiantevenement(Etudiantevenement etudiant) {
+        this.etudiantevenement = etudiant;
     }
 
     public Planning getPlanning() {

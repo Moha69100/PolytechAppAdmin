@@ -12,7 +12,7 @@ public class VoeuxEntreprise implements java.io.Serializable {
     @JsonManagedReference("Ent_voeuxEntreprises")
     private Entreprise entreprise;
     @JsonManagedReference("Etu_voeuxEntreprises")
-    private Etudiant etudiant;
+    private Etudiantevenement etudiantevenement;
     @JsonManagedReference("Evt_voeuxEntreprises")
     private Evenement evenement;
 
@@ -23,10 +23,10 @@ public class VoeuxEntreprise implements java.io.Serializable {
         this.id = id;
     }
 
-    public VoeuxEntreprise(int id, Entreprise entreprise, Etudiant etudiant, Evenement evenement) {
+    public VoeuxEntreprise(int id, Entreprise entreprise, Etudiantevenement etudiantevenement, Evenement evenement) {
         this.id = id;
         this.entreprise = entreprise;
-        this.etudiant = etudiant;
+        this.etudiantevenement = etudiantevenement;
         this.evenement = evenement;
     }
 
@@ -46,12 +46,12 @@ public class VoeuxEntreprise implements java.io.Serializable {
         this.entreprise = entreprise;
     }
 
-    public Etudiant getEtudiant() {
-        return this.etudiant;
+    public Etudiantevenement getEtudiantevenement() {
+        return this.etudiantevenement;
     }
 
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
+    public void setEtudiantevenement(Etudiantevenement etudiantevenement) {
+        this.etudiantevenement = etudiantevenement;
     }
 
     public Evenement getEvenement() {

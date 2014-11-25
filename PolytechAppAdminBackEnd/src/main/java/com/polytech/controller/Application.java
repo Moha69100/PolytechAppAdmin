@@ -1,15 +1,13 @@
 package com.polytech.controller;
 
-import com.polytech.dao.Evenement;
-import com.polytech.dao.manager.EvenementManager;
-import com.polytech.model.PlanningGenerator;
-import javax.servlet.MultipartConfigElement;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.embedded.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+
+import javax.servlet.MultipartConfigElement;
 
 @Configuration
 @ComponentScan
