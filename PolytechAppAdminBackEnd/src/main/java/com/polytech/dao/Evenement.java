@@ -24,14 +24,12 @@ public class Evenement implements java.io.Serializable {
     @JsonBackReference("Evt_evenementsalles")
     private Set evenementsalles = new HashSet(0);
 
-    private Set evenementsalles_1 = new HashSet(0);
-
     @JsonBackReference("Evt_entreprisepresences")
     private Set entreprisepresences = new HashSet(0);
     @JsonBackReference("Evt_plannings")
-    private Set plannings = new HashSet(0);
+    private Set<Planning> plannings = new HashSet(0);
     //@JsonManagedReference("Etu_evenements")
-    private Set etudiantpresents = new HashSet(0);
+    private Set<Etudiantevenement> etudiantpresents = new HashSet(0);
 
     public Evenement() {
     }
@@ -40,7 +38,7 @@ public class Evenement implements java.io.Serializable {
         this.id = id;
     }
 
-    public Evenement(int id, String typeevt, Date dateevt, String duree, Date heuredebut, Date heurefin, String description, Set evenementsalles, Set evenementsalles_1, Set entreprisepresences, Set plannings, Set voeuxEtudiants, Set etudiantpresents, Set voeuxEntreprises) {
+    public Evenement(int id, String typeevt, Date dateevt, String duree, Date heuredebut, Date heurefin, String description, Set evenementsalles, Set entreprisepresences, Set<Planning> plannings, Set etudiantpresents) {
         this.id = id;
         this.typeevt = typeevt;
         this.dateevt = dateevt;
@@ -49,7 +47,6 @@ public class Evenement implements java.io.Serializable {
         this.heurefin = heurefin;
         this.description = description;
         this.evenementsalles = evenementsalles;
-        this.evenementsalles_1 = evenementsalles_1;
         this.entreprisepresences = entreprisepresences;
         this.plannings = plannings;
         this.etudiantpresents = etudiantpresents;
@@ -123,14 +120,6 @@ public class Evenement implements java.io.Serializable {
         this.evenementsalles = evenementsalles;
     }
 
-    public Set getEvenementsalles_1() {
-        return this.evenementsalles_1;
-    }
-
-    public void setEvenementsalles_1(Set evenementsalles_1) {
-        this.evenementsalles_1 = evenementsalles_1;
-    }
-
     public Set getEntreprisepresences() {
         return this.entreprisepresences;
     }
@@ -139,19 +128,19 @@ public class Evenement implements java.io.Serializable {
         this.entreprisepresences = entreprisepresences;
     }
 
-    public Set getPlannings() {
+    public Set<Planning> getPlannings() {
         return this.plannings;
     }
 
-    public void setPlannings(Set plannings) {
+    public void setPlannings(Set<Planning> plannings) {
         this.plannings = plannings;
     }
 
-    public Set getEtudiants() {
+    public Set<Etudiantevenement> getEtudiantpresents() {
         return this.etudiantpresents;
     }
 
-    public void setEtudiants(Set etudiants) {
+    public void setEtudiantpresents(Set<Etudiantevenement> etudiants) {
         this.etudiantpresents = etudiants;
     }
 
