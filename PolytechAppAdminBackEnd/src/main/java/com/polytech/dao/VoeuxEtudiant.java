@@ -10,9 +10,9 @@ public class VoeuxEtudiant implements java.io.Serializable {
 
     private int id;
     @JsonManagedReference("Ent_voeuxEtudiants")
-    private Entreprise entreprise;
+    private Entreprisepresence entreprisepresence;
     @JsonManagedReference("Etu_voeuxEtudiants")
-    private Etudiant etudiant;
+    private Etudiantevenement etudiantevenement;
     @JsonManagedReference("Evt_voeuxEtudiants")
     private Evenement evenement;
     private Integer niveau;
@@ -24,10 +24,10 @@ public class VoeuxEtudiant implements java.io.Serializable {
         this.id = id;
     }
 
-    public VoeuxEtudiant(int id, Entreprise entreprise, Etudiant etudiant, Evenement evenement, Integer niveau) {
+    public VoeuxEtudiant(int id, Entreprisepresence entreprisepresence, Etudiantevenement etudiantevenement, Evenement evenement, Integer niveau) {
         this.id = id;
-        this.entreprise = entreprise;
-        this.etudiant = etudiant;
+        this.entreprisepresence = entreprisepresence;
+        this.etudiantevenement = etudiantevenement;
         this.evenement = evenement;
         this.niveau = niveau;
     }
@@ -40,20 +40,20 @@ public class VoeuxEtudiant implements java.io.Serializable {
         this.id = id;
     }
 
-    public Entreprise getEntreprise() {
-        return this.entreprise;
+    public Entreprisepresence getEntreprisepresence() {
+        return this.entreprisepresence;
     }
 
-    public void setEntreprise(Entreprise entreprise) {
-        this.entreprise = entreprise;
+    public void setEntreprisepresence(Entreprisepresence entreprisepresence) {
+        this.entreprisepresence = entreprisepresence;
     }
 
-    public Etudiant getEtudiant() {
-        return this.etudiant;
+    public Etudiantevenement getEtudiantevenement() {
+        return this.etudiantevenement;
     }
 
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
+    public void setEtudiantevenement(Etudiantevenement etudiantevenement) {
+        this.etudiantevenement = etudiantevenement;
     }
 
     public Evenement getEvenement() {

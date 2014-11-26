@@ -12,5 +12,12 @@
                 <column name="etuid" />
             </key-property>
         </composite-id>
+        <set name="voeuxEtudiant" lazy="true">
+            <key>
+                <column name="etuid" />
+                <column name="evtid" />
+            </key>
+            <one-to-many class="com.polytech.dao.VoeuxEtudiant" />
+        </set>
     </class>
 </hibernate-mapping>

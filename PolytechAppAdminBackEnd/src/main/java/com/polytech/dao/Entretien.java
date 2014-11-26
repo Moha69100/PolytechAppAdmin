@@ -1,6 +1,7 @@
 package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Date;
@@ -17,12 +18,15 @@ public class Entretien implements java.io.Serializable {
     @JsonManagedReference("Etu_entretiens")
     private Etudiantevenement etudiantevenement;
 
+    @JsonIgnore
     private Planning planning;
     private Salle salle;
 
     private Integer priorite;
     private Date horaire;
     private Date duree;
+
+    private Evenement evenement;
 
     public Entretien() {
     }
@@ -31,15 +35,16 @@ public class Entretien implements java.io.Serializable {
         this.id = id;
     }
 
-    public Entretien(int id, Entreprisepresence entreprisepresence, Etudiantevenement etudiantevenement, Planning planning, Integer priorite, Date horaire, Salle salle, Date duree) {
+    public Entretien(int id, Entreprisepresence entreprisepresence, Etudiantevenement etudiantevenement, Planning planning, Salle salle, Integer priorite, Date horaire, Date duree, Evenement evenement) {
         this.id = id;
         this.entreprisepresence = entreprisepresence;
         this.etudiantevenement = etudiantevenement;
         this.planning = planning;
+        this.salle = salle;
         this.priorite = priorite;
         this.horaire = horaire;
-        this.salle = salle;
         this.duree = duree;
+        this.evenement = evenement;
     }
 
     public int getId() {
@@ -106,4 +111,11 @@ public class Entretien implements java.io.Serializable {
         this.duree = duree;
     }
 
+    public Evenement getEvenement() {
+        return evenement;
+    }
+
+    public void setEvenement(Evenement evenement) {
+        this.evenement = evenement;
+    }
 }

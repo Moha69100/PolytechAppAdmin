@@ -31,6 +31,8 @@ public class Evenement implements java.io.Serializable {
     //@JsonManagedReference("Etu_evenements")
     private Set<Etudiantevenement> etudiantpresents = new HashSet(0);
 
+    private Evenement evenement;
+
     public Evenement() {
     }
 
@@ -38,7 +40,7 @@ public class Evenement implements java.io.Serializable {
         this.id = id;
     }
 
-    public Evenement(int id, String typeevt, Date dateevt, String duree, Date heuredebut, Date heurefin, String description, Set evenementsalles, Set entreprisepresences, Set<Planning> plannings, Set etudiantpresents) {
+    public Evenement(int id, String typeevt, Date dateevt, String duree, Date heuredebut, Date heurefin, String description, Set evenementsalles, Set entreprisepresences, Set<Planning> plannings, Set<Etudiantevenement> etudiantpresents, Evenement evenement) {
         this.id = id;
         this.typeevt = typeevt;
         this.dateevt = dateevt;
@@ -50,6 +52,7 @@ public class Evenement implements java.io.Serializable {
         this.entreprisepresences = entreprisepresences;
         this.plannings = plannings;
         this.etudiantpresents = etudiantpresents;
+        this.evenement = evenement;
     }
 
     public int getId() {
@@ -90,16 +93,18 @@ public class Evenement implements java.io.Serializable {
     public Date getHeuredebut() {
         return this.heuredebut;
     }
-   @JsonDeserialize(using = JsonDateDeserializer_hour.class)
+
+    @JsonDeserialize(using = JsonDateDeserializer_hour.class)
     public void setHeuredebut(Date heuredebut) {
         this.heuredebut = heuredebut;
     }
 
-       @JsonSerialize(using = JsonDateSerializer_hour.class)
+    @JsonSerialize(using = JsonDateSerializer_hour.class)
     public Date getHeurefin() {
         return this.heurefin;
     }
-  @JsonDeserialize(using = JsonDateDeserializer_hour.class)
+
+    @JsonDeserialize(using = JsonDateDeserializer_hour.class)
     public void setHeurefin(Date heurefin) {
         this.heurefin = heurefin;
     }
@@ -120,11 +125,11 @@ public class Evenement implements java.io.Serializable {
         this.evenementsalles = evenementsalles;
     }
 
-    public Set getEntreprisepresences() {
+    public Set<Entreprisepresence> getEntreprisepresences() {
         return this.entreprisepresences;
     }
 
-    public void setEntreprisepresences(Set entreprisepresences) {
+    public void setEntreprisepresences(Set<Entreprisepresence> entreprisepresences) {
         this.entreprisepresences = entreprisepresences;
     }
 
@@ -144,4 +149,11 @@ public class Evenement implements java.io.Serializable {
         this.etudiantpresents = etudiants;
     }
 
+    public Evenement getEvenement() {
+        return evenement;
+    }
+
+    public void setEvenement(Evenement evenement) {
+        this.evenement = evenement;
+    }
 }

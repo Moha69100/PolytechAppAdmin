@@ -18,14 +18,16 @@ public class Etudiantevenement implements java.io.Serializable {
     private EtudiantevenementId id;
     private Etudiant etuid;
     private Evenement evtid;
+    private Set voeuxEtudiant;
 
     public Etudiantevenement() {
     }
 
-    public Etudiantevenement(EtudiantevenementId id, Etudiant etuid, Evenement evtid) {
+    public Etudiantevenement(EtudiantevenementId id, Etudiant etuid, Evenement evtid, Set voeuxEtudiant) {
         this.id = id;
         this.etuid = etuid;
         this.evtid = evtid;
+        this.voeuxEtudiant = voeuxEtudiant;
     }
 
     public EtudiantevenementId getId() {
@@ -50,5 +52,13 @@ public class Etudiantevenement implements java.io.Serializable {
 
     public void setEvtid(Evenement evtid) {
         this.evtid = evtid;
+    }
+
+    public Set<VoeuxEtudiant> getVoeuxEtudiant() {
+        return voeuxEtudiant;
+    }
+
+    public void setVoeuxEtudiant(Set<VoeuxEtudiant> voeuxEtudiant) {
+        this.voeuxEtudiant = voeuxEtudiant;
     }
 }

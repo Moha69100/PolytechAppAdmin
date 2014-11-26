@@ -43,13 +43,13 @@
         <property name="nbrapprenti" type="java.lang.Integer">
             <column name="nbrapprenti" />
         </property>
-        <set name="offrealternances" table="appschema.offrealternance" inverse="false" lazy="false" fetch="select">
+        <set name="offrealternances" table="offrealternance" inverse="false" lazy="false" fetch="select">
             <key>
                 <column name="entid" />
             </key>
             <one-to-many class="com.polytech.dao.Offrealternance" />
         </set>
-        <set name="personnecontacts" table="appschema.personnecontact" inverse="false" lazy="false" fetch="select">
+        <set name="personnecontacts" table="personnecontact" inverse="false" lazy="false" fetch="select">
             <key>
                 <column name="entid" />
             </key>

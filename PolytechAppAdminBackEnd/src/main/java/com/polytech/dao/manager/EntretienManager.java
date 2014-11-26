@@ -51,7 +51,7 @@ public class EntretienManager {
         try {
             tx = session.beginTransaction();
 
-            Entretien ex = (Entretien) session.get(Entretien.class, etu_id);
+            Entretien ex = (Entretien) session.load(Entretien.class, etu_id);
             session.delete(ex);
 
             tx.commit();

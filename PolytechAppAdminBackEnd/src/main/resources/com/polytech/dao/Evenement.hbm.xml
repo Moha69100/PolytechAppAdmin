@@ -26,25 +26,25 @@
         <property name="description" type="string">
             <column name="description" length="512" />
         </property>
-        <set name="evenementsalles" table="appschema.evenementsalle" inverse="true" lazy="true" fetch="select">
+        <set name="evenementsalles" table="evenementsalle" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="evtid" not-null="true" />
             </key>
             <one-to-many class="com.polytech.dao.Evenementsalle" />
         </set>
-        <set name="entreprisepresences" table="appschema.entreprisepresence" inverse="true" lazy="true" fetch="select">
+        <set name="entreprisepresences" table="entreprisepresence" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="evtid" />
             </key>
             <one-to-many class="com.polytech.dao.Entreprisepresence" />
         </set>
-        <set name="plannings" table="appschema.planning" inverse="true" lazy="true" fetch="select">
+        <set name="plannings" table="planning" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="evtid" />
             </key>
             <one-to-many class="com.polytech.dao.Planning" />
         </set>
-        <set name="etudiantpresents" table="appschema.etudiantevenement" inverse="false" lazy="true" fetch="select">
+        <set name="etudiantpresents" table="etudiantevenement" inverse="false" lazy="true" fetch="select">
             <key>
                 <column name="evtid" not-null="true" />
             </key>
