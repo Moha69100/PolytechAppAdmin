@@ -4,8 +4,12 @@ package com.polytech.dao;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.polytech.json.deserialization.JsonDateDeserializer;
+import com.polytech.json.deserialization.JsonDateDeserializer_hour;
+import com.polytech.json.serialization.JsonDateSerializer;
+import com.polytech.json.serialization.JsonDateSerializer_hour;
+import org.joda.time.DateTime;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,10 +20,10 @@ public class Evenement implements java.io.Serializable {
 
     private int id;
     private String typeevt;
-    private Date dateevt;
+    private DateTime dateevt;
     private String duree;
-    private Date heuredebut;
-    private Date heurefin;
+    private DateTime heuredebut;
+    private DateTime heurefin;
     private String description;
     @JsonBackReference("Evt_evenementsalles")
     private Set evenementsalles = new HashSet(0);
@@ -40,7 +44,7 @@ public class Evenement implements java.io.Serializable {
         this.id = id;
     }
 
-    public Evenement(int id, String typeevt, Date dateevt, String duree, Date heuredebut, Date heurefin, String description, Set evenementsalles, Set entreprisepresences, Set<Planning> plannings, Set<Etudiantevenement> etudiantpresents, Evenement evenement) {
+    public Evenement(int id, String typeevt, DateTime dateevt, String duree, DateTime heuredebut, DateTime heurefin, String description, Set evenementsalles, Set entreprisepresences, Set<Planning> plannings, Set<Etudiantevenement> etudiantpresents, Evenement evenement) {
         this.id = id;
         this.typeevt = typeevt;
         this.dateevt = dateevt;
@@ -72,12 +76,12 @@ public class Evenement implements java.io.Serializable {
     }
 
     @JsonSerialize(using = JsonDateSerializer.class)
-    public Date getDateevt() {
+    public DateTime getDateevt() {
         return this.dateevt;
     }
 
     @JsonDeserialize(using = JsonDateDeserializer.class)
-    public void setDateevt(Date dateevt) {
+    public void setDateevt(DateTime dateevt) {
         this.dateevt = dateevt;
     }
 
@@ -90,22 +94,22 @@ public class Evenement implements java.io.Serializable {
     }
 
     @JsonSerialize(using = JsonDateSerializer_hour.class)
-    public Date getHeuredebut() {
+    public DateTime getHeuredebut() {
         return this.heuredebut;
     }
 
     @JsonDeserialize(using = JsonDateDeserializer_hour.class)
-    public void setHeuredebut(Date heuredebut) {
+    public void setHeuredebut(DateTime heuredebut) {
         this.heuredebut = heuredebut;
     }
 
     @JsonSerialize(using = JsonDateSerializer_hour.class)
-    public Date getHeurefin() {
+    public DateTime getHeurefin() {
         return this.heurefin;
     }
 
     @JsonDeserialize(using = JsonDateDeserializer_hour.class)
-    public void setHeurefin(Date heurefin) {
+    public void setHeurefin(DateTime heurefin) {
         this.heurefin = heurefin;
     }
 

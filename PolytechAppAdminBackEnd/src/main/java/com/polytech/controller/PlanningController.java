@@ -6,7 +6,7 @@ import com.polytech.dao.manager.EvenementManager;
 import com.polytech.dao.manager.PlanningManager;
 import com.polytech.exception.ExceptionHandler;
 import com.polytech.exception.SuccessHandler;
-import com.polytech.model.PlanningGenerator;
+//import com.polytech.model.PlanningGenerator;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,20 +32,21 @@ public class PlanningController {
     @RequestMapping(value = "/planningGenerate/{id}", method = RequestMethod.GET)
     public Object algoPlanning(@PathVariable String id) {
 
-        String error = "";
-        try {
-            EvenementManager evenementManager = new EvenementManager();
-//            Evenement evt = null;
-//            evt = evenementManager.getEvenementById(Integer.parseInt(id));
-            Evenement evt = evenementManager.getEvenementById(Integer.parseInt(id));
-            PlanningGenerator planning = new PlanningGenerator(evt, 30);
-            return SuccessHandler.handle(
-                    planning.generate()
-            );
-        } catch (Exception ex) {
-            error = ex.getMessage();
-            return ExceptionHandler.handle(ex);
-        }
+//        String error = "";
+//        try {
+//            EvenementManager evenementManager = new EvenementManager();
+////            Evenement evt = null;
+////            evt = evenementManager.getEvenementById(Integer.parseInt(id));
+//            Evenement evt = evenementManager.getEvenementById(Integer.parseInt(id));
+//            PlanningGenerator planning = new PlanningGenerator(evt, 30);
+//            return SuccessHandler.handle(
+//                    planning.generate()
+//            );
+//        } catch (Exception ex) {
+//            error = ex.getMessage();
+//            return ExceptionHandler.handle(ex);
+//        }
+        return null;
     }
 
 

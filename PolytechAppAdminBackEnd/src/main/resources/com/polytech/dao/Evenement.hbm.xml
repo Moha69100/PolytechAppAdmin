@@ -11,16 +11,16 @@
         <property name="typeevt" type="string">
             <column name="typeevt" />
         </property>
-        <property name="dateevt" type="date">
+        <property name="dateevt" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime">
             <column name="dateevt" length="13" />
         </property>
         <property name="duree" type="string">
             <column name="duree" />
         </property>
-        <property name="heuredebut" type="time">
+        <property name="heuredebut" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime">
             <column name="heuredebut" length="15" />
         </property>
-        <property name="heurefin" type="time">
+        <property name="heurefin" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime">
             <column name="heurefin" length="15" />
         </property>
         <property name="description" type="string">

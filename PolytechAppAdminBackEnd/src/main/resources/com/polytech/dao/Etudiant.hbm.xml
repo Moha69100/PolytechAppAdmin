@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 23 sept. 2014 09:06:03 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.polytech.dao.Etudiant" table="etudiantevenement" schema="appschema" optimistic-lock="version">
+    <class name="com.polytech.dao.Etudiant" table="etudiant" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
             <generator class="identity" />
@@ -20,7 +20,7 @@
         <property name="prenom" type="string">
             <column name="prenom" />
         </property>
-        <property name="datenaissance" type="date">
+        <property name="datenaissance" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime">
             <column name="datenaissance" length="13" />
         </property>
         <property name="adresse" type="string">

@@ -31,7 +31,7 @@
         <property name="presence" type="java.lang.Boolean">
             <column name="entreprisepresence" />
         </property>
-        <property name="dureeentretien" type="time">
+        <property name="dureeentretien" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime">
             <column name="dureeentretien" length="15" />
         </property>
     </class>

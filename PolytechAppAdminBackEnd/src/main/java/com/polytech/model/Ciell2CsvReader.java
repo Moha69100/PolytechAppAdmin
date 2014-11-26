@@ -10,6 +10,8 @@ import com.polytech.dao.manager.EtudiantManager;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.io.*;
 import java.text.ParseException;
@@ -82,7 +84,8 @@ public class Ciell2CsvReader {
         try
         {
             // Definition du formatter de la date dans le fichier
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
+
             
             // Définition du délimiter
             CSVFormat format = CSVFormat.RFC4180.withHeader().withDelimiter(';');
@@ -108,7 +111,7 @@ public class Ciell2CsvReader {
 
                         // Test de chaque colonne + affectation
                         if(this.isValid(record, "Civilité")) edt.setCivilite(record.get("Civilité"));
-                        if(this.isValid(record, "DATE NAISSANCE")) edt.setDatenaissance(formatter.parse(record.get("DATE NAISSANCE")));
+                        if(this.isValid(record, "DATE NAISSANCE")) edt.setDatenaissance(formatter.parseDateTime(record.get("DATE NAISSANCE")));
                         if(this.isValid(record, "ADRESSE")) edt.setAdresse(record.get("ADRESSE"));
                         if(this.isValid(record, "CODE POSTAL")) edt.setCp(record.get("CODE POSTAL"));
                         if(this.isValid(record, "VILLE")) edt.setVille(record.get("VILLE"));
