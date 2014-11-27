@@ -11,7 +11,7 @@
         <many-to-one name="evenement" class="com.polytech.dao.Evenement" lazy="false" fetch="select">
             <column name="evtid" />
         </many-to-one>
-        <set name="entretiens" table="entretien" inverse="true" lazy="false" fetch="select">
+        <set name="entretiens" table="entretien" inverse="false" lazy="false" fetch="select">
             <key>
                 <column name="planid" />
             </key>

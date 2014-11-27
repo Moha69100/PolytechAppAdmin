@@ -14,8 +14,5 @@
         <many-to-one name="etudiantevenement" class="com.polytech.dao.Etudiantevenement" lazy="false" fetch="select">
             <column name="etuid" />
         </many-to-one>
-        <many-to-one name="evenement" class="com.polytech.dao.Evenement" lazy="false" fetch="select">
-            <column name="evtid" />
-        </many-to-one>
     </class>
 </hibernate-mapping>

@@ -8,9 +8,6 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="evenement" class="com.polytech.dao.Evenement" fetch="select" lazy="proxy" >
-            <column name="evtid" />
-        </many-to-one>
         <many-to-one name="entreprisepresence" class="com.polytech.dao.Entreprisepresence" fetch="select" lazy="proxy" >
             <column name="entid" />
         </many-to-one>
@@ -20,13 +17,16 @@
         <property name="priorite" type="java.lang.Integer">
             <column name="priorite" />
         </property>
-        <property name="horaire" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime">
+        <property name="horaire" type="date">
             <column name="horaire" length="15" />
         </property>
         <many-to-one name="salle" class="com.polytech.dao.Salle" fetch="select" lazy="false">
             <column name="salleid" />
         </many-to-one>
-        <property name="duree" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime">
+        <many-to-one name="planning" class="com.polytech.dao.Planning" fetch="select" lazy="false">
+            <column name="planid" />
+        </many-to-one>
+        <property name="duree" type="time">
             <column name="duree" length="29" />
         </property>
     </class>

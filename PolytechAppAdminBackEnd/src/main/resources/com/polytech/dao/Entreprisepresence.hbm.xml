@@ -8,20 +8,23 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="entreprise" class="com.polytech.dao.Entreprise" lazy="proxy" fetch="select">
+
+        <many-to-one name="entreprise" class="com.polytech.dao.Entreprise" lazy="false" fetch="select">
             <column name="entid" />
         </many-to-one>
-        <many-to-one name="evenement" class="com.polytech.dao.Evenement" lazy="proxy" fetch="select">
+
+        <many-to-one name="evenement" class="com.polytech.dao.Evenement" lazy="false" >
             <column name="evtid" />
         </many-to-one>
-        <many-to-one name="personnecontact" class="com.polytech.dao.Personnecontact" lazy="proxy" fetch="select">
-            <column name="perid" />
-        </many-to-one>
-        <many-to-one name="salle" class="com.polytech.dao.Salle" lazy="proxy" fetch="select">
+
+        <!--<many-to-one name="personnecontact" class="com.polytech.dao.Personnecontact" lazy="proxy" fetch="select">-->
+            <!--<column name="perid" />-->
+        <!--</many-to-one>-->
+        <many-to-one name="salle" class="com.polytech.dao.Salle" lazy="false" fetch="select">
             <column name="salleid" />
         </many-to-one>
 
-        <set name="voeuxEntreprise" table="voeux_entreprise" lazy="true" >
+        <set name="voeuxEntreprise" table="voeux_entreprise" lazy="false" inverse="false" cascade="all-delete-orphan" >
             <key>
                 <column name="entid" />
             </key>
@@ -31,7 +34,7 @@
         <property name="presence" type="java.lang.Boolean">
             <column name="entreprisepresence" />
         </property>
-        <property name="dureeentretien" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime">
+        <property name="dureeentretien" type="time">
             <column name="dureeentretien" length="15" />
         </property>
     </class>

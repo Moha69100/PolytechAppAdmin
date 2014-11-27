@@ -123,15 +123,13 @@
                     <tbody>
                         <tr>
                             <th></th>
-                            <th>#</th>
                             <th>Raison sociale</th>
                             <th>Nombre d'apprentis</th>
                         </tr>
                         <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="a in event.entreprisepresences">
                             <td><input ng-model="checkEnterprise" type="checkbox" ng-change="prepareRemoveEnterprise($index)" id="enterprise{{a.id}}"></td>
-                            <td>{{a.id}}</td>
-                            <td>{{a.raison}}</td>
-                            <td>{{a.nbrapprenti}}</td>
+                            <td>{{a.entreprise.raison}}</td>
+                            <td>{{a.entreprise.nbrapprenti}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -166,11 +164,11 @@
                             <th>Prénom</th>
                             <th>Mail</th>
                         </tr>
-                        <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="s in event.etudiants | orderBy: nom">
+                        <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="s in event.etudiantpresents | orderBy: nom">
                             <td><input type="checkbox" ng-click="prepareRemoveStudent($index)" id="student{{s.id}}"></td>
-                            <td>{{s.nom}}</td>
-                            <td>{{s.prenom}}</td>
-                            <td>{{s.email}}</td>
+                            <td>{{s.etudiant.nom}}</td>
+                            <td>{{s.etudiant.prenom}}</td>
+                            <td>{{s.etudiant.email}}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -15,18 +15,15 @@ public class Entretien implements java.io.Serializable {
 
     private int id;
 
-    @JsonManagedReference("Ent_entretiens")
     private Entreprisepresence entreprisepresence;
-    @JsonManagedReference("Etu_entretiens")
     private Etudiantevenement etudiantevenement;
 
     private Salle salle;
+    private Planning planning;
 
     private Integer priorite;
-    private DateTime horaire;
-    private DateTime duree;
-
-    private Evenement evenement;
+    private Date horaire;
+    private Date duree;
 
     public Entretien() {
     }
@@ -35,15 +32,15 @@ public class Entretien implements java.io.Serializable {
         this.id = id;
     }
 
-    public Entretien(int id, Entreprisepresence entreprisepresence, Etudiantevenement etudiantevenement, Salle salle, Integer priorite, DateTime horaire, DateTime duree, Evenement evenement) {
+    public Entretien(int id, Entreprisepresence entreprisepresence, Etudiantevenement etudiantevenement, Salle salle, Planning planning, Integer priorite, Date horaire, Date duree) {
         this.id = id;
         this.entreprisepresence = entreprisepresence;
         this.etudiantevenement = etudiantevenement;
         this.salle = salle;
+        this.planning = planning;
         this.priorite = priorite;
         this.horaire = horaire;
         this.duree = duree;
-        this.evenement = evenement;
     }
 
     public int getId() {
@@ -78,11 +75,11 @@ public class Entretien implements java.io.Serializable {
         this.priorite = priorite;
     }
 
-    public DateTime getHoraire() {
+    public Date getHoraire() {
         return this.horaire;
     }
 
-    public void setHoraire(DateTime horaire) {
+    public void setHoraire(Date horaire) {
         this.horaire = horaire;
     }
 
@@ -94,19 +91,20 @@ public class Entretien implements java.io.Serializable {
         this.salle = salle;
     }
 
-    public DateTime getDuree() {
+    public Date getDuree() {
         return this.duree;
     }
 
-    public void setDuree(DateTime duree) {
+    public void setDuree(Date duree) {
         this.duree = duree;
     }
 
-    public Evenement getEvenement() {
-        return evenement;
+    public Planning getPlanning() {
+        return planning;
     }
 
-    public void setEvenement(Evenement evenement) {
-        this.evenement = evenement;
+    public void setPlanning(Planning planning) {
+        this.planning = planning;
     }
+
 }

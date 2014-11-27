@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 23 sept. 2014 09:06:03 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.polytech.dao.Evenement" table="evenement" schema="appschema" optimistic-lock="version">
+    <class name="com.polytech.dao.Evenement" table="evenement" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
             <generator class="identity" />
@@ -11,46 +11,38 @@
         <property name="typeevt" type="string">
             <column name="typeevt" />
         </property>
-        <property name="dateevt" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime">
+        <property name="dateevt" >
             <column name="dateevt" length="13" />
         </property>
         <property name="duree" type="string">
             <column name="duree" />
         </property>
-        <property name="heuredebut" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime">
+        <property name="heuredebut" type="time">
             <column name="heuredebut" length="15" />
         </property>
-        <property name="heurefin" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime">
+        <property name="heurefin" type="time">
             <column name="heurefin" length="15" />
         </property>
         <property name="description" type="string">
             <column name="description" length="512" />
         </property>
-        <set name="evenementsalles" table="evenementsalle" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="evtid" not-null="true" />
-            </key>
-            <one-to-many class="com.polytech.dao.Evenementsalle" />
-        </set>
-        <set name="entreprisepresences" table="entreprisepresence" inverse="true" lazy="true" fetch="select">
+        <set name="entreprisepresences" table="entreprisepresence" inverse="true" lazy="false" fetch="select" cascade="all-delete-orphan">
             <key>
                 <column name="evtid" />
             </key>
             <one-to-many class="com.polytech.dao.Entreprisepresence" />
         </set>
-        <set name="plannings" table="planning" inverse="true" lazy="true" fetch="select">
+        <set name="plannings" table="planning" inverse="false" lazy="false" fetch="select">
             <key>
                 <column name="evtid" />
             </key>
             <one-to-many class="com.polytech.dao.Planning" />
         </set>
-        <set name="etudiantpresents" table="etudiantevenement" inverse="false" lazy="true" fetch="select">
+        <set name="etudiantpresents" table="etudiantevenement" inverse="false" lazy="false" fetch="select" cascade="all-delete-orphan">
             <key>
-                <column name="evtid" not-null="true" />
+                <column name="evtid" />
             </key>
-            <many-to-many entity-name="com.polytech.dao.Etudiantevenement">
-                <column name="id" not-null="true" />
-            </many-to-many>
+            <one-to-many class="com.polytech.dao.Etudiantevenement" />
         </set>
     </class>
 </hibernate-mapping>

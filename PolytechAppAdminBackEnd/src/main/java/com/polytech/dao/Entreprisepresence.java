@@ -1,10 +1,18 @@
 package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.polytech.json.deserialization.JsonDateDeserializer_hour;
+import com.polytech.json.deserialization.JsonHourDeserializer;
+import com.polytech.json.serialization.JsonDateSerializer_hour;
+import com.polytech.json.serialization.JsonHourSerializer;
 import org.joda.time.DateTime;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,17 +25,13 @@ public class Entreprisepresence implements java.io.Serializable {
 
     private int id;
 
-    @JsonIgnore
-    private int entid;
     private Entreprise entreprise;
 
     @JsonIgnore
-    private int evtid;
     private Evenement evenement;
-    private Personnecontact personnecontact;
     private Salle salle;
     private Boolean presence;
-    private DateTime dureeentretien;
+    private Date dureeentretien;
 
     private Set voeuxEntreprise = new HashSet();
 
@@ -39,13 +43,10 @@ public class Entreprisepresence implements java.io.Serializable {
         this.id = id;
     }
 
-    public Entreprisepresence(int id, int entid, Entreprise entreprise, int evtid, Evenement evenement, Personnecontact personnecontact, Salle salle, Boolean presence, DateTime dureeentretien, Set voeuxEntreprise) {
+    public Entreprisepresence(int id, Entreprise entreprise, Evenement evenement, Salle salle, Boolean presence, Date dureeentretien, Set voeuxEntreprise) {
         this.id = id;
-        this.entid = entid;
         this.entreprise = entreprise;
-        this.evtid = evtid;
         this.evenement = evenement;
-        this.personnecontact = personnecontact;
         this.salle = salle;
         this.presence = presence;
         this.dureeentretien = dureeentretien;
@@ -68,38 +69,6 @@ public class Entreprisepresence implements java.io.Serializable {
         this.entreprise = entreprise;
     }
 
-    public int getEntid() {
-        return entid;
-    }
-
-    public void setEntid(int entid) {
-        this.entid = entid;
-    }
-
-    public Evenement getEvenement() {
-        return this.evenement;
-    }
-
-    public int getEvtid() {
-        return evtid;
-    }
-
-    public void setEvtid(int evtid) {
-        this.evtid = evtid;
-    }
-
-    public void setEvenement(Evenement evenement) {
-        this.evenement = evenement;
-    }
-
-    public Personnecontact getPersonnecontact() {
-        return this.personnecontact;
-    }
-
-    public void setPersonnecontact(Personnecontact personnecontact) {
-        this.personnecontact = personnecontact;
-    }
-
     public Salle getSalle() {
         return this.salle;
     }
@@ -116,11 +85,13 @@ public class Entreprisepresence implements java.io.Serializable {
         this.presence = entreprisepresence;
     }
 
-    public DateTime getDureeentretien() {
+    @JsonSerialize(using = JsonDateSerializer_hour.class)
+    public Date getDureeentretien() {
         return this.dureeentretien;
     }
 
-    public void setDureeentretien(DateTime dureeentretien) {
+    @JsonDeserialize(using = JsonDateDeserializer_hour.class)
+    public void setDureeentretien(Date dureeentretien) {
         this.dureeentretien = dureeentretien;
     }
 
@@ -132,10 +103,18 @@ public class Entreprisepresence implements java.io.Serializable {
         this.voeuxEntreprise = voeuxEntreprise;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        Entreprisepresence e = (Entreprisepresence) obj;
-        return this.getId() == e.getId();
+    public Evenement getEvenement() {
+        return evenement;
     }
+
+    public void setEvenement(Evenement evenement) {
+        this.evenement = evenement;
+    }
+
+//    @Override
+//    public boolean equals(Object obj) {
+//        Entreprisepresence e = (Entreprisepresence) obj;
+//        return this.getId() == e.getId();
+//    }
 
 }

@@ -2,6 +2,7 @@ package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.polytech.json.deserialization.JsonDateDeserializer;
@@ -14,6 +15,7 @@ import com.polytech.json.serialization.JsonJodaDateSerializer;
 import com.polytech.json.serialization.JsonJodaHourSerializer;
 import org.joda.time.DateTime;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,18 +26,15 @@ public class Evenement implements java.io.Serializable {
 
     private int id;
     private String typeevt;
-    private DateTime dateevt;
+    private Date dateevt;
     private String duree;
-    private DateTime heuredebut;
-    private DateTime heurefin;
+    private Date heuredebut;
+    private Date heurefin;
     private String description;
-    private Set evenementsalles = new HashSet(0);
 
     private Set entreprisepresences = new HashSet(0);
     private Set<Planning> plannings = new HashSet(0);
     private Set<Etudiantevenement> etudiantpresents = new HashSet(0);
-
-    private Evenement evenement;
 
     public Evenement() {
     }
@@ -44,7 +43,7 @@ public class Evenement implements java.io.Serializable {
         this.id = id;
     }
 
-    public Evenement(int id, String typeevt, DateTime dateevt, String duree, DateTime heuredebut, DateTime heurefin, String description, Set evenementsalles, Set entreprisepresences, Set<Planning> plannings, Set<Etudiantevenement> etudiantpresents, Evenement evenement) {
+    public Evenement(int id, String typeevt, Date dateevt, String duree, Date heuredebut, Date heurefin, String description, Set entreprisepresences, Set<Planning> plannings, Set<Etudiantevenement> etudiantpresents) {
         this.id = id;
         this.typeevt = typeevt;
         this.dateevt = dateevt;
@@ -52,11 +51,9 @@ public class Evenement implements java.io.Serializable {
         this.heuredebut = heuredebut;
         this.heurefin = heurefin;
         this.description = description;
-        this.evenementsalles = evenementsalles;
         this.entreprisepresences = entreprisepresences;
         this.plannings = plannings;
         this.etudiantpresents = etudiantpresents;
-        this.evenement = evenement;
     }
 
     public int getId() {
@@ -75,13 +72,13 @@ public class Evenement implements java.io.Serializable {
         this.typeevt = typeevt;
     }
 
-    @JsonSerialize(using = JsonJodaDateSerializer.class)
-    public DateTime getDateevt() {
+    @JsonSerialize(using = JsonDateSerializer.class)
+    public Date getDateevt() {
         return this.dateevt;
     }
 
-    @JsonDeserialize(using = JsonJodaDateDeserializer.class)
-    public void setDateevt(DateTime dateevt) {
+    @JsonDeserialize(using = JsonDateDeserializer.class)
+    public void setDateevt(Date dateevt) {
         this.dateevt = dateevt;
     }
 
@@ -93,23 +90,23 @@ public class Evenement implements java.io.Serializable {
         this.duree = duree;
     }
 
-    @JsonSerialize(using = JsonJodaHourSerializer.class)
-    public DateTime getHeuredebut() {
+    @JsonSerialize(using = JsonDateSerializer_hour.class)
+    public Date getHeuredebut() {
         return this.heuredebut;
     }
 
-    @JsonDeserialize(using = JsonJodaHourDeserializer.class)
-    public void setHeuredebut(DateTime heuredebut) {
+    @JsonDeserialize(using = JsonDateDeserializer_hour.class)
+    public void setHeuredebut(Date heuredebut) {
         this.heuredebut = heuredebut;
     }
 
-    @JsonSerialize(using = JsonJodaHourSerializer.class)
-    public DateTime getHeurefin() {
+    @JsonSerialize(using = JsonDateSerializer_hour.class)
+    public Date getHeurefin() {
         return this.heurefin;
     }
 
-    @JsonDeserialize(using = JsonJodaHourDeserializer.class)
-    public void setHeurefin(DateTime heurefin) {
+    @JsonDeserialize(using = JsonDateDeserializer_hour.class)
+    public void setHeurefin(Date heurefin) {
         this.heurefin = heurefin;
     }
 
@@ -119,14 +116,6 @@ public class Evenement implements java.io.Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Set getEvenementsalles() {
-        return this.evenementsalles;
-    }
-
-    public void setEvenementsalles(Set evenementsalles) {
-        this.evenementsalles = evenementsalles;
     }
 
     public Set<Entreprisepresence> getEntreprisepresences() {
@@ -153,11 +142,4 @@ public class Evenement implements java.io.Serializable {
         this.etudiantpresents = etudiants;
     }
 
-    public Evenement getEvenement() {
-        return evenement;
-    }
-
-    public void setEvenement(Evenement evenement) {
-        this.evenement = evenement;
-    }
 }

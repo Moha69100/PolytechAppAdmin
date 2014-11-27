@@ -1,6 +1,7 @@
 package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -10,9 +11,10 @@ public class VoeuxEntreprise implements java.io.Serializable {
 
     private int id;
 
+    @JsonIgnore
     private Entreprisepresence entreprisepresence;
+
     private Etudiantevenement etudiantevenement;
-    private Evenement evenement;
 
     public VoeuxEntreprise() {
     }
@@ -21,11 +23,10 @@ public class VoeuxEntreprise implements java.io.Serializable {
         this.id = id;
     }
 
-    public VoeuxEntreprise(int id, Entreprisepresence entreprisepresence, Etudiantevenement etudiantevenement, Evenement evenement) {
+    public VoeuxEntreprise(int id, Entreprisepresence entreprisepresence, Etudiantevenement etudiantevenement) {
         this.id = id;
         this.entreprisepresence = entreprisepresence;
         this.etudiantevenement = etudiantevenement;
-        this.evenement = evenement;
     }
 
     public int getId() {
@@ -50,14 +51,6 @@ public class VoeuxEntreprise implements java.io.Serializable {
 
     public void setEtudiantevenement(Etudiantevenement etudiantevenement) {
         this.etudiantevenement = etudiantevenement;
-    }
-
-    public Evenement getEvenement() {
-        return this.evenement;
-    }
-
-    public void setEvenement(Evenement evenement) {
-        this.evenement = evenement;
     }
 
 }
