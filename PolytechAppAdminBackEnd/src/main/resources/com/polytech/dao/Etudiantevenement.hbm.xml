@@ -10,8 +10,7 @@
         </id>
         <set name="voeuxEtudiant" lazy="true">
             <key>
-                <column name="etuid" />
-                <column name="evtid" />
+                <column name="id" />
             </key>
             <one-to-many class="com.polytech.dao.VoeuxEtudiant" />
         </set>
