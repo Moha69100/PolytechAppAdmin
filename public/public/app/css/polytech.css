@@ -9,7 +9,7 @@ body{
     width: 99%;
 }*/
 
-#poly-menu{
+#poly-menu,.right-side{
     transition: 0.7s;
 
 }

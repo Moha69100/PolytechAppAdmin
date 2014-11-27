@@ -1,4 +1,4 @@
-<div class="modal-header"><span>test</span></div>
+<div class="modal-header"><span>Importer un fichier</span></div>
 <div class="modal-body">
     <form name="uploadSimpleForm" enctype="multipart/form-data" style="margin-bottom: 0" novalidate>
         <div class="row">
@@ -16,7 +16,7 @@
 </div>
 <div class="modal-footer">
     <button  type="button" class="btn btn-primary btn-s btn-controlers"
-             data-ng-click="valider()">
+            data-ng-show="selectedFile" data-ng-click="valider()">
         <span class="glyphicon glyphicon-ok"></span>
         Valider    </button>
     <button class="btn btn-warning" data-ng-click="cancel()">

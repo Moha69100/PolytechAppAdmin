@@ -23,35 +23,39 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 public class FileController {
 
-    @RequestMapping(value = "/upload/student/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/upload/student/files/{id}", method = RequestMethod.GET)
     public Object getFiles(@PathVariable String id) {
         try {
-            File CVfolder = new File("C:/Temp/test/student_" + id + "/cv");
-            String pathCV = "C:/Temp/test/student_" + id + "/cv";
-            File Motivfolder = new File("C:/Temp/test/student_" + id + "/motiv");
+            String pathCV = "C:/Temp/test/student_" + id + "/CV";
             String pathMotiv = "C:/Temp/test/student_" + id + "/motiv";
-            File[] listOfFiles = CVfolder.listFiles();
+            File CVfolder = new File(pathCV);
+            File Motivfolder = new File(pathMotiv);
             ArrayList<Object> res = new ArrayList();
-            File[] listOfFilesMotiv = Motivfolder.listFiles();
+            if (CVfolder.isDirectory()) {
+                File[] listOfFiles = CVfolder.listFiles();
+                for (File listOfFile : listOfFiles) {
+                    if (listOfFile.isFile()) {
+                        ArrayList<Object> res2 = new ArrayList();
+                        res2.add(listOfFile.getAbsolutePath());
+                        res2.add("CV");
+                        res2.add(pathCV);
+                        res.add(res2);
+                    }
+                }
+            }
+            if (Motivfolder.isDirectory()) {
+                File[] listOfFilesMotiv = Motivfolder.listFiles();
+                for (File listOfFile : listOfFilesMotiv) {
+                    if (listOfFile.isFile()) {
+                        ArrayList<Object> res2 = new ArrayList();
+                        res2.add(listOfFile.getAbsolutePath());
+                        res2.add("motiv");
+                        res2.add(pathMotiv);
+                        res.add(res2);
+                    }
+                }
+            }
 
-            for (File listOfFile : listOfFiles) {
-                if (listOfFile.isFile()) {
-                    ArrayList<Object> res2 = new ArrayList();
-                    res2.add(listOfFile.getAbsolutePath());
-                    res2.add("CV");
-                    res2.add(pathCV);
-                    res.add(res2);
-                }
-            }
-            for (File listOfFile : listOfFilesMotiv) {
-                if (listOfFile.isFile()) {
-                    ArrayList<Object> res2 = new ArrayList();
-                    res2.add(listOfFile.getAbsolutePath());
-                    res2.add("motiv");
-                    res2.add(pathMotiv);
-                    res.add(res2);
-                }
-            }
             return res;
         } catch (Exception ex) {
             return ExceptionHandler.handle(ex);
@@ -59,11 +63,19 @@ public class FileController {
 
     }
 
-    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public Object upload(@RequestParam("file") MultipartFile file) {
+    @RequestMapping(value = "/upload/student/{id}/type/{type}", method = RequestMethod.POST)
+    public Object upload(@RequestParam("file") MultipartFile file, @PathVariable String id, @PathVariable String type) {
         try {
             byte[] bytes = file.getBytes();
-            File fileUpload = new File("C:/Temp/test/student_1/" + file.getOriginalFilename());
+            File path1 = new File("C:/Temp/test/student_" + id);
+            if (!path1.isDirectory()) {
+                path1.mkdir();
+            }
+            File path2 = new File("C:/Temp/test/student_" + id + "/" + type);
+            if (!path2.isDirectory()) {
+                path2.mkdir();
+            }
+            File fileUpload = new File(path2 + "/" + file.getOriginalFilename());
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fileUpload));
             stream.write(bytes);
             stream.close();
@@ -76,4 +88,20 @@ public class FileController {
         }
     }
 
+    @RequestMapping(value = "/upload/remove/{id}/type/{type}", method = RequestMethod.POST)
+    public Object upload(@PathVariable String id, @PathVariable String type) {
+        File path = new File("C:/Temp/test/student_" + id + "/" + type);
+        if (path.isDirectory()) {
+            File[] listOfFiles = path.listFiles();
+            for (File listOfFile : listOfFiles) {
+                if (listOfFile.isFile()) {
+                    listOfFile.delete();
+                }
+            }
+            path.delete();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

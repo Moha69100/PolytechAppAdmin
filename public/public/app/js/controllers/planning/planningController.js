@@ -10,19 +10,19 @@ app.controller('planningController', ['$rootScope', '$scope', 'meetingResource',
 				'id_event': $scope.eventId
 			}, function(data) {
 				var preData = [],
-					salles = [];
+					entreprises = [];
 				console.log(data);
 				// On parcours les infos ressources angular
 				angular.forEach(data, function(result) {
 					// On crée une liste des salles
-					var search = _.find(salles, function(item) {
-						return item.id == result.salle.id;
+					var search = _.find(entreprises, function(item) {
+						return item.id == result.entreprise.id;
 					});
 					if (!search) {
-						salles.push(result.salle);
+						entreprises.push(result.entreprise);
 					}
 					// On ajoute salleId sur les objets meeting (facilite le groupBy)
-					result.salleId = result.salle.id;
+					result.entrepriseId = result.entreprise.id;
 					// Calcul des dates debut / fin
 					var horaireStart = result.horaire.split(':'),
 						horaireEnd = result.duree.split(':');
@@ -46,10 +46,10 @@ app.controller('planningController', ['$rootScope', '$scope', 'meetingResource',
 					preData.push(result);
 				});
 				// On applique le groupBy
-				$scope.salles = salles;
-				$scope.meetings = _.groupBy(preData, 'salleId');
+				$scope.entreprises = entreprises;
+				$scope.meetings = _.groupBy(preData, 'entrepriseId');
 				console.log($scope.meetings);
-				console.log($scope.salles);
+				console.log($scope.entreprises);
 			});
 		};
 

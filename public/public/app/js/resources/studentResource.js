@@ -10,14 +10,14 @@ app.factory('studentResource', ['$resource', function ($resource) {
         var GET_BY_ID = BASE_URL + '/etudiant/:id';
         var REMOVE_BY_ID = BASE_URL + '/etudiant/:id';
         var UPDATE = BASE_URL + '/etudiant';
+        var REMOVE_FILE = BASE_URL + '/upload/remove';
 
         var actions = {
-            listStudents:
-                    {
-                        method: 'GET',
-                        isArray: true,
-                        url: FIND_ALL
-                    },
+            listStudents: {
+                method: 'GET',
+                isArray: true,
+                url: FIND_ALL
+            },
             getStudent: {
                 method: 'GET',
                 isArray: false,

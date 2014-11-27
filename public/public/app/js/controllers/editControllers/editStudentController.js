@@ -1,14 +1,14 @@
-app.controller("editStudentController", ['$scope', 'studentResource', '$routeParams', '$location', "FileUploader", "$http", "$modal", "AuthenticationData",
-    function ($scope, studentResource, $routeParams, $location, FileUploader, $http, $modal, AuthenticationData) {
+app.controller("editStudentController", ['$scope', 'studentResource', '$routeParams', '$location', "FileUploader", "$http", "$modal", "AuthenticationData", "$rootScope",
+    function ($scope, studentResource, $routeParams, $location, FileUploader, $http, $modal, AuthenticationData, $rootScope) {
         $scope.uploader = new FileUploader();
         $scope.filePresent = [];
         $scope.fileType = [];
         $scope.fileList = [];
-        $scope.uploader.url = "http://localhost:8090/upload";
-        // if (AuthenticationData.isAuthenticated()) {
-        $scope.uploader.headers.api_key = AuthenticationData.getApiKey();
+        $scope.uploader.url = "http://localhost:8090/upload/student/" + $routeParams.student;
         $scope.uploader.withCredentials = true;
-        //}
+        if (AuthenticationData.isAuthenticated()) {
+            $scope.uploader.headers.api_key = AuthenticationData.getApiKey();
+        }
 
         var init = function () {
             $scope.studentId = $routeParams.student;
@@ -16,32 +16,30 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
                 $scope.student = data;
                 initFileList();
             });
-
         };
         init();
-
         // 'feedback' serveur
         $scope.feedback = null;
-
         $scope.bacList = [
             {"name": "S"},
             {"name": "L"},
             {"name": "ES"}
         ];
-
         $scope.statCandidature = [
             {"name": "Acceptée"},
             {"name": "En cours"},
             {"name": "Rejetée"}
         ];
-
         $scope.save = function (student) {
             var postData = $scope.student;
             studentResource.updateStudent({}, postData, function () {
                 $scope.uploader.uploadAll();
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Fiche étudiant sauvegardée");
             });
         };
-
+        $scope.uploader.onBeforeUploadItem = function (item) {
+            item.url = "http://localhost:8090/upload/student/" + $routeParams.student + "/type/" + item.fileType;
+        };
         $scope.removeStudent = function (student) {
             studentResource.removeStudent({"id": $scope.studentId}, function (data) {
                 $location.path('/admin-student');
@@ -53,13 +51,18 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
         $scope.cancel = function () {
             delete ($scope.student);
             delete ($scope.studentId);
+            $location.url($location.path());
             $location.url('/admin-student');
         };
-
         var initFileList = function () {
+            delete ($scope.filePresent);
+            $scope.fileList = [];
+            $scope.filePresent = [];
+            $scope.uploader.clearQueue();
+            $scope.uploader.url = "http://localhost:8090/upload/student/" + $routeParams.student;
             $http({
                 method: "GET",
-                url: "http://localhost:8090/upload/student/1"}// + $routeParams.student}
+                url: "http://localhost:8090/upload/student/files/" + $routeParams.student}
             ).success(function (data) {
                 angular.forEach(data, function (file, key) {
                     $scope.fileList.push({
@@ -69,33 +72,18 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
                     $scope.filePresent[file[1]] = true;
                 });
             });
-            /*    $scope.fileList.push({
-             name: "CV",
-             type: "CV"
-             }, {
-             name: "lettreMotiv",
-             type: "lettreMotiv"
-             });
-             $scope.filePresent["CV"] = true;
-             $scope.filePresent["lettreMotiv"] = true;*/
         };
-
         $scope.removeFileFromQueue = function (item) {
             item.remove();
             $scope.filePresent[item.fileType] = false;
         };
-
         $scope.upload = function () {
             $scope.uploader.uploadAll();
         };
-
         $scope.uploader.onCompleteAll = function () {
-            delete ($scope.filePresent);
-            $scope.filePresent = [];
-            $scope.uploader.clearQueue();
-            $scope.uploader.url = "http://localhost:8090/upload";
-        };
 
+            initFileList();
+        };
         $scope.openUploadPopup = function (fileTypeHtml) {
             $scope.fileType = fileTypeHtml;
             var modalInstance = $modal.open({
@@ -111,7 +99,6 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
                     }
                 }
             });
-
             modalInstance.result.then(function (result) {
                 $scope.filePresent[$scope.fileType] = true;
             }, function (result) {
@@ -121,6 +108,15 @@ app.controller("editStudentController", ['$scope', 'studentResource', '$routePar
                 }
             });
         };
-    }]);
+        $scope.removeFileFromServer = function (item) {
 
+            $http({
+                method: "POST",
+                url: "http://localhost:8090/upload/remove/" + $routeParams.student + "/type/" + item.type}
+            ).success(function (data) {
+                initFileList();
+                $rootScope.$broadcast(Events.Modale.OPEN_DIALOG_CONFIRM, "Fichier(s) supprimé(s)");
+            });
+        };
+    }]);
 
