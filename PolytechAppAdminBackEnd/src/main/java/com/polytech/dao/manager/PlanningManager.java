@@ -2,7 +2,6 @@ package com.polytech.dao.manager;
 
 import com.polytech.dao.Entretien;
 import com.polytech.dao.Planning;
-import com.sun.media.jfxmedia.logging.Logger;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -10,6 +9,8 @@ import org.hibernate.Transaction;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,6 +18,9 @@ import java.util.List;
  */
 public class PlanningManager {
 
+    
+    private final static Logger logger = java.util.logging.Logger.getLogger(PlanningManager.class.getSimpleName());
+    
     public List<Planning> getAllPlanning() throws Exception {
 
         Session session = SessionManager.openSession();
@@ -153,8 +157,7 @@ public class PlanningManager {
             return true;
         } catch (Exception e ) {
             tx.rollback();
-
-            Logger.logMsg(Logger.ERROR, e.getMessage());
+            logger.log(Level.ALL, e.getMessage());
             return false;
         } finally {
             session.close();
