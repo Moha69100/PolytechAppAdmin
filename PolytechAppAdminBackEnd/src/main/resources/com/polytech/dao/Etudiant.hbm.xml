@@ -20,8 +20,8 @@
         <property name="prenom" type="string">
             <column name="prenom" />
         </property>
-        <property name="datenaissance" >
-            <column name="datenaissance" length="13" />
+        <property name="datenaissance" type="date">
+            <column name="datenaissance" length="13"/>
         </property>
         <property name="adresse" type="string">
             <column name="adresse" />

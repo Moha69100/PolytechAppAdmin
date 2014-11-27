@@ -10,8 +10,6 @@
     <property name="hibernate.connection.password"></property>
     <property name="hibernate.show_sql">true</property>
 
-    <!-- Joda / Jadira-->
-    <property name="jadira.usertype.autoRegisterUserTypes">true</property>
     <!--
         If you need to regenerate the database you need to use THIS VALUE PROPERTY FOR NETBEANS >= 7.4 VERSION and HIBERNATE >= 3.
         FOR cfg.reveng.xml 

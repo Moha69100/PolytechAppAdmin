@@ -92,7 +92,7 @@ public class Ciell2CsvReader {
         logger.log(Level.FINER, "Starting parsing...");
         try {
             // Definition du formatter de la date dans le fichier
-            DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
             // Définition du délimiter
             CSVFormat format = CSVFormat.RFC4180.withHeader().withDelimiter(';');
@@ -122,7 +122,7 @@ public class Ciell2CsvReader {
                         edt.setCivilite(record.get("Civilité"));
                     }
                     if (this.isValid(record, "DATE NAISSANCE")) {
-                        edt.setDatenaissance(formatter.parseDateTime(record.get("DATE NAISSANCE")));
+                        edt.setDatenaissance(formatter.parse(record.get("DATE NAISSANCE")));
                     }
                     if (this.isValid(record, "ADRESSE")) {
                         edt.setAdresse(record.get("ADRESSE"));
