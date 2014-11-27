@@ -4,7 +4,9 @@ package com.polytech.dao;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.polytech.json.deserialization.JsonDateDeserializer;
+import com.polytech.json.deserialization.JsonJodaDateDeserializer;
 import com.polytech.json.serialization.JsonDateSerializer;
+import com.polytech.json.serialization.JsonJodaDateSerializer;
 import org.joda.time.DateTime;
 
 /**
@@ -124,12 +126,12 @@ public class Etudiant implements java.io.Serializable {
         this.prenom = prenom;
     }
 
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonSerialize(using = JsonJodaDateSerializer.class)
     public DateTime getDatenaissance() {
         return this.datenaissance;
     }
 
-    @JsonDeserialize(using= JsonDateDeserializer.class)
+    @JsonDeserialize(using= JsonJodaDateDeserializer.class)
     public void setDatenaissance(DateTime datenaissance) {
         this.datenaissance = datenaissance;
     }
