@@ -57,9 +57,9 @@
                         </div>
                         <div class="modal-body">
                             	<div class="appAdminPlanning">
-                                    <div class="room" data-ng-repeat="salle in salles">
-                                            <div class="room-header">{{salle.libelle}}</div>
-                                            <div class="meeting"  data-ng-repeat="meeting in meetings[salle.id]">
+                                    <div class="room" data-ng-repeat="entreprise in entreprises">
+                                            <div class="room-header">{{entreprise.raison}}</div>
+                                            <div class="meeting"  data-ng-repeat="meeting in meetings[entreprise.id]">
 
                                                     <p class="meeting-meta-student">
                                                             <span class="meeting-label">Étudiant</span>
