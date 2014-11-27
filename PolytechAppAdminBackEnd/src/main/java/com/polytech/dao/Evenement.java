@@ -6,8 +6,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.polytech.json.deserialization.JsonDateDeserializer;
 import com.polytech.json.deserialization.JsonDateDeserializer_hour;
+import com.polytech.json.deserialization.JsonJodaDateDeserializer;
+import com.polytech.json.deserialization.JsonJodaHourDeserializer;
 import com.polytech.json.serialization.JsonDateSerializer;
 import com.polytech.json.serialization.JsonDateSerializer_hour;
+import com.polytech.json.serialization.JsonJodaDateSerializer;
+import com.polytech.json.serialization.JsonJodaHourSerializer;
 import org.joda.time.DateTime;
 
 import java.util.HashSet;
@@ -25,14 +29,10 @@ public class Evenement implements java.io.Serializable {
     private DateTime heuredebut;
     private DateTime heurefin;
     private String description;
-    @JsonBackReference("Evt_evenementsalles")
     private Set evenementsalles = new HashSet(0);
 
-    @JsonBackReference("Evt_entreprisepresences")
     private Set entreprisepresences = new HashSet(0);
-    @JsonBackReference("Evt_plannings")
     private Set<Planning> plannings = new HashSet(0);
-    //@JsonManagedReference("Etu_evenements")
     private Set<Etudiantevenement> etudiantpresents = new HashSet(0);
 
     private Evenement evenement;
@@ -75,12 +75,12 @@ public class Evenement implements java.io.Serializable {
         this.typeevt = typeevt;
     }
 
-    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonSerialize(using = JsonJodaDateSerializer.class)
     public DateTime getDateevt() {
         return this.dateevt;
     }
 
-    @JsonDeserialize(using = JsonDateDeserializer.class)
+    @JsonDeserialize(using = JsonJodaDateDeserializer.class)
     public void setDateevt(DateTime dateevt) {
         this.dateevt = dateevt;
     }
@@ -93,22 +93,22 @@ public class Evenement implements java.io.Serializable {
         this.duree = duree;
     }
 
-    @JsonSerialize(using = JsonDateSerializer_hour.class)
+    @JsonSerialize(using = JsonJodaHourSerializer.class)
     public DateTime getHeuredebut() {
         return this.heuredebut;
     }
 
-    @JsonDeserialize(using = JsonDateDeserializer_hour.class)
+    @JsonDeserialize(using = JsonJodaHourDeserializer.class)
     public void setHeuredebut(DateTime heuredebut) {
         this.heuredebut = heuredebut;
     }
 
-    @JsonSerialize(using = JsonDateSerializer_hour.class)
+    @JsonSerialize(using = JsonJodaHourSerializer.class)
     public DateTime getHeurefin() {
         return this.heurefin;
     }
 
-    @JsonDeserialize(using = JsonDateDeserializer_hour.class)
+    @JsonDeserialize(using = JsonJodaHourDeserializer.class)
     public void setHeurefin(DateTime heurefin) {
         this.heurefin = heurefin;
     }

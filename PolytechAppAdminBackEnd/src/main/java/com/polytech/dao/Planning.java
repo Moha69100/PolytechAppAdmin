@@ -18,7 +18,6 @@ public class Planning  implements java.io.Serializable {
 
 
      private int id;
-     @JsonManagedReference("Evt_plannings")
      private Evenement evenement;
      
      private Set entretiens = new HashSet(0);

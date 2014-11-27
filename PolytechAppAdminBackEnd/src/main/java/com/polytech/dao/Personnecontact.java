@@ -14,7 +14,6 @@ public class Personnecontact implements java.io.Serializable {
 
     private int id;
 
-    @JsonManagedReference("Ent_personnecontacts")
     private Entreprise entreprise;
     private String civilite;
     private String nom;

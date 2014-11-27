@@ -20,7 +20,7 @@
         <property name="prenom" type="string">
             <column name="prenom" />
         </property>
-        <property name="datenaissance" type="org.jadira.usertype.dateandtime.joda.PersistentDateTime">
+        <property name="datenaissance" >
             <column name="datenaissance" length="13" />
         </property>
         <property name="adresse" type="string">

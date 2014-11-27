@@ -27,7 +27,6 @@ public class Entreprise implements java.io.Serializable {
     private Integer nbrapprenti;
 
     private Set offrealternances = new HashSet(0);
-    @JsonBackReference("Ent_personnecontacts")
     private Set personnecontacts = new HashSet(0);
 
     public Entreprise() {

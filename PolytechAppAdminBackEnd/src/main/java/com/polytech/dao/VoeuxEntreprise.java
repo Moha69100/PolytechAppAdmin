@@ -9,11 +9,9 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class VoeuxEntreprise implements java.io.Serializable {
 
     private int id;
-    @JsonManagedReference("Ent_voeuxEntreprises")
+
     private Entreprisepresence entreprisepresence;
-    @JsonManagedReference("Etu_voeuxEntreprises")
     private Etudiantevenement etudiantevenement;
-    @JsonManagedReference("Evt_voeuxEntreprises")
     private Evenement evenement;
 
     public VoeuxEntreprise() {
