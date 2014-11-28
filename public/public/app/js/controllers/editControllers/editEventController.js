@@ -5,7 +5,6 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
         $scope.enterprisesToRemove = [];
         $scope.studentsToRemove = [];
 
-
         $scope.enterprises = [];
         $scope.students = [];
 
@@ -13,15 +12,12 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
         $scope.addEnterprise = function () {
             var ent = $scope.attendingEnterprise;
             var entreprisePresente = {};
-            entreprisePresente.salle = {"id":1,"libelle":"Salle 20","localisation":"Rez de chaussé","capacite":24};
-            entreprisePresente.voeuxEntreprise = [{
-                    etudiantevenement:$scope.event.etudiantpresents[0]
-                }
-            ];
+            entreprisePresente.salle = {"id": 1, "libelle": "Salle 20", "localisation": "Rez de chaussé", "capacite": 24};
+            entreprisePresente.voeuxEntreprise = [];
             entreprisePresente.presence = false;
             entreprisePresente.entreprise = ent;
             entreprisePresente.dureeentretien = "00:30"
-            
+
             $scope.event.entreprisepresences.push(entreprisePresente);
             angular.forEach($scope.enterprises, function (val, key) {
                 if (val.id == ent.id) {
@@ -33,10 +29,10 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
         $scope.addStudent = function () {
             var etu = $scope.attendingStudent;
             var etudiantPresent = {
-                "etudiant":etu,
-                "voeuxEtudiant":[]
+                "etudiant": etu,
+                "voeuxEtudiant": []
             };
-            
+
             $scope.event.etudiantpresents.push(etudiantPresent);
             angular.forEach($scope.students, function (val, key) {
                 if (val.id == etu.id) {

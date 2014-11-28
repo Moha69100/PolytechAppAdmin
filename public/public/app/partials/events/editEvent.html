@@ -52,43 +52,43 @@
                     <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
                         <input type="button" class="form-control btn btn-info" id="planning" value="Voir le planning" ng-click="openModal('lg')">
                         <script type="text/ng-template" id="planning.html">
-                        <div class="modal-header">
+                            <div class="modal-header">
                             <h3 class="modal-title">Planning de l&apos;événement</h3>
-                        </div>
-                        <div class="modal-body">
-                            	<div class="appAdminPlanning">
-                                    <div class="room" data-ng-repeat="entreprise in entreprises">
-                                            <div class="room-header">{{entreprise.raison}}</div>
-                                            <div class="meeting"  data-ng-repeat="meeting in meetings[entreprise.id]">
-
-                                                    <p class="meeting-meta-student">
-                                                            <span class="meeting-label">Étudiant</span>
-                                                            <span class="meeting-value">{{meeting.etudiant.prenom}} {{meeting.etudiant.nom}}</span>
-                                                    </p>
-                                                    <p class="meeting-meta-company">
-                                                            <span class="meeting-label">Entreprise</span>
-                                                            <span class="meeting-value">{{meeting.entreprise.raison}}</span>
-                                                    </p>
-                                                    <p class="meeting-meta-start">
-                                                            <span class="meeting-label">Début</span>
-                                                            <span class="meeting-value">{{meeting.horaire}}</span>
-                                                    </p>
-                                                    <p class="meeting-meta-end">
-                                                            <span class="meeting-label">Fin</span>
-                                                            <span class="meeting-value">{{meeting.horaireEnd}}</span>
-                                                    </p>
-                                            </div>
-                                    </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
+                            <div class="modal-body">
+                            <div class="appAdminPlanning">
+                            <div class="room" data-ng-repeat="entreprise in entreprises">
+                            <div class="room-header">{{entreprise.raison}}</div>
+                            <div class="meeting"  data-ng-repeat="meeting in meetings[entreprise.id]">
+
+                            <p class="meeting-meta-student">
+                            <span class="meeting-label">Étudiant</span>
+                            <span class="meeting-value">{{meeting.etudiant.prenom}} {{meeting.etudiant.nom}}</span>
+                            </p>
+                            <p class="meeting-meta-company">
+                            <span class="meeting-label">Entreprise</span>
+                            <span class="meeting-value">{{meeting.entreprise.raison}}</span>
+                            </p>
+                            <p class="meeting-meta-start">
+                            <span class="meeting-label">Début</span>
+                            <span class="meeting-value">{{meeting.horaire}}</span>
+                            </p>
+                            <p class="meeting-meta-end">
+                            <span class="meeting-label">Fin</span>
+                            <span class="meeting-value">{{meeting.horaireEnd}}</span>
+                            </p>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="modal-footer">
                             <button class="btn btn-primary" ng-click="cancel()">Fermer</button>
-                        </div>
-    </script>
+                            </div>
+                        </script>
                     </div>
                 </div>
                 <div class="form-group">
-                     <label for="generatePlanning" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label"> </label>
+                    <label for="generatePlanning" class="col-sm-4 col-xs-4 col-md-4 col-lg-4 control-label"> </label>
                     <div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
                         <input type="button" class="form-control btn btn-info" id="generatePlanning" value="(Re)générer le planning" ng-click="generatePlanning()">
                     </div>
@@ -124,13 +124,16 @@
                         <tr>
                             <th></th>
                             <th>Raison sociale</th>
-                            <th>Nombre d'apprentis</th>
+                            <th>Voeux</th>
                         </tr>
                         <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="a in event.entreprisepresences">
                             <td><input ng-model="checkEnterprise" type="checkbox" ng-change="prepareRemoveEnterprise($index)" id="enterprise{{a.id}}"></td>
                             <td>{{a.entreprise.raison}}</td>
-                            <td>{{a.entreprise.nbrapprenti}}</td>
+                            <td>    <select multiple ng-model="a.voeuxEntreprise[$index]" ng-options="etu for etu in event.etudiantpresents" class="form-control input-sm">
+
+                                </select></td>
                         </tr>
+                        
                     </tbody>
                 </table>
             </div>
@@ -164,7 +167,7 @@
                             <th>Prénom</th>
                             <th>Mail</th>
                         </tr>
-                        <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="s in event.etudiantpresents | orderBy: nom">
+                        <tr style="cursor : pointer;" data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="s in event.etudiantpresents| orderBy: nom">
                             <td><input type="checkbox" ng-click="prepareRemoveStudent($index)" id="student{{s.id}}"></td>
                             <td>{{s.etudiant.nom}}</td>
                             <td>{{s.etudiant.prenom}}</td>
