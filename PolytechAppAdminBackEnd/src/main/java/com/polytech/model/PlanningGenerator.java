@@ -10,11 +10,11 @@
 //import java.util.logging.Logger;
 //
 ///**
-// *
-// * @author Epulapp
-// *
-// * dureeEntretiens : durée des entretiens en minutes
-// */
+//*
+//* @author Epulapp
+//*
+//* dureeEntretiens : durée des entretiens en minutes
+//*/
 //public class PlanningGenerator {
 //
 //    private final PlanningManager planningManager = new PlanningManager();

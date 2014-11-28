@@ -14,8 +14,7 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
             var ent = $scope.attendingEnterprise;
             var entreprisePresente = {};
             entreprisePresente.salle = {"id":1,"libelle":"Salle 20","localisation":"Rez de chaussé","capacite":24};
-            entreprisePresente.voeuxEntreprise = [
-                {
+            entreprisePresente.voeuxEntreprise = [{
                     etudiantevenement:$scope.event.etudiantpresents[0]
                 }
             ];

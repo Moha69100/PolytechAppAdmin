@@ -4,12 +4,12 @@
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <!--<property name="hibernate.connection.url">jdbc:postgresql://projet-a5a.univ-lyon1.fr:5432/webadmin_romain</property>-->
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/webadmin_test</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://projet-a5a.univ-lyon1.fr:5432/webadmin_romain</property>
+    <!--<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/webadmin_test</property>-->
     <property name="hibernate.default_schema">appschema</property>
     <property name="hibernate.connection.username">appuser</property>
-    <!--<property name="hibernate.connection.password"></property>-->
-    <property name="hibernate.connection.password">appuserpwd</property>
+    <property name="hibernate.connection.password"></property>
+    <!--<property name="hibernate.connection.password">appuserpwd</property>-->
     <property name="hibernate.show_sql">true</property>
 
     <!--
