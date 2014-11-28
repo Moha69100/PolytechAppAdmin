@@ -116,9 +116,9 @@ body > .header .logo .icon {
     display: inline;
 }
 .right-side .page-header .form-actions {
-    margin-top: -18px;
-    position: absolute;
-    right: 120px;
+    margin-top: 18px;
+    margin-right: 120px;
+    float: right;
 }
 .right-side .page-header .form-actions i {
     display: block;

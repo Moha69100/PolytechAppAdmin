@@ -57,9 +57,9 @@
                         </div>
                         <div class="modal-body">
                             	<div class="appAdminPlanning">
-                                    <div class="room" data-ng-repeat="salle in salles">
-                                            <div class="room-header">{{salle.libelle}}</div>
-                                            <div class="meeting"  data-ng-repeat="meeting in meetings[salle.id]">
+                                    <div class="room" data-ng-repeat="entreprise in entreprises">
+                                            <div class="room-header">{{entreprise.raison}}</div>
+                                            <div class="meeting"  data-ng-repeat="meeting in meetings[entreprise.id]">
 
                                                     <p class="meeting-meta-student">
                                                             <span class="meeting-label">Étudiant</span>
@@ -180,7 +180,7 @@
             <button class="btn btn-warning" data-ng-click="removeEvent()">Supprimer</button>
             <button type="submit" class="btn btn-primary" data-ng-show="event.id"  data-ng-disabled="!event.typeevt" data-ng-click="save()">Enregistrer</button>
             <button type="submit" class="btn btn-primary" data-ng-show="!event.id" data-ng-click="save()">Ajouter</button>
-            <button type="submit" data-ng-click="cancel()" class="btn btn-default">Annuler</button>
+            <button data-ng-click="cancel()" class="btn btn-default">Annuler</button>
         </div>
     </div>
 </div>
