@@ -10,16 +10,13 @@ import com.polytech.dao.manager.EtudiantManager;
 import com.polytech.exception.ExceptionHandler;
 import com.polytech.exception.SuccessHandler;
 import com.polytech.model.Ciell2CsvReader;
-import java.util.List;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,6 +25,8 @@ import org.springframework.web.multipart.MultipartFile;
 @ComponentScan
 @RestController
 public class EtudiantController {
+    
+    private final static Logger logger = Logger.getLogger(EtudiantController.class.getSimpleName());
 
     /* The database manager */
     EtudiantManager etuManager = new EtudiantManager();
@@ -133,6 +132,7 @@ public class EtudiantController {
     public @ResponseBody
     Object handleFileUpload(@RequestParam("file") MultipartFile file) {
         if (!file.isEmpty()) {
+            logger.log(Level.INFO, "Ask upload, trying parsing...");
             try {
                 byte[] bytes = file.getBytes();
                 Ciell2CsvReader reader = new Ciell2CsvReader(); 

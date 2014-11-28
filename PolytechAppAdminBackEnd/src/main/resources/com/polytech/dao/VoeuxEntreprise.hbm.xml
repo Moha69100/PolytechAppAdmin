@@ -8,14 +8,11 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="entreprise" class="com.polytech.dao.Entreprise" lazy="false" fetch="select">
+        <many-to-one name="entreprisepresence" class="com.polytech.dao.Entreprisepresence" lazy="false" fetch="select">
             <column name="entid" />
         </many-to-one>
-        <many-to-one name="etudiant" class="com.polytech.dao.Etudiant" lazy="false" fetch="select">
+        <many-to-one name="etudiantevenement" class="com.polytech.dao.Etudiantevenement" lazy="false" fetch="select">
             <column name="etuid" />
-        </many-to-one>
-        <many-to-one name="evenement" class="com.polytech.dao.Evenement" lazy="false" fetch="select">
-            <column name="evtid" />
         </many-to-one>
     </class>
 </hibernate-mapping>

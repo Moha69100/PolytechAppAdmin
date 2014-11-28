@@ -32,11 +32,5 @@
         <property name="email" type="string">
             <column name="email" />
         </property>
-        <set name="entreprisepresences" table="appschema.entreprisepresence" inverse="true" lazy="false" fetch="select">
-            <key>
-                <column name="perid" />
-            </key>
-            <one-to-many class="com.polytech.dao.Entreprisepresence" />
-        </set>
     </class>
 </hibernate-mapping>

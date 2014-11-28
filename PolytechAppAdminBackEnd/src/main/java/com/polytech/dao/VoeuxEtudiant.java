@@ -1,6 +1,7 @@
 package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -9,12 +10,10 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class VoeuxEtudiant implements java.io.Serializable {
 
     private int id;
-    @JsonManagedReference("Ent_voeuxEtudiants")
-    private Entreprise entreprise;
-    @JsonManagedReference("Etu_voeuxEtudiants")
-    private Etudiant etudiant;
-    @JsonManagedReference("Evt_voeuxEtudiants")
-    private Evenement evenement;
+    private Entreprisepresence entreprisepresence;
+
+    @JsonIgnore
+    private Etudiantevenement etudiantevenement;
     private Integer niveau;
 
     public VoeuxEtudiant() {
@@ -24,11 +23,10 @@ public class VoeuxEtudiant implements java.io.Serializable {
         this.id = id;
     }
 
-    public VoeuxEtudiant(int id, Entreprise entreprise, Etudiant etudiant, Evenement evenement, Integer niveau) {
+    public VoeuxEtudiant(int id, Entreprisepresence entreprisepresence, Etudiantevenement etudiantevenement, Evenement evenement, Integer niveau) {
         this.id = id;
-        this.entreprise = entreprise;
-        this.etudiant = etudiant;
-        this.evenement = evenement;
+        this.entreprisepresence = entreprisepresence;
+        this.etudiantevenement = etudiantevenement;
         this.niveau = niveau;
     }
 
@@ -40,28 +38,20 @@ public class VoeuxEtudiant implements java.io.Serializable {
         this.id = id;
     }
 
-    public Entreprise getEntreprise() {
-        return this.entreprise;
+    public Entreprisepresence getEntreprisepresence() {
+        return this.entreprisepresence;
     }
 
-    public void setEntreprise(Entreprise entreprise) {
-        this.entreprise = entreprise;
+    public void setEntreprisepresence(Entreprisepresence entreprisepresence) {
+        this.entreprisepresence = entreprisepresence;
     }
 
-    public Etudiant getEtudiant() {
-        return this.etudiant;
+    public Etudiantevenement getEtudiantevenement() {
+        return this.etudiantevenement;
     }
 
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
-    }
-
-    public Evenement getEvenement() {
-        return this.evenement;
-    }
-
-    public void setEvenement(Evenement evenement) {
-        this.evenement = evenement;
+    public void setEtudiantevenement(Etudiantevenement etudiantevenement) {
+        this.etudiantevenement = etudiantevenement;
     }
 
     public Integer getNiveau() {

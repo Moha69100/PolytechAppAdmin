@@ -2,11 +2,12 @@ package com.polytech.dao.manager;
 
 import com.polytech.dao.Entretien;
 import com.polytech.dao.Planning;
-import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.List;
 
 /**
  *
@@ -50,7 +51,7 @@ public class EntretienManager {
         try {
             tx = session.beginTransaction();
 
-            Entretien ex = (Entretien) session.get(Entretien.class, etu_id);
+            Entretien ex = (Entretien) session.load(Entretien.class, etu_id);
             session.delete(ex);
 
             tx.commit();

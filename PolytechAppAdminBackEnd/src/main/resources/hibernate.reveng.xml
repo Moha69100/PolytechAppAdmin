@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="webadmin_test" match-schema="appschema"/>
-  <table-filter match-name="entreprise"/>
+  <table-filter match-name="entreprisepresence"/>
   <table-filter match-name="etudiantevenement"/>
   <table-filter match-name="salle"/>
   <table-filter match-name="evenementsalle"/>
@@ -12,7 +12,7 @@
   <table-filter match-name="entretien"/>
   <table-filter match-name="personnecontact"/>
   <table-filter match-name="voeux_etudiant"/>
-  <table-filter match-name="etudiant"/>
+  <table-filter match-name="etudiantevenement"/>
   <table-filter match-name="offrealternance"/>
   <table-filter match-name="entreprisepresence"/>
   <table-filter match-name="evenement"/>

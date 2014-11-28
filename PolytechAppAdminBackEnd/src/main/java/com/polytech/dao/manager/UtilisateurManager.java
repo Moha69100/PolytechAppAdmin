@@ -7,9 +7,10 @@
 package com.polytech.dao.manager;
 
 import com.polytech.dao.Utilisateur;
-import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+
+import java.util.List;
 
 /**
  * Interrogation des utilisateurs

@@ -1,11 +1,16 @@
 package com.polytech.dao.manager;
 
+import com.polytech.dao.Entretien;
 import com.polytech.dao.Planning;
-import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,6 +18,9 @@ import org.hibernate.Transaction;
  */
 public class PlanningManager {
 
+    
+    private final static Logger logger = java.util.logging.Logger.getLogger(PlanningManager.class.getSimpleName());
+    
     public List<Planning> getAllPlanning() throws Exception {
 
         Session session = SessionManager.openSession();
@@ -128,6 +136,32 @@ public class PlanningManager {
             session.close();
         }
         return true;
+
+    }
+
+    public Boolean deleteEntretiens(int planningId) {
+        Session session = SessionManager.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+
+            Planning planning = (Planning) session.load(Planning.class, planningId);
+            for ( Entretien entretien : planning.getEntretiens() ) {
+                session.delete(entretien);
+            }
+
+            // delete() ne supprimme pas les objets, juste les instances de base de données : il faut réinitialiser la collection
+            planning.getEntretiens().clear();
+            tx.commit();
+
+            return true;
+        } catch (Exception e ) {
+            tx.rollback();
+            logger.log(Level.ALL, e.getMessage());
+            return false;
+        } finally {
+            session.close();
+        }
 
     }
 

@@ -11,18 +11,35 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
 
 
         $scope.addEnterprise = function () {
-            $scope.event.entreprisepresences.push($scope.attendingEnterprise);
+            var ent = $scope.attendingEnterprise;
+            var entreprisePresente = {};
+            entreprisePresente.salle = {"id":1,"libelle":"Salle 20","localisation":"Rez de chaussé","capacite":24};
+            entreprisePresente.voeuxEntreprise = [{
+                    etudiantevenement:$scope.event.etudiantpresents[0]
+                }
+            ];
+            entreprisePresente.presence = false;
+            entreprisePresente.entreprise = ent;
+            entreprisePresente.dureeentretien = "00:30"
+            
+            $scope.event.entreprisepresences.push(entreprisePresente);
             angular.forEach($scope.enterprises, function (val, key) {
-                if (val.id == $scope.attendingEnterprise.id) {
+                if (val.id == ent.id) {
                     $scope.enterprises.splice(key, 1);
                 }
             });
         };
 
         $scope.addStudent = function () {
-            $scope.event.etudiants.push($scope.attendingStudent);
+            var etu = $scope.attendingStudent;
+            var etudiantPresent = {
+                "etudiant":etu,
+                "voeuxEtudiant":[]
+            };
+            
+            $scope.event.etudiantpresents.push(etudiantPresent);
             angular.forEach($scope.students, function (val, key) {
-                if (val.id == $scope.attendingStudent.id) {
+                if (val.id == etu.id) {
                     $scope.students.splice(key, 1);
                 }
             });
@@ -39,7 +56,7 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
 
         $scope.prepareRemoveStudent = function (index) {
             if ($scope.studentsToRemove[index] == null) {
-                $scope.studentsToRemove[index] = $scope.event.etudiants[index];
+                $scope.studentsToRemove[index] = $scope.event.etudiantpresents[index];
             } else {
                 $scope.studentsToRemove.splice(index, 1);
             }
@@ -60,9 +77,9 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
 
         $scope.removeStudent = function () {
             angular.forEach($scope.studentsToRemove, function (val1, key1) {
-                angular.forEach($scope.event.etudiants, function (val2, key2) {
+                angular.forEach($scope.event.etudiantpresents, function (val2, key2) {
                     if (val1.id == val2.id) {
-                        $scope.event.etudiants.splice(key2, 1);
+                        $scope.event.etudiantpresents.splice(key2, 1);
                         $scope.students.push(val1);
                     }
                 });
@@ -98,8 +115,8 @@ app.controller('editEventController', ['$scope', '$modal', '$routeParams', 'even
                 eventResource.getEvent({'id': $scope.eventId}, function (data) {
                     console.log(data);
                     $scope.event = data;
-                    $scope.event.entreprisepresences = [];
-                    $scope.event.etudiants = [];
+                    //$scope.event.entreprisepresences = [];
+                    //$scope.event.etudiantpresents = [];
                 });
                 enterpriseResource.listEnterprises(function (data) {
                     $scope.enterprises = data;

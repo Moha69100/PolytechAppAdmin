@@ -1,4 +1,7 @@
 .classpath
 .project
+PolytechAppAdmin.iml
+target
 .settings/
+.idea
 target/

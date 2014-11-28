@@ -2,10 +2,8 @@ package com.polytech.dao;
 // Generated 23 sept. 2014 09:06:02 by Hibernate Tools 4.3.1
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,17 +26,7 @@ public class Entreprise implements java.io.Serializable {
     private String anneeparticipforum;
     private Integer nbrapprenti;
 
-    @JsonBackReference("Ent_entreprise")
-    private Set entreprisepresences = new HashSet(0);
-    @JsonIgnore// Sinon impossible d'ajouter une offre d'alternance car impossible de sérialisé
     private Set offrealternances = new HashSet(0);
-    @JsonBackReference("Ent_voeuxEntreprises")
-    private Set voeuxEntreprises = new HashSet(0);
-    @JsonBackReference("Ent_voeuxEtudiants")
-    private Set voeuxEtudiants = new HashSet(0);
-    @JsonBackReference("Ent_entretiens")
-    private Set entretiens = new HashSet(0);
-    @JsonBackReference("Ent_personnecontacts")
     private Set personnecontacts = new HashSet(0);
 
     public Entreprise() {
@@ -48,7 +36,7 @@ public class Entreprise implements java.io.Serializable {
         this.id = id;
     }
 
-    public Entreprise(int id, String raison, String naf, String siret, String effectif, String organisme, String adresse, String adresse2, String cp, String ville, String tel, String anneeparticipforum, Integer nbrapprenti, Set entreprisepresences, Set offrealternances, Set voeuxEntreprises, Set voeuxEtudiants, Set entretiens, Set personnecontacts) {
+    public Entreprise(int id, String raison, String naf, String siret, String effectif, String organisme, String adresse, String adresse2, String cp, String ville, String tel, String anneeparticipforum, Integer nbrapprenti, Set offrealternances, Set personnecontacts) {
         this.id = id;
         this.raison = raison;
         this.naf = naf;
@@ -62,11 +50,7 @@ public class Entreprise implements java.io.Serializable {
         this.tel = tel;
         this.anneeparticipforum = anneeparticipforum;
         this.nbrapprenti = nbrapprenti;
-        this.entreprisepresences = entreprisepresences;
         this.offrealternances = offrealternances;
-        this.voeuxEntreprises = voeuxEntreprises;
-        this.voeuxEtudiants = voeuxEtudiants;
-        this.entretiens = entretiens;
         this.personnecontacts = personnecontacts;
     }
 
@@ -174,44 +158,12 @@ public class Entreprise implements java.io.Serializable {
         this.nbrapprenti = nbrapprenti;
     }
 
-    public Set getEntreprisepresences() {
-        return this.entreprisepresences;
-    }
-
-    public void setEntreprisepresences(Set entreprisepresences) {
-        this.entreprisepresences = entreprisepresences;
-    }
-
     public Set getOffrealternances() {
         return this.offrealternances;
     }
 
     public void setOffrealternances(Set offrealternances) {
         this.offrealternances = offrealternances;
-    }
-
-    public Set getVoeuxEntreprises() {
-        return this.voeuxEntreprises;
-    }
-
-    public void setVoeuxEntreprises(Set voeuxEntreprises) {
-        this.voeuxEntreprises = voeuxEntreprises;
-    }
-
-    public Set getVoeuxEtudiants() {
-        return this.voeuxEtudiants;
-    }
-
-    public void setVoeuxEtudiants(Set voeuxEtudiants) {
-        this.voeuxEtudiants = voeuxEtudiants;
-    }
-
-    public Set getEntretiens() {
-        return this.entretiens;
-    }
-
-    public void setEntretiens(Set entretiens) {
-        this.entretiens = entretiens;
     }
 
     public Set getPersonnecontacts() {

@@ -17,7 +17,7 @@
         <property name="libelle" type="string">
             <column name="libelle" />
         </property>
-        <set name="etudiants" table="appschema.etudiantdiplome" inverse="false" lazy="false" fetch="select">
+        <set name="etudiantpresents" table="etudiantdiplome" inverse="false" lazy="false" fetch="select">
             <key>
                 <column name="dipid" not-null="true" />
             </key>

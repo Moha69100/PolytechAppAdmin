@@ -3,6 +3,7 @@ package com.polytech.dao;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +14,6 @@ public class Personnecontact implements java.io.Serializable {
 
     private int id;
 
-    @JsonManagedReference("Ent_personnecontacts")
     private Entreprise entreprise;
     private String civilite;
     private String nom;
@@ -22,8 +22,6 @@ public class Personnecontact implements java.io.Serializable {
     private String telfixe;
     private String telportable;
     private String email;
-    @JsonBackReference
-    private Set entreprisepresences = new HashSet(0);
 
     public Personnecontact() {
     }
@@ -32,7 +30,7 @@ public class Personnecontact implements java.io.Serializable {
         this.id = id;
     }
 
-    public Personnecontact(int id, Entreprise entreprise, String civilite, String nom, String prenom, String role, String telfixe, String telportable, String email, Set entreprisepresences) {
+    public Personnecontact(int id, Entreprise entreprise, String civilite, String nom, String prenom, String role, String telfixe, String telportable, String email) {
         this.id = id;
         this.entreprise = entreprise;
         this.civilite = civilite;
@@ -42,7 +40,6 @@ public class Personnecontact implements java.io.Serializable {
         this.telfixe = telfixe;
         this.telportable = telportable;
         this.email = email;
-        this.entreprisepresences = entreprisepresences;
     }
 
     public int getId() {
@@ -115,14 +112,6 @@ public class Personnecontact implements java.io.Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Set getEntreprisepresences() {
-        return this.entreprisepresences;
-    }
-
-    public void setEntreprisepresences(Set entreprisepresences) {
-        this.entreprisepresences = entreprisepresences;
     }
 
 }

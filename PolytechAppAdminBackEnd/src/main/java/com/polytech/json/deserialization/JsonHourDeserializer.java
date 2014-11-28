@@ -3,22 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.polytech.dao;
+package com.polytech.json.deserialization;
 
-import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import org.springframework.stereotype.Component;
 
-import com.fasterxml.jackson.databind.SerializerProvider;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-
-import org.springframework.stereotype.Component;
 
 /**
  * Used to serialize Java.util.Date, which is not a common JSON
@@ -29,7 +25,7 @@ import org.springframework.stereotype.Component;
  * http://loiane.com (Portuguese)
  */
 @Component
-public class JsonDateDeserializer extends JsonDeserializer<Date>{
+public class JsonHourDeserializer extends JsonDeserializer<Date>{
 
 	
 
@@ -39,7 +35,7 @@ public class JsonDateDeserializer extends JsonDeserializer<Date>{
         		
  if(jsonparser.getText() != null && !jsonparser.getText().trim().equals(""))
                 {
-                        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
                         String date = jsonparser.getText();
                         try {
                                 return format.parse(date);

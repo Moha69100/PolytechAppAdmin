@@ -3,6 +3,7 @@ package com.polytech.dao;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,10 +17,6 @@ public class Salle  implements java.io.Serializable {
      private String libelle;
      private String localisation;
      private Integer capacite;
-     @JsonBackReference("Sa_entreprisepresences")
-     private Set entreprisepresences = new HashSet(0);
-     @JsonBackReference("Sa_evenementsalles")
-     private Set evenementsalles = new HashSet(0);
 
     public Salle() {
     }
@@ -29,13 +26,11 @@ public class Salle  implements java.io.Serializable {
         this.id = id;
     }
     
-    public Salle(int id, String libelle, String localisation, Integer capacite, Set entreprisepresences, Set evenementsalles) {
+    public Salle(int id, String libelle, String localisation, Integer capacite) {
        this.id = id;
        this.libelle = libelle;
        this.localisation = localisation;
        this.capacite = capacite;
-       this.entreprisepresences = entreprisepresences;
-       this.evenementsalles = evenementsalles;
     }
    
     public int getId() {
@@ -66,23 +61,6 @@ public class Salle  implements java.io.Serializable {
     public void setCapacite(Integer capacite) {
         this.capacite = capacite;
     }
-    public Set getEntreprisepresences() {
-        return this.entreprisepresences;
-    }
-    
-    public void setEntreprisepresences(Set entreprisepresences) {
-        this.entreprisepresences = entreprisepresences;
-    }
-    public Set getEvenementsalles() {
-        return this.evenementsalles;
-    }
-    
-    public void setEvenementsalles(Set evenementsalles) {
-        this.evenementsalles = evenementsalles;
-    }
-
-
-
 
 }
 

@@ -5,6 +5,16 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.polytech.json.deserialization.JsonDateDeserializer;
+import com.polytech.json.deserialization.JsonDateDeserializer_hour;
+import com.polytech.json.deserialization.JsonJodaDateDeserializer;
+import com.polytech.json.deserialization.JsonJodaHourDeserializer;
+import com.polytech.json.serialization.JsonDateSerializer;
+import com.polytech.json.serialization.JsonDateSerializer_hour;
+import com.polytech.json.serialization.JsonJodaDateSerializer;
+import com.polytech.json.serialization.JsonJodaHourSerializer;
+import org.joda.time.DateTime;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,21 +31,10 @@ public class Evenement implements java.io.Serializable {
     private Date heuredebut;
     private Date heurefin;
     private String description;
-    @JsonBackReference("Evt_evenementsalles")
-    private Set evenementsalles = new HashSet(0);
 
-    private Set evenementsalles_1 = new HashSet(0);
-
-    @JsonBackReference("Evt_entreprisepresences")
     private Set entreprisepresences = new HashSet(0);
-    @JsonBackReference("Evt_plannings")
-    private Set plannings = new HashSet(0);
-    @JsonBackReference("Evt_voeuxEtudiants")
-    private Set voeuxEtudiants = new HashSet(0);
-    //@JsonManagedReference("Etu_evenements")
-    private Set etudiants = new HashSet(0);
-    @JsonBackReference("Evt_voeuxEntreprises")
-    private Set voeuxEntreprises = new HashSet(0);
+    private Set<Planning> plannings = new HashSet(0);
+    private Set<Etudiantevenement> etudiantpresents = new HashSet(0);
 
     public Evenement() {
     }
@@ -44,7 +43,7 @@ public class Evenement implements java.io.Serializable {
         this.id = id;
     }
 
-    public Evenement(int id, String typeevt, Date dateevt, String duree, Date heuredebut, Date heurefin, String description, Set evenementsalles, Set evenementsalles_1, Set entreprisepresences, Set plannings, Set voeuxEtudiants, Set etudiants, Set voeuxEntreprises) {
+    public Evenement(int id, String typeevt, Date dateevt, String duree, Date heuredebut, Date heurefin, String description, Set entreprisepresences, Set<Planning> plannings, Set<Etudiantevenement> etudiantpresents) {
         this.id = id;
         this.typeevt = typeevt;
         this.dateevt = dateevt;
@@ -52,13 +51,9 @@ public class Evenement implements java.io.Serializable {
         this.heuredebut = heuredebut;
         this.heurefin = heurefin;
         this.description = description;
-        this.evenementsalles = evenementsalles;
-        this.evenementsalles_1 = evenementsalles_1;
         this.entreprisepresences = entreprisepresences;
         this.plannings = plannings;
-        this.voeuxEtudiants = voeuxEtudiants;
-        this.etudiants = etudiants;
-        this.voeuxEntreprises = voeuxEntreprises;
+        this.etudiantpresents = etudiantpresents;
     }
 
     public int getId() {
@@ -99,16 +94,18 @@ public class Evenement implements java.io.Serializable {
     public Date getHeuredebut() {
         return this.heuredebut;
     }
-   @JsonDeserialize(using = JsonDateDeserializer_hour.class)
+
+    @JsonDeserialize(using = JsonDateDeserializer_hour.class)
     public void setHeuredebut(Date heuredebut) {
         this.heuredebut = heuredebut;
     }
 
-       @JsonSerialize(using = JsonDateSerializer_hour.class)
+    @JsonSerialize(using = JsonDateSerializer_hour.class)
     public Date getHeurefin() {
         return this.heurefin;
     }
-  @JsonDeserialize(using = JsonDateDeserializer_hour.class)
+
+    @JsonDeserialize(using = JsonDateDeserializer_hour.class)
     public void setHeurefin(Date heurefin) {
         this.heurefin = heurefin;
     }
@@ -121,60 +118,28 @@ public class Evenement implements java.io.Serializable {
         this.description = description;
     }
 
-    public Set getEvenementsalles() {
-        return this.evenementsalles;
-    }
-
-    public void setEvenementsalles(Set evenementsalles) {
-        this.evenementsalles = evenementsalles;
-    }
-
-    public Set getEvenementsalles_1() {
-        return this.evenementsalles_1;
-    }
-
-    public void setEvenementsalles_1(Set evenementsalles_1) {
-        this.evenementsalles_1 = evenementsalles_1;
-    }
-
-    public Set getEntreprisepresences() {
+    public Set<Entreprisepresence> getEntreprisepresences() {
         return this.entreprisepresences;
     }
 
-    public void setEntreprisepresences(Set entreprisepresences) {
+    public void setEntreprisepresences(Set<Entreprisepresence> entreprisepresences) {
         this.entreprisepresences = entreprisepresences;
     }
 
-    public Set getPlannings() {
+    public Set<Planning> getPlannings() {
         return this.plannings;
     }
 
-    public void setPlannings(Set plannings) {
+    public void setPlannings(Set<Planning> plannings) {
         this.plannings = plannings;
     }
 
-    public Set getVoeuxEtudiants() {
-        return this.voeuxEtudiants;
+    public Set<Etudiantevenement> getEtudiantpresents() {
+        return this.etudiantpresents;
     }
 
-    public void setVoeuxEtudiants(Set voeuxEtudiants) {
-        this.voeuxEtudiants = voeuxEtudiants;
-    }
-
-    public Set getEtudiants() {
-        return this.etudiants;
-    }
-
-    public void setEtudiants(Set etudiants) {
-        this.etudiants = etudiants;
-    }
-
-    public Set getVoeuxEntreprises() {
-        return this.voeuxEntreprises;
-    }
-
-    public void setVoeuxEntreprises(Set voeuxEntreprises) {
-        this.voeuxEntreprises = voeuxEntreprises;
+    public void setEtudiantpresents(Set<Etudiantevenement> etudiants) {
+        this.etudiantpresents = etudiants;
     }
 
 }

@@ -1,12 +1,13 @@
 package com.polytech.dao.manager;
 
 import com.polytech.dao.Personnecontact;
-import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import webadmin.NewHibernateUtil;
+
+import java.util.List;
 
 /**
  * This class is the database manager for the Personnecontact table.
